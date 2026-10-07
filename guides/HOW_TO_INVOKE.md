@@ -12,8 +12,11 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | :--- | :--- | :--- |
 | Un formulario envía datos pero el servidor rechaza con 400 Bad Request o campos vacíos. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
 | El proyecto tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
-| La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **state_and_reactivity** | `domains/01_frontend/state_and_reactivity/` |
-| Faltan etiquetas en inputs, el contraste de color es malo o el modal no se cierra con Escape. | **ui_design_a11y** | `domains/01_frontend/ui_design_a11y/` |
+| Quieres auditar un módulo de frontend completo y coordinar a los especialistas. | **00_frontend_director** | `domains/01_frontend/00_frontend_director/` |
+| Estructura caótica de carpetas frontend, llamadas directas de axios en vistas, tipos 'any'. | **01_arch_and_network** | `domains/01_frontend/01_arch_and_network/` |
+| La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **02_state_and_reactivity** | `domains/01_frontend/02_state_and_reactivity/` |
+| Formularios complejos, validación Zod, prevención de doble clic y estados isSubmitting. | **03_forms_and_data_flow** | `domains/01_frontend/03_forms_and_data_flow/` |
+| Faltan etiquetas en inputs, el contraste de color es malo o el modal no se cierra con Escape. | **04_ui_design_and_a11y** | `domains/01_frontend/04_ui_design_and_a11y/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -36,9 +39,9 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
   - Cuando Frontend y Backend han evolucionado por separado y sospechas que hay endpoints desfasados o rotos.
   - Cuando el repositorio es un monorock o código espagueti y necesitas una propuesta visual de reestructuración limpia sin romper producción.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `ui_design_a11y`).
+  - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `04_ui_design_and_a11y`).
   - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `query_performance_indexer`).
-  - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `state_and_reactivity`).
+  - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `02_state_and_reactivity`).
 * **¿Cómo invocarlo y qué insumos darle?**
   - **Insumos mínimos:** Ruta de la carpeta Frontend + Ruta de la carpeta Backend.
   - **Prompt sugerido:**
@@ -48,46 +51,81 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 
 ---
 
-### 🎨 DOMINIO 01: FRONTEND SPECIALISTS
+### 🎨 DOMINIO 01: ESCUADRÓN COLABORATIVO FRONTEND
 
-#### Agente: `state_and_reactivity` (Performance & State Specialist)
+#### Agente: `00_frontend_director` (Frontend Engineering Director)
 
 * **¿Qué hace exactamente?**
-  Audita el ciclo de vida del componente y el gestor de estado (Pinia, Redux, Zustand). Caza memory leaks por listeners no removidos, desestructuración que rompe la reactividad nativa y render loops infinitos.
+  Es el **Director Rector del dominio**. No audita líneas aisladas; evalúa tu objetivo, selecciona la ruta de auditoría (`ROUTING_PLAYBOOK.md`), activa a los especialistas en el orden exacto, vigila que los handoffs cumplan calidad y emite el dictamen consolidado del frontend.
 * **¿Cuándo DEBES usarlo?**
-  - Al cambiar de ruta la pestaña del navegador se vuelve pesada o lenta tras varios minutos de uso.
-  - Los componentes se renderizan 10 veces seguidas sin razón aparente.
-  - Al mutar una variable el componente en pantalla no se actualiza (reactividad rota).
-  - Tienes un store global gigantesco donde se guardan variables locales temporales.
+  - Para auditar una pantalla, módulo o feature completa de principio a fin.
+  - Cuando quieras que los 4 especialistas trabajen en equipo sin tener que coordinarlos manualmente.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para validar accesibilidad WCAG o estilos CSS (usa `ui_design_a11y`).
-  - ❌ **NO lo uses** si la llamada HTTP devuelve 404 o 500 (el problema está en la API o en el Integrador).
+  - ❌ **NO lo uses** si solo quieres auditar una tarea micro aislada de 2 minutos (invoca al especialista directo).
 * **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Ruta de los componentes (`.vue`, `.tsx`, `.jsx`) o de los stores (`/stores`, `/slices`).
+  - **Insumos mínimos:** Ruta del módulo frontend + objetivo de la auditoría.
   - **Prompt sugerido:**
     ```text
-    Actúa como 01_frontend/state_and_reactivity. Audita [ruta/stores] y [ruta/views/Dashboard.vue]. Aplica tu CHECKLIST.md para cazar memory leaks, pérdida de reactividad y re-render loops. Emite tu reporte en templates/ATOMIC_FINDING_TEMPLATE.md.
+    Actúa como 00_frontend_director. Audita el módulo en [ruta/modulo]. Selecciona la ruta de auditoría adecuada, orquesta a tus especialistas (01 a 04) usando INTER_AGENT_HANDOFF_MEMO.md y consolida el dictamen final.
     ```
 
 ---
 
-#### Agente: `ui_design_a11y` (Design System & Accessibility Specialist)
+#### Agente: `01_arch_and_network` (Frontend Architect & Network Specialist)
 
 * **¿Qué hace exactamente?**
-  Audita el HTML semántico, atributos ARIA, contraste cromático WCAG 2.1 AA, navegación con teclado (foco visual, trampas en modales) y coherencia con el Design System (cero colores o estilos inline hardcodeados).
+  Audita los **cimientos de código**: modularización de carpetas, cliente Axios/Fetch centralizado, interceptores de autenticación/refresh token, tipado estricto en TypeScript (cero `any`) y cancelación de peticiones con `AbortController`.
 * **¿Cuándo DEBES usarlo?**
-  - Antes de liberar una pantalla pública o corporativa para certificar cumplimiento de accesibilidad.
-  - Para auditar una librería de componentes base (`Button`, `Modal`, `Input`, `Dropdown`).
-  - Para limpiar código lleno de valores hexadecimales `#ff0000` o clases ad-hoc que violan el sistema de diseño.
+  - Vistas y componentes haciendo llamadas directas a `axios.get/post`.
+  - Falta de tipado en DTOs o proliferación de tipos `any`.
+  - Peticiones que quedan vivas al cambiar de página consumiendo ancho de banda.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar la lógica de llamadas a APIs o autenticación.
-  - ❌ **NO lo uses** para depurar problemas de sincronización de estado o renderizado condicional.
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Ruta de componentes visuales o plantillas HTML/Vue/JSX.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 01_frontend/ui_design_a11y. Audita los componentes en [ruta/components/base]. Verifica cumplimiento WCAG 2.1 AA (contraste, foco por teclado, ARIA) y apego al design system. Emite tu reporte bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-    ```
+  - ❌ **NO lo uses** para revisar si un modal es accesible por teclado (usa `04_ui_design_and_a11y`).
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/01_arch_and_network/ONE_SHOT_PROMPT.md`
+
+---
+
+#### Agente: `02_state_and_reactivity` (State & Reactivity Specialist)
+
+* **¿Qué hace exactamente?**
+  Audita el **motor reactivo**: stores de Pinia/Zustand/Redux, fugas de memoria en desmontaje (`removeEventListener`, `clearInterval`, sockets) y pérdida de reactividad o render loops.
+* **¿Cuándo DEBES usarlo?**
+  - Pestaña del navegador pesada o lenta con memoria RAM creciendo sin parar.
+  - Re-renders infinitos o componentes que no actualizan al cambiar variables reactivas.
+* **¿Cuándo NO debes usarlo?**
+  - ❌ **NO lo uses** para revisar la validación de inputs de formularios (usa `03_forms_and_data_flow`).
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/02_state_and_reactivity/ONE_SHOT_PROMPT.md`
+
+---
+
+#### Agente: `03_forms_and_data_flow` (Forms & Input Engineering Specialist)
+
+* **¿Qué hace exactamente?**
+  Audita la **captura e interacción de datos**: validaciones declarativas con Zod/VeeValidate, prevención de doble envío (Double Submit con bloqueo de botón), formularios multi-paso (wizards) y mapeo de errores 422 a los campos correspondientes.
+* **¿Cuándo DEBES usarlo?**
+  - Formularios que permiten enviar múltiples veces al hacer clic rápido.
+  - Validación manual con `if/else` desordenada en vez de esquemas declarativos.
+  - Listas dinámicas de campos donde al borrar una fila se corrompe el formulario.
+* **¿Cuándo NO debes usarlo?**
+  - ❌ **NO lo uses** para revisar colores o contrastes de accesibilidad (usa `04_ui_design_and_a11y`).
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/03_forms_and_data_flow/ONE_SHOT_PROMPT.md`
+
+---
+
+#### Agente: `04_ui_design_and_a11y` (Design System & Accessibility Specialist)
+
+* **¿Qué hace exactamente?**
+  Audita la **presentación visual e inclusiva**: conformidad WCAG 2.1 AA (contraste 4.5:1, foco por teclado `focus-visible`, captura de foco en modales con Escape, ARIA roles), gobernanza de tokens de diseño y diseño responsivo sin desbordes.
+* **¿Cuándo DEBES usarlo?**
+  - Antes de certificar un release público para garantizar accesibilidad.
+  - Para limpiar CSS lleno de valores hexadecimales hardcodeados `#ff0000` fuera de tokens.
+* **¿Cuándo NO debes usarlo?**
+  - ❌ **NO lo uses** para revisar llamadas de red o lógica asíncrona de stores.
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/04_ui_design_and_a11y/ONE_SHOT_PROMPT.md`
 
 ---
 
