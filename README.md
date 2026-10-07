@@ -1,10 +1,50 @@
 # 🛡️ AI Agentic Audit Kit
 
-> **Arsenal de Agentes Especialistas y Auditores Autónomos On-Demand para cualquier Base de Código.**
+> **Arsenal de Agentes Especialistas Verticales y Auditor Integrador Fullstack para cualquier Base de Código.**
 
-Este repositorio contiene un conjunto de **Agentes de IA Tácticos e Individuales** diseñados para auditar, diagnosticar, refactorizar y documentar proyectos de software existentes, **sin importar el framework, lenguaje o arquitectura que utilicen**.
+Este repositorio implementa el patrón **Hub & Spoke Specialist Audit Pattern**: una arquitectura que combina **Especialistas Verticales de Láser Profundo** con un **Agente Integrador Fullstack**, permitiendo auditar, diagnosticar y refactorizar cualquier proyecto de software existente (sin importar su lenguaje o framework).
 
-A diferencia de una fábrica SDLC completa, estos agentes son **stateless, quirúrgicos y de ejecución inmediata**: los invocas con un prompt o instrucción sobre cualquier repositorio, archivo o Pull Request para obtener diagnósticos forenses de nivel Staff Engineer.
+---
+
+## 🏛️ Arquitectura Hub & Spoke (Especialistas + Árbitro)
+
+```mermaid
+flowchart TD
+    subgraph "Spokes: Especialistas Verticales (Microscopio Forense)"
+        F1["🎨 01_frontend/state_and_reactivity<br/>Stores, Reactividad y Memory Leaks"]
+        F2["♿ 01_frontend/ui_design_a11y<br/>Design System, WCAG 2.1 AA y Semántica"]
+        B1["⚙️ 02_backend/api_rest_gateway<br/>Routes, Middlewares, Validation y HTTP Errors"]
+        B2["🧩 02_backend/domain_business_logic<br/>Services, Transacciones ACID y DDD"]
+        D1["🗄️ 03_database/query_performance_indexer<br/>N+1 Queries, B-Tree Indexes y DDL"]
+        S1["🛡️ 04_security/owasp_threat_hunter<br/>IDOR, Inyecciones, JWT y Secrets"]
+    end
+
+    subgraph "Hub: Agente Integrador Fullstack (Telescopio Sistémico)"
+        HUB["🧠 00_fullstack_integrator<br/>(Staff Cross-Layer Systems Architect)"]
+    end
+
+    subgraph "Entregables Finales"
+        OUT1["📋 Reconciliación de Contratos API ↔ SPA"]
+        OUT2["🏗️ Propuesta de Topología Limpia de Carpetas"]
+        OUT3["🧪 Diagnóstico de Fallos y Trazabilidad E2E"]
+    end
+
+    F1 -.->|Atomic Finding| HUB
+    F2 -.->|Atomic Finding| HUB
+    B1 -.->|Atomic Finding| HUB
+    B2 -.->|Atomic Finding| HUB
+    D1 -.->|Atomic Finding| HUB
+    S1 -.->|Atomic Finding| HUB
+
+    HUB ==> OUT1
+    HUB ==> OUT2
+    HUB ==> OUT3
+
+    style HUB fill:#003366,stroke:#38bdf8,color:#ffffff,stroke-width:2px
+    style OUT1 fill:#064e3b,stroke:#34d399,color:#ffffff
+    style OUT2 fill:#064e3b,stroke:#34d399,color:#ffffff
+    style OUT3 fill:#064e3b,stroke:#34d399,color:#ffffff
+```
 
 ---
 
@@ -12,34 +52,56 @@ A diferencia de una fábrica SDLC completa, estos agentes son **stateless, quir�
 
 ```text
 ai-agentic-audit-kit/
-├── README.md                           # Visión general y guía rápida de uso
-├── .gitignore                          # Exclusiones de Git
 │
-├── auditors/                           # 🕵️ Catálogo de Agentes Auditores Especializados
-│   ├── 01_security_owasp_auditor/      # Auditor de Seguridad, IDOR, Injection y Credenciales
-│   ├── 02_db_performance_profiler/     # Optimizador de Consultas, Planes de Ejecución e Índices
-│   ├── 03_tech_debt_refactorer/        # Caza-anti-patrones, Complejidad y Tipado Seguro
-│   ├── 04_accessibility_ux_inspector/  # Auditor WCAG 2.1 AA, ARIA y Semántica Web
-│   ├── 05_legacy_reverse_engineer/     # Extractor de Especificaciones y Arquitectura C4
-│   └── 06_pr_gatekeeper_reviewer/      # Revisor implacable de Pull Requests y Breaking Changes
+├── domains/                            # 🎯 Agentes Auditores Organizados por Dominio
+│   │
+│   ├── 00_fullstack_integrator/        # 🧠 EL HUB / ÁRBITRO CROSS-LAYER
+│   │   ├── SYSTEM_PROMPT.md            # Rol maestro de Staff Systems Integrator
+│   │   ├── CONTRACT_RECONCILER.md      # Metodología de cruce de contratos API ↔ SPA
+│   │   ├── TOPOLOGY_REFACTORER.md      # Metodología de refactorización de carpetas
+│   │   └── ONE_SHOT_PROMPT.md          # Invocación directa sobre todo el repo
+│   │
+│   ├── 01_frontend/                    # 🎨 DOMINIO FRONTEND
+│   │   ├── state_and_reactivity/       # Fugas de memoria, re-renders, stores Pinia/Zustand
+│   │   └── ui_design_a11y/             # Tokens, WCAG 2.1 AA, navegación por teclado
+│   │
+│   ├── 02_backend/                     # ⚙️ DOMINIO BACKEND
+│   │   ├── api_rest_gateway/           # Middlewares, Zod schemas, rate limit, envelopes
+│   │   └── domain_business_logic/      # Casos de uso, transacciones ACID, clean code
+│   │
+│   ├── 03_database/                    # 🗄️ DOMINIO PERSISTENCIA
+│   │   └── query_performance_indexer/  # N+1 queries, planes de ejecución, índices B-Tree
+│   │
+│   └── 04_security/                    # 🛡️ DOMINIO CIBERSEGURIDAD
+│       └── owasp_threat_hunter/        # IDOR, OWASP Top 10, inyecciones, fuga de credenciales
 │
-├── templates/                          # 📋 Plantillas de Reportes Forenses Estandarizados
-│   ├── AUDIT_EXECUTIVE_REPORT.md       # Plantilla maestra de dictamen técnico
-│   └── SECURITY_DISCLOSURE_REPORT.md   # Plantilla para hallazgos críticos de seguridad
+├── protocols/                          # 🤝 Protocolos de Intercambio
+│   └── AUDIT_INTEROP_PROTOCOL.md       # Estándar de entrega de hallazgos entre agentes
 │
-└── guides/                             # 🚀 Guías de Invocación
-    ├── HOW_TO_INVOKE.md                # Cómo ejecutar en Antigravity, Cursor, Claude, Windsurf
-    └── AUDIT_SEVERITY_SCALE.md         # Escala canónica de severidad (CRITICAL, HIGH, MEDIUM, LOW)
+├── templates/                          # 📋 Plantillas de Dictámenes Forenses
+│   ├── ATOMIC_FINDING_TEMPLATE.md      # Para hallazgos de especialistas individuales
+│   └── FULLSTACK_SYNTHESIS_REPORT.md   # Dictamen integral del Agente Fullstack
+│
+└── guides/                             # 🚀 Guías de Operación
+    ├── HOW_TO_INVOKE.md                # Guía de uso en Cursor, Antigravity, Claude, etc.
+    └── SEVERITY_STANDARDS.md           # Matriz de severidad (CRITICAL, HIGH, MEDIUM, LOW)
 ```
 
 ---
 
-## 🛠️ Modos de Invocación
+## ⚡ ¿Cómo se Usa?
 
-Cada agente en `auditors/` cuenta con:
-1. **`SYSTEM_PROMPT.md`**: Instrucciones maestras de sistema (para usar como Custom Instructions, System Prompt o perfil de agente).
-2. **`CHECKLIST.md`**: Lista forense exhaustiva de verificación paso a paso.
-3. **`COMMAND_PROMPT.md`**: Prompt rápido de un solo disparo listo para copiar y pegar indicando la ruta del objetivo.
+### Modo 1: Diagnóstico Quirúrgico (Especialista Aislado)
+Úsalo cuando tengas una duda puntual en una capa específica:
+1. Entra a la carpeta del especialista (ej. `domains/01_frontend/state_and_reactivity/`).
+2. Abre `ONE_SHOT_PROMPT.md`, copia el prompt y reemplaza la ruta del archivo o módulo.
+3. El agente te devolverá un reporte atómico con la severidad y el fix de código exacto.
+
+### Modo 2: Diagnóstico y Reestructuración Integral (Agente Fullstack)
+Úsalo cuando un flujo falle de extremo a extremo, haya desorden de carpetas o sospeches desalineación entre frontend y backend:
+1. Abre `domains/00_fullstack_integrator/ONE_SHOT_PROMPT.md`.
+2. Proporciona la ruta del frontend y del backend (o los reportes atómicos de los especialistas).
+3. El Agente Fullstack actuará como árbitro: detectará discrepancias de contrato, localizará la causa raíz y te entregará una propuesta visual de arquitectura y estructura de carpetas.
 
 ---
 
