@@ -11,11 +11,12 @@ Este repositorio implementa el patrón **Hub & Spoke Specialist Audit Pattern**:
 ```mermaid
 flowchart TD
     subgraph "Spokes: Especialistas Verticales (Microscopio Forense)"
-        F1["🏗️ 01_frontend/arch_and_network<br/>Arquitectura, Axios y Tipado TS"]
-        F2["🧠 01_frontend/state_and_reactivity<br/>Stores, Reactividad y Memory Leaks"]
-        F3["📝 01_frontend/forms_and_data_flow<br/>Validación Zod, UX y Double Submit"]
-        F4["🎨 01_frontend/design_system_and_styling<br/>Tokens, Variantes, Temas y Layout"]
-        F5["♿ 01_frontend/accessibility_and_wcag<br/>WCAG 2.1/2.2 AA, Teclado y ARIA"]
+        UX["👁️ 01_frontend/ui_ux_experience<br/>Senior Design Critic (CERO CÓDIGO)"]
+        F1["🏗️ 01_frontend/engineering/arch_and_network<br/>Arquitectura, Axios y Tipado TS"]
+        F2["🧠 01_frontend/engineering/state_and_reactivity<br/>Stores, Reactividad y Memory Leaks"]
+        F3["📝 01_frontend/engineering/forms_and_data_flow<br/>Validación Zod, UX y Double Submit"]
+        F4["🎨 01_frontend/engineering/design_system_and_styling<br/>Tokens, Variantes, Temas y Layout"]
+        F5["♿ 01_frontend/engineering/accessibility_and_wcag<br/>WCAG 2.1/2.2 AA, Teclado y ARIA"]
         B1["⚙️ 02_backend/api_rest_gateway<br/>Routes, Middlewares, Validation y HTTP Errors"]
         B2["🧩 02_backend/domain_business_logic<br/>Services, Transacciones ACID y DDD"]
         D1["🗄️ 03_database/query_performance_indexer<br/>N+1 Queries, B-Tree Indexes y DDL"]
@@ -32,6 +33,7 @@ flowchart TD
         OUT3["🧪 Diagnóstico de Fallos y Trazabilidad E2E"]
     end
 
+    UX -.->|Atomic Finding| HUB
     F1 -.->|Atomic Finding| HUB
     F2 -.->|Atomic Finding| HUB
     F3 -.->|Atomic Finding| HUB
@@ -69,12 +71,17 @@ ai-agentic-audit-kit/
 │   │
 │   ├── 01_frontend/                    # 🎨 DOMINIO FRONTEND (Escuadrón Colaborativo)
 │   │   ├── 00_frontend_director/       # 👑 Director Rector del Dominio (Enrutador y consolidación)
-│   │   ├── 01_arch_and_network/        # 🏗️ Arquitectura, modularización, Axios y TS
-│   │   ├── 02_state_and_reactivity/    # 🧠 Stores Pinia/Zustand, memory leaks y re-renders
-│   │   ├── 03_forms_and_data_flow/     # 📝 Formularios, validación Zod, doble submit y UX
-│   │   ├── 04_design_system_and_styling/ # 🎨 Design System, tokens, temas y variantes
-│   │   ├── 05_accessibility_and_wcag/  # ♿ WCAG 2.1/2.2 AA, navegación teclado y ARIA
-│   │   └── protocols/                  # 🤝 Handoff Memo y Peer Rejection Protocol
+│   │   ├── protocols/                  # 🤝 Handoff Memo y Peer Rejection Protocol
+│   │   │
+│   │   ├── ui_ux_experience/           # 👁️ Subdominio: Experiencia & Crítica Visual (CERO CÓDIGO)
+│   │   │   └── 01_senior_design_critic/# Usabilidad, 10 viewports, fatiga, Before vs After
+│   │   │
+│   │   └── engineering/                # ⚙️ Subdominio: Ingeniería y Código
+│   │       ├── 01_arch_and_network/    # 🏗️ Arquitectura, modularización, Axios y TS
+│   │       ├── 02_state_and_reactivity/# 🧠 Stores Pinia/Zustand, memory leaks y re-renders
+│   │       ├── 03_forms_and_data_flow/ # 📝 Formularios, validación Zod, doble submit y UX
+│   │       ├── 04_design_system_and_styling/ # 🎨 Design System, tokens, temas y variantes
+│   │       └── 05_accessibility_and_wcag/  # ♿ WCAG 2.1/2.2 AA, navegación teclado y ARIA
 │   │
 │   ├── 02_backend/                     # ⚙️ DOMINIO BACKEND
 │   │   ├── api_rest_gateway/           # Middlewares, Zod schemas, rate limit, envelopes
