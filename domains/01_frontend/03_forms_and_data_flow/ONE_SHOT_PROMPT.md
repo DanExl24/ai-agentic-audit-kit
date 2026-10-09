@@ -17,5 +17,5 @@ Aplica tu CHECKLIST.md y busca:
 2. Botones de submit vulnerables a doble clic (sin bloqueo ni spinner).
 3. Manejo deficiente de listas dinámicas o campos condicionales.
 
-Si el memo previo no sustenta el estado reactivo, ejerce PEER_REJECTION_PROTOCOL.md. De lo contrario, emite tus hallazgos bajo 'templates/ATOMIC_FINDING_TEMPLATE.md' y genera el handoff memo para 04_ui_design_and_a11y.
+Si el memo previo no sustenta el estado reactivo, ejerce PEER_REJECTION_PROTOCOL.md. De lo contrario, emite tus hallazgos bajo 'templates/ATOMIC_FINDING_TEMPLATE.md' y genera el handoff memo para 04_design_system_and_styling.
 ```

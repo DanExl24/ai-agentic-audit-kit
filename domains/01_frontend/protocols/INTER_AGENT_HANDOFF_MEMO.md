@@ -12,8 +12,8 @@ Todo traspaso debe redactarse bajo la siguiente plantilla estándar:
 ```markdown
 # 📬 MEMO DE TRASPASO INTER-AGENTE
 
-- **De (Agente Emisor):** [01_arch_and_network | 02_state_and_reactivity | 03_forms_and_data_flow | 04_ui_design_and_a11y]
-- **Para (Agente Receptor):** [02_state_and_reactivity | 03_forms_and_data_flow | 04_ui_design_and_a11y | 00_frontend_director]
+- **De (Agente Emisor):** [01_arch_and_network | 02_state_and_reactivity | 03_forms_and_data_flow | 04_design_system_and_styling | 05_accessibility_and_wcag]
+- **Para (Agente Receptor):** [02_state_and_reactivity | 03_forms_and_data_flow | 04_design_system_and_styling | 05_accessibility_and_wcag | 00_frontend_director]
 - **Módulo / Ruta Auditada:** `ruta/del/modulo`
 - **Fecha y Hora:** YYYY-MM-DD HH:mm
 

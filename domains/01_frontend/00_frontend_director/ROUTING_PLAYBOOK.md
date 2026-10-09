@@ -1,26 +1,34 @@
 # 🧭 Manual de Enrutamiento y Rutas de Auditoría (Frontend Routing Playbook)
 
-Este manual define las rutas de ejecución estándar que el **`00_frontend_director`** debe seleccionar según el requerimiento del usuario:
+Este manual define las rutas de ejecución estándar que el **`00_frontend_director`** debe seleccionar según el requerimiento del usuario, contemplando al escuadrón completo de 5 especialistas:
 
 ---
 
 ## 🛣️ Rutas de Ejecución Predefinidas
 
-### Ruta 1: "Auditoría Completa de un Módulo o Vista (Full Feature Audit)"
+### Ruta 1: "Auditoría Completa de un Módulo o Vista (Full Feature Enterprise Audit)"
 * **Secuencia de Cadena:**
   ```text
-  01_arch_and_network ➔ (Handoff Memo) ➔ 02_state_and_reactivity ➔ (Handoff Memo) ➔ 03_forms_and_data_flow ➔ (Handoff Memo) ➔ 04_ui_design_and_a11y
+  01_arch_and_network
+         ↓ (Handoff Memo)
+  02_state_and_reactivity
+         ↓ (Handoff Memo)
+  03_forms_and_data_flow
+         ↓ (Handoff Memo)
+  04_design_system_and_styling
+         ↓ (Handoff Memo)
+  05_accessibility_and_wcag
   ```
-* **Objetivo:** Radiografía 360° de una pantalla o módulo completo. Asegura que la arquitectura de red, el estado, la entrada de datos y la presentación visual cumplan estándares de producción.
+* **Objetivo:** Radiografía 360° de una pantalla o módulo completo. Asegura cimientos de red, reactividad sin leaks, formularios seguros, arquitectura visual estricta y conformidad legal de accesibilidad WCAG.
 
 ---
 
 ### Ruta 2: "Rendimiento, Congelamiento y Fugas de Memoria (Performance Crisis)"
 * **Secuencia de Cadena:**
   ```text
-  02_state_and_reactivity ➔ (Handoff Memo si hay problemas de render) ➔ 04_ui_design_and_a11y
+  02_state_and_reactivity ➔ (Handoff Memo) ➔ 04_design_system_and_styling (evalúa repaints, CLS y GPU animations)
   ```
-* **Objetivo:** Detectar render loops infinitos, fugas de memoria en desmontaje, mutaciones descontroladas de stores y cálculos pesados sin memoización.
+* **Objetivo:** Detectar render loops infinitos, fugas de memoria en desmontaje, mutaciones descontroladas de stores y animaciones CSS costosas.
 
 ---
 
@@ -33,12 +41,21 @@ Este manual define las rutas de ejecución estándar que el **`00_frontend_direc
 
 ---
 
-### Ruta 4: "Certificación de Accesibilidad y Design System (A11y Release Gate)"
+### Ruta 4: "Dúo Visual & Inclusivo (Design System + Certificación WCAG)"
+* **Secuencia de Cadena (Bimodal Complementaria):**
+  ```text
+  04_design_system_and_styling ⇄ (Handoff Bimodal) ⇄ 05_accessibility_and_wcag
+  ```
+* **Objetivo:** Auditoría exhaustiva de la capa de interfaz. `04` audita tokens, variantes, estados interactivos y responsividad; `05` audita navegación por teclado, focus traps, lectores de pantalla y contraste. Si `05` detecta violación de contraste o touch target, `04` ajusta el token en el sistema de diseño.
+
+---
+
+### Ruta 5: "Certificación Forense de Accesibilidad Aislada (A11y Fast Track)"
 * **Secuencia de Cadena:**
   ```text
-  04_ui_design_and_a11y (Auditoría Quirúrgica Aislada)
+  05_accessibility_and_wcag (Auditoría Quirúrgica Aislada)
   ```
-* **Objetivo:** Verificar conformidad con WCAG 2.1 AA (contraste, foco por teclado, roles ARIA) y apego estricto a los tokens del sistema de diseño.
+* **Objetivo:** Revisar cumplimiento estricto WCAG 2.1 / 2.2 AA ante auditorías legales o certificaciones de accesibilidad.
 
 ---
 
@@ -49,4 +66,5 @@ Este manual define las rutas de ejecución estándar que el **`00_frontend_direc
 | "Revisa este nuevo módulo que acabamos de programar" | **Ruta 1** (Full Feature) | Exhaustivo |
 | "La pestaña se congela o consume 2GB de RAM" | **Ruta 2** (Performance) | Rápido y Focalizado |
 | "El formulario no guarda o se envían datos erróneos" | **Ruta 3** (Data Input) | Quirúrgico |
-| "Audita la accesibilidad y los estilos de estos componentes" | **Ruta 4** (A11y & Design) | Quirúrgico |
+| "Revisa el diseño, los componentes y la accesibilidad" | **Ruta 4** (Dúo Visual & A11y) | Profundo |
+| "Certifica si esta pantalla cumple la norma WCAG" | **Ruta 5** (A11y Fast Track) | Quirúrgico |

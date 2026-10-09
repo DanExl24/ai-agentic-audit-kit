@@ -22,8 +22,8 @@ Cuando un agente rechaza una entrega, debe emitir el siguiente dictamen público
 ```markdown
 # 🛑 RECHAZO DE ENTREGABLE (VETO INTER-AGENTE)
 
-- **Agente que ejerce el Veto:** [02_state_and_reactivity | 03_forms_and_data_flow | 04_ui_design_and_a11y | 00_frontend_director]
-- **Agente Devuelto:** [01_arch_and_network | 02_state_and_reactivity | 03_forms_and_data_flow]
+- **Agente que ejerce el Veto:** [02_state_and_reactivity | 03_forms_and_data_flow | 04_design_system_and_styling | 05_accessibility_and_wcag | 00_frontend_director]
+- **Agente Devuelto:** [01_arch_and_network | 02_state_and_reactivity | 03_forms_and_data_flow | 04_design_system_and_styling]
 - **Módulo Afectado:** `ruta/del/modulo`
 - **Estado de la Cadena:** ⏸️ STOP THE LINE (Pausada hasta subsanación)
 

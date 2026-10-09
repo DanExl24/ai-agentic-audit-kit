@@ -16,7 +16,8 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Estructura caótica de carpetas frontend, llamadas directas de axios en vistas, tipos 'any'. | **01_arch_and_network** | `domains/01_frontend/01_arch_and_network/` |
 | La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **02_state_and_reactivity** | `domains/01_frontend/02_state_and_reactivity/` |
 | Formularios complejos, validación Zod, prevención de doble clic y estados isSubmitting. | **03_forms_and_data_flow** | `domains/01_frontend/03_forms_and_data_flow/` |
-| Faltan etiquetas en inputs, el contraste de color es malo o el modal no se cierra con Escape. | **04_ui_design_and_a11y** | `domains/01_frontend/04_ui_design_and_a11y/` |
+| Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA o layout widescreen roto. | **04_design_system_and_styling** | `domains/01_frontend/04_design_system_and_styling/` |
+| Trampas de teclado, focus trap/restoration en modales, ratios de contraste WCAG y ARIA. | **05_accessibility_and_wcag** | `domains/01_frontend/05_accessibility_and_wcag/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -115,17 +116,41 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 
 ---
 
-#### Agente: `04_ui_design_and_a11y` (Design System & Accessibility Specialist)
+#### Agente: `04_design_system_and_styling` (Lead Design System & UI Architecture Engineer)
 
 * **¿Qué hace exactamente?**
-  Audita la **presentación visual e inclusiva**: conformidad WCAG 2.1 AA (contraste 4.5:1, foco por teclado `focus-visible`, captura de foco en modales con Escape, ARIA roles), gobernanza de tokens de diseño y diseño responsivo sin desbordes.
+  Audita la **arquitectura visual y consistencia de componentes**: tokens de diseño, coherencia en Dark/Light mode, variantes polimórficas (CVA), matriz completa de estados (`hover`, `active`, `focus-visible`, `disabled`, `loading`), resiliencia de layout (widescreen, prevención de CLS y desborde de textos largos) y optimización de SVGs/animaciones por GPU.
 * **¿Cuándo DEBES usarlo?**
-  - Antes de certificar un release público para garantizar accesibilidad.
-  - Para limpiar CSS lleno de valores hexadecimales hardcodeados `#ff0000` fuera de tokens.
+  - Para auditar componentes base atómicos (`BaseButton`, `BaseInput`, `BaseModal`, `BaseBadge`, `BaseCard`).
+  - Cuando detectes valores hexadecimales `#...` o medidas arbitrarias hardcodeadas en CSS/style.
+  - Cuando el modo oscuro rompe la legibilidad o deja textos invisibles.
+  - Para verificar que botones e inputs soporten todos los estados interactivos sin deformarse.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar llamadas de red o lógica asíncrona de stores.
+  - ❌ **NO lo uses** para auditar lectores de pantalla o cumplimiento estricto WCAG (usa `05_accessibility_and_wcag`).
+  - ❌ **NO lo uses** para revisar llamadas a APIs o lógica asíncrona de stores.
+* **🤝 Interacción con Accesibilidad:**
+  - Si auditas un componente compuesto interactivo (Modal, Dropdown, Tabs) y notas que carece de navegación por teclado o roles ARIA, emites una nota en tu handoff memo solicitando la intervención de `05_accessibility_and_wcag`.
 * **¿Cómo invocarlo?**
-  - `domains/01_frontend/04_ui_design_and_a11y/ONE_SHOT_PROMPT.md`
+  - `domains/01_frontend/04_design_system_and_styling/ONE_SHOT_PROMPT.md`
+
+---
+
+#### Agente: `05_accessibility_and_wcag` (Principal Web Accessibility Engineer - WCAG 2.1/2.2 AA)
+
+* **¿Qué hace exactamente?**
+  Audita de forma forense la **inclusión digital, lectores de pantalla y conformidad legal WCAG**: navegación 100% por teclado, focus traps y focus restoration al cerrar modales con `Escape`, ratios de contraste (4.5:1 texto, 3:1 UI), árbol ARIA (`aria-expanded`, `aria-live` en regiones activas), formularios con labels y errores asociados (`aria-describedby`), tamaño mínimo táctil en móvil (24x24px / 44x44px) y `@media (prefers-reduced-motion)`.
+* **¿Cuándo DEBES usarlo?**
+  - Antes de liberar un release público para certificar legalmente cumplimiento de accesibilidad.
+  - Para auditar la experiencia con lectores de pantalla (NVDA, JAWS, VoiceOver).
+  - Cuando modales o drawers pierden el foco al cerrarse o no se pueden operar con teclado.
+  - Para verificar que los mensajes de error dinámicos sean anunciados a usuarios con discapacidad visual.
+* **¿Cuándo NO debes usarlo?**
+  - ❌ **NO lo uses** para revisar la modularización de carpetas o cliente Axios.
+  - ❌ **NO lo uses** para depurar lógica de cálculo o mutaciones de stores.
+* **🤝 Interacción con Design System:**
+  - Si detectas que un contraste de color no cumple (ej. 3.2:1) o que un botón táctil mide menos de 44px, emites un memo hacia `04_design_system_and_styling` para que ajuste el token de color o el padding del componente base.
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/05_accessibility_and_wcag/ONE_SHOT_PROMPT.md`
 
 ---
 

@@ -20,4 +20,4 @@
 
 ## 📬 Protocolo de Entrada y Salida
 1. **Entrada:** Lees el memo de `02_state_and_reactivity`. Si no cuenta con evidencia de los estados o mutaciones, aplicas `PEER_REJECTION_PROTOCOL.md`.
-2. **Salida:** Emites tus hallazgos bajo `templates/ATOMIC_FINDING_TEMPLATE.md` y redactas el handoff memo dirigido a `04_ui_design_and_a11y`.
+2. **Salida:** Emites tus hallazgos bajo `templates/ATOMIC_FINDING_TEMPLATE.md` y redactas el handoff memo dirigido a `04_design_system_and_styling`.
