@@ -19,6 +19,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Formularios complejos, validación Zod, prevención de doble clic y estados isSubmitting. | **03_forms_and_data_flow** | `domains/01_frontend/engineering/03_forms_and_data_flow/` |
 | Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA o layout widescreen roto. | **04_design_system_and_styling** | `domains/01_frontend/engineering/04_design_system_and_styling/` |
 | Trampas de teclado, focus trap/restoration en modales, ratios de contraste WCAG y ARIA. | **05_accessibility_and_wcag** | `domains/01_frontend/engineering/05_accessibility_and_wcag/` |
+| El diseño está aprobado pero se desborda en laptop 1366x768 o mobile (Tailwind/CSS, CERO rediseño). | **06_responsive_layout_specialist** | `domains/01_frontend/engineering/06_responsive_layout_specialist/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -187,6 +188,29 @@ El Dominio Frontend está dividido en **dos subdominios especializados** bajo la
   - Si detectas que un contraste de color no cumple (ej. 3.2:1) o que un botón táctil mide menos de 44px, emites un memo hacia `04_design_system_and_styling` para que ajuste el token de color o el padding del componente base.
 * **¿Cómo invocarlo?**
   - `domains/01_frontend/engineering/05_accessibility_and_wcag/ONE_SHOT_PROMPT.md`
+
+---
+
+#### Agente: `06_responsive_layout_specialist` (Senior Responsive Layout & CSS Specialist)
+
+* **¿Qué hace exactamente?**
+  Audita y **corrige directamente en código (Tailwind CSS, Vue 3, CSS moderno)** el comportamiento responsive en **13 viewports obligatorios** (desde 320×568 hasta 1920×1080), con especial énfasis en alturas reducidas como laptops de `1366×768` y `1280×720`.
+  > **🛡️ REGLA FUNDAMENTAL: NO REDISEÑAR.** El diseño visual ya fue aprobado; tiene prohibido cambiar colores, tipografías, jerarquías o componentes por gusto. Aplica una jerarquía estricta de 5 niveles (cajas nativas ➔ variantes Tailwind ➔ fluid clamp ➔ estructura mínima ➔ último recurso).
+* **¿Cuándo DEBES usarlo?**
+  - El diseño visual ya está aprobado por el cliente o producto, pero se desborda en ciertas pantallas.
+  - Aparece scroll horizontal accidental en la ventana completa al achicar el navegador.
+  - Modales o drawers quedan cortados verticalmente en monitores corporativos de 1366×768.
+  - Tablas anchas que rompen el layout general en tablet o móvil.
+  - Formularios que necesitan transicionar limpiamente de 4 a 2 y a 1 columna.
+* **¿Cuándo NO debes usarlo?**
+  - ❌ **NO lo uses** para criticar si la pantalla es bonita o intuitiva sin mirar código (usa `01_senior_design_critic`).
+  - ❌ **NO lo uses** para rediseñar la paleta de colores o crear un nuevo Design System (usa `04_design_system_and_styling`).
+  - ❌ **NO lo uses** para depurar memoria de stores o composables (usa `02_state_and_reactivity`).
+* **🤝 Interacción con Crítica de Diseño y A11y:**
+  - Recibe insumos de `01_senior_design_critic` cuando este detecta desbordes en móvil, y aplica los fixes en código sin alterar la identidad visual.
+  - Garantiza el criterio WCAG 1.4.10 (Reflow a 320px sin scroll horizontal global) y touch targets mínimos de 44px en coordinación con `05_accessibility_and_wcag`.
+* **¿Cómo invocarlo?**
+  - `domains/01_frontend/engineering/06_responsive_layout_specialist/ONE_SHOT_PROMPT.md`
 
 ---
 

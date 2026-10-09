@@ -17,6 +17,7 @@ flowchart TD
         F3["📝 01_frontend/engineering/forms_and_data_flow<br/>Validación Zod, UX y Double Submit"]
         F4["🎨 01_frontend/engineering/design_system_and_styling<br/>Tokens, Variantes, Temas y Layout"]
         F5["♿ 01_frontend/engineering/accessibility_and_wcag<br/>WCAG 2.1/2.2 AA, Teclado y ARIA"]
+        F6["📱 01_frontend/engineering/responsive_layout_specialist<br/>13 Viewports, Tailwind/CSS (NO Rediseñar)"]
         B1["⚙️ 02_backend/api_rest_gateway<br/>Routes, Middlewares, Validation y HTTP Errors"]
         B2["🧩 02_backend/domain_business_logic<br/>Services, Transacciones ACID y DDD"]
         D1["🗄️ 03_database/query_performance_indexer<br/>N+1 Queries, B-Tree Indexes y DDL"]
@@ -39,6 +40,7 @@ flowchart TD
     F3 -.->|Atomic Finding| HUB
     F4 -.->|Atomic Finding| HUB
     F5 -.->|Atomic Finding| HUB
+    F6 -.->|Atomic Finding| HUB
     B1 -.->|Atomic Finding| HUB
     B2 -.->|Atomic Finding| HUB
     D1 -.->|Atomic Finding| HUB
@@ -81,7 +83,8 @@ ai-agentic-audit-kit/
 │   │       ├── 02_state_and_reactivity/# 🧠 Stores Pinia/Zustand, memory leaks y re-renders
 │   │       ├── 03_forms_and_data_flow/ # 📝 Formularios, validación Zod, doble submit y UX
 │   │       ├── 04_design_system_and_styling/ # 🎨 Design System, tokens, temas y variantes
-│   │       └── 05_accessibility_and_wcag/  # ♿ WCAG 2.1/2.2 AA, navegación teclado y ARIA
+│   │       ├── 05_accessibility_and_wcag/  # ♿ WCAG 2.1/2.2 AA, navegación teclado y ARIA
+│   │       └── 06_responsive_layout_specialist/ # 📱 13 viewports, Tailwind/CSS, CERO rediseño
 │   │
 │   ├── 02_backend/                     # ⚙️ DOMINIO BACKEND
 │   │   ├── api_rest_gateway/           # Middlewares, Zod schemas, rate limit, envelopes

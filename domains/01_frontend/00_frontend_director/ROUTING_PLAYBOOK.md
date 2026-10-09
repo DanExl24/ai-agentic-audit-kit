@@ -21,13 +21,17 @@ flowchart TD
         E3["📝 engineering/03_forms_and_data_flow"]
         E4["🎨 engineering/04_design_system_and_styling"]
         E5["♿ engineering/05_accessibility_and_wcag"]
+        E6["📱 engineering/06_responsive_layout_specialist<br/>(13 Viewports, CSS/Tailwind, NO Rediseñar)"]
     end
 
     DIR -->|Revisión de Producto/UX| UX
     DIR -->|Revisión de Código/Técnica| E1
     UX ==>|"Propuestas de Rediseño Before vs After"| E4
+    UX ==>|"Fricción de Pantallas y Tablas en Mobile"| E6
     UX ==>|"Simplificación de Flujos de Formulario"| E3
     E4 <-->|"Memo Bimodal"| E5
+    E6 -->|"Ajuste de Cajas y Modales"| E4
+    E6 -->|"Garantía de Reflow 320px"| E5
 
     style DIR fill:#003366,stroke:#38bdf8,color:#ffffff,stroke-width:2px
     style UX fill:#7c2d12,stroke:#f97316,color:#ffffff,stroke-width:2px
@@ -36,6 +40,7 @@ flowchart TD
     style E3 fill:#1e293b,stroke:#94a3b8,color:#ffffff
     style E4 fill:#1e293b,stroke:#94a3b8,color:#ffffff
     style E5 fill:#1e293b,stroke:#94a3b8,color:#ffffff
+    style E6 fill:#1e293b,stroke:#38bdf8,color:#ffffff
 ```
 
 ---
@@ -47,15 +52,17 @@ flowchart TD
   ```text
   1. ui_ux_experience/01_senior_design_critic (Evalúa interfaz en 10 resoluciones, fatiga, jerarquía y Before vs After)
          ↓ (Handoff de Diseño a Código)
-  2. engineering/01_arch_and_network (Cimientos de carpetas y cliente de red)
+  2. engineering/06_responsive_layout_specialist (Corrige en código adaptación matemática en 13 viewports sin rediseñar)
          ↓ (Handoff Memo)
-  3. engineering/02_state_and_reactivity (Stores y reactividad)
+  3. engineering/01_arch_and_network (Cimientos de carpetas y cliente de red)
          ↓ (Handoff Memo)
-  4. engineering/03_forms_and_data_flow (Implementación de formularios simplificados)
+  4. engineering/02_state_and_reactivity (Stores y reactividad)
          ↓ (Handoff Memo)
-  5. engineering/04_design_system_and_styling (Ajuste de tokens, variantes y componentes base)
+  5. engineering/03_forms_and_data_flow (Implementación de formularios simplificados)
          ↓ (Handoff Memo)
-  6. engineering/05_accessibility_and_wcag (Certificación de lectores de pantalla y teclado)
+  6. engineering/04_design_system_and_styling (Ajuste de tokens, variantes y componentes base)
+         ↓ (Handoff Memo)
+  7. engineering/05_accessibility_and_wcag (Certificación de lectores de pantalla y teclado)
   ```
 * **Cuándo activarla:** Para auditorías completas de nuevas funcionalidades donde importa tanto la usabilidad humana como la solidez técnica del software.
 
@@ -100,11 +107,24 @@ flowchart TD
 
 ---
 
+### Ruta 5: "Resiliencia Responsive en Código (Zero-Redesign Layout Fix)"
+* **Secuencia de Cadena:**
+  ```text
+  engineering/06_responsive_layout_specialist (Auditoría + Corrección Quirúrgica de CSS/Tailwind)
+  ```
+* **Cuándo activarla:**
+  - El diseño visual ya fue aprobado y **ESTÁ PROHIBIDO REDISEÑAR**.
+  - Hay desbordamientos de layout, scroll horizontal accidental en la ventana, elementos cortados o modales que se salen de pantalla en laptops de 1366×768 o tablets de 768px.
+  - Se requiere verificar y ajustar en código los **13 viewports obligatorios** aplicando la jerarquía de 5 niveles progresivos (cajas, variantes Tailwind, clamp/fluid).
+
+---
+
 ## ⚖️ Criterios de Selección Rápida
 
 | Requerimiento del Usuario | Ruta Recomendada | Enfoque Principal |
 | :--- | :---: | :--- |
 | "Audita la experiencia, el diseño y dime si es cómodo en teléfonos" | **Ruta 1** (UI/UX Pure Critique) | 👁️ Cero código, 10 viewports, fatiga visual. |
+| "El diseño está aprobado pero se desborda en laptop 1366x768 o mobile" | **Ruta 5** (Responsive Layout Fix) | 📱 13 viewports, Tailwind/CSS, CERO rediseño. |
 | "Revisa este nuevo módulo de principio a fin (diseño + código)" | **Ruta 0** (UX-First Full Audit) | 🌟 Producto + Ingeniería completa. |
 | "La pestaña se congela o consume 2GB de RAM" | **Ruta 2** (Performance Crisis) | ⚙️ Stores, memory leaks y GPU. |
 | "El formulario no guarda o se envían datos erróneos" | **Ruta 3** (Data Input Flow) | ⚙️ Zod, submit y endpoints. |
