@@ -15,6 +15,7 @@
 | **Arquitectura y Topología de Carpetas** | 🔴 / 🟡 / 🟢 | Acoplamiento cruzado, código duplicado, falta de capas. |
 | **Gestión de Errores y Cascada E2E** | 🔴 / 🟡 / 🟢 | Excepciones no capturadas, 500 no tratados en UI. |
 | **Autenticación y Sesión Cross-Layer** | 🔴 / 🟡 / 🟢 | Fugas de tokens, headers desfasados, race conditions. |
+| **Calidad de Pruebas y Resiliencia (QA)** | 🔴 / 🟡 / 🟢 | Scorecard: X/100. Suites frágiles, falta de SLAs k6 / DAST. |
 
 ---
 
@@ -93,7 +94,18 @@ mi-proyecto/
 
 ---
 
-## 5. Próximas Acciones Prioritarias
-- [ ] **Acción Inmediata 1:** ...
+## 5. Diagnóstico de Testabilidad, Contratos y Resiliencia QA
+
+### Scorecard Sintético de Madurez QA (templates/QA_MATURITY_SCORECARD_TEMPLATE.md)
+* **Puntuación Global Estimada:** `[SCORE] / 100` (Nivel: `[Caótico / Básico / Maduro / World-Class]`)
+* **Testabilidad y Acoplamiento:** `[ALTO / MEDIO / BAJO RIESGO]` — Inversión de dependencias en lógica de negocio.
+* **Integridad de Contratos y Suites E2E:** `[ESTABLE / FLAKY / INEXISTENTE]` — Selectores semánticos (`getByRole`) y validación runtime Zod.
+* **SLAs de Rendimiento y Carga:** `[DEFINIDOS / PENDIENTES]` — p95 verificado bajo estrés concurrente con k6.
+* **Seguridad Dinámica en Runtime (DAST):** `[BLINDADO / VULNERABLE]` — Cabeceras CSP/HSTS y rate-limiting en endpoints sensibles.
+
+---
+
+## 6. Próximas Acciones Prioritarias
+- [ ] **Acción Inmediata 1 (Quick Win):** ...
 - [ ] **Acción Inmediata 2:** ...
 - [ ] **Acción Inmediata 3:** ...

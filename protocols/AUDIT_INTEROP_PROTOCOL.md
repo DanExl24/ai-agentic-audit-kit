@@ -19,12 +19,14 @@ flowchart LR
         V2["⚙️ Backend Specialist"]
         V3["🗄️ Database Specialist"]
         V4["🛡️ Security Specialist"]
+        V5["🧪 QA & Testing Specialist"]
     end
 
     V1 -- "ATOMIC FINDING" --> HUB["🧠 Fullstack Integrator (Hub)"]
     V2 -- "ATOMIC FINDING" --> HUB
     V3 -- "ATOMIC FINDING" --> HUB
     V4 -- "ATOMIC FINDING" --> HUB
+    V5 -- "ATOMIC FINDING" --> HUB
 
     HUB --> SYN["📄 FULLSTACK SYNTHESIS REPORT<br/>(Causa Raíz + Contratos + Refactor)"]
 
@@ -41,10 +43,18 @@ Todo especialista vertical debe documentar cada problema detectado bajo el sigui
 ```markdown
 ### [FINDING-{DOMINIO}-{NUM}] {Título Breve del Hallazgo}
 
-- **Dominio:** Frontend | Backend | Database | Security
+- **Dominio:** Frontend | Backend | Database | Security | QA_Testing
+- **Taxonomía de Prefijos:**
+  - `FINDING-FE-*` (UI/UX, accesibilidad, estado cliente)
+  - `FINDING-BE-*` (Lógica de dominio, REST gateways, arquitectura)
+  - `FINDING-DB-*` (Consultas SQL, indexación, bloqueo de transacciones)
+  - `FINDING-SEC-*` (OWASP SAST, inyecciones, fuga de secretos)
+  - `FINDING-TEST-*` (Testabilidad, DI, tests sin aserciones, flakiness E2E, contratos DTO)
+  - `FINDING-PERF-*` (Pruebas de carga k6, concurrencia, p95/p99)
+  - `FINDING-KAIZEN-*` (Diagnóstico de causa raíz Ishikawa, Pareto 80/20, Quick Wins)
 - **Severidad:** CRITICAL | HIGH | MEDIUM | LOW | INFO
 - **Ubicación:** `ruta/del/archivo.ext` (Líneas X-Y)
-- **Tipo de Defecto:** Syntax | Typing | Performance | Security | Anti-Pattern | A11y
+- **Tipo de Defecto:** Syntax | Typing | Performance | Security | Anti-Pattern | A11y | Testability | Flakiness
 - **Impacto Local:** Breve explicación del daño dentro de su capa.
 - **Evidencia / Snippet:**
   ```lang
@@ -67,6 +77,7 @@ Cuando el **Fullstack Integrator** consume hallazgos verticales, aplica las sigu
 | **Error 400 Bad Request en llamada de formulario** | **Backend:** "El payload no tiene el campo `userId` requerido por el schema."<br>**Frontend:** "El formulario envía el objeto del usuario logueado." | **Discrepancia de Contrato (Contract Mismatch):** Frontend envía `user.id` dentro de un objeto anidado `account: { id }`, pero el endpoint de Backend espera `userId` plano en el root del body. Propone armonizar el DTO o el middleware. |
 | **Página lenta (TBT > 1.5s)** | **Frontend:** "La tabla de datos tarda en renderizar 500 filas."<br>**Database:** "La consulta SQL toma 950ms por un join secuencial sin índice." | **Cascada de Rendimiento E2E:** 1) Añadir índice compuesto en BD (reduce a 15ms). 2) Implementar paginación virtual en Frontend (reduce nodos DOM de 500 a 20). |
 | **Error 401/403 intermitente** | **Backend:** "El token JWT no llega en el header Authorization."<br>**Frontend:** "El interceptor Axios adjunta el token desde localStorage." | **Falla de Ciclo de Vida / Asincronía:** El primer request del componente se dispara antes de que la inicialización del store de auth resuelva la sesión. Propone Router Navigation Guard previo al montaje. |
+| **Suites unitarias pasando pero caída masiva en producción** | **QA Specialist:** "Los tests unitarios no mockean correctamente el tiempo y carecen de aserciones reales (`expect(true).toBe(true)`)."<br>**Backend:** "El módulo de facturación tiene 90% de cobertura en reporte de Istanbul." | **Falsa Seguridad por Cobertura Cosmética:** El reporte de cobertura mide líneas ejecutadas pero no invariantes de negocio validados. Reconcilia exigiendo tests de comportamiento con inversión de dependencias y validación estricta de DTOs en runtime. |
 
 ---
 

@@ -22,6 +22,12 @@ flowchart TD
         B2["🧩 02_backend/domain_business_logic<br/>Services, Transacciones ACID y DDD"]
         D1["🗄️ 03_database/query_performance_indexer<br/>N+1 Queries, B-Tree Indexes y DDL"]
         S1["🛡️ 04_security/owasp_threat_hunter<br/>IDOR, Inyecciones, JWT y Secrets"]
+        QD["👑 05_qa/00_qa_director<br/>Director Rector de Calidad & Triage"]
+        Q1["🧪 05_qa/01_testability_and_unit_audit<br/>Inversión de dependencias, TDD y Mocks"]
+        Q2["🎭 05_qa/02_contract_and_e2e_audit<br/>Playwright getByRole, BVA y Zod Contracts"]
+        Q3["⏱️ 05_qa/03_performance_load_audit<br/>k6 scripts, p95/p99 SLAs y Concurrencia"]
+        Q4["🔍 05_qa/04_dast_security_zap_audit<br/>OWASP ZAP runtime, CSP y Rate-Limiting"]
+        Q5["🧬 05_qa/05_root_cause_kaizen_audit<br/>Ishikawa 5 ramas, Pareto y Quick Wins"]
     end
 
     subgraph "Hub: Agente Integrador Fullstack (Telescopio Sistémico)"
@@ -32,6 +38,7 @@ flowchart TD
         OUT1["📋 Reconciliación de Contratos API ↔ SPA"]
         OUT2["🏗️ Propuesta de Topología Limpia de Carpetas"]
         OUT3["🧪 Diagnóstico de Fallos y Trazabilidad E2E"]
+        OUT4["📊 Scorecard de Madurez QA y Plan Kaizen"]
     end
 
     UX -.->|Atomic Finding| HUB
@@ -45,15 +52,23 @@ flowchart TD
     B2 -.->|Atomic Finding| HUB
     D1 -.->|Atomic Finding| HUB
     S1 -.->|Atomic Finding| HUB
+    QD -.->|QA Maturity Scorecard| HUB
+    Q1 -.->|Atomic Finding| HUB
+    Q2 -.->|Atomic Finding| HUB
+    Q3 -.->|Atomic Finding| HUB
+    Q4 -.->|Atomic Finding| HUB
+    Q5 -.->|Atomic Finding| HUB
 
     HUB ==> OUT1
     HUB ==> OUT2
     HUB ==> OUT3
+    HUB ==> OUT4
 
     style HUB fill:#003366,stroke:#38bdf8,color:#ffffff,stroke-width:2px
     style OUT1 fill:#064e3b,stroke:#34d399,color:#ffffff
     style OUT2 fill:#064e3b,stroke:#34d399,color:#ffffff
     style OUT3 fill:#064e3b,stroke:#34d399,color:#ffffff
+    style OUT4 fill:#064e3b,stroke:#34d399,color:#ffffff
 ```
 
 ---
@@ -93,15 +108,25 @@ ai-agentic-audit-kit/
 │   ├── 03_database/                    # 🗄️ DOMINIO PERSISTENCIA
 │   │   └── query_performance_indexer/  # N+1 queries, planes de ejecución, índices B-Tree
 │   │
-│   └── 04_security/                    # 🛡️ DOMINIO CIBERSEGURIDAD
-│       └── owasp_threat_hunter/        # IDOR, OWASP Top 10, inyecciones, fuga de credenciales
+│   ├── 04_security/                    # 🛡️ DOMINIO CIBERSEGURIDAD
+│   │   └── owasp_threat_hunter/        # IDOR, OWASP Top 10, inyecciones, fuga de credenciales
+│   │
+│   └── 05_qa_testing_engineering/      # 🧪 DOMINIO QA & QUALITY ENGINEERING
+│       ├── 00_qa_director/             # 👑 Director Rector del Dominio (Triage y Scorecard 0-100)
+│       ├── 01_testability_and_unit_audit/ # Desacoplamiento, DI, TDD y tests deterministas
+│       ├── 02_contract_and_e2e_audit/     # Suites Playwright/Cypress, getByRole, BVA
+│       ├── 03_performance_load_audit/     # Pruebas de carga k6, p95/p99 SLAs y estrés
+│       ├── 04_dast_security_zap_audit/    # DAST en runtime, cabeceras HTTP y rate-limits
+│       └── 05_root_cause_kaizen_audit/    # Ishikawa 5 ramas, Pareto 80/20 y matriz Kaizen
 │
 ├── protocols/                          # 🤝 Protocolos de Intercambio
 │   └── AUDIT_INTEROP_PROTOCOL.md       # Estándar de entrega de hallazgos entre agentes
 │
 ├── templates/                          # 📋 Plantillas de Dictámenes Forenses
 │   ├── ATOMIC_FINDING_TEMPLATE.md      # Para hallazgos de especialistas individuales
-│   └── FULLSTACK_SYNTHESIS_REPORT.md   # Dictamen integral del Agente Fullstack
+│   ├── FULLSTACK_SYNTHESIS_REPORT.md   # Dictamen integral del Agente Fullstack
+│   ├── QA_MATURITY_SCORECARD_TEMPLATE.md # Evaluación cuantitativa de madurez QA (0-100)
+│   └── KAIZEN_ACTION_TEMPLATE.md       # Matriz de priorización de acciones correctivas
 │
 └── guides/                             # 🚀 Guías de Operación
     ├── HOW_TO_INVOKE.md                # Guía de uso en Cursor, Antigravity, Claude, etc.
