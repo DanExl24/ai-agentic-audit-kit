@@ -35,5 +35,6 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 | Ausencia total de tests, manejo de errores u observabilidad | HIGH (con tope de área en la rúbrica de `audit`) | — (es riesgo de detección, no un daño directo) |
 | Token o dato sensible en `localStorage` | HIGH (MEDIUM si el access token es de vida corta) | es un secreto de servidor o un token de larga duración con privilegios altos |
 | Secreto en el bundle o en variables públicas | CRITICAL si es un secreto real de servidor o de terceros | — · si es una clave publicable por diseño, no es hallazgo |
+| Registros duplicados o inválidos **sin impacto económico ni legal** (doble envío o validación saltada en un formulario de asistencia, actividad o registro interno) | HIGH | crea cobros, pedidos, reservas de stock, cambios de permisos o tiene consecuencias legales |
 | Fallo en una pantalla interna poco usada | Un nivel menos que el mismo fallo en un flujo principal | — |
 | Vulnerabilidad de una dependencia | Según su explotabilidad en el uso real, no solo la severidad del aviso | es explotable en el navegador con datos de usuarios |

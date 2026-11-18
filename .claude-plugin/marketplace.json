@@ -12,14 +12,14 @@
       "name": "frontend",
       "source": "./plugins/frontend",
       "description": "18 skills de frontend (Vue, React, Angular) que construyen y auditan: UX, arquitectura, TypeScript, routing, datos, estado, formularios, design system, accesibilidad, responsive, rendimiento, SSR y SEO, seguridad, testing, observabilidad, i18n, tooling y un orquestador de auditorías.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "category": "development"
     },
     {
       "name": "backend",
       "source": "./plugins/backend",
       "description": "Skills de backend (Node/TypeScript, Python, Java/Spring) que construyen y auditan: arquitectura, diseño de API, capa HTTP, dominio, acceso a datos y concurrencia, esquema y migraciones, autenticación, autorización, seguridad de API, mensajería, integraciones, caché, observabilidad, rendimiento, testing, tooling, privacidad y un orquestador de auditorías.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "category": "development"
     }
   ]

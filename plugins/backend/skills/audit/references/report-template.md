@@ -107,4 +107,12 @@ La puntuación sirve para priorizar y comparar en el tiempo con la misma rúbric
 | Privacidad (si aplica) | | |
 
 **Decisión recomendada:** publicar / publicar con riesgos aceptados (listarlos) / no publicar hasta resolver <hallazgos>.
+
+## Anexo (obligatorio): referencias cargadas
+
+| Skill | SKILL.md | checklist.md | Nota de stack | patterns.md |
+| :--- | :-: | :-: | :-: | :-: |
+| <skill> | ✅ / ❌ | ✅ / ❌ | ✅ <archivo> / ❌ / n.a. | ✅ / — |
+
+<Si algo no se cargó, explica por qué (coste, no aplica al stack). Esta tabla permite saber qué partes del kit se usaron realmente.>
 ```
