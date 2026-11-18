@@ -11,6 +11,7 @@ puntuación = max(0, 100 − 25·CRITICAL − 10·HIGH − 4·MEDIUM − 1·LOW)
 - INFO no resta.
 - Un hallazgo agrupado (el mismo defecto en varios archivos) cuenta **una vez**, con la severidad que corresponde a su alcance total.
 - Un hallazgo deduplicado entre dos áreas resta en el área de su **causa raíz**.
+- **Ausencia de la capacidad central:** si el área no existe en el proyecto (cero tests en `testing`; sin manejo ni tracking de errores en `observability`; sin tokens ni componentes base en `design-system`; sin type-check en `typescript`; sin lint ni CI en `tooling`), la nota del área **no supera 40**, aunque se registre como un único hallazgo agrupado. La fórmula mide defectos de lo que existe; el tope refleja lo que falta.
 
 ### Global
 
@@ -21,6 +22,7 @@ global = media ponderada de las áreas auditadas
 - Peso 1 por defecto. Peso 2 para las áreas críticas según el contexto (declara cuáles y por qué). Ejemplos: `security` y `accessibility` en una app pública con requisitos legales; `performance` y `rendering-and-seo` en un e-commerce; `forms` y `data-fetching` en un back-office de captura de datos.
 - **Tope:** con algún CRITICAL abierto, la global no supera **49**.
 - Solo cuentan las áreas auditadas; no se inventa nota para las demás.
+- En modo **rápido** no se calcula nota global (pocas áreas con checklists parciales no son comparables): solo hallazgos y notas de las áreas revisadas.
 
 | Rango | Lectura |
 | :--- | :--- |
@@ -43,6 +45,7 @@ La puntuación sirve para priorizar y comparar en el tiempo con la misma rúbric
 - Stack: <framework, versión, librerías clave>
 - Tipo de app y contexto: <pública/privada, usuarios, requisitos>
 - Ruta aplicada: <número y nombre> — <por qué>
+- Modo: <completa | enfocada | rápida> — <elegido por el usuario | por defecto> · skills aplicadas: <lista>
 - Límites: <qué no se pudo verificar: sin navegador, sin datos de campo, sin backend…>
 
 ## 1. Resumen ejecutivo

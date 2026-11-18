@@ -25,3 +25,15 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 1. **Impacto × alcance.** Un defecto grave en una pantalla interna poco usada puede bajar un nivel; uno leve en el checkout puede subir uno. Justifica el ajuste en una línea.
 2. **Sin evidencia no hay hallazgo.** Si no puedes señalar archivo y líneas, o reproducir el escenario, es una pregunta abierta, no un hallazgo.
 3. **No infles.** Si dudas entre dos niveles, elige el menor y explica qué haría falta para subirlo.
+4. **Todo CRITICAL está verificado** y el informe dice cómo (archivo y líneas, comando, prueba en el navegador).
+
+## Calibración en casos frontera
+
+| Situación | Severidad | Sube a CRITICAL si… |
+| :--- | :--- | :--- |
+| Problema visual, de UX o de accesibilidad que dificulta pero **no impide** completar la tarea | Como mucho HIGH | impide completar un flujo principal (pago, login, registro) |
+| Ausencia total de tests, manejo de errores u observabilidad | HIGH (con tope de área en la rúbrica de `audit`) | — (es riesgo de detección, no un daño directo) |
+| Token o dato sensible en `localStorage` | HIGH (MEDIUM si el access token es de vida corta) | es un secreto de servidor o un token de larga duración con privilegios altos |
+| Secreto en el bundle o en variables públicas | CRITICAL si es un secreto real de servidor o de terceros | — · si es una clave publicable por diseño, no es hallazgo |
+| Fallo en una pantalla interna poco usada | Un nivel menos que el mismo fallo en un flujo principal | — |
+| Vulnerabilidad de una dependencia | Según su explotabilidad en el uso real, no solo la severidad del aviso | es explotable en el navegador con datos de usuarios |

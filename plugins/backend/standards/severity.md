@@ -16,3 +16,16 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 2. **Sin evidencia no hay hallazgo.** Archivo y líneas, consulta concreta o escenario reproducible; si no, es una pregunta abierta.
 3. **No infles.** Ante la duda, el nivel menor, explicando qué haría falta para subirlo.
 4. **Datos y dinero primero.** A igual probabilidad, un riesgo de integridad de datos pesa más que uno de rendimiento.
+5. **Todo CRITICAL está verificado** y el informe dice cómo (archivo y líneas, comando como `git ls-files` o `npm audit`, petición reproducible).
+
+## Calibración en casos frontera
+
+| Situación | Severidad | Sube a CRITICAL si… |
+| :--- | :--- | :--- |
+| Condición de carrera que duplica o desordena registros **sin impacto económico ni legal** (asistencia, actividad, contadores informativos) | HIGH | mueve dinero, stock vendible, permisos o tiene consecuencias legales |
+| Ausencia total de tests, CI u observabilidad | HIGH (con tope de área en la rúbrica de `audit`) | — (es riesgo de detección, no un daño directo) |
+| Secreto en el repositorio | CRITICAL si es de producción o firma tokens/sesiones | — · si es de desarrollo local y sin uso real, MEDIUM (verifícalo antes de bajarlo) |
+| Falta de rate limiting | HIGH en login, recuperación de cuenta y endpoints costosos; MEDIUM en endpoints internos autenticados | permite abuso económico directo (SMS, pagos, IA) |
+| Vulnerabilidad de una dependencia | Según su explotabilidad en el uso real del proyecto, no solo la severidad del aviso | es explotable de forma remota en una ruta expuesta |
+| Endpoint sin autenticación | HIGH si expone datos no sensibles o de solo lectura | expone datos personales o permite escrituras |
+| Error 500 que filtra detalles internos | HIGH | incluye secretos o credenciales |

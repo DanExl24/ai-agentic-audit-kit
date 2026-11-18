@@ -25,17 +25,32 @@ Esta skill no audita líneas de código por sí misma: **decide qué skills apli
 
 Si el alcance es muy grande (toda una app con decenas de features), propón empezar por los flujos críticos y amplía después.
 
+## Paso 1: elegir modo y confirmar el coste
+
+Una auditoría orquestada carga varias skills (cada una con su checklist y su nota de stack: del orden de 4.000–5.000 tokens por skill) y recorre buena parte del código, así que puede consumir mucho contexto y cuota de uso. **Antes de empezar, presenta al usuario la ruta elegida y estos modos, con las skills concretas que entrarían en cada uno para este proyecto, y espera su elección:**
+
+| Modo | Qué incluye | Skills | Coste orientativo |
+| :--- | :--- | :---: | :--- |
+| **Completa** | Todas las skills aplicables de la ruta, checklists completos, puntuación por área y global | las de la ruta (hasta 17) | Alto: ≈ 4–5 k tokens por skill + lectura del código |
+| **Enfocada** (por defecto) | Las 4–6 skills de mayor riesgo para el contexto (p. ej. `security`, `data-fetching`, `forms`, `accessibility` en una app pública con formularios) | 4–6 | Medio |
+| **Rápida** | Las 2–3 skills más críticas, solo los puntos CRITICAL/HIGH de sus checklists, sin puntuación global | 2–3 | Bajo |
+
+- El coste real depende sobre todo del tamaño del código: si el alcance es grande, dilo y propón acotarlo (una feature, los flujos críticos).
+- **No preguntes** si el usuario ya fijó el alcance (pidió un modo, una ruta o una lista de skills) o si la ejecución no es interactiva: aplica lo pedido (o el modo enfocado) y decláralo en el informe.
+- Tras la confirmación, no vuelvas a preguntar entre una skill y otra.
+
 ## Modo Auditar (por defecto)
 
-1. **Aplica cada skill de la ruta en modo Auditar** sobre el mismo alcance. Para cargar una skill: usa la herramienta de skills con `frontend:<skill>` si está disponible; si no, lee `../<skill>/SKILL.md` y las referencias que indique. Aplica su checklist completo; no te quedes en lo superficial.
-2. **Paralelización opcional:** si el alcance es grande y el entorno permite subagentes, y el usuario está de acuerdo, delega cada área en un subagente con el mismo alcance y pídele el informe en el formato de [output-formats.md](../../standards/output-formats.md). Revisa que cada informe cite archivo y líneas antes de consolidarlo.
-3. **Control de calidad** de cada resultado: sin archivo y líneas, sin severidad o sin corrección aplicable, ese hallazgo se rehace o se descarta.
-4. **Consolida** según [report-template.md](references/report-template.md):
+1. **Carga las skills del modo elegido.** De cada una: `SKILL.md`, `references/checklist.md` y la nota del stack detectado (`references/vue.md`, `react.md` o `angular.md`, cuando la skill las tiene). Con herramienta de skills, `frontend:<skill>`; si no, lee los archivos (`../<skill>/…`). Deja `references/patterns.md` para escribir las correcciones de los hallazgos CRITICAL y HIGH.
+2. **Inventaria el código una sola vez** (estructura, rutas, componentes, stores, capa de datos, configuración, manifiestos) y ejecuta las comprobaciones baratas disponibles (type-check, lint, auditoría de dependencias; navegador si la app está en ejecución). Después **aplica cada checklist completo** sobre ese inventario, en lugar de releer el código por cada skill.
+3. **Paralelización opcional:** si el alcance es grande y el entorno permite subagentes, y el usuario está de acuerdo, delega cada área en un subagente con el mismo alcance y pídele el informe en el formato de [output-formats.md](../../standards/output-formats.md). Revisa que cada informe cite archivo y líneas antes de consolidarlo.
+4. **Control de calidad** de cada resultado: sin archivo y líneas, sin severidad o sin corrección aplicable, ese hallazgo se rehace o se descarta. Cada CRITICAL indica cómo se verificó (archivo, comando o prueba en el navegador).
+5. **Consolida** según [report-template.md](references/report-template.md):
    - Deduplica: el mismo problema visto desde dos skills (contraste en `design-system` y en `accessibility`; token en `localStorage` en `data-fetching` y en `security`) es **un** hallazgo, con la corrección en su causa raíz y las skills implicadas.
    - Ordena por severidad ([severity.md](../../standards/severity.md)) y, a igual severidad, por esfuerzo (lo barato primero).
    - Puntúa por área y global con la [rúbrica](references/report-template.md#rúbrica-de-puntuación).
    - Escala lo que no es del frontend (autorización, contratos de API, rendimiento del backend).
-5. **Entrega** el dictamen en el chat y, si es largo o el usuario lo pide, en `audit-frontend-<fecha>.md`.
+6. **Entrega** el dictamen en el chat y, si es largo o el usuario lo pide, en `audit-frontend-<fecha>.md`.
 
 ## Modo Remediar
 
@@ -56,6 +71,7 @@ Cuando el usuario pide aplicar las correcciones tras la auditoría:
 5. **La puntuación orienta, no sustituye:** acompaña cada nota con los hallazgos que la explican y compárala solo con auditorías hechas con la misma rúbrica.
 6. **Lo que no es del frontend se escala**, con la evidencia reunida.
 7. **Declara los límites:** qué no se pudo verificar (sin navegador, sin datos de campo, sin acceso al backend).
+8. **Coste a la vista:** el usuario conoce y acepta el alcance y el coste aproximado antes de una auditoría extensa.
 
 ## Referencias
 

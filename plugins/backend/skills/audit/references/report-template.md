@@ -11,6 +11,7 @@ puntuación = max(0, 100 − 25·CRITICAL − 10·HIGH − 4·MEDIUM − 1·LOW)
 - INFO no resta.
 - Un hallazgo agrupado (el mismo defecto en varios sitios) cuenta **una vez**, con la severidad de su alcance total.
 - Un hallazgo deduplicado entre áreas resta en el área de su **causa raíz**.
+- **Ausencia de la capacidad central:** si el área no existe en el proyecto (cero tests en `testing`; sin logs estructurados, métricas ni health checks en `observability`; sin type-check, lint ni CI en `tooling`; sin migraciones versionadas en `schema-and-migrations`; rutas sin ninguna protección en `authorization`), la nota del área **no supera 40**, aunque se registre como un único hallazgo agrupado. La fórmula mide defectos de lo que existe; el tope refleja lo que falta.
 
 ### Global
 
@@ -21,6 +22,7 @@ global = media ponderada de las áreas auditadas
 - Peso 1 por defecto; peso 2 en las áreas críticas para el contexto, declarándolas. Ejemplos: `authorization`, `api-security` y `data-privacy` en SaaS multi-tenant o con datos sensibles; `data-access` y `domain-logic` en sistemas financieros o de inventario; `api-design` en APIs públicas; `performance` y `caching` en servicios de alto tráfico.
 - **Tope:** con algún CRITICAL abierto, la global no supera **49**.
 - Solo cuentan las áreas auditadas.
+- En modo **rápido** no se calcula nota global (pocas áreas con checklists parciales no son comparables): solo hallazgos y notas de las áreas revisadas.
 
 | Rango | Lectura |
 | :--- | :--- |
@@ -43,6 +45,7 @@ La puntuación sirve para priorizar y comparar en el tiempo con la misma rúbric
 - Stack: <lenguaje, framework, base de datos, mensajería, versiones>
 - Contexto: <API pública/interna, multi-tenant, datos sensibles, escala>
 - Ruta aplicada: <número y nombre> — <por qué>
+- Modo: <completa | enfocada | rápida> — <elegido por el usuario | por defecto> · skills aplicadas: <lista>
 - Límites: <qué no se pudo verificar>
 
 ## 1. Resumen ejecutivo
