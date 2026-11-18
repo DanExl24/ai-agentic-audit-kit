@@ -12,8 +12,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | :--- | :--- | :--- |
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
-| **Backend** (incluye database) | Plugin `plugins/backend/` | 🟡 Ola 1 de 4: `http-layer`, `domain-logic`, `data-access`, `schema-and-migrations`. Absorbe los antiguos `02_backend` y `03_database`. |
-| Security | Prompts en `domains/04_security/` | ⏳ Se integra en `backend` (ola 2); la parte de frontend ya está en `frontend:security` |
+| **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | 🟡 Olas 1–2 de 4: `http-layer`, `domain-logic`, `data-access`, `schema-and-migrations`, `authentication`, `authorization`, `api-security`. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | QA & Testing | Prompts en `domains/05_qa_testing_engineering/` | ⏳ Pendiente |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md).
@@ -57,11 +56,13 @@ ai-agentic-audit-kit/
 │           ├── http-layer/
 │           ├── domain-logic/
 │           ├── data-access/
-│           └── schema-and-migrations/
+│           ├── schema-and-migrations/
+│           ├── authentication/
+│           ├── authorization/
+│           └── api-security/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   ├── 00_fullstack_integrator/
-│   ├── 04_security/
 │   └── 05_qa_testing_engineering/
 │
 ├── protocols/                    # protocolo de interoperabilidad del formato antiguo
@@ -96,7 +97,7 @@ Las skills también se activan automáticamente cuando la petición encaja con s
 
 ### Prompts (formato antiguo, dominios pendientes)
 
-1. Entra a la carpeta del agente (ej. `domains/04_security/owasp_threat_hunter/`).
+1. Entra a la carpeta del agente (ej. `domains/05_qa_testing_engineering/03_performance_load_audit/`).
 2. Abre `ONE_SHOT_PROMPT.md`, copia el prompt y reemplaza la ruta del archivo o módulo.
 3. El agente devuelve un informe de hallazgos con severidad y corrección.
 

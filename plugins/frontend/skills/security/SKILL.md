@@ -15,7 +15,7 @@ El código del frontend se ejecuta en la máquina del usuario, que puede leerlo,
 - Preparar un release, una auditoría de seguridad o un pentest.
 - Revisar dependencias tras una alerta de vulnerabilidad.
 
-**No es para:** autorización, validación e inyecciones en la API → dominio backend/security (`domains/04_security/owasp_threat_hunter`) · pruebas dinámicas contra la app en ejecución (cabeceras, fuerza bruta) → dominio QA (`domains/05_qa_testing_engineering/04_dast_security_zap_audit`) · la lógica del refresh token → `data-fetching` (esta skill decide dónde vive el token).
+**No es para:** autenticación, autorización e inyecciones en la API → plugin `backend` (`authentication`, `authorization`, `api-security`) · pruebas dinámicas contra la app en ejecución (cabeceras, fuerza bruta) → dominio QA (`domains/05_qa_testing_engineering/04_dast_security_zap_audit`) · la lógica del refresh token → `data-fetching` (esta skill decide dónde vive el token).
 
 ## Paso 0: contexto (ambos modos)
 

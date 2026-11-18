@@ -124,7 +124,9 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 | Reglas de negocio, transiciones de estado, cálculos de importes en el servidor | plugin `backend` → `domain-logic` |
 | Consultas lentas, N+1, transacciones, condiciones de carrera | plugin `backend` → `data-access` |
 | Índices, esquema, migraciones | plugin `backend` → `schema-and-migrations` |
-| Autorización (IDOR), inyecciones, secretos en el servidor | `domains/04_security/owasp_threat_hunter/` |
+| Login, sesiones, tokens y su verificación en el servidor | plugin `backend` → `authentication` |
+| Autorización (IDOR), roles, aislamiento entre tenants | plugin `backend` → `authorization` |
+| Inyecciones, SSRF, uploads, rate limiting, secretos en el servidor | plugin `backend` → `api-security` |
 | E2E, contratos, carga, DAST, análisis de causa raíz de incidentes | `domains/05_qa_testing_engineering/` |
 
 (Los dominios que aparecen como `domains/…` siguen en formato de prompts mientras no se migren a plugins.)

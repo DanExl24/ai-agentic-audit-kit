@@ -59,4 +59,7 @@ La capa HTTP es la frontera del servicio: **todo lo que entra se valida y todo l
 
 - `domain-logic`: casos de uso y errores de dominio que el controlador invoca y traduce.
 - `data-access`: lo que no debe hacerse en un controlador (consultas, transacciones).
-- `api-design` · `authentication` · `authorization` · `api-security` (olas siguientes).
+- `authentication`: middleware de autenticación en el pipeline, cookies y CSRF.
+- `authorization`: campos que cada rol puede enviar y ver, además del mass assignment.
+- `api-security`: rate limiting, uploads, SSRF y configuración de producción.
+- `api-design` (ola 3): el contrato que esta capa implementa.

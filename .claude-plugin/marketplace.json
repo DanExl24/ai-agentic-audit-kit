@@ -18,8 +18,8 @@
     {
       "name": "backend",
       "source": "./plugins/backend",
-      "description": "Skills de backend (Node/TypeScript, Python, Java/Spring) que construyen y auditan: capa HTTP, lógica de dominio, acceso a datos y concurrencia, esquema y migraciones sin downtime.",
-      "version": "0.1.0",
+      "description": "Skills de backend (Node/TypeScript, Python, Java/Spring) que construyen y auditan: capa HTTP, lógica de dominio, acceso a datos y concurrencia, esquema y migraciones, autenticación, autorización y seguridad de la API (OWASP API Top 10).",
+      "version": "0.2.0",
       "category": "development"
     }
   ]

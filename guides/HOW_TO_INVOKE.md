@@ -34,7 +34,9 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Controladores gigantes, reglas de negocio duplicadas, estados imposibles, dinero en float. | **skill `/backend:domain-logic`** | `plugins/backend/skills/domain-logic/` |
 | N+1, consultas sin límite, operaciones sin transacción, sobreventa o saldos incorrectos bajo concurrencia, pool agotado. | **skill `/backend:data-access`** | `plugins/backend/skills/data-access/` |
 | Faltan índices, consultas lentas en EXPLAIN, migraciones que bloquean tablas o cambios de esquema en producción. | **skill `/backend:schema-and-migrations`** | `plugins/backend/skills/schema-and-migrations/` |
-| Quieres verificar si un usuario puede ver facturas ajenas (IDOR), inyecciones SQL o secrets en repo. | **owasp_threat_hunter** | `domains/04_security/owasp_threat_hunter/` |
+| Login, sesiones, JWT, reset de contraseña, MFA o API keys. | **skill `/backend:authentication`** | `plugins/backend/skills/authentication/` |
+| ¿Un usuario puede ver o modificar datos ajenos (IDOR)? Roles, permisos, aislamiento entre tenants. | **skill `/backend:authorization`** | `plugins/backend/skills/authorization/` |
+| Inyecciones, SSRF, uploads, rate limiting, secretos en el repo, configuración insegura, dependencias vulnerables. | **skill `/backend:api-security`** | `plugins/backend/skills/api-security/` |
 | Quieres certificar la madurez de pruebas global, coordinar el escuadrón de QA o hacer un post-mortem tras una caída. | **00_qa_director** | `domains/05_qa_testing_engineering/00_qa_director/` |
 | Código difícil de testear, dependencias no inyectadas o tests sin aserciones reales. | **01_testability_and_unit_audit** | `domains/05_qa_testing_engineering/01_testability_and_unit_audit/` |
 | Tests E2E rotos o intermitentes (flaky), selectores CSS frágiles o falta de validación DTO Zod. | **02_contract_and_e2e_audit** | `domains/05_qa_testing_engineering/02_contract_and_e2e_audit/` |
@@ -109,28 +111,17 @@ Los antiguos agentes `02_backend/api_rest_gateway`, `02_backend/domain_business_
 | `/backend:schema-and-migrations` | Tipos y constraints, índices desde las consultas, EXPLAIN, migraciones sin downtime (expand/contract, índices concurrentes, backfills por lotes). | `query_performance_indexer` (índices) |
 
 ---
-### 🛡️ DOMINIO 04: CIBERSEGURIDAD Y APPSEC
+### 🛡️ SEGURIDAD DE SERVIDOR (plugin `backend`)
 
-#### Agente: `owasp_threat_hunter` (Application Security & Pentesting)
+El antiguo agente `04_security/owasp_threat_hunter` se ha repartido en tres skills del plugin `backend` que cubren el OWASP API Security Top 10 (2023). La seguridad del cliente (XSS, CSP, tokens en el navegador) está en `/frontend:security`.
 
-* **¿Qué hace exactamente?**
-  Realiza análisis estático forense de seguridad. Detecta vulnerabilidades IDOR (modificar o ver datos de otra cuenta cambiando el ID en la URL), inyecciones SQL/NoSQL/Command, secretos o tokens hardcodeados y configuraciones laxas de JWT.
-* **¿Cuándo DEBES usarlo?**
-  - Antes de pasar cualquier funcionalidad o módulo nuevo a producción.
-  - Al implementar un nuevo sistema de autenticación, login social o roles de usuario (RBAC).
-  - Para auditar si la aplicación aísla correctamente los datos en entornos multi-inquilino (Multi-Tenant).
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para medir rendimiento de carga o tiempos de respuesta.
-  - ❌ **NO lo uses** para refactorizar nombres de variables o formateo estético de código.
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Módulos de autenticación, controladores que reciben IDs de entidades, y archivos `.env.example` o de configuración.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 04_security/owasp_threat_hunter. Audita el módulo [ruta/backend/src/modules/billing] y su middleware de autenticación. Busca vulnerabilidades IDOR, inyecciones y fuga de secretos. Emite tu reporte bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-    ```
+| Skill | Qué cubre |
+| :--- | :--- |
+| `/backend:authentication` | Sesiones vs tokens, verificación de JWT, refresh rotativo con detección de reutilización, OIDC, hashing (Argon2id/bcrypt), login sin enumeración y con límites, reset de contraseña, MFA, API keys. |
+| `/backend:authorization` | RBAC/ABAC/ReBAC, autorización por objeto (IDOR), por función y por propiedad, multi-tenant con row-level security, listados y exportaciones, tests de matriz de permisos. |
+| `/backend:api-security` | Inyecciones (SQL, NoSQL, comandos, rutas, plantillas), consumo de recursos y rate limiting, flujos de negocio, SSRF, uploads, deserialización, secretos, configuración de producción, inventario, dependencias. |
 
 ---
-
 ### 🧪 DOMINIO 05: QA, TESTABILITY & QUALITY ENGINEERING
 
 El dominio de Calidad de Software, Arquitectura de Pruebas y Resiliencia está liderado por **`00_qa_director`**, quien coordina a 5 especialistas verticales distribuidos en niveles de código (Shift-Left), runtime operativo (Shift-Right) y mejora continua:
