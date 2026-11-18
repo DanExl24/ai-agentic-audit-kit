@@ -1,6 +1,6 @@
 ---
 name: data-privacy
-description: Diseña y audita el tratamiento de datos personales en el backend: inventario y clasificación (PII, categorías especiales, financieros, credenciales), minimización, datos personales en logs, trazas, cachés y analítica, entornos no productivos sin datos reales, retención y borrado (derecho de supresión en base de datos, búsqueda, almacenamiento, copias y terceros), exportación de datos del usuario, cifrado en tránsito, en reposo y por campo con KMS, seudonimización, tokenización de pagos, logs de auditoría y encargados de tratamiento. Úsala al manejar datos personales, preparar el cumplimiento de RGPD o leyes locales o atender solicitudes de usuarios. No sustituye al asesoramiento legal.
+description: "Diseña y audita el tratamiento de datos personales en el backend: inventario y clasificación (PII, categorías especiales, financieros, credenciales), minimización, datos personales en logs, trazas, cachés y analítica, entornos no productivos sin datos reales, retención y borrado (derecho de supresión en base de datos, búsqueda, almacenamiento, copias y terceros), exportación de datos del usuario, cifrado en tránsito, en reposo y por campo con KMS, seudonimización, tokenización de pagos, logs de auditoría y encargados de tratamiento. Úsala al manejar datos personales, preparar el cumplimiento de RGPD o leyes locales o atender solicitudes de usuarios. No sustituye al asesoramiento legal."
 ---
 
 # Privacidad y protección de datos

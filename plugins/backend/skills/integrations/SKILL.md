@@ -1,6 +1,6 @@
 ---
 name: integrations
-description: Construye y audita integraciones del backend con servicios externos: clientes HTTP de proveedores detrás de adaptadores, timeouts, reintentos con backoff solo en operaciones seguras, claves de idempotencia hacia el proveedor, circuit breaker, bulkhead, rate limiting del lado cliente, degradación y fallbacks, validación de respuestas, webhooks entrantes (firma sobre el cuerpo crudo, replay, deduplicación, procesamiento asíncrono) y salientes (firma, reintentos, registro de entregas, SSRF), y sincronizaciones por polling. Úsala al integrar pagos, email, CRMs u otras APIs, o ante caídas en cascada, cobros duplicados o webhooks perdidos. No para colas internas (async-messaging).
+description: "Construye y audita integraciones del backend con servicios externos: clientes HTTP de proveedores detrás de adaptadores, timeouts, reintentos con backoff solo en operaciones seguras, claves de idempotencia hacia el proveedor, circuit breaker, bulkhead, rate limiting del lado cliente, degradación y fallbacks, validación de respuestas, webhooks entrantes (firma sobre el cuerpo crudo, replay, deduplicación, procesamiento asíncrono) y salientes (firma, reintentos, registro de entregas, SSRF), y sincronizaciones por polling. Úsala al integrar pagos, email, CRMs u otras APIs, o ante caídas en cascada, cobros duplicados o webhooks perdidos. No para colas internas (async-messaging)."
 ---
 
 # Integraciones con servicios externos

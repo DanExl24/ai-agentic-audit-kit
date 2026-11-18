@@ -1,6 +1,6 @@
 ---
 name: authentication
-description: Implementa y audita la autenticación en el backend: sesiones en servidor vs tokens, JWT (algoritmos, claims, expiración, rotación de refresh tokens y revocación), integración OAuth/OIDC con proveedores de identidad, hashing de contraseñas (Argon2id, bcrypt), login sin enumeración y con protección contra fuerza bruta, reset de contraseña, verificación de email, MFA (TOTP, passkeys), API keys y autenticación entre servicios. Úsala al montar login, sesiones o tokens, o al revisar su seguridad. No para permisos (authorization) ni para el almacenamiento de tokens en el navegador (frontend:security).
+description: "Implementa y audita la autenticación en el backend: sesiones en servidor vs tokens, JWT (algoritmos, claims, expiración, rotación de refresh tokens y revocación), integración OAuth/OIDC con proveedores de identidad, hashing de contraseñas (Argon2id, bcrypt), login sin enumeración y con protección contra fuerza bruta, reset de contraseña, verificación de email, MFA (TOTP, passkeys), API keys y autenticación entre servicios. Úsala al montar login, sesiones o tokens, o al revisar su seguridad. No para permisos (authorization) ni para el almacenamiento de tokens en el navegador (frontend:security)."
 ---
 
 # Autenticación

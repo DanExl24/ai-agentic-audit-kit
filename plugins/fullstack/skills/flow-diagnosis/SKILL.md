@@ -24,6 +24,7 @@ Un flujo roto se ve en la pantalla, pero la causa puede estar en cualquiera de l
 2. **Delimita el flujo:** pantalla y acción de inicio, endpoint(s) implicados, tablas o servicios externos tocados.
 3. **Fuentes de evidencia disponibles:** código de ambas capas, pestaña Network o HAR, logs con ID de correlación, trazas, consultas a la base de datos, tests existentes.
 4. Si vas a corregir en una capa, carga la skill y la nota de stack de esa capa (ver [patterns.md § Escalado](references/patterns.md#escalado-a-skills-de-capa)); si falta el plugin, avísalo.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Diagnosticar (por defecto)
 
@@ -53,6 +54,18 @@ Para un flujo nuevo o rehecho, diseña cada etapa para que falle de forma visibl
 4. **Reproducir antes de corregir,** y dejar un test que lo impida volver.
 5. **Corregir en la causa raíz,** aunque esté en la otra capa.
 6. **Diferencias de entorno son sospechosas por defecto** cuando "en local funciona".
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Se identifica la etapa culpable | Skill de esa etapa ([patterns.md § Escalado](references/patterns.md#escalado-a-skills-de-capa)) | Etapa, evidencia (petición, respuesta, consulta) y test que falla |
+| El mismo desajuste aparece en otros endpoints | `contracts` | Endpoint de origen y patrón del desajuste |
+| Registros duplicados por reintento o doble envío | `backend:api-design` · `backend:data-access` | Endpoint (idempotencia) y tabla (constraint único) |
+| No hay evidencia suficiente: sin ID de correlación, logs ni trazas del flujo | `backend:observability` · `frontend:observability` | Flujo y etapas sin visibilidad |
+| Solo falla en producción por configuración (variables, cookies, CORS, zona horaria) | `backend:tooling` | Diferencias de configuración detectadas |
 
 ## Referencias
 

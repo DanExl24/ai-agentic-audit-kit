@@ -1,6 +1,6 @@
 ---
 name: api-security
-description: Construye y audita la seguridad de una API más allá de autenticación y autorización, según OWASP API Security Top 10: inyecciones (SQL, NoSQL, comandos, plantillas, rutas), consumo de recursos y rate limiting, abuso de flujos de negocio, SSRF, subida de archivos, deserialización insegura, gestión de secretos, configuración insegura (debug, actuators, documentación expuesta), inventario de endpoints, consumo inseguro de APIs de terceros y dependencias vulnerables. Úsala antes de un release, al aceptar URLs, archivos o datos que acaban en comandos o consultas, o tras una alerta de seguridad. No para login y tokens (authentication) ni permisos (authorization).
+description: "Construye y audita la seguridad de una API más allá de autenticación y autorización, según OWASP API Security Top 10: inyecciones (SQL, NoSQL, comandos, plantillas, rutas), consumo de recursos y rate limiting, abuso de flujos de negocio, SSRF, subida de archivos, deserialización insegura, gestión de secretos, configuración insegura (debug, actuators, documentación expuesta), inventario de endpoints, consumo inseguro de APIs de terceros y dependencias vulnerables. Úsala antes de un release, al aceptar URLs, archivos o datos que acaban en comandos o consultas, o tras una alerta de seguridad. No para login y tokens (authentication) ni permisos (authorization)."
 ---
 
 # Seguridad de la API

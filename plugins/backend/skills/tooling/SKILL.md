@@ -1,6 +1,6 @@
 ---
 name: tooling
-description: Configura y audita el tooling de un backend: versión del runtime y gestor de dependencias fijados (lockfile, uv/Poetry, pnpm, Maven/Gradle wrapper), configuración 12-factor validada al arrancar, secretos desde un gestor, lint, formato y tipos (ESLint/Biome, Ruff/mypy, Spotless/Error Prone), entorno local con Docker Compose y seeds, scripts estándar, pipeline de CI (instalación reproducible, lint, tipos, tests con servicios, build de imagen, escaneos, migraciones) y Dockerfile de build (multi-stage, sin root). Úsala al arrancar un servicio, estandarizar repos o ante builds no reproducibles, CI lento o configuración caótica. No para escribir tests (testing) ni para infraestructura de despliegue.
+description: "Configura y audita el tooling de un backend: versión del runtime y gestor de dependencias fijados (lockfile, uv/Poetry, pnpm, Maven/Gradle wrapper), configuración 12-factor validada al arrancar, secretos desde un gestor, lint, formato y tipos (ESLint/Biome, Ruff/mypy, Spotless/Error Prone), entorno local con Docker Compose y seeds, scripts estándar, pipeline de CI (instalación reproducible, lint, tipos, tests con servicios, build de imagen, escaneos, migraciones) y Dockerfile de build (multi-stage, sin root). Úsala al arrancar un servicio, estandarizar repos o ante builds no reproducibles, CI lento o configuración caótica. No para escribir tests (testing) ni para infraestructura de despliegue."
 ---
 
 # Tooling del backend

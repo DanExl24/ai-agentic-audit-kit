@@ -6,6 +6,7 @@
 2. **Código** en ambas capas siguiendo las convenciones de cada una.
 3. **Verificación** en las dos (type-check, tests) y, si existe, del contrato compartido.
 4. **Resumen** con lo pendiente y lo no verificado.
+5. **Handoffs** hechos y pendientes (bloque de [handoffs.md](handoffs.md#bloque-de-traza-en-la-entrega)).
 
 ## Modo Auditar
 
@@ -29,6 +30,9 @@
 
 ## Lo que está bien
 ## Fuera de alcance / otras skills
+## Handoffs
+- Hechos: <skill> (<alcance>) → <códigos>
+- Pendientes: <skill> — <disparador y evidencia>
 ```
 
 | Skill | Código |
@@ -37,5 +41,6 @@
 | topology | `FS-TOPO` |
 | flow-diagnosis | `FS-FLOW` |
 | audit | conserva `FE-*`, `BE-*` y `FS-*` |
+| feature | no emite hallazgos: entrega según su `plan-template.md` |
 
 Los hallazgos de una sola capa usan los códigos y el formato del plugin correspondiente (`frontend`/`backend`).

@@ -1,6 +1,6 @@
 ---
 name: http-layer
-description: Construye y audita la capa HTTP de un backend (Express, Fastify, NestJS, FastAPI, Django/DRF, Spring Boot): validación de entrada en la frontera, mass assignment, DTOs de salida, orden de middlewares, propagación de errores asíncronos, error handler global, límites de payload, timeouts, CORS, cabeceras y graceful shutdown. Úsala al crear endpoints o revisar controladores, middlewares y manejo de errores. No para diseñar el contrato de la API (api-design) ni para autenticación (authentication).
+description: "Construye y audita la capa HTTP de un backend (Express, Fastify, NestJS, FastAPI, Django/DRF, Spring Boot): validación de entrada en la frontera, mass assignment, DTOs de salida, orden de middlewares, propagación de errores asíncronos, error handler global, límites de payload, timeouts, CORS, cabeceras y graceful shutdown. Úsala al crear endpoints o revisar controladores, middlewares y manejo de errores. No para diseñar el contrato de la API (api-design) ni para autenticación (authentication)."
 ---
 
 # Capa HTTP

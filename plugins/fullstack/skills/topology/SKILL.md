@@ -1,6 +1,6 @@
 ---
 name: topology
-description: Diseña y audita la topología de un repositorio que contiene frontend y backend: elección entre monolito modular, monorepo con paquetes (apps/web, apps/api, packages/contracts) o arquitectura hexagonal; límites entre módulos de negocio que atraviesan ambas capas, dependencias ilegítimas (UI que importa código del servidor, utils gigantes, tipos duplicados en espejo), herramientas de workspace y reglas de dependencias verificadas en CI, y migración incremental (strangler) por fases. Úsala al arrancar un proyecto fullstack, cuando el repositorio se ha vuelto difícil de navegar o antes de separar en paquetes. No para la arquitectura interna de una sola capa (frontend:architecture, backend:architecture).
+description: Diseña y audita la topología de un repositorio que contiene frontend y backend; elige entre monolito modular, monorepo con paquetes (apps/web, apps/api, packages/contracts) o arquitectura hexagonal; límites entre módulos de negocio que atraviesan ambas capas, dependencias ilegítimas (UI que importa código del servidor, utils gigantes, tipos duplicados en espejo), herramientas de workspace y reglas de dependencias verificadas en CI, y migración incremental (strangler) por fases. Úsala al arrancar un proyecto fullstack, cuando el repositorio se ha vuelto difícil de navegar o antes de separar en paquetes. No para la arquitectura interna de una sola capa (frontend:architecture, backend:architecture).
 ---
 
 # Topología del repositorio
@@ -22,6 +22,7 @@ Cuando frontend y backend conviven en un mismo repositorio, la estructura decide
 2. Mide en lugar de suponer: imports entre capas y módulos (`madge`, `dependency-cruiser`, `nx graph`, `grep` de rutas relativas largas), tamaño de `utils/`/`shared/`, tipos definidos en ambos lados.
 3. Identifica el equipo y el ritmo: cuántas personas, si frontend y backend se despliegan juntos, si hay otros clientes (móvil, terceros).
 4. Si vas a entrar en una capa, carga su skill de arquitectura (`frontend:architecture`, `backend:architecture`) y su nota de stack; si un plugin no está instalado, avísalo.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -47,6 +48,19 @@ Cuando frontend y backend conviven en un mismo repositorio, la estructura decide
 3. **Las dependencias apuntan en una dirección** y se verifican con herramientas, no con disciplina.
 4. **Compartir contratos, no lógica:** el frontend nunca importa código de servidor.
 5. **Migrar sin parar el producto:** fases pequeñas, cada una desplegable.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| El frontend importa configuración, secretos o código del servidor | `frontend:security` | Imports y lo que arrastran al bundle |
+| Ciclos o módulos sin API pública dentro del backend | `backend:architecture` | Módulos y ciclos (grafo) |
+| Ciclos, features acopladas o imports cruzados dentro del frontend | `frontend:architecture` | Módulos y ciclos (grafo) |
+| Tipos o esquemas del cable copiados en ambas capas | `contracts` | Ubicaciones de las copias |
+| Vistas con reglas de negocio que afectan a dinero, permisos o estados | `backend:domain-logic` | Vista, regla y endpoint que debería aplicarla |
+| Sin verificación de dependencias, workspaces o build incremental en CI | `frontend:tooling` · `backend:tooling` | Configuración de CI y manifiestos |
 
 ## Referencias
 

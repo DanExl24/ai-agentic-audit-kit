@@ -1,6 +1,6 @@
 ---
 name: caching
-description: Diseña y audita la caché en el backend: cuándo cachear (y cuándo no), niveles (HTTP con Cache-Control y ETag, CDN, Redis/Memcached, memoria del proceso), patrones cache-aside, read-through y write-through, TTL e invalidación tras el commit, diseño de claves con tenant y usuario para no mezclar datos, protección contra stampede (single-flight, stale-while-revalidate, jitter), consistencia, comportamiento cuando la caché falla y métricas. Úsala al añadir caché a endpoints o consultas lentas, o ante datos obsoletos, datos de un usuario mostrados a otro o picos de carga al expirar claves. No para optimizar la consulta en sí (data-access, schema-and-migrations).
+description: "Diseña y audita la caché en el backend: cuándo cachear (y cuándo no), niveles (HTTP con Cache-Control y ETag, CDN, Redis/Memcached, memoria del proceso), patrones cache-aside, read-through y write-through, TTL e invalidación tras el commit, diseño de claves con tenant y usuario para no mezclar datos, protección contra stampede (single-flight, stale-while-revalidate, jitter), consistencia, comportamiento cuando la caché falla y métricas. Úsala al añadir caché a endpoints o consultas lentas, o ante datos obsoletos, datos de un usuario mostrados a otro o picos de carga al expirar claves. No para optimizar la consulta en sí (data-access, schema-and-migrations)."
 ---
 
 # Caché

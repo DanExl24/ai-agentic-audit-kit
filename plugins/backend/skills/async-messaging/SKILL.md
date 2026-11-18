@@ -1,6 +1,6 @@
 ---
 name: async-messaging
-description: Diseña y audita el trabajo asíncrono del backend: jobs y workers (BullMQ, Celery, Sidekiq-like, pg-boss), colas y pub/sub (RabbitMQ, SQS/SNS, Kafka), tareas programadas sin ejecuciones duplicadas, entrega at-least-once con consumidores idempotentes, reintentos con backoff y DLQ, patrón outbox (e inbox), orden por clave, diseño y evolución de mensajes, sagas con compensación, encolar tras el commit, apagado limpio de workers y métricas de colas. Úsala al sacar trabajo de la petición, comunicar módulos o servicios por eventos, o ante jobs duplicados, perdidos o atascados. No para llamadas síncronas a terceros (integrations).
+description: "Diseña y audita el trabajo asíncrono del backend: jobs y workers (BullMQ, Celery, Sidekiq-like, pg-boss), colas y pub/sub (RabbitMQ, SQS/SNS, Kafka), tareas programadas sin ejecuciones duplicadas, entrega at-least-once con consumidores idempotentes, reintentos con backoff y DLQ, patrón outbox (e inbox), orden por clave, diseño y evolución de mensajes, sagas con compensación, encolar tras el commit, apagado limpio de workers y métricas de colas. Úsala al sacar trabajo de la petición, comunicar módulos o servicios por eventos, o ante jobs duplicados, perdidos o atascados. No para llamadas síncronas a terceros (integrations)."
 ---
 
 # Mensajería y trabajo asíncrono

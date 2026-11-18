@@ -23,6 +23,7 @@ La mayoría de los fallos "misteriosos" entre capas son desajustes de contrato: 
 2. Detecta el stack de cada lado y carga la nota correspondiente de los otros plugins si los vas a tocar: `frontend:data-fetching` (`references/vue.md`, `react.md`, `angular.md`) y `backend:http-layer` (`references/node.md`, `python.md`, `java.md`). Si un plugin no está instalado, avísalo y sigue con la base de esta skill.
 3. Averigua si existe una fuente de verdad: especificación OpenAPI, esquemas compartidos (`shared/`, `packages/contracts`), tipos generados o nada.
 4. Identifica los consumidores que no se actualizan a la vez que el servidor (apps móviles, clientes cacheados, integraciones): condicionan el orden de despliegue.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -51,6 +52,20 @@ La mayoría de los fallos "misteriosos" entre capas son desajustes de contrato: 
 4. **El servidor no confía en el cliente:** precios, permisos y totales se calculan y validan en el backend; el cliente solo los muestra.
 5. **Tipos que no mienten:** IDs grandes y dinero como string o enteros en unidades mínimas; fechas en ISO 8601 con zona.
 6. **Nunca romper a los clientes en circulación:** ampliar primero, retirar después.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| La UI oculta una acción y el endpoint no autoriza por objeto, función o tenant | `backend:authorization` | Endpoint, recurso y rol o tenant implicado |
+| El servidor acepta del cliente precios, totales, descuentos o estados | `backend:domain-logic` | Endpoint, campo y regla que debe calcularse en el servidor |
+| La respuesta incluye campos internos o sensibles que el cliente no usa | `backend:http-layer` | Endpoint y campos (DTO de salida) |
+| El servidor devuelve errores por campo que el formulario no muestra | `frontend:forms` | Formulario, endpoint y formato de error |
+| Estrategia de sesión incoherente (token en `localStorage`, cookies sin `HttpOnly`/`Secure`/`SameSite`, CORS reflejado) | `backend:authentication` · `frontend:security` | Configuración de sesión de ambas capas |
+| Un cambio incompatible afecta a clientes en circulación | `backend:api-design` | Endpoint, cambio y clientes afectados (versionado y deprecación) |
+| Tipos del cable duplicados a mano por todo el repositorio | `topology` | Ubicaciones de las copias |
 
 ## Referencias
 

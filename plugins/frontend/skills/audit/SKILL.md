@@ -1,6 +1,6 @@
 ---
 name: audit
-description: Orquesta una auditoría completa o parcial del frontend combinando las skills del plugin frontend. Hace el triage del objetivo, elige una ruta (integral, UX, rendimiento, formularios, visual y accesible, responsive, cimientos técnicos, seguridad, pre-release), aplica cada skill en modo Auditar, deduplica hallazgos, calcula una puntuación por área y global (0–100) y entrega un dictamen único con plan de remediación priorizado; opcionalmente ejecuta la remediación por lotes. Úsala para revisar un módulo o una app de principio a fin, decidir si algo está listo para publicar o cuando no está claro qué skill aplicar. No la uses si ya sabes qué área revisar: invoca directamente esa skill.
+description: "Orquesta una auditoría completa o parcial del frontend combinando las skills del plugin frontend. Hace el triage del objetivo, elige una ruta (integral, UX, rendimiento, formularios, visual y accesible, responsive, cimientos técnicos, seguridad, pre-release), aplica cada skill en modo Auditar, deduplica hallazgos, calcula una puntuación por área y global (0–100) y entrega un dictamen único con plan de remediación priorizado; opcionalmente ejecuta la remediación por lotes. Úsala para revisar un módulo o una app de principio a fin, decidir si algo está listo para publicar o cuando no está claro qué skill aplicar. No la uses si ya sabes qué área revisar: invoca directamente esa skill."
 ---
 
 # Auditoría orquestada del frontend

@@ -1,6 +1,6 @@
 ---
 name: performance
-description: Mide, optimiza y audita el rendimiento de un backend: localizar el cuello de botella con trazas, métricas y profiling (CPU, memoria), causas por orden de frecuencia (base de datos, llamadas externas, serialización, CPU en la petición, memoria y GC, contención), particularidades del runtime (event loop de Node, GIL y workers de Python, hilos y virtual threads de la JVM), dimensionado de workers y pools, streaming de respuestas grandes, fugas de memoria, límites de contenedor, pruebas de carga y presupuestos de rendimiento. Úsala ante endpoints lentos, latencias p99 altas, consumo de memoria creciente o antes de un pico de tráfico. No para el detalle de consultas e índices (data-access, schema-and-migrations).
+description: "Mide, optimiza y audita el rendimiento de un backend: localizar el cuello de botella con trazas, métricas y profiling (CPU, memoria), causas por orden de frecuencia (base de datos, llamadas externas, serialización, CPU en la petición, memoria y GC, contención), particularidades del runtime (event loop de Node, GIL y workers de Python, hilos y virtual threads de la JVM), dimensionado de workers y pools, streaming de respuestas grandes, fugas de memoria, límites de contenedor, pruebas de carga y presupuestos de rendimiento. Úsala ante endpoints lentos, latencias p99 altas, consumo de memoria creciente o antes de un pico de tráfico. No para el detalle de consultas e índices (data-access, schema-and-migrations)."
 ---
 
 # Rendimiento del backend

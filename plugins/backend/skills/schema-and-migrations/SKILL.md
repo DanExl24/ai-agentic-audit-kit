@@ -1,6 +1,6 @@
 ---
 name: schema-and-migrations
-description: Diseña y audita el esquema de base de datos relacional y sus migraciones (PostgreSQL, MySQL; Prisma Migrate, TypeORM, Alembic, Django, Flyway, Liquibase): modelado, tipos, claves, constraints como invariantes, índices (FK, compuestos, parciales, de expresión, trigram) y lectura de EXPLAIN, y migraciones seguras sin downtime (expand/contract, backfills por lotes, índices concurrentes, lock_timeout). Úsala al crear tablas, añadir índices, cambiar columnas en producción o ante consultas lentas y migraciones que bloquean. No para el código de consultas y transacciones (data-access).
+description: "Diseña y audita el esquema de base de datos relacional y sus migraciones (PostgreSQL, MySQL; Prisma Migrate, TypeORM, Alembic, Django, Flyway, Liquibase): modelado, tipos, claves, constraints como invariantes, índices (FK, compuestos, parciales, de expresión, trigram) y lectura de EXPLAIN, y migraciones seguras sin downtime (expand/contract, backfills por lotes, índices concurrentes, lock_timeout). Úsala al crear tablas, añadir índices, cambiar columnas en producción o ante consultas lentas y migraciones que bloquean. No para el código de consultas y transacciones (data-access)."
 ---
 
 # Esquema y migraciones

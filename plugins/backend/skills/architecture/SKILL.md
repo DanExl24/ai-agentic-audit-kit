@@ -1,6 +1,6 @@
 ---
 name: architecture
-description: Diseña y audita la arquitectura de un servicio backend: monolito modular frente a microservicios, módulos por contexto de negocio con API pública y propiedad de sus tablas, capas dentro del módulo (transporte, aplicación, dominio, infraestructura), hexagonal pragmática con puertos para dependencias externas, inyección de dependencias y composition root, reglas de dependencia verificadas con herramientas, extracción gradual (strangler fig) y ADRs. Úsala al arrancar un servicio, reorganizar código enredado o decidir si partir en servicios. No para reglas de negocio concretas (domain-logic) ni para el contrato HTTP (api-design).
+description: "Diseña y audita la arquitectura de un servicio backend: monolito modular frente a microservicios, módulos por contexto de negocio con API pública y propiedad de sus tablas, capas dentro del módulo (transporte, aplicación, dominio, infraestructura), hexagonal pragmática con puertos para dependencias externas, inyección de dependencias y composition root, reglas de dependencia verificadas con herramientas, extracción gradual (strangler fig) y ADRs. Úsala al arrancar un servicio, reorganizar código enredado o decidir si partir en servicios. No para reglas de negocio concretas (domain-logic) ni para el contrato HTTP (api-design)."
 ---
 
 # Arquitectura del servicio

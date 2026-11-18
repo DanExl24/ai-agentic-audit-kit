@@ -12,7 +12,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | :--- | :--- | :--- |
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
-| **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 4 skills (`contracts`, `topology`, `flow-diagnosis` y el orquestador `audit`, que combina las auditorías de frontend y backend). Requiere los plugins `frontend` y `backend`. |
+| **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
 | QA & Testing | Prompts en `domains/05_qa_testing_engineering/` | ⏳ Pendiente |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md).
@@ -78,6 +78,7 @@ ai-agentic-audit-kit/
 │           ├── contracts/
 │           ├── topology/
 │           ├── flow-diagnosis/
+│           ├── feature/              # orquestador de construcción
 │           └── audit/                # orquestador conjunto
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar

@@ -13,6 +13,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Un formulario envía datos pero el servidor rechaza con 400 Bad Request, campos vacíos o nombres que no coinciden entre capas. | **skill `/fullstack:contracts`** | `plugins/fullstack/skills/contracts/` |
 | Un flujo falla (UI → red → API → BD) y no sabes en qué capa está la culpa. | **skill `/fullstack:flow-diagnosis`** | `plugins/fullstack/skills/flow-diagnosis/` |
 | El repositorio con frontend y backend tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **skill `/fullstack:topology`** | `plugins/fullstack/skills/topology/` |
+| Quieres construir una funcionalidad que toca varias áreas o ambas capas (pagos, CRUD con permisos, subida de archivos…). | **skill `/fullstack:feature`** | `plugins/fullstack/skills/feature/` |
 | Quieres auditar la aplicación completa (frontend + backend) o saber si está lista para producción. | **skill `/fullstack:audit`** | `plugins/fullstack/skills/audit/` |
 | Quieres auditar un módulo de frontend completo, saber si está listo para publicar o no sabes qué skill aplicar. | **skill `/frontend:audit`** | `plugins/frontend/skills/audit/` |
 | La interfaz es incómoda, fea o no sabes si funciona bien en móvil, tablet y laptop (sin código). | **skill `/frontend:ux-review`** | `plugins/frontend/skills/ux-review/` |
@@ -72,6 +73,7 @@ Las skills que cruzan frontend y backend están en `plugins/fullstack/skills/`. 
 | `/fullstack:contracts` | Tabla de cruce endpoint ↔ consumidor, 5 dimensiones de desajuste, contrato compartido (OpenAPI o esquemas), codegen, orden de despliegue de cambios. | `CONTRACT_RECONCILER` |
 | `/fullstack:topology` | Monolito modular, monorepo con paquetes o hexagonal; dependencias ilegítimas; migración strangler por fases. | `TOPOLOGY_REFACTORER` |
 | `/fullstack:flow-diagnosis` | Seguir un flujo UI → red → API → BD para localizar la capa culpable y corregir en la causa raíz. | diagnóstico E2E del `SYSTEM_PROMPT` |
+| `/fullstack:feature` | Orquestador de construcción: plan por capas con recetas, aviso de coste, contrato primero, pasos verificados, registro en `.sdlc/context.md`. | 🆕 |
 | `/fullstack:audit` | Orquestador conjunto: un aviso de coste, `frontend:audit` + `backend:audit` + skills entre capas, deduplicación y puntuación conjunta. | `ONE_SHOT_PROMPT` |
 
 * **¿Cuándo NO usarlas?** Para problemas de una sola capa: contraste de color → `/frontend:accessibility`; una consulta lenta ya identificada → `/backend:data-access`; fugas de memoria en el cliente → `/frontend:state-management`.
@@ -215,3 +217,5 @@ Si una skill de capa detecta que la causa raíz está en la otra capa, o que la 
 3. La skill entrega el hallazgo `FS-*` con la corrección en cada capa y el orden de despliegue.
 
 Para una revisión completa de punta a punta, `/fullstack:audit` hace todo esto en una sola pasada.
+
+Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md) y [`context.md`](../plugins/fullstack/standards/context.md).

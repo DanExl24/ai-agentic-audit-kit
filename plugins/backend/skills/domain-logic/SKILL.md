@@ -1,6 +1,6 @@
 ---
 name: domain-logic
-description: Diseña y audita la lógica de negocio de un backend: casos de uso y servicios de aplicación, entidades con comportamiento, value objects (dinero, fechas, identificadores), invariantes, máquinas de estado, errores de dominio, eventos y efectos secundarios tras el commit, y desacople de HTTP y del framework. Úsala al modelar reglas de negocio o ante controladores obesos, estados inválidos en la base de datos o lógica duplicada. No para consultas y transacciones en detalle (data-access) ni para la capa HTTP (http-layer).
+description: "Diseña y audita la lógica de negocio de un backend: casos de uso y servicios de aplicación, entidades con comportamiento, value objects (dinero, fechas, identificadores), invariantes, máquinas de estado, errores de dominio, eventos y efectos secundarios tras el commit, y desacople de HTTP y del framework. Úsala al modelar reglas de negocio o ante controladores obesos, estados inválidos en la base de datos o lógica duplicada. No para consultas y transacciones en detalle (data-access) ni para la capa HTTP (http-layer)."
 ---
 
 # Lógica de dominio

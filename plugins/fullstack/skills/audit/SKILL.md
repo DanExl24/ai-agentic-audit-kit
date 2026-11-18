@@ -24,6 +24,7 @@ Esta skill no audita código por sí misma: **coordina las auditorías de cada c
 2. **Objetivo:** completa, preocupación concreta, producción o pre-release.
 3. **Contexto:** stack de cada capa, tipo de producto (B2C, B2B multi-tenant, interno), datos sensibles, escala.
 4. **Ruta:** elige una de [routes.md](references/routes.md) y **explica en una línea por qué**. La ruta fija qué ruta de `frontend:audit` y de `backend:audit` se aplica y qué skills de este plugin entran.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Paso 1: elegir modo y confirmar el coste (una sola vez)
 
@@ -51,7 +52,7 @@ Una auditoría fullstack suma las de ambas capas: es la operación más cara del
    - Ordena por severidad ([severity.md](../../standards/severity.md)) y, a igual severidad, por esfuerzo.
    - Puntúa con la [rúbrica](references/report-template.md#rúbrica-de-puntuación).
    - Completa el anexo obligatorio «Referencias cargadas» con lo cargado de cada plugin.
-7. **Entrega** en el chat y, si es largo o se pide, en `audit-fullstack-<fecha>.md`.
+7. **Entrega** en el chat y, si es largo o se pide, en `audit-fullstack-<fecha>.md`. Actualiza `.sdlc/context.md` con los hallazgos abiertos y los handoffs pendientes.
 
 ## Modo Remediar
 
@@ -69,6 +70,16 @@ Una auditoría fullstack suma las de ambas capas: es la operación más cara del
 4. **Evidencia en ambas capas** para todo hallazgo `FS-*`.
 5. **Profundidad sobre amplitud:** mejor un módulo de punta a punta bien auditado que todo a medias.
 6. **Declara los límites:** plugins ausentes, entornos no accesibles, skills omitidas por coste.
+
+## Handoffs
+
+Como orquestador, no dispara handoffs por separado ([handoffs.md](../../standards/handoffs.md) regla 6): las skills se planifican en el Paso 1. Además:
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Las auditorías de capa informan de handoffs pendientes | Se consolidan en «Escalado sugerido» del dictamen | Origen, destino y evidencia |
+| Un flujo crítico falla durante la auditoría | `flow-diagnosis` (modo Diagnosticar) | Flujo y evidencia; se propone, no se ejecuta sin confirmación |
+| La remediación pedida reconstruye una funcionalidad entera (varios lotes en ambas capas) | `feature` | Hallazgos del lote y criterios de aceptación; se propone con su coste |
 
 ## Referencias
 

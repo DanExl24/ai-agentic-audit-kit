@@ -1,6 +1,6 @@
 ---
 name: observability
-description: Implementa y audita la observabilidad de un backend: logs estructurados con contexto y sin datos sensibles, correlación de peticiones y propagación de trazas (W3C traceparent, OpenTelemetry) por HTTP y mensajes, métricas RED/USE y de negocio con cardinalidad controlada, health checks (liveness, readiness, startup), tracking de errores con releases, SLOs con alertas por síntomas y runbooks. Úsala al preparar un servicio para producción o cuando un incidente es difícil de diagnosticar, las alertas son ruido o los logs no sirven. No para optimizar rendimiento (performance) ni para logs de auditoría legal (data-privacy).
+description: "Implementa y audita la observabilidad de un backend: logs estructurados con contexto y sin datos sensibles, correlación de peticiones y propagación de trazas (W3C traceparent, OpenTelemetry) por HTTP y mensajes, métricas RED/USE y de negocio con cardinalidad controlada, health checks (liveness, readiness, startup), tracking de errores con releases, SLOs con alertas por síntomas y runbooks. Úsala al preparar un servicio para producción o cuando un incidente es difícil de diagnosticar, las alertas son ruido o los logs no sirven. No para optimizar rendimiento (performance) ni para logs de auditoría legal (data-privacy)."
 ---
 
 # Observabilidad del backend

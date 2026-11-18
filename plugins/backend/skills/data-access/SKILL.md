@@ -1,6 +1,6 @@
 ---
 name: data-access
-description: Construye y audita el acceso a datos desde el código del backend (Prisma, TypeORM, Drizzle, SQLAlchemy, Django ORM, JPA/Hibernate, SQL directo): repositorios, consultas N+1, selección de columnas, transacciones y niveles de aislamiento, concurrencia (lost updates, bloqueo optimista y pesimista, actualizaciones atómicas, condiciones de carrera), pool de conexiones, timeouts, paginación y operaciones masivas. Úsala al escribir consultas o transacciones, o ante endpoints lentos, duplicados, saldos o stock incorrectos y pools agotados. No para diseño de esquema, índices y migraciones (schema-and-migrations).
+description: "Construye y audita el acceso a datos desde el código del backend (Prisma, TypeORM, Drizzle, SQLAlchemy, Django ORM, JPA/Hibernate, SQL directo): repositorios, consultas N+1, selección de columnas, transacciones y niveles de aislamiento, concurrencia (lost updates, bloqueo optimista y pesimista, actualizaciones atómicas, condiciones de carrera), pool de conexiones, timeouts, paginación y operaciones masivas. Úsala al escribir consultas o transacciones, o ante endpoints lentos, duplicados, saldos o stock incorrectos y pools agotados. No para diseño de esquema, índices y migraciones (schema-and-migrations)."
 ---
 
 # Acceso a datos

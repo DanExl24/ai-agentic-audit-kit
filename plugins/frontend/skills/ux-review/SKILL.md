@@ -1,6 +1,6 @@
 ---
 name: ux-review
-description: Evalúa y diseña la experiencia de usuario de interfaces web como un diseñador UI/UX senior y crítico: jerarquía visual, densidad y fatiga cognitiva, arquitectura de información, coherencia visual (color, tipografía, formas), responsive real en 13 viewports, tablas y formularios desde la UX, estados (carga, vacío, error), flujos y fricción, con propuestas Antes/Después. No revisa código. Úsala para criticar pantallas existentes (URL, app local o capturas) o especificar la UX de una pantalla nueva antes de programarla. No la uses para implementar en código (design-system, responsive-layout, forms) ni para certificar WCAG (accessibility).
+description: "Evalúa y diseña la experiencia de usuario de interfaces web como un diseñador UI/UX senior y crítico: jerarquía visual, densidad y fatiga cognitiva, arquitectura de información, coherencia visual (color, tipografía, formas), responsive real en 13 viewports, tablas y formularios desde la UX, estados (carga, vacío, error), flujos y fricción, con propuestas Antes/Después. No revisa código. Úsala para criticar pantallas existentes (URL, app local o capturas) o especificar la UX de una pantalla nueva antes de programarla. No la uses para implementar en código (design-system, responsive-layout, forms) ni para certificar WCAG (accessibility)."
 ---
 
 # Revisión y diseño de UX

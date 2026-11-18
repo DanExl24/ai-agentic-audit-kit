@@ -1,6 +1,6 @@
 ---
 name: authorization
-description: Diseña y audita la autorización en el backend: modelos RBAC, permisos, ABAC/políticas y relaciones (ReBAC), autorización por objeto (BOLA/IDOR) con consultas acotadas por propietario o tenant, autorización por función (endpoints de administración, deny by default), autorización por propiedad (campos legibles y editables por rol), aislamiento multi-tenant (incluido row-level security), recursos anidados, listados y exportaciones, permisos desactualizados en tokens y tests de matriz de permisos. Úsala al añadir roles o recursos compartidos, en sistemas multi-tenant o al revisar endpoints que reciben IDs. No para verificar identidad (authentication).
+description: "Diseña y audita la autorización en el backend: modelos RBAC, permisos, ABAC/políticas y relaciones (ReBAC), autorización por objeto (BOLA/IDOR) con consultas acotadas por propietario o tenant, autorización por función (endpoints de administración, deny by default), autorización por propiedad (campos legibles y editables por rol), aislamiento multi-tenant (incluido row-level security), recursos anidados, listados y exportaciones, permisos desactualizados en tokens y tests de matriz de permisos. Úsala al añadir roles o recursos compartidos, en sistemas multi-tenant o al revisar endpoints que reciben IDs. No para verificar identidad (authentication)."
 ---
 
 # Autorización

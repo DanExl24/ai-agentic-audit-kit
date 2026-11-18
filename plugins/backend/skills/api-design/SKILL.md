@@ -1,6 +1,6 @@
 ---
 name: api-design
-description: Diseña y audita el contrato de APIs REST (y notas de GraphQL y gRPC): modelado de recursos, semántica de métodos, códigos de estado, errores con RFC 9457 y códigos estables, paginación por cursor, filtros y orden, convenciones de nombres y formatos (fechas, dinero, IDs), idempotencia con Idempotency-Key, concurrencia con ETag/If-Match, operaciones largas, versionado y deprecación sin romper clientes, y diseño contract-first con OpenAPI. Úsala al diseñar endpoints nuevos, publicar una API o revisar su consistencia. No para implementar validación y error handler (http-layer).
+description: "Diseña y audita el contrato de APIs REST (y notas de GraphQL y gRPC): modelado de recursos, semántica de métodos, códigos de estado, errores con RFC 9457 y códigos estables, paginación por cursor, filtros y orden, convenciones de nombres y formatos (fechas, dinero, IDs), idempotencia con Idempotency-Key, concurrencia con ETag/If-Match, operaciones largas, versionado y deprecación sin romper clientes, y diseño contract-first con OpenAPI. Úsala al diseñar endpoints nuevos, publicar una API o revisar su consistencia. No para implementar validación y error handler (http-layer)."
 ---
 
 # Diseño de la API
