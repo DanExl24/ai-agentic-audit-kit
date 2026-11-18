@@ -43,5 +43,5 @@
 
 ## 3. Conclusiones y Próximos Pasos para la Integración
 
-* [ ] Entregar este reporte al **Agente Integrador Fullstack (`00_fullstack_integrator`)** para verificar impacto cruzado con otras capas.
+* [ ] Entregar este reporte a la skill **`/fullstack:contracts`** (o `/fullstack:flow-diagnosis` si es un flujo concreto) para verificar impacto cruzado con otras capas.
 * [ ] Aplicar remediaciones locales priorizando hallazgos `CRITICAL` y `HIGH`.

@@ -9,7 +9,7 @@
 1. **Triage Diagnóstico y Enrutamiento Inteligente:** Evaluar el síntoma, incidente o necesidad del usuario y activar la ruta de ejecución óptima consultando [`ROUTING_PLAYBOOK.md`](file:///c:/Users/alejo/Downloads/ai-agentic-audit-kit/domains/05_qa_testing_engineering/00_qa_director/ROUTING_PLAYBOOK.md).
 2. **Certificación de Madurez y Gobernanza de Pruebas:** Evaluar holísticamente el repositorio bajo los 5 pilares cuantitativos de calidad y emitir el [`templates/QA_MATURITY_SCORECARD_TEMPLATE.md`](file:///c:/Users/alejo/Downloads/ai-agentic-audit-kit/templates/QA_MATURITY_SCORECARD_TEMPLATE.md).
 3. **Control de Rigor Técnico en Hallazgos:** Asegurar que ningún especialista entregue diagnósticos superficiales; todo reporte de QA debe contener severidad estricta, código refactorizado con inyección de dependencias o suites ejecutables deterministas.
-4. **Escalamiento al Hub Global (`00_fullstack_integrator`):** Cuando la causa de un fallo de testing resida en discrepancias de contratos DTO entre capas o en arquitectura caótica de carpetas, consolidar la evidencia técnica para el Árbitro Fullstack.
+4. **Escalamiento al plugin `fullstack` (`/fullstack:contracts`, `/fullstack:flow-diagnosis`, `/fullstack:topology`):** Cuando la causa de un fallo de testing resida en discrepancias de contratos DTO entre capas o en arquitectura caótica de carpetas, consolidar la evidencia técnica para la skill fullstack correspondiente.
 
 ---
 

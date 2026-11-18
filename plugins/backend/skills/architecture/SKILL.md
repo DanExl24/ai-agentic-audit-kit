@@ -15,7 +15,7 @@ La arquitectura de un backend decide **cuánto cuesta el próximo cambio**. La m
 - Extraer un módulo a un servicio propio, o volver a unir servicios demasiado acoplados.
 - Documentar decisiones de arquitectura.
 
-**No es para:** las reglas de negocio dentro del módulo → `domain-logic` · el contrato de la API → `api-design` · comunicación asíncrona en detalle (colas, outbox, sagas) → `async-messaging` · estructura de un monorepo frontend + backend → `domains/00_fullstack_integrator` (pendiente de migrar).
+**No es para:** las reglas de negocio dentro del módulo → `domain-logic` · el contrato de la API → `api-design` · comunicación asíncrona en detalle (colas, outbox, sagas) → `async-messaging` · estructura de un monorepo frontend + backend → `fullstack:topology`.
 
 ## Paso 0: contexto (ambos modos)
 

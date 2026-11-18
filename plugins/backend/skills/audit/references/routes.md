@@ -112,6 +112,9 @@ data-privacy → authorization → observability (logs y trazas) → integration
 | Problema | Dónde |
 | :--- | :--- |
 | Interfaz, consumo de la API en el cliente, seguridad del navegador | plugin `frontend` (`frontend:audit` o la skill concreta) |
-| Contratos divergentes entre frontend y backend, fallos que cruzan capas, monorepo | `domains/00_fullstack_integrator/` (pendiente de migrar) |
+| Contratos divergentes entre frontend y backend | plugin `fullstack` → `contracts` |
+| Un flujo que falla sin saber en qué capa | plugin `fullstack` → `flow-diagnosis` |
+| Estructura de un repositorio con frontend y backend, monorepo | plugin `fullstack` → `topology` |
+| Auditar la aplicación completa (frontend + backend) | plugin `fullstack` → `audit` |
 | Pruebas de carga completas, DAST contra el entorno en ejecución, suites E2E, análisis de causa raíz de incidentes | `domains/05_qa_testing_engineering/` (pendiente de migrar) |
 | Infraestructura, despliegue, redes, Kubernetes | futuro dominio DevOps |

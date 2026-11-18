@@ -86,9 +86,9 @@ Cuando el **Fullstack Integrator** consume hallazgos verticales, aplica las sigu
 ### Modo A: Cascada Desacoplada (Asíncrono)
 1. El usuario invoca al especialista vertical relevante para auditar una carpeta puntual (ej. `src/frontend/views`).
 2. El especialista genera un archivo de hallazgos en `reports/findings-frontend.md`.
-3. El usuario invoca al `00_fullstack_integrator` pasándole dicho archivo junto con el código de backend.
-4. El Integrador sintetiza el informe final.
+3. El usuario invoca `/fullstack:contracts` o `/fullstack:flow-diagnosis` pasándole dicho archivo junto con la ruta del backend.
+4. La skill sintetiza el informe final con la corrección en ambas capas.
 
 ### Modo B: Análisis Autónomo Directo (One-Shot Fullstack)
-1. El usuario invoca directamente al `00_fullstack_integrator` sobre la raíz de un repositorio completo.
-2. El Integrador evalúa simultáneamente las fronteras entre frontend y backend, la estructura de carpetas, los contratos de API y los puntos de dolor de integración sin requerir la ejecución previa de los especialistas.
+1. El usuario invoca directamente `/fullstack:audit` sobre la raíz de un repositorio completo.
+2. El orquestador evalúa simultáneamente las fronteras entre frontend y backend, la estructura de carpetas, los contratos de API y los puntos de dolor de integración sin requerir la ejecución previa de los especialistas.

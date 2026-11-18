@@ -15,7 +15,7 @@ El contrato de una API es una promesa: los clientes (frontend, apps móviles, in
 - Introducir versionado, deprecación o un flujo contract-first con OpenAPI.
 - Operaciones que no son CRUD: acciones, procesos largos, operaciones masivas.
 
-**No es para:** la implementación de validación, error handler y DTOs → `http-layer` · autenticación del cliente → `authentication` · desajustes concretos entre el frontend y la API → `domains/00_fullstack_integrator` (pendiente de migrar) o `frontend:data-fetching`.
+**No es para:** la implementación de validación, error handler y DTOs → `http-layer` · autenticación del cliente → `authentication` · desajustes concretos entre el frontend y la API → `fullstack:contracts` o `frontend:data-fetching`.
 
 ## Paso 0: contexto (ambos modos)
 

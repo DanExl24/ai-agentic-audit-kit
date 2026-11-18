@@ -10,8 +10,10 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 
 | Si tu síntoma o necesidad es... | El agente indicado es... | Ruta en el Kit |
 | :--- | :--- | :--- |
-| Un formulario envía datos pero el servidor rechaza con 400 Bad Request o campos vacíos. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
-| El proyecto tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
+| Un formulario envía datos pero el servidor rechaza con 400 Bad Request, campos vacíos o nombres que no coinciden entre capas. | **skill `/fullstack:contracts`** | `plugins/fullstack/skills/contracts/` |
+| Un flujo falla (UI → red → API → BD) y no sabes en qué capa está la culpa. | **skill `/fullstack:flow-diagnosis`** | `plugins/fullstack/skills/flow-diagnosis/` |
+| El repositorio con frontend y backend tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **skill `/fullstack:topology`** | `plugins/fullstack/skills/topology/` |
+| Quieres auditar la aplicación completa (frontend + backend) o saber si está lista para producción. | **skill `/fullstack:audit`** | `plugins/fullstack/skills/audit/` |
 | Quieres auditar un módulo de frontend completo, saber si está listo para publicar o no sabes qué skill aplicar. | **skill `/frontend:audit`** | `plugins/frontend/skills/audit/` |
 | La interfaz es incómoda, fea o no sabes si funciona bien en móvil, tablet y laptop (sin código). | **skill `/frontend:ux-review`** | `plugins/frontend/skills/ux-review/` |
 | Estructura caótica de carpetas frontend, dependencias circulares, features acopladas. | **skill `/frontend:architecture`** | `plugins/frontend/skills/architecture/` |
@@ -61,26 +63,18 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 
 ---
 
-### 🧠 DOMINIO 00: EL HUB INTEGRADOR
+### 🔗 DOMINIO 00: FULLSTACK (plugin `fullstack`)
 
-#### Agente: `00_fullstack_integrator` (Staff Cross-Layer Systems Architect)
+Las skills que cruzan frontend y backend están en `plugins/fullstack/skills/`. Requieren los plugins `frontend` y `backend` (invocan a sus skills) y comparten escala y formato en `plugins/fullstack/standards/` (códigos `FS-*`, con evidencia en servidor y cliente). Catálogo: [`plugins/fullstack/README.md`](../plugins/fullstack/README.md).
 
-* **¿Qué hace exactamente?**
-  Es el **árbitro y arquitecto sistémico**. Inspecciona la frontera entre el cliente (SPA) y el servidor (API), detectando divergencias en contratos (camelCase vs snake_case, DTOs incompatibles), diagnosticando fallos en cascada E2E y diseñando la topología limpia de carpetas de todo el repositorio.
-* **¿Cuándo DEBES usarlo?**
-  - Cuando un flujo que involucra UI ➔ Network ➔ API ➔ Base de datos falla y no sabes en qué capa está la culpa.
-  - Cuando Frontend y Backend han evolucionado por separado y sospechas que hay endpoints desfasados o rotos.
-  - Cuando el repositorio es un monorock o código espagueti y necesitas una propuesta visual de reestructuración limpia sin romper producción.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `/frontend:accessibility`).
-  - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `/backend:data-access` o `/backend:schema-and-migrations`).
-  - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `/frontend:state-management`).
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Ruta de la carpeta Frontend + Ruta de la carpeta Backend.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 00_fullstack_integrator. Audita la integración entre Frontend ([ruta/frontend]) y Backend ([ruta/backend]). Identifica discrepancias de contratos, fallos E2E y propón una estructura limpia de carpetas bajo templates/FULLSTACK_SYNTHESIS_REPORT.md.
-    ```
+| Skill | Qué cubre | Sustituye a |
+| :--- | :--- | :--- |
+| `/fullstack:contracts` | Tabla de cruce endpoint ↔ consumidor, 5 dimensiones de desajuste, contrato compartido (OpenAPI o esquemas), codegen, orden de despliegue de cambios. | `CONTRACT_RECONCILER` |
+| `/fullstack:topology` | Monolito modular, monorepo con paquetes o hexagonal; dependencias ilegítimas; migración strangler por fases. | `TOPOLOGY_REFACTORER` |
+| `/fullstack:flow-diagnosis` | Seguir un flujo UI → red → API → BD para localizar la capa culpable y corregir en la causa raíz. | diagnóstico E2E del `SYSTEM_PROMPT` |
+| `/fullstack:audit` | Orquestador conjunto: un aviso de coste, `frontend:audit` + `backend:audit` + skills entre capas, deduplicación y puntuación conjunta. | `ONE_SHOT_PROMPT` |
+
+* **¿Cuándo NO usarlas?** Para problemas de una sola capa: contraste de color → `/frontend:accessibility`; una consulta lenta ya identificada → `/backend:data-access`; fugas de memoria en el cliente → `/frontend:state-management`.
 
 ---
 
@@ -212,24 +206,12 @@ El dominio de Calidad de Software, Arquitectura de Pruebas y Resiliencia está l
 
 ---
 
-## 🔁 3. Protocolo de Escalación: Del Especialista al Integrador
+## 🔁 3. Escalado entre capas
 
-Si durante la auditoría un especialista vertical detecta que el problema no puede solucionarse en su propia capa:
+Si una skill de capa detecta que la causa raíz está en la otra capa, o que la corrección necesita las dos:
 
-```mermaid
-sequenceDiagram
-    participant Dev as Desarrollador
-    participant Spec as Especialista Vertical (ej. Frontend)
-    participant Hub as Agente Integrador Fullstack (00)
+1. Reúne la evidencia de la skill (archivo, petición, respuesta, pasos).
+2. Invoca `/fullstack:contracts` si es un desajuste de contrato, o `/fullstack:flow-diagnosis` si es un flujo concreto, con las rutas de ambas capas.
+3. La skill entrega el hallazgo `FS-*` con la corrección en cada capa y el orden de despliegue.
 
-    Dev->>Spec: Invoca auditoría en Componente
-    Spec-->>Dev: Emite ATOMIC_FINDING: "El backend rechaza el payload porque espera 'user_id' y enviamos 'userId'"
-    Note over Dev: El fix requiere modificar contrato o backend
-    Dev->>Hub: Invoca con el ATOMIC_FINDING + Código Backend
-    Hub-->>Dev: Emite FULLSTACK_SYNTHESIS_REPORT reconciliando el DTO y actualizando ambas capas
-```
-
-1. El especialista emite su **`ATOMIC_FINDING_TEMPLATE.md`**.
-2. Si el hallazgo indica que la causa raíz reside en la contraparte (o requiere coordinar ambas), ejecutas al **`00_fullstack_integrator`**.
-3. Le pasas como insumo el reporte del especialista junto con la ruta de la contraparte.
-4. El Integrador emite el **`FULLSTACK_SYNTHESIS_REPORT.md`** con la solución definitiva de extremo a extremo.
+Para una revisión completa de punta a punta, `/fullstack:audit` hace todo esto en una sola pasada.

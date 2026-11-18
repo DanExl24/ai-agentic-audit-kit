@@ -119,7 +119,10 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 
 | Problema | Dónde |
 | :--- | :--- |
-| Contratos de API divergentes, fallos que cruzan capas, estructura del monorepo | `domains/00_fullstack_integrator/` |
+| Contratos de API divergentes | plugin `fullstack` → `contracts` |
+| Un flujo que falla sin saber en qué capa | plugin `fullstack` → `flow-diagnosis` |
+| Estructura del repositorio con frontend y backend, monorepo | plugin `fullstack` → `topology` |
+| Auditar la aplicación completa (frontend + backend) | plugin `fullstack` → `audit` |
 | Validación de entrada, errores HTTP, formato de respuestas en el servidor | plugin `backend` → `http-layer` |
 | Reglas de negocio, transiciones de estado, cálculos de importes en el servidor | plugin `backend` → `domain-logic` |
 | Consultas lentas, N+1, transacciones, condiciones de carrera | plugin `backend` → `data-access` |

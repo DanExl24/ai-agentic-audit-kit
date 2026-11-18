@@ -11,11 +11,11 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | Dominio | Formato | Estado |
 | :--- | :--- | :--- |
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
-| Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
+| **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 4 skills (`contracts`, `topology`, `flow-diagnosis` y el orquestador `audit`, que combina las auditorías de frontend y backend). Requiere los plugins `frontend` y `backend`. |
 | QA & Testing | Prompts en `domains/05_qa_testing_engineering/` | ⏳ Pendiente |
 
-Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md).
+Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md).
 
 ---
 
@@ -49,31 +49,38 @@ ai-agentic-audit-kit/
 │   │       ├── observability/
 │   │       ├── i18n/
 │   │       └── tooling/
-│   └── backend/
+│   ├── backend/
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── standards/            # severidad y formato de informes (códigos BE-*)
+│   │   └── skills/
+│   │       ├── http-layer/
+│   │       ├── domain-logic/
+│   │       ├── data-access/
+│   │       ├── schema-and-migrations/
+│   │       ├── authentication/
+│   │       ├── authorization/
+│   │       ├── api-security/
+│   │       ├── architecture/
+│   │       ├── api-design/
+│   │       ├── async-messaging/
+│   │       ├── integrations/
+│   │       ├── caching/
+│   │       ├── observability/
+│   │       ├── performance/
+│   │       ├── testing/
+│   │       ├── tooling/
+│   │       ├── data-privacy/
+│   │       └── audit/                # orquestador
+│   └── fullstack/                # requiere frontend y backend
 │       ├── .claude-plugin/plugin.json
-│       ├── standards/            # severidad y formato de informes (códigos BE-*)
+│       ├── standards/
 │       └── skills/
-│           ├── http-layer/
-│           ├── domain-logic/
-│           ├── data-access/
-│           ├── schema-and-migrations/
-│           ├── authentication/
-│           ├── authorization/
-│           ├── api-security/
-│           ├── architecture/
-│           ├── api-design/
-│           ├── async-messaging/
-│           ├── integrations/
-│           ├── caching/
-│           ├── observability/
-│           ├── performance/
-│           ├── testing/
-│           ├── tooling/
-│           ├── data-privacy/
-│           └── audit/                # orquestador
+│           ├── contracts/
+│           ├── topology/
+│           ├── flow-diagnosis/
+│           └── audit/                # orquestador conjunto
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
-│   ├── 00_fullstack_integrator/
 │   └── 05_qa_testing_engineering/
 │
 ├── protocols/                    # protocolo de interoperabilidad del formato antiguo
@@ -93,6 +100,7 @@ Desde Claude Code:
 /plugin marketplace add <ruta-local-o-repo-github-de-este-kit>
 /plugin install frontend@sdlc-skills
 /plugin install backend@sdlc-skills
+/plugin install fullstack@sdlc-skills
 ```
 
 Instala solo los plugins de los dominios que use cada proyecto (cada plugin añade sus descripciones al contexto de la sesión).
