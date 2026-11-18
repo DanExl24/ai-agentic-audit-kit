@@ -33,3 +33,4 @@ Aplícalo a cada flujo crítico (login, alta, pago, guardado de los datos princi
 
 - [ ] Cookies, CORS, proxy y zonas horarias están configurados igual (o de forma explícitamente distinta) entre local, staging y producción. *(HIGH si el flujo falla solo en producción)*
 - [ ] Las variables de entorno del flujo se validan al arrancar. *(MEDIUM)*
+- [ ] No hay IPs, puertos ni credenciales fijas en el código o en `.env` versionados que rompan el flujo al cambiar de red o de equipo. *(MEDIUM; HIGH si impiden arrancar)*

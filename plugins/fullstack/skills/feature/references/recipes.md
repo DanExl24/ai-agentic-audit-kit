@@ -30,7 +30,7 @@ Cada receta es un punto de partida: se ajusta al proyecto (se quita lo que ya ex
 
 ## Autenticación (login, registro, recuperación)
 
-1 ★ `backend:authentication` (estrategia de sesión, hashing, login sin enumeración, reset) → 2 ★ `fullstack:contracts` (sesión, cookies, CORS, refresh) → 3 ★ `backend:api-security` (rate limit de login y reset) → 4 ★ `frontend:routing` (guards y redirecciones seguras) → 5 ★ `frontend:forms` → 6 ★ `frontend:security` (almacenamiento del token o cookie) → 7 `backend:observability` (eventos de seguridad sin datos sensibles) → 8 ★ tests de ambos lados (incluido el flujo de refresh).
+0 ★ **Topología de entornos** (cómo se sirven frontend y API en desarrollo y producción; ver `fullstack:contracts` § Topología de entornos): decide mismo origen con proxy o API por HTTPS **antes** de elegir cookies → 1 ★ `backend:authentication` (estrategia de sesión, hashing, login sin enumeración, reset) → 2 ★ `fullstack:contracts` (sesión, cookies, CORS, refresh; variante compatible durante un ciclo si se retira `Authorization: Bearer`) → 3 ★ `backend:api-security` (rate limit de login y reset) → 4 ★ `frontend:routing` (guards y redirecciones seguras) → 5 ★ `frontend:forms` → 6 ★ `frontend:security` (almacenamiento del token o cookie) → 7 `backend:observability` (eventos de seguridad sin datos sensibles) → 8 ★ tests de ambos lados (incluido el flujo de refresh).
 
 ## Pagos con un proveedor (Stripe, Adyen, MercadoPago…)
 

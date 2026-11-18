@@ -9,6 +9,8 @@
 - Stack: <frontend> ↔ <backend> · contrato: <OpenAPI | shared/ | nuevo>
 - Receta base: <nombre> — ajustes: <qué se quitó o añadió y por qué>
 - Contexto compartido: <.sdlc/context.md leído | se creará>
+- Entornos: <cómo se sirven frontend y API en desarrollo y producción: esquema, host, puerto, proxy>
+- Huella estimada: <≈ N archivos: n backend, n frontend, n compartido> · <propuesta de partir en sesiones si supera ~15>
 
 | # | Skill | Capa | Entregable | Depende de | Modo |
 | :-: | :--- | :--- | :--- | :-: | :--- |
@@ -17,7 +19,7 @@
 | 3 | backend:schema-and-migrations | Backend | Migración `orders` | 1 | ★ |
 | … | | | | | |
 
-**Requieren aprobación:** <migración sobre tabla de N filas · dependencia nueva X · secreto nuevo Y · cambio incompatible del contrato Z>
+**Requieren aprobación (se confirman siempre):** <cambio incompatible del contrato Z y su variante compatible · sesiones invalidadas · migración sobre tabla de N filas · dependencia nueva X · secreto o variable nueva Y · cambio de CORS, cookies o proxy>
 
 **Modos:** completa (todos los pasos, ≈ N skills) · enfocada (★, ≈ M skills, por defecto) · mínima (pasos 1–k).
 ```
@@ -55,4 +57,9 @@
 | Skill | SKILL.md | patterns.md | Nota de stack | Checklist (verificación) |
 | :--- | :-: | :-: | :-: | :-: |
 | backend:api-design | ✅ | ✅ | ✅ node.md | ✅ rápido |
+
+**Áreas tocadas sin cargar su skill:**
+| Área (skill) | Archivos | Motivo |
+| :--- | :--- | :--- |
+| frontend:data-fetching | `src/services/apiClient.ts` + 5 servicios | Modo mínima: cambio mecánico de cabeceras |
 ```

@@ -29,6 +29,7 @@ Un disparador es **concreto y comprobable** en el código o en el objetivo ("un 
 
 1. **Profundidad máxima de 2.** La skill invocada por el usuario puede pasar a otra (nivel 1) y esta a una tercera (nivel 2). Los disparadores del nivel 2 no se ejecutan: se registran como pendientes.
 2. **No se reinvoca una skill ya aplicada** en la misma tarea. Si su alcance cambia, se amplía el trabajo existente en lugar de repetirlo.
+   - **Nunca hay handoffs de una skill a sí misma:** lo que la skill detecta fuera del alcance pedido es un **hallazgo abierto**, con el código y la numeración de su plugin (`BE-AUTHN-001`, no `BE-AUTHN-PLAIN`), no un handoff.
 3. **Alcance acotado.** Un handoff no es una auditoría ni un desarrollo completo de la otra skill: se aplica solo a lo que activó el disparador.
    - En modo **Auditar**, la skill destino aplica los puntos de su `checklist.md` que tocan ese alcance y emite hallazgos con su propio código (`BE-*`, `FE-*`, `FS-*`).
    - En modo **Construir**, aplica su `patterns.md` a la pieza concreta.

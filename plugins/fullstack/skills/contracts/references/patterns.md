@@ -66,6 +66,19 @@ Reglas comunes:
 
 Anti-patrones: token de acceso en `localStorage` (expuesto a XSS) combinado con una API sin defensas adicionales; CORS `*` con credenciales (el navegador lo rechaza y se "arregla" reflejando cualquier `Origin`); refresh disparado por cada petición en paralelo.
 
+### Topología de entornos
+
+La estrategia de sesión depende de cómo se sirven frontend y API en **cada** entorno (desarrollo en `localhost`, desarrollo en la LAN, staging, producción). Compruébalo antes de cambiarla:
+
+| Situación | Qué pasa | Solución |
+| :--- | :--- | :--- |
+| Página por HTTPS y API por HTTP (p. ej. Vite con certificado local y backend en `http://IP:3000`) | El navegador bloquea las peticiones por contenido mixto (salvo hacia `localhost`); además, con esquemas distintos los sitios son diferentes y las cookies `SameSite=Lax` no se envían | Proxy al mismo origen (`server.proxy` de Vite, proxy de Angular o Next en desarrollo; proxy inverso en producción) o API también por HTTPS |
+| Frontend y API en sitios distintos de verdad | Cookies de terceros: necesitan `SameSite=None; Secure` (API por HTTPS) y CORS con credenciales; algunos navegadores las bloquean igualmente | Servir ambos bajo el mismo sitio (subdominios del mismo dominio) o el mismo origen con proxy |
+| IPs o puertos fijos en `.env` o en la configuración del bundler | La app deja de funcionar al cambiar de red o de equipo | URLs relativas con proxy al mismo origen; la URL del backend solo en la configuración del proxy |
+| Orígenes permitidos solo para `localhost` | CORS y la comprobación de `Origin` del CSRF rechazan el acceso desde la LAN | Añadir los orígenes de desarrollo reales a la configuración (`CORS_ORIGIN`) o usar el mismo origen |
+
+**Recomendación por defecto:** frontend y API bajo el mismo origen (proxy en desarrollo y en producción). Elimina el contenido mixto, CORS y los problemas de cookies de terceros.
+
 ## Verificación del contrato
 
 - **Servidor:** test que valida las respuestas reales contra la especificación (Schemathesis, Dredd, `jest-openapi`, tests de Spring con `springdoc`) o contra los esquemas compartidos.

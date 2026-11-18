@@ -43,4 +43,4 @@
 | audit | conserva `FE-*`, `BE-*` y `FS-*` |
 | feature | no emite hallazgos: entrega según su `plan-template.md` |
 
-Los hallazgos de una sola capa usan los códigos y el formato del plugin correspondiente (`frontend`/`backend`).
+Los hallazgos de una sola capa usan los códigos y el formato del plugin correspondiente (`frontend`/`backend`). La numeración es siempre secuencial (`FS-CONTRACT-001`, `BE-AUTHN-002`); no se inventan sufijos descriptivos.

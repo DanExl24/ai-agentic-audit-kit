@@ -39,6 +39,7 @@ Severidad orientativa; ajústala con [severity.md](../../../standards/severity.m
 - [ ] Cookies con `HttpOnly`, `Secure` y `SameSite` adecuados; el cliente envía credenciales. *(HIGH)*
 - [ ] CORS con orígenes explícitos; nunca reflejar cualquier `Origin` con credenciales. *(HIGH)*
 - [ ] Un único refresh en vuelo; la petición original se reintenta una vez. *(MEDIUM)*
+- [ ] La estrategia de sesión funciona en la topología real de cada entorno: sin contenido mixto (página HTTPS → API HTTP), cookies de primera parte o `SameSite=None; Secure` con API HTTPS, sin IPs fijas en `.env` o en el bundler ([patterns.md § Topología](patterns.md#topología-de-entornos)). *(HIGH si el login no funciona en algún entorno)*
 
 ## Lógica entre capas
 

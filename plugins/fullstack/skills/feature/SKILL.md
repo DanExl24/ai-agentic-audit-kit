@@ -20,26 +20,34 @@ Una funcionalidad real rara vez cabe en una sola skill: "añadir pagos" necesita
 1. **Objetivo y criterios de aceptación:** qué debe poder hacer el usuario y cómo se sabe que está hecho. Si es ambiguo, pregunta lo imprescindible (una vez, todo junto).
 2. **Contexto compartido:** si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 3. **Proyecto:** stack de cada capa (manifiestos), estructura, contrato existente (OpenAPI, `shared/`), patrones ya usados en funcionalidades parecidas: **la nueva se construye como las existentes** salvo que sean dañinas.
-4. **Plugins disponibles:** `frontend` y `backend`. Si falta uno, el plan cubre la capa disponible y deja la otra como pendiente explícito.
+4. **Entornos:** cómo se sirven frontend y API en desarrollo y en producción (esquema, host, puerto, proxy, IPs fijas en `.env` o en la configuración del bundler). Un cambio de sesión, CORS o URLs depende de esto (ver `contracts` § [Topología de entornos](../contracts/references/patterns.md#topología-de-entornos)).
+5. **Plugins disponibles:** `frontend` y `backend`. Si falta uno, el plan cubre la capa disponible y deja la otra como pendiente explícito.
 
 ## Paso 1: plan
 
 1. Busca la receta más cercana en [recipes.md](references/recipes.md); si no encaja ninguna, compón el plan con el orden por defecto de [recipes.md § Orden](references/recipes.md#orden-por-defecto).
 2. Ajusta la receta al proyecto: quita lo que ya existe, añade lo que el objetivo exige (multi-tenant, datos personales, alto tráfico).
-3. Redacta el plan con [plan-template.md](references/plan-template.md): pasos, skill de cada paso, capa, entregable, dependencias y riesgos que requieren aprobación (migraciones sobre tablas grandes, cambios incompatibles de contrato, dependencias nuevas, secretos).
+3. **Estima la huella del cambio:** busca los usos afectados (llamadas al endpoint, imports, vistas, servicios) y cuenta los archivos a tocar por capa. Es lo que más pesa en el coste, más que el número de skills.
+4. Redacta el plan con [plan-template.md](references/plan-template.md): pasos, skill de cada paso, capa, entregable, dependencias, huella estimada y **riesgos que requieren aprobación**:
+   - cambios incompatibles de contrato (quitar o renombrar campos, cabeceras o endpoints);
+   - efectos sobre usuarios en curso (sesiones invalidadas, datos migrados);
+   - migraciones sobre tablas grandes, dependencias nuevas, secretos o variables de entorno nuevas;
+   - cambios de configuración de entornos (CORS, cookies, proxy, puertos).
 
 ## Paso 2: elegir modo y confirmar el coste
 
-Cada paso carga la skill (`SKILL.md` + `patterns.md` + nota de stack: del orden de 4.000–6.000 tokens) y escribe código en ambas capas. **Presenta el plan con estos modos y espera la elección:**
+El coste lo marca sobre todo **la huella del cambio** (archivos que se leen y se modifican); cada skill añade además del orden de 4.000–6.000 tokens (`SKILL.md` + `patterns.md` + nota de stack). **Presenta el plan con estos modos y espera la elección:**
 
 | Modo | Qué incluye | Coste orientativo |
 | :--- | :--- | :--- |
-| **Completa** | Todos los pasos de la receta ajustada, tests en ambas capas y verificación final con los checklists de cada skill aplicada | Alto: ≈ 5 k tokens por skill + el código |
-| **Enfocada** (por defecto) | Los pasos imprescindibles para los criterios de aceptación con tests de los caminos críticos; el resto queda como pendiente | Medio |
-| **Mínima** | Contrato, backend y frontend esenciales con verificación de tipos y tests básicos | Bajo |
+| **Completa** | Todos los pasos de la receta ajustada, tests en ambas capas y verificación final con los checklists de cada skill aplicada | Huella completa + ≈ 5 k tokens por skill |
+| **Enfocada** (por defecto) | Los pasos imprescindibles para los criterios de aceptación con tests de los caminos críticos; el resto queda como pendiente | Huella completa + menos skills |
+| **Mínima** | Contrato, backend y frontend esenciales con verificación de tipos y tests básicos | Menos skills y tests, **pero la misma huella**: si el cambio toca muchos archivos, no es barato |
 
-- **No preguntes** si el usuario ya fijó el alcance o la ejecución no es interactiva: aplica lo pedido (o el modo enfocado) y decláralo.
-- Tras la confirmación, no vuelvas a preguntar entre pasos salvo en los **riesgos marcados para aprobación**.
+- Da la huella en números ("≈ 25 archivos: 9 de backend, 16 de frontend"). **Con más de ~15 archivos, propón partir el trabajo** (p. ej. contrato y backend en una sesión, frontend en otra), aunque el modo sea mínima.
+- Si el usuario ya fijó el modo, **no preguntes por el modo**; si la ejecución no es interactiva, aplica el modo enfocado y decláralo.
+- **Los riesgos marcados para aprobación se confirman siempre,** aunque el modo esté fijado, salvo que el usuario haya dicho explícitamente que procedas sin preguntar. Si la ejecución no es interactiva, elige la variante compatible (servidor amplía, cliente migra, retirada en otro despliegue; ver `contracts` § [Evolución](../contracts/references/patterns.md#evolución-y-orden-de-despliegue)) o detente antes de ese paso y déjalo como pendiente.
+- Tras la confirmación, no vuelvas a preguntar entre pasos salvo en esos riesgos.
 
 ## Paso 3: construir
 
@@ -65,7 +73,7 @@ Los disparadores de handoff que aparezcan durante un paso se tratan según [hand
    - cómo se verificó y qué no se pudo verificar;
    - orden de despliegue si hay migraciones o cambios de contrato;
    - pendientes (pasos omitidos por el modo, handoffs no ejecutados);
-   - anexo «Skills aplicadas» con lo cargado de cada una.
+   - anexo «Skills aplicadas» con lo cargado de cada una **y las áreas tocadas sin cargar su skill** (p. ej. router o cliente HTTP modificados sin `frontend:routing` ni `frontend:data-fetching`), con el motivo.
 3. Actualiza `.sdlc/context.md`: objetivo completado, decisiones tomadas, pendientes.
 
 ## Principios
