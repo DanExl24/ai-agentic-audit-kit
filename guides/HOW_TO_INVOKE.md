@@ -30,9 +30,10 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Pantallas en blanco tras un error, errores de usuarios que no llegan al equipo o llegan sin contexto. | **skill `/frontend:observability`** | `plugins/frontend/skills/observability/` |
 | Varios idiomas o países: textos sin traducir, plurales, fechas, monedas, RTL. | **skill `/frontend:i18n`** | `plugins/frontend/skills/i18n/` |
 | CI lento o débil, builds no reproducibles, variables de entorno caóticas, lint y formato. | **skill `/frontend:tooling`** | `plugins/frontend/skills/tooling/` |
-| Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
-| Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
-| Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
+| Peticiones colgadas, endpoints sin validación, errores 500 con stack trace, respuestas que filtran campos internos. | **skill `/backend:http-layer`** | `plugins/backend/skills/http-layer/` |
+| Controladores gigantes, reglas de negocio duplicadas, estados imposibles, dinero en float. | **skill `/backend:domain-logic`** | `plugins/backend/skills/domain-logic/` |
+| N+1, consultas sin límite, operaciones sin transacción, sobreventa o saldos incorrectos bajo concurrencia, pool agotado. | **skill `/backend:data-access`** | `plugins/backend/skills/data-access/` |
+| Faltan índices, consultas lentas en EXPLAIN, migraciones que bloquean tablas o cambios de esquema en producción. | **skill `/backend:schema-and-migrations`** | `plugins/backend/skills/schema-and-migrations/` |
 | Quieres verificar si un usuario puede ver facturas ajenas (IDOR), inyecciones SQL o secrets en repo. | **owasp_threat_hunter** | `domains/04_security/owasp_threat_hunter/` |
 | Quieres certificar la madurez de pruebas global, coordinar el escuadrón de QA o hacer un post-mortem tras una caída. | **00_qa_director** | `domains/05_qa_testing_engineering/00_qa_director/` |
 | Código difícil de testear, dependencias no inyectadas o tests sin aserciones reales. | **01_testability_and_unit_audit** | `domains/05_qa_testing_engineering/01_testability_and_unit_audit/` |
@@ -59,7 +60,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
   - Cuando el repositorio es un monorock o código espagueti y necesitas una propuesta visual de reestructuración limpia sin romper producción.
 * **¿Cuándo NO debes usarlo?**
   - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `/frontend:accessibility`).
-  - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `query_performance_indexer`).
+  - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `/backend:data-access` o `/backend:schema-and-migrations`).
   - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `/frontend:state-management`).
 * **¿Cómo invocarlo y qué insumos darle?**
   - **Insumos mínimos:** Ruta de la carpeta Frontend + Ruta de la carpeta Backend.
@@ -96,70 +97,18 @@ Todos los especialistas del frontend son ahora **skills de Claude Code** en `plu
 | `/frontend:audit` | Orquestador: triage, elige una de 11 rutas, aplica las skills, deduplica, puntúa por área y global (0–100) y propone (o ejecuta) la remediación por lotes. | `00_frontend_director` |
 
 ---
-### ⚙️ DOMINIO 02: BACKEND SPECIALISTS
+### ⚙️ DOMINIO 02: BACKEND (plugin `backend`, incluye base de datos)
 
-#### Agente: `api_rest_gateway` (HTTP Routing & Perimetral Security)
+Los antiguos agentes `02_backend/api_rest_gateway`, `02_backend/domain_business_logic` y `03_database/query_performance_indexer` son ahora **skills de Claude Code** en `plugins/backend/skills/`, con modos construir y auditar y notas para Node/TypeScript, Python y Java/Spring. Se invocan con `/backend:<skill>`. Catálogo y hoja de ruta: [`plugins/backend/README.md`](../plugins/backend/README.md).
 
-* **¿Qué hace exactamente?**
-  Audita los routers de Express/Fastify/NestJS, middlewares perimetrales, validación estricta de payloads (Zod, Joi), rate limiting, cabeceras de seguridad y manejo global de errores HTTP.
-* **¿Cuándo DEBES usarlo?**
-  - Quieres verificar si tus endpoints están blindados contra payloads malformados o inyecciones de campos no permitidos.
-  - Clientes reportan timeouts aleatorios (middlewares que no invocan `next()`).
-  - Las respuestas de error devuelven formatos dispares o filtran stack traces de Node.js en producción.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para auditar cálculos matemáticos o reglas complejas de facturación (usa `domain_business_logic`).
-  - ❌ **NO lo uses** para optimizar queries SQL (usa `query_performance_indexer`).
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Archivos de rutas (`routes.ts`), middlewares (`middlewares/`) y esquemas de validación.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 02_backend/api_rest_gateway. Audita las rutas en [ruta/backend/routes] y middlewares. Revisa validación perimetral de esquemas Zod, rate limiting y el error handler centralizado bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-    ```
+| Skill | Qué cubre | Sustituye a |
+| :--- | :--- | :--- |
+| `/backend:http-layer` | Validación en la frontera, mass assignment, DTOs de salida, pipeline de middlewares, error handler único, límites, timeouts, CORS, graceful shutdown. | `api_rest_gateway` |
+| `/backend:domain-logic` | Casos de uso, invariantes, máquinas de estado, value objects (dinero), errores de dominio, efectos tras el commit. | `domain_business_logic` |
+| `/backend:data-access` | N+1, límites y paginación por cursor, transacciones y aislamiento, concurrencia (atómicas, optimista, pesimista, upsert), pool y timeouts. | `query_performance_indexer` (parte de código) + transacciones de `domain_business_logic` |
+| `/backend:schema-and-migrations` | Tipos y constraints, índices desde las consultas, EXPLAIN, migraciones sin downtime (expand/contract, índices concurrentes, backfills por lotes). | `query_performance_indexer` (índices) |
 
 ---
-
-#### Agente: `domain_business_logic` (Domain Architecture & Clean Code)
-
-* **¿Qué hace exactamente?**
-  Audita los servicios de aplicación y dominio, erradicando controladores obesos, garantizando transaccionalidad ACID en operaciones de múltiples pasos y asegurando que las reglas del negocio no dependan de HTTP ni del framework.
-* **¿Cuándo DEBES usarlo?**
-  - Tus controladores tienen más de 100 líneas y mezclan consultas SQL con lógica condicional.
-  - Hay operaciones críticas (ej. cobro de orden + descuento de stock) que si fallan a la mitad dejan la base de datos corrupta.
-  - Quieres desacoplar el core del negocio para poder ejecutarlo en un worker o script CLI sin levantar un servidor HTTP.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar headers HTTP, CORS o cookies (usa `api_rest_gateway`).
-  - ❌ **NO lo uses** para diseñar índices B-Tree de PostgreSQL (usa `query_performance_indexer`).
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Servicios (`services/`), controladores (`controllers/`) o módulos de dominio.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 02_backend/domain_business_logic. Audita [ruta/backend/services/orders.service.ts]. Busca transacciones ACID ausentes, controladores con lógica de negocio indebida y violaciones a Clean Architecture bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-    ```
-
----
-
-### 🗄️ DOMINIO 03: PERSISTENCIA Y BASE DE DATOS
-
-#### Agente: `query_performance_indexer` (Database Reliability Engineer)
-
-* **¿Qué hace exactamente?**
-  Audita repositorios de datos, consultas SQL/ORM y migraciones DDL. Caza consultas N+1 en bucles, escaneos secuenciales (Seq Scan), consultas no SARGables (`LIKE '%abc%'`), y diseña índices B-Tree compuestos.
-* **¿Cuándo DEBES usarlo?**
-  - La API tarda más de 500ms en responder consultas que listan registros.
-  - En logs de base de datos ves cientos de queries ejecutándose por cada petición (N+1).
-  - Tienes tablas de más de 50,000 filas y sospechas que faltan índices en llaves foráneas o filtros compuestos.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar la interfaz gráfica o llamadas de Axios.
-  - ❌ **NO lo uses** para auditar permisos de usuario o autenticación JWT (usa `owasp_threat_hunter`).
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Archivos de repositorio (`repositories/`), migraciones DDL (`migrations/` o `schema.sql`) o queries crudas.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 03_database/query_performance_indexer. Audita las consultas en [ruta/backend/src/repositories] y el esquema DDL. Detecta N+1 queries y propón los índices B-Tree óptimos bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-    ```
-
----
-
 ### 🛡️ DOMINIO 04: CIBERSEGURIDAD Y APPSEC
 
 #### Agente: `owasp_threat_hunter` (Application Security & Pentesting)

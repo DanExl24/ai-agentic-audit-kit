@@ -120,9 +120,11 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 | Problema | Dónde |
 | :--- | :--- |
 | Contratos de API divergentes, fallos que cruzan capas, estructura del monorepo | `domains/00_fullstack_integrator/` |
-| Validación, errores HTTP, rate limiting, lógica de negocio en el servidor | `domains/02_backend/` |
-| Consultas lentas, N+1, índices | `domains/03_database/` |
+| Validación de entrada, errores HTTP, formato de respuestas en el servidor | plugin `backend` → `http-layer` |
+| Reglas de negocio, transiciones de estado, cálculos de importes en el servidor | plugin `backend` → `domain-logic` |
+| Consultas lentas, N+1, transacciones, condiciones de carrera | plugin `backend` → `data-access` |
+| Índices, esquema, migraciones | plugin `backend` → `schema-and-migrations` |
 | Autorización (IDOR), inyecciones, secretos en el servidor | `domains/04_security/owasp_threat_hunter/` |
 | E2E, contratos, carga, DAST, análisis de causa raíz de incidentes | `domains/05_qa_testing_engineering/` |
 
-(Estos dominios siguen en formato de prompts mientras no se migren a plugins.)
+(Los dominios que aparecen como `domains/…` siguen en formato de prompts mientras no se migren a plugins.)
