@@ -39,6 +39,12 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Jobs duplicados o perdidos, eventos entre módulos, cron con varias instancias, colas atascadas. | **skill `/backend:async-messaging`** | `plugins/backend/skills/async-messaging/` |
 | Integrar pagos, email u otras APIs; webhooks; caídas en cascada por un proveedor lento. | **skill `/backend:integrations`** | `plugins/backend/skills/integrations/` |
 | Añadir caché, datos obsoletos tras guardar, datos de otro usuario en caché, picos al expirar claves. | **skill `/backend:caching`** | `plugins/backend/skills/caching/` |
+| Incidentes difíciles de diagnosticar, logs inútiles, alertas ruidosas, health checks que reinician pods sanos. | **skill `/backend:observability`** | `plugins/backend/skills/observability/` |
+| Endpoints lentos, p99 alta, memoria creciente, preparación de un pico de tráfico. | **skill `/backend:performance`** | `plugins/backend/skills/performance/` |
+| Tests de backend que mockean la BD, suites intermitentes, permisos o concurrencia sin probar. | **skill `/backend:testing`** | `plugins/backend/skills/testing/` |
+| Builds no reproducibles, configuración caótica, CI sin tests de integración, imagen como root. | **skill `/backend:tooling`** | `plugins/backend/skills/tooling/` |
+| Datos personales en logs o staging, borrado de cuentas, exportación de datos, cifrado, RGPD o ley local. | **skill `/backend:data-privacy`** | `plugins/backend/skills/data-privacy/` |
+| Revisar un servicio backend completo o decidir si está listo para producción. | **skill `/backend:audit`** | `plugins/backend/skills/audit/` |
 | Login, sesiones, JWT, reset de contraseña, MFA o API keys. | **skill `/backend:authentication`** | `plugins/backend/skills/authentication/` |
 | ¿Un usuario puede ver o modificar datos ajenos (IDOR)? Roles, permisos, aislamiento entre tenants. | **skill `/backend:authorization`** | `plugins/backend/skills/authorization/` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el repo, configuración insegura, dependencias vulnerables. | **skill `/backend:api-security`** | `plugins/backend/skills/api-security/` |
@@ -119,6 +125,12 @@ Los antiguos agentes `02_backend/api_rest_gateway`, `02_backend/domain_business_
 | `/backend:async-messaging` | Jobs, colas y eventos: encolar tras el commit, outbox/inbox, consumidores idempotentes, reintentos y DLQ, cron único, sagas. | nueva |
 | `/backend:integrations` | APIs de terceros con timeouts, reintentos seguros, circuit breaker y bulkhead; webhooks entrantes y salientes. | nueva |
 | `/backend:caching` | Cuándo cachear, cache-aside con TTL, claves con tenant/usuario, invalidación tras el commit, stampede, HTTP caching. | nueva |
+| `/backend:observability` | Logs estructurados con redacción, trazas OpenTelemetry, métricas RED/USE, health checks, SLOs y alertas por síntomas. | nueva |
+| `/backend:performance` | Diagnóstico con trazas y profiling, runtime (event loop, GIL, hilos), dimensionado de workers y pools, streaming, memoria, carga. | parte de código de QA `03_performance_load_audit` |
+| `/backend:testing` | BD real con Testcontainers, tests de API, simulación de externos, casos críticos (tenants, idempotencia, concurrencia, migraciones), contrato. | parte de backend de QA `01_testability_and_unit_audit` |
+| `/backend:tooling` | Runtime y lockfile fijados, configuración validada, lint y tipos, entorno local, CI con integración y escaneos, imagen sin root. | nueva |
+| `/backend:data-privacy` | Mapa de datos personales, minimización, retención, supresión y exportación, cifrado por campo con KMS, auditoría. | nueva |
+| `/backend:audit` | Orquestador: triage, 10 rutas, deduplicación, puntuación 0–100 y remediación por lotes. | nueva (no había director de backend) |
 
 ---
 ### 🛡️ SEGURIDAD DE SERVIDOR (plugin `backend`)

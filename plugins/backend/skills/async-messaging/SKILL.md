@@ -67,4 +67,4 @@ Sacar trabajo de la petición (emails, PDFs, importaciones, sincronizaciones) y 
 - `integrations`: webhooks entrantes y salientes procesados en background.
 - `architecture`: eventos entre módulos y servicios.
 - `authorization`: contexto de tenant y actor en los jobs.
-- `observability` (ola 4): trazas a través de mensajes y alertas de colas.
+- `observability`: trazas a través de mensajes, métricas y alertas de colas.

@@ -126,6 +126,7 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 | Índices, esquema, migraciones | plugin `backend` → `schema-and-migrations` |
 | Contrato de la API (códigos, errores, paginación, versionado) | plugin `backend` → `api-design` |
 | Trabajo en background, webhooks, proveedores externos lentos o caídos | plugin `backend` → `async-messaging` · `integrations` |
+| Auditoría completa del servicio backend | plugin `backend` → `audit` |
 | Login, sesiones, tokens y su verificación en el servidor | plugin `backend` → `authentication` |
 | Autorización (IDOR), roles, aislamiento entre tenants | plugin `backend` → `authorization` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el servidor | plugin `backend` → `api-security` |

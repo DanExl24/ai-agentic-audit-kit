@@ -65,4 +65,4 @@ La caché es la herramienta de rendimiento más potente y la que más bugs sutil
 - `integrations`: cachear respuestas de terceros y servir datos cacheados como degradación.
 - `api-design`: `ETag`, `Cache-Control` y 304 en el contrato.
 - `async-messaging`: invalidación por eventos entre servicios.
-- `performance` y `observability` (ola 4): medir el efecto y vigilar la caché.
+- `performance` y `observability`: medir el efecto y vigilar la caché.

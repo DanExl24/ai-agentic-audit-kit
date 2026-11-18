@@ -82,5 +82,7 @@ Además: inyecciones, subida de archivos, deserialización, secretos y dependenc
 - `data-access`: consultas parametrizadas y timeouts.
 - `integrations`: webhooks firmados, timeouts y validación de respuestas de terceros.
 - `caching`: claves que no mezclan datos de usuarios y cabeceras `private`.
-- `observability` · `tooling` · `data-privacy` (ola 4).
+- `observability`: redacción de secretos en logs y health checks sin detalles internos.
+- `tooling`: escaneo de secretos y dependencias en CI, imágenes sin root.
+- `data-privacy`: cifrado por campo, minimización y retención.
 - `frontend:security`: la parte del cliente (XSS, CSP, tokens en el navegador).

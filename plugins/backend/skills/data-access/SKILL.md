@@ -67,4 +67,5 @@ El acceso a datos es donde un backend correcto en local se rompe en producción:
 - `api-security`: inyección en consultas dinámicas y límites de recursos.
 - `caching`: cuando la consulta ya es razonable y sigue haciendo falta.
 - `integrations`: por qué no llamar a terceros dentro de una transacción.
-- `performance` (ola 4).
+- `performance`: localizar las consultas que más pesan con trazas y métricas.
+- `testing`: tests de concurrencia con la base de datos real.

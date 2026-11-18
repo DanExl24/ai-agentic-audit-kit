@@ -60,4 +60,6 @@ El esquema es el contrato más duradero de un backend: el código cambia cada se
 
 - `data-access`: consultas que necesitan los índices, paginación por cursor, concurrencia apoyada en constraints.
 - `domain-logic`: invariantes que los constraints respaldan.
-- `data-privacy` · `performance` (olas siguientes).
+- `data-privacy`: columnas cifradas, retención y borrado.
+- `performance`: consultas lentas en endpoints de alto impacto.
+- `testing`: migraciones aplicadas en CI sobre base vacía y copias representativas.

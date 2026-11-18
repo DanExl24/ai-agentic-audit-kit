@@ -66,4 +66,4 @@ Las reglas de negocio son lo que hace valioso al sistema y lo más caro de rompe
 - `schema-and-migrations`: constraints que respaldan las invariantes.
 - `architecture`: módulos, capas y puertos donde vive esta lógica.
 - `async-messaging`: eventos de dominio publicados de forma fiable (outbox).
-- `testing` (ola 4).
+- `testing`: tests unitarios de reglas e invariantes, incluidos casos negativos.

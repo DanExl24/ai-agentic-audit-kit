@@ -36,12 +36,14 @@ Incluye el acceso a datos, el esquema de base de datos y la seguridad de servido
 | `async-messaging` | ✅ | Colas, pub/sub y streams, encolar tras el commit, outbox/inbox, consumidores idempotentes, reintentos y DLQ, orden por clave, cron único, sagas |
 | `integrations` | ✅ | Adaptadores, timeouts, reintentos seguros, idempotencia hacia el proveedor, circuit breaker y bulkhead, webhooks entrantes y salientes, polling |
 | `caching` | ✅ | Cuándo cachear, niveles, cache-aside con TTL, claves con tenant/usuario, invalidación tras el commit, stampede, fallos de la caché, HTTP caching |
-| `observability` | 🔜 ola 4 | Logs estructurados, métricas, trazas, health checks, SLOs |
-| `performance` | 🔜 ola 4 | Profiling, concurrencia del runtime, memoria, streaming |
-| `testing` | 🔜 ola 4 | Integración con BD real, tests de API, contract testing |
-| `tooling` | 🔜 ola 4 | Entorno reproducible, configuración validada, secretos, CI |
-| `data-privacy` | 🔜 ola 4 | PII, retención y borrado, auditoría, cifrado por campo |
-| `audit` | 🔜 ola 4 | Orquestador de auditorías con puntuación |
+| `observability` | ✅ | Logs estructurados con redacción, correlación y trazas (OpenTelemetry), métricas RED/USE con cardinalidad controlada, health checks, SLOs y alertas por síntomas |
+| `performance` | ✅ | Diagnóstico con trazas y profiling, causas por frecuencia, runtime (event loop, GIL, hilos), dimensionado, streaming, memoria, pruebas de carga |
+| `testing` | ✅ | Niveles, BD real con Testcontainers, tests de API, simulación de externos, casos críticos (tenants, idempotencia, concurrencia, migraciones), contrato, mutación |
+| `tooling` | ✅ | Runtime y lockfile fijados, configuración 12-factor validada, lint y tipos, Docker Compose local, CI con integración y escaneos, imagen multi-stage sin root |
+| `data-privacy` | ✅ | Inventario y mapa de copias, minimización, entornos sin datos reales, retención, supresión y exportación, cifrado por campo con KMS, tokenización, auditoría |
+| `audit` | ✅ | **Orquestador:** triage, 10 rutas, aplica las skills, deduplica, puntúa (0–100) y propone o ejecuta la remediación por lotes |
+
+¿No sabes por dónde empezar? `/backend:audit` con el alcance y el objetivo.
 
 ## Estructura de una skill
 
