@@ -31,11 +31,11 @@ Incluye el acceso a datos, el esquema de base de datos y la seguridad de servido
 | `authentication` | ✅ | Sesiones vs tokens, JWT (verificación, refresh rotativo, revocación), OIDC, hashing, login sin enumeración, reset, MFA, API keys |
 | `authorization` | ✅ | RBAC/ABAC/ReBAC, autorización por objeto, función y propiedad, multi-tenant con RLS, listados y exportaciones, tests de matriz |
 | `api-security` | ✅ | Resto del OWASP API Top 10: inyecciones, consumo de recursos, flujos de negocio, SSRF, uploads, deserialización, secretos, configuración, dependencias |
-| `architecture` | 🔜 ola 3 | Capas, monolito modular, hexagonal pragmática, módulos, ADRs |
-| `api-design` | 🔜 ola 3 | Recursos, códigos, errores RFC 9457, paginación, versionado, idempotencia, OpenAPI |
-| `async-messaging` | 🔜 ola 3 | Colas, jobs, reintentos, DLQ, consumidores idempotentes, outbox |
-| `integrations` | 🔜 ola 3 | APIs de terceros, webhooks, timeouts, reintentos, circuit breaker |
-| `caching` | 🔜 ola 3 | Cache-aside, invalidación, stampede, HTTP caching |
+| `architecture` | ✅ | Monolito modular vs microservicios, módulos con API pública y tablas propias, capas, puertos para lo externo, DI, verificación con herramientas, strangler fig, ADRs |
+| `api-design` | ✅ | Recursos y métodos, códigos, RFC 9457, convenciones, paginación por cursor, Idempotency-Key, ETag/If-Match, operaciones largas, versionado y deprecación, OpenAPI; notas de GraphQL y gRPC |
+| `async-messaging` | ✅ | Colas, pub/sub y streams, encolar tras el commit, outbox/inbox, consumidores idempotentes, reintentos y DLQ, orden por clave, cron único, sagas |
+| `integrations` | ✅ | Adaptadores, timeouts, reintentos seguros, idempotencia hacia el proveedor, circuit breaker y bulkhead, webhooks entrantes y salientes, polling |
+| `caching` | ✅ | Cuándo cachear, niveles, cache-aside con TTL, claves con tenant/usuario, invalidación tras el commit, stampede, fallos de la caché, HTTP caching |
 | `observability` | 🔜 ola 4 | Logs estructurados, métricas, trazas, health checks, SLOs |
 | `performance` | 🔜 ola 4 | Profiling, concurrencia del runtime, memoria, streaming |
 | `testing` | 🔜 ola 4 | Integración con BD real, tests de API, contract testing |

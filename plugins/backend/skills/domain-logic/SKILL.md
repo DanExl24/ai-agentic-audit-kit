@@ -15,7 +15,7 @@ Las reglas de negocio son lo que hace valioso al sistema y lo más caro de rompe
 - Reglas duplicadas en varios endpoints, jobs y scripts.
 - Lógica que no se puede reutilizar desde un worker o una CLI porque depende de `req`/`res`.
 
-**No es para:** consultas, transacciones y concurrencia en detalle → `data-access` · validación de forma de la entrada → `http-layer` · estructura de módulos y capas del servicio → `architecture` (ola 3) · mensajería y outbox → `async-messaging` (ola 3).
+**No es para:** consultas, transacciones y concurrencia en detalle → `data-access` · validación de forma de la entrada → `http-layer` · estructura de módulos y capas del servicio → `architecture` · mensajería y outbox → `async-messaging`.
 
 ## Paso 0: contexto (ambos modos)
 
@@ -64,4 +64,6 @@ Las reglas de negocio son lo que hace valioso al sistema y lo más caro de rompe
 - `data-access`: límites de transacción alrededor del caso de uso, bloqueo optimista, consultas.
 - `http-layer`: controladores delgados que invocan casos de uso y traducen errores de dominio.
 - `schema-and-migrations`: constraints que respaldan las invariantes.
-- `architecture` · `async-messaging` · `testing` (olas siguientes).
+- `architecture`: módulos, capas y puertos donde vive esta lógica.
+- `async-messaging`: eventos de dominio publicados de forma fiable (outbox).
+- `testing` (ola 4).

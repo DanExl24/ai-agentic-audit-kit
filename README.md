@@ -12,7 +12,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | :--- | :--- | :--- |
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
-| **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | 🟡 Olas 1–2 de 4: `http-layer`, `domain-logic`, `data-access`, `schema-and-migrations`, `authentication`, `authorization`, `api-security`. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
+| **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | 🟡 Olas 1–3 de 4: 12 skills (`architecture`, `api-design`, `http-layer`, `domain-logic`, `data-access`, `schema-and-migrations`, `authentication`, `authorization`, `api-security`, `async-messaging`, `integrations`, `caching`). Pendiente: ola 4 (operación y orquestador). Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | QA & Testing | Prompts en `domains/05_qa_testing_engineering/` | ⏳ Pendiente |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md).
@@ -59,7 +59,12 @@ ai-agentic-audit-kit/
 │           ├── schema-and-migrations/
 │           ├── authentication/
 │           ├── authorization/
-│           └── api-security/
+│           ├── api-security/
+│           ├── architecture/
+│           ├── api-design/
+│           ├── async-messaging/
+│           ├── integrations/
+│           └── caching/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   ├── 00_fullstack_integrator/

@@ -20,7 +20,7 @@ Esta skill cubre todo lo que puede comprometer una API **aunque la autenticació
 | API7 Server Side Request Forgery | **aquí** |
 | API8 Security Misconfiguration | **aquí** (+ `http-layer` para CORS y cabeceras) |
 | API9 Improper Inventory Management | **aquí** |
-| API10 Unsafe Consumption of APIs | **aquí** (+ `integrations`, ola 3) |
+| API10 Unsafe Consumption of APIs | **aquí** (+ `integrations`) |
 
 Además: inyecciones, subida de archivos, deserialización, secretos y dependencias.
 
@@ -80,5 +80,7 @@ Además: inyecciones, subida de archivos, deserialización, secretos y dependenc
 - `authentication` · `authorization`: los otros riesgos del Top 10.
 - `http-layer`: validación, límites de body, CORS, cabeceras y errores sin detalles internos.
 - `data-access`: consultas parametrizadas y timeouts.
-- `integrations` · `observability` · `tooling` · `data-privacy` (olas siguientes).
+- `integrations`: webhooks firmados, timeouts y validación de respuestas de terceros.
+- `caching`: claves que no mezclan datos de usuarios y cabeceras `private`.
+- `observability` · `tooling` · `data-privacy` (ola 4).
 - `frontend:security`: la parte del cliente (XSS, CSP, tokens en el navegador).

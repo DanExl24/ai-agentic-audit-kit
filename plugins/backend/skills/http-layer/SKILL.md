@@ -62,4 +62,4 @@ La capa HTTP es la frontera del servicio: **todo lo que entra se valida y todo l
 - `authentication`: middleware de autenticación en el pipeline, cookies y CSRF.
 - `authorization`: campos que cada rol puede enviar y ver, además del mass assignment.
 - `api-security`: rate limiting, uploads, SSRF y configuración de producción.
-- `api-design` (ola 3): el contrato que esta capa implementa.
+- `api-design`: el contrato que esta capa implementa (códigos, errores, paginación, idempotencia).

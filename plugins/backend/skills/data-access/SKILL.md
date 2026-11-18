@@ -14,7 +14,7 @@ El acceso a datos es donde un backend correcto en local se rompe en producción:
 - Datos incorrectos bajo concurrencia: stock negativo, doble reserva, saldo que se gasta dos veces, actualizaciones que se pierden.
 - Errores de pool agotado, timeouts de conexión, transacciones bloqueadas.
 
-**No es para:** modelado, constraints, índices y migraciones → `schema-and-migrations` · reglas de negocio → `domain-logic` · inyección SQL como vulnerabilidad → `api-security` (aquí se usan siempre consultas parametrizadas) · caché → `caching` (ola 3).
+**No es para:** modelado, constraints, índices y migraciones → `schema-and-migrations` · reglas de negocio → `domain-logic` · inyección SQL como vulnerabilidad → `api-security` (aquí se usan siempre consultas parametrizadas) · caché → `caching`.
 
 ## Paso 0: contexto (ambos modos)
 
@@ -65,4 +65,6 @@ El acceso a datos es donde un backend correcto en local se rompe en producción:
 - `http-layer`: topes de paginación en la entrada.
 - `authorization`: consultas acotadas por tenant y propietario, row-level security.
 - `api-security`: inyección en consultas dinámicas y límites de recursos.
-- `caching` · `performance` (olas siguientes).
+- `caching`: cuando la consulta ya es razonable y sigue haciendo falta.
+- `integrations`: por qué no llamar a terceros dentro de una transacción.
+- `performance` (ola 4).

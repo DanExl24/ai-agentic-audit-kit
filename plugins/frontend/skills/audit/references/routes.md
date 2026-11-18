@@ -124,6 +124,8 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 | Reglas de negocio, transiciones de estado, cálculos de importes en el servidor | plugin `backend` → `domain-logic` |
 | Consultas lentas, N+1, transacciones, condiciones de carrera | plugin `backend` → `data-access` |
 | Índices, esquema, migraciones | plugin `backend` → `schema-and-migrations` |
+| Contrato de la API (códigos, errores, paginación, versionado) | plugin `backend` → `api-design` |
+| Trabajo en background, webhooks, proveedores externos lentos o caídos | plugin `backend` → `async-messaging` · `integrations` |
 | Login, sesiones, tokens y su verificación en el servidor | plugin `backend` → `authentication` |
 | Autorización (IDOR), roles, aislamiento entre tenants | plugin `backend` → `authorization` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el servidor | plugin `backend` → `api-security` |

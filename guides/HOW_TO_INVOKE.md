@@ -34,6 +34,11 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Controladores gigantes, reglas de negocio duplicadas, estados imposibles, dinero en float. | **skill `/backend:domain-logic`** | `plugins/backend/skills/domain-logic/` |
 | N+1, consultas sin límite, operaciones sin transacción, sobreventa o saldos incorrectos bajo concurrencia, pool agotado. | **skill `/backend:data-access`** | `plugins/backend/skills/data-access/` |
 | Faltan índices, consultas lentas en EXPLAIN, migraciones que bloquean tablas o cambios de esquema en producción. | **skill `/backend:schema-and-migrations`** | `plugins/backend/skills/schema-and-migrations/` |
+| Código del servicio enredado, módulos que tocan tablas ajenas, ¿monolito o microservicios? | **skill `/backend:architecture`** | `plugins/backend/skills/architecture/` |
+| Diseñar o revisar el contrato de la API: códigos, errores, paginación, idempotencia, versionado. | **skill `/backend:api-design`** | `plugins/backend/skills/api-design/` |
+| Jobs duplicados o perdidos, eventos entre módulos, cron con varias instancias, colas atascadas. | **skill `/backend:async-messaging`** | `plugins/backend/skills/async-messaging/` |
+| Integrar pagos, email u otras APIs; webhooks; caídas en cascada por un proveedor lento. | **skill `/backend:integrations`** | `plugins/backend/skills/integrations/` |
+| Añadir caché, datos obsoletos tras guardar, datos de otro usuario en caché, picos al expirar claves. | **skill `/backend:caching`** | `plugins/backend/skills/caching/` |
 | Login, sesiones, JWT, reset de contraseña, MFA o API keys. | **skill `/backend:authentication`** | `plugins/backend/skills/authentication/` |
 | ¿Un usuario puede ver o modificar datos ajenos (IDOR)? Roles, permisos, aislamiento entre tenants. | **skill `/backend:authorization`** | `plugins/backend/skills/authorization/` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el repo, configuración insegura, dependencias vulnerables. | **skill `/backend:api-security`** | `plugins/backend/skills/api-security/` |
@@ -109,6 +114,11 @@ Los antiguos agentes `02_backend/api_rest_gateway`, `02_backend/domain_business_
 | `/backend:domain-logic` | Casos de uso, invariantes, máquinas de estado, value objects (dinero), errores de dominio, efectos tras el commit. | `domain_business_logic` |
 | `/backend:data-access` | N+1, límites y paginación por cursor, transacciones y aislamiento, concurrencia (atómicas, optimista, pesimista, upsert), pool y timeouts. | `query_performance_indexer` (parte de código) + transacciones de `domain_business_logic` |
 | `/backend:schema-and-migrations` | Tipos y constraints, índices desde las consultas, EXPLAIN, migraciones sin downtime (expand/contract, índices concurrentes, backfills por lotes). | `query_performance_indexer` (índices) |
+| `/backend:architecture` | Monolito modular vs microservicios, módulos con API pública y tablas propias, capas, puertos, DI, verificación de dependencias, strangler fig. | nueva (+ arquetipos de backend del integrador fullstack) |
+| `/backend:api-design` | Recursos, códigos de estado, RFC 9457, convenciones, paginación por cursor, Idempotency-Key, ETag, versionado y deprecación, OpenAPI. | nueva |
+| `/backend:async-messaging` | Jobs, colas y eventos: encolar tras el commit, outbox/inbox, consumidores idempotentes, reintentos y DLQ, cron único, sagas. | nueva |
+| `/backend:integrations` | APIs de terceros con timeouts, reintentos seguros, circuit breaker y bulkhead; webhooks entrantes y salientes. | nueva |
+| `/backend:caching` | Cuándo cachear, cache-aside con TTL, claves con tenant/usuario, invalidación tras el commit, stampede, HTTP caching. | nueva |
 
 ---
 ### 🛡️ SEGURIDAD DE SERVIDOR (plugin `backend`)
