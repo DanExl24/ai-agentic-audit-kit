@@ -66,3 +66,4 @@ El objetivo no es "que compile", sino que **el compilador detecte los errores an
 - `data-fetching`: dónde se aplica la validación de respuestas dentro del cliente HTTP.
 - `forms`: schemas de formulario como fuente de tipos.
 - `architecture`: ubicación de tipos compartidos y alias de rutas.
+- `tooling`: type-check bloqueante en CI y reglas de ESLint con información de tipos.

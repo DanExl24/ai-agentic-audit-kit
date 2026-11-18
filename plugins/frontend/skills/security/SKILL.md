@@ -68,3 +68,5 @@ El código del frontend se ejecuta en la máquina del usuario, que puede leerlo,
 - `rendering-and-seo`: secretos y datos de usuario en SSR y en la caché de páginas.
 - `state-management`: datos sensibles persistidos y limpieza al cerrar sesión.
 - `forms`: subida de archivos y validación (que el backend repite).
+- `tooling`: lockfile, auditoría de dependencias y variables de entorno en el pipeline.
+- `observability`: datos personales en eventos de error, analítica y session replay.

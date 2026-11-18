@@ -1,7 +1,7 @@
 {
   "name": "frontend",
-  "version": "0.3.0",
-  "description": "Skills de frontend (Vue, React, Angular): UX, arquitectura, TypeScript, data fetching, estado, formularios, routing, design system, accesibilidad WCAG, responsive, rendimiento, SSR y SEO, seguridad y testing. Cada skill construye y audita.",
+  "version": "0.4.0",
+  "description": "18 skills de frontend (Vue, React, Angular) que construyen y auditan: UX, arquitectura, TypeScript, routing, datos, estado, formularios, design system, accesibilidad, responsive, rendimiento, SSR y SEO, seguridad, testing, observabilidad, i18n, tooling y un orquestador de auditorías.",
   "author": {
     "name": "DanExl24"
   },

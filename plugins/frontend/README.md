@@ -41,9 +41,12 @@ Claude también las activa solo cuando la petición encaja con la descripción d
 | `routing` | ✅ | Rutas tipadas, lazy loading, guards y sus límites, retorno seguro tras login, estado en la URL validado, errores, foco y scroll |
 | `security` | ✅ | XSS y sanitización, sesión y tokens, CSRF, secretos en el bundle, CSP, open redirects, postMessage, dependencias |
 | `testing` | ✅ | Testing Library, MSW, formularios, stores, guards, estabilidad y regresión visual (E2E en el dominio QA) |
-| `observability` | 🔜 ola 4 | Error boundaries, Sentry, RUM |
-| `i18n` / `tooling` | 🔜 ola 4 | Traducciones; Vite, entorno, lint |
-| `audit` | 🔜 ola 4 | Orquestador: diagnostica, elige skills y consolida (migración de `00_frontend_director`) |
+| `observability` | ✅ | Capas de manejo de errores, UX de error, tracking (source maps, releases, sin datos personales), RUM, trazas con el backend, desfase de versión, consentimiento |
+| `i18n` | ✅ | Claves e ICU, sin concatenar, formatos con `Intl`, zonas horarias, idioma activo, URLs por idioma, RTL, expansión de texto, flujo de traducción |
+| `tooling` | ✅ | Node y lockfile fijados, scripts estándar, entorno validado, lint y formato, hooks, CI, source maps, despliegue estático |
+| `audit` | ✅ | **Orquestador:** triage, 11 rutas, aplica las skills, deduplica, puntúa (0–100) y propone o ejecuta la remediación por lotes |
+
+¿No sabes por dónde empezar? `/frontend:audit` con el alcance y el objetivo.
 
 ## Estructura de una skill
 

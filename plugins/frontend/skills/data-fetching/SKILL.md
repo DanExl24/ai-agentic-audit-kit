@@ -70,3 +70,4 @@ Todo lo que pasa entre "el componente necesita datos" y "el backend responde": c
 - `security`: almacenamiento de tokens, CSRF, logout y datos sensibles en peticiones.
 - `routing`: carga de datos por ruta (loaders, resolvers, prefetch al navegar).
 - `testing`: simular la red con MSW para probar interceptores, errores y estados.
+- `observability`: qué errores de red reportar como incidentes y correlación con trazas del backend.

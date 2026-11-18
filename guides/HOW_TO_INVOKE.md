@@ -12,7 +12,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | :--- | :--- | :--- |
 | Un formulario envía datos pero el servidor rechaza con 400 Bad Request o campos vacíos. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
 | El proyecto tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
-| Quieres auditar un módulo de frontend completo y coordinar a los especialistas. | **00_frontend_director** | `domains/01_frontend/00_frontend_director/` |
+| Quieres auditar un módulo de frontend completo, saber si está listo para publicar o no sabes qué skill aplicar. | **skill `/frontend:audit`** | `plugins/frontend/skills/audit/` |
 | La interfaz es incómoda, fea o no sabes si funciona bien en móvil, tablet y laptop (sin código). | **skill `/frontend:ux-review`** | `plugins/frontend/skills/ux-review/` |
 | Estructura caótica de carpetas frontend, dependencias circulares, features acopladas. | **skill `/frontend:architecture`** | `plugins/frontend/skills/architecture/` |
 | Tipos `any`, contratos de API sin tipar o sin validar, tsconfig laxo. | **skill `/frontend:typescript`** | `plugins/frontend/skills/typescript/` |
@@ -27,6 +27,9 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Se ve contenido protegido antes de redirigir, filtros que se pierden al recargar, botón atrás que falla. | **skill `/frontend:routing`** | `plugins/frontend/skills/routing/` |
 | HTML de usuarios renderizado, tokens en localStorage, secretos en el bundle, scripts de terceros. | **skill `/frontend:security`** | `plugins/frontend/skills/security/` |
 | Tests de componentes frágiles, lentos o intermitentes; qué probar y cómo en el frontend. | **skill `/frontend:testing`** | `plugins/frontend/skills/testing/` |
+| Pantallas en blanco tras un error, errores de usuarios que no llegan al equipo o llegan sin contexto. | **skill `/frontend:observability`** | `plugins/frontend/skills/observability/` |
+| Varios idiomas o países: textos sin traducir, plurales, fechas, monedas, RTL. | **skill `/frontend:i18n`** | `plugins/frontend/skills/i18n/` |
+| CI lento o débil, builds no reproducibles, variables de entorno caóticas, lint y formato. | **skill `/frontend:tooling`** | `plugins/frontend/skills/tooling/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -87,8 +90,10 @@ Todos los especialistas del frontend son ahora **skills de Claude Code** en `plu
 | `/frontend:routing` | Rutas tipadas, lazy loading, guards (y sus límites), retorno seguro tras login, estado en la URL validado, 404/403. | nueva |
 | `/frontend:security` | XSS y sanitización, sesión y tokens, CSRF, secretos en el bundle, CSP, postMessage, dependencias. | nueva |
 | `/frontend:testing` | Testing Library, MSW, tests de formularios, stores y guards, estabilidad, regresión visual. E2E queda en QA. | nueva |
-
-**Orquestación:** `00_frontend_director` (formato antiguo, en `domains/01_frontend/00_frontend_director/`) elige una ruta de su [`ROUTING_PLAYBOOK.md`](../domains/01_frontend/00_frontend_director/ROUTING_PLAYBOOK.md), aplica las skills en orden y consolida un dictamen único. Se migrará a la skill `/frontend:audit`.
+| `/frontend:observability` | Capas de manejo de errores, UX de error, Sentry (source maps, releases, sin datos personales), RUM, trazas con el backend, desfase de versión. | nueva |
+| `/frontend:i18n` | Claves y ICU, sin concatenar, formatos con `Intl`, zonas horarias, detección de idioma, URLs por idioma, RTL, flujo de traducción. | nueva |
+| `/frontend:tooling` | Node y lockfile fijados, scripts estándar, entorno validado, ESLint/Prettier/Biome, hooks, CI, source maps, despliegue estático. | nueva |
+| `/frontend:audit` | Orquestador: triage, elige una de 11 rutas, aplica las skills, deduplica, puntúa por área y global (0–100) y propone (o ejecuta) la remediación por lotes. | `00_frontend_director` |
 
 ---
 ### ⚙️ DOMINIO 02: BACKEND SPECIALISTS

@@ -64,3 +64,4 @@ Dónde y cuándo se genera el HTML determina qué ve un buscador, qué tan rápi
 - `state-management` y `data-fetching`: estado y caché por petición en SSR.
 - `security`: secretos en el bundle y caché de páginas con datos personales.
 - `accessibility`: HTML semántico y títulos de página, que también benefician al SEO.
+- `i18n`: URLs por idioma, `hreflang` y metadatos traducidos.

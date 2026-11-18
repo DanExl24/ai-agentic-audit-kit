@@ -77,3 +77,5 @@ Métricas de apoyo: TTFB (respuesta del servidor), FCP (primer contenido), TBT (
 - `data-fetching`: cascadas de peticiones, prefetch, caché de datos.
 - `design-system`: CLS en componentes, animaciones con `transform`/`opacity`, sistema de iconos.
 - `routing`: lazy loading y prefetch de rutas.
+- `observability`: Core Web Vitals de campo por ruta y release.
+- `tooling`: presupuestos de tamaño y Lighthouse CI en el pipeline.

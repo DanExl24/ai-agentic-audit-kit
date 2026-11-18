@@ -71,3 +71,4 @@ Cuando el usuario pide revisar o diagnosticar la estructura existente.
 - `state-management`: qué stores son de una feature y cuáles son globales.
 - `routing`: rutas por feature, lazy loading y layouts.
 - `rendering-and-seo`: decidir entre SPA y meta-framework (Next, Nuxt, Angular SSR) según el tipo de páginas.
+- `tooling`: lint de límites en CI, monorepo y scripts estándar.

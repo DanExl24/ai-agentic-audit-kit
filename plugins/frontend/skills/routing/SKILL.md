@@ -65,3 +65,5 @@ La URL es la interfaz más estable de la aplicación: se comparte, se guarda en 
 - `accessibility`: foco y anuncio en cambios de ruta, `aria-current` en navegación.
 - `rendering-and-seo`: 404 reales, redirecciones 301, history mode.
 - `performance`: lazy loading y prefetch.
+- `i18n`: prefijo de idioma en las rutas y cambio de idioma conservando la ruta.
+- `observability`: error boundaries por ruta y errores de carga de chunks tras un despliegue.

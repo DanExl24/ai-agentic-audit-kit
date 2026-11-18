@@ -10,7 +10,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 
 | Dominio | Formato | Estado |
 | :--- | :--- | :--- |
-| **Frontend** | Plugin `plugins/frontend/` | 🟡 Olas 1–3 completadas: 14 skills (`ux-review`, `architecture`, `typescript`, `data-fetching`, `state-management`, `forms`, `design-system`, `accessibility`, `responsive-layout`, `performance`, `rendering-and-seo`, `routing`, `security`, `testing`). Solo el director sigue en `domains/01_frontend/`. Pendiente: ola 4 (`observability`, `i18n`/`tooling` y orquestador `audit`). |
+| **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
 | Backend | Prompts en `domains/02_backend/` | ⏳ Pendiente |
 | Database | Prompts en `domains/03_database/` | ⏳ Pendiente |
@@ -33,6 +33,7 @@ ai-agentic-audit-kit/
 │       ├── .claude-plugin/plugin.json
 │       ├── standards/            # severidad, formato de informes y matriz de viewports
 │       └── skills/
+│           ├── audit/                # orquestador: elige skills, puntúa y consolida
 │           ├── ux-review/
 │           ├── architecture/
 │           ├── typescript/
@@ -46,11 +47,13 @@ ai-agentic-audit-kit/
 │           ├── rendering-and-seo/
 │           ├── routing/
 │           ├── security/
-│           └── testing/
+│           ├── testing/
+│           ├── observability/
+│           ├── i18n/
+│           └── tooling/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   ├── 00_fullstack_integrator/
-│   ├── 01_frontend/              # solo el director (orquesta las skills del plugin)
 │   ├── 02_backend/
 │   ├── 03_database/
 │   ├── 04_security/

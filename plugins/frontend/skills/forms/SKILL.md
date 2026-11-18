@@ -69,3 +69,4 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 - `ux-review`: orden, agrupación y longitud del formulario desde la experiencia del usuario.
 - `testing`: tests de validación, envío, errores del servidor y doble envío.
 - `security`: subida de archivos y por qué la validación del cliente no protege.
+- `i18n`: mensajes de validación traducidos y formatos de entrada según el locale.

@@ -64,3 +64,4 @@ Un buen test de frontend **prueba lo que hace el usuario y lo que ve**, no cómo
 - `forms`, `data-fetching`, `state-management`, `routing`: qué comportamientos de cada capa merecen test.
 - `design-system`: historias de Storybook por variante y estado, base para la regresión visual.
 - `performance`: presupuestos de rendimiento en CI junto a los tests.
+- `tooling`: ejecución de la suite en CI, caché y paralelización.

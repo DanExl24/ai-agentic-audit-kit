@@ -70,6 +70,10 @@ Problemas detectados que pertenecen a otra skill, con la skill sugerida.
 | routing | `FE-ROUTE` |
 | security | `FE-SEC` |
 | testing | `FE-TEST` |
+| observability | `FE-OBS` |
+| i18n | `FE-I18N` |
+| tooling | `FE-TOOL` |
+| audit | Conserva los códigos de cada skill; usa su propia plantilla de dictamen consolidado con puntuación |
 
 ### Reglas del informe
 
