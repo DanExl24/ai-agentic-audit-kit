@@ -1,20 +1,18 @@
-# ⚡ One-Shot Prompt — Director Rector del Dominio Frontend
+# ⚡ One-Shot Prompt — Director del Dominio Frontend
 
-> **Instrucciones:** Copia y pega este bloque en tu herramienta de IA indicando el módulo o alcance a auditar.
+> **Instrucciones:** Copia y pega este bloque en Claude Code (con el plugin `frontend` instalado) indicando el módulo o alcance a auditar.
 
 ---
 
 ```text
-Actúa como el 00_frontend_director (Frontend Engineering Director) de ai-agentic-audit-kit.
+Actúa como el 00_frontend_director de ai-agentic-audit-kit (domains/01_frontend/00_frontend_director/SYSTEM_PROMPT.md).
 
-Tu misión es liderar y orquestar la auditoría del frontend en el siguiente objetivo:
-- Ruta del Módulo / Código: [INSERTAR_RUTA, ej. ./src/modules/checkout o ./src]
-- Framework: [Vue 3 / React / Svelte / Angular]
-- Objetivo Principal de la Auditoría: [Auditoría completa / Rendimiento y memoria / Formularios y envío / Accesibilidad y diseño]
+Objetivo de la auditoría:
+- Ruta del módulo / código: [INSERTAR_RUTA, ej. ./src/features/checkout o ./src]
+- URL de la app en ejecución (si existe): [ej. http://localhost:5173/checkout]
+- Objetivo principal: [Auditoría completa / Experiencia y diseño / Rendimiento y memoria / Formularios / Accesibilidad y diseño / Responsive / Cimientos técnicos]
 
-Aplica tu ROUTING_PLAYBOOK.md para:
-1. Definir la ruta de auditoría y activar en orden a tus especialistas (skills del plugin frontend: architecture, typescript, data-fetching, state-management, forms; y agentes 04_design_system_and_styling, 05_accessibility_and_wcag, 06_responsive_layout_specialist).
-2. Asegurar que los traspasos entre especialistas cumplan el formato 'INTER_AGENT_HANDOFF_MEMO.md'.
-3. Ejercer el 'PEER_REJECTION_PROTOCOL.md' si algún análisis intermedio resulta superficial o incompleto.
-4. Entregar un Dictamen Ejecutivo Consolidado con la calificación general del módulo (0 a 100), lista de hallazgos priorizados y el plan de acción de remediación.
+1. Elige la ruta adecuada de ROUTING_PLAYBOOK.md y dime cuál y por qué.
+2. Aplica en modo Auditar cada skill de la ruta (/frontend:<skill>) sobre el alcance indicado.
+3. Consolida un dictamen único: calificación global (0 a 100), hallazgos deduplicados por severidad (plugins/frontend/standards/severity.md) y plan de remediación priorizado.
 ```

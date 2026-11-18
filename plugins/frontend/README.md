@@ -4,7 +4,8 @@ Skills para diseñar, construir y auditar aplicaciones frontend en **Vue, React 
 
 - Tiene dos modos: **Construir** (crear o refactorizar) y **Auditar** (revisar código existente y emitir un informe con severidades).
 - Detecta el stack del proyecto y carga solo las notas del framework correspondiente.
-- Comparte la escala de severidad y el formato de informe de [`standards/`](standards/).
+- Comparte la escala de severidad, el formato de informe y la matriz de viewports de [`standards/`](standards/).
+- `ux-review` y `responsive-layout` no llevan notas por framework (evalúan la interfaz y el CSS); las demás incluyen `vue.md`, `react.md` y `angular.md`.
 
 ## Uso
 
@@ -31,10 +32,10 @@ Claude también las activa solo cuando la petición encaja con la descripción d
 | `data-fetching` | ✅ | Cliente HTTP, interceptores, refresh token, errores, cancelación, server state (TanStack Query), tiempo real |
 | `state-management` | ✅ | Clasificación del estado, stores, derivados, fugas de memoria, reactividad, re-renders, SSR |
 | `forms` | ✅ | Schemas, momento de validación, envío e idempotencia, errores del servidor, wizards, listas dinámicas, archivos |
-| `ux-review` | 🔜 ola 2 | Crítica UI/UX (migración de `01_senior_design_critic`) |
-| `design-system` | 🔜 ola 2 | Tokens, temas, variantes, estados (migración de `04_design_system_and_styling`) |
-| `accessibility` | 🔜 ola 2 | WCAG 2.2 AA (migración de `05_accessibility_and_wcag`) |
-| `responsive-layout` | 🔜 ola 2 | Viewports y layout sin rediseño (migración de `06_responsive_layout_specialist`) |
+| `ux-review` | ✅ | Crítica UI/UX sin código y diseño de la UX de pantallas nuevas: jerarquía, densidad, coherencia, responsive percibido, estados, flujos, Antes/Después |
+| `design-system` | ✅ | Tokens en tres niveles, temas claro/oscuro, componentes base, variantes (CVA), matriz de estados, resiliencia de layout |
+| `accessibility` | ✅ | WCAG 2.2 AA: teclado y foco, ARIA (patrones APG), lectores de pantalla, contraste, pruebas automáticas y manuales |
+| `responsive-layout` | ✅ | Correcciones de layout sin rediseñar en 13 viewports, jerarquía de intervención de 5 niveles |
 | `performance` | 🔜 ola 3 | Core Web Vitals, bundle, imágenes, fuentes |
 | `rendering-and-seo` | 🔜 ola 3 | CSR/SSR/SSG, hidratación, metadatos |
 | `routing` | 🔜 ola 3 | Guards, lazy routes, estado en la URL |

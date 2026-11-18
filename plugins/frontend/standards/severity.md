@@ -10,6 +10,16 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 | 🔵 **LOW** | Mejora de mantenibilidad sin impacto actual. | Nombres inconsistentes; tipos locales poco precisos; barrel files que podrían simplificarse. | Corregir de forma oportunista. |
 | ℹ️ **INFO** | Observación u oportunidad, sin defecto. | Valorar migrar a TanStack Query; activar `noUncheckedIndexedAccess`. | Informativo. |
 
+### Ejemplos en la capa visual (UX, design system, accesibilidad, responsive)
+
+| Nivel | Ejemplos |
+| :--- | :--- |
+| 🔴 **CRITICAL** | El usuario no puede completar la tarea principal: botón de pago fuera de pantalla en `1366 × 768` sin scroll posible; trampa de teclado que impide salir de un modal; formulario de login inoperable con lector de pantalla. |
+| 🟠 **HIGH** | La tarea se completa con mucha dificultad o error frecuente: scroll horizontal global en móvil; contraste de texto principal por debajo de 4.5:1; acción destructiva sin confirmación junto a la acción principal; modo oscuro con texto invisible. |
+| 🟡 **MEDIUM** | Fricción notable pero hay alternativa: jerarquía confusa con varios CTAs primarios; estados vacíos en blanco; colores hardcodeados que rompen el tema; foco visible ausente en componentes secundarios. |
+| 🔵 **LOW** | Inconsistencias menores: radios o sombras dispares; espaciados irregulares sin impacto en la lectura. |
+| ℹ️ **INFO** | Sugerencias de refinamiento estético sin problema actual. |
+
 ## Reglas de clasificación
 
 1. **Impacto × alcance.** Un defecto grave en una pantalla interna poco usada puede bajar un nivel; uno leve en el checkout puede subir uno. Justifica el ajuste en una línea.

@@ -13,7 +13,7 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 - Revisar formularios con validación manual dispersa, envíos duplicados o errores genéricos.
 - Formularios multi-paso, con listas dinámicas de campos, subida de archivos o validación contra el servidor.
 
-**No es para:** la petición HTTP, caché e invalidación tras guardar → `data-fetching` · tipos generales del proyecto → `typescript` · aspecto visual de inputs y botones → `design-system` (pendiente) · accesibilidad en profundidad → `accessibility` (pendiente; esta skill cubre lo mínimo imprescindible de formularios).
+**No es para:** la petición HTTP, caché e invalidación tras guardar → `data-fetching` · tipos generales del proyecto → `typescript` · aspecto visual de inputs y botones → `design-system` · accesibilidad en profundidad → `accessibility` (esta skill cubre lo mínimo imprescindible de formularios).
 
 ## Paso 0: contexto (ambos modos)
 
@@ -64,3 +64,6 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 - `data-fetching`: la mutación HTTP, la normalización del error 422 en `AppError` y la invalidación de la caché tras guardar.
 - `typescript`: schemas como fuente de tipos.
 - `state-management`: estado de wizards que abarcan varias rutas y borradores persistidos.
+- `accessibility`: verificación de etiquetas, errores asociados y anuncios con lector de pantalla.
+- `design-system`: estados visuales de inputs (focus, error, disabled) en los componentes base.
+- `ux-review`: orden, agrupación y longitud del formulario desde la experiencia del usuario.

@@ -61,6 +61,10 @@ Problemas detectados que pertenecen a otra skill, con la skill sugerida.
 | data-fetching | `FE-DATA` |
 | state-management | `FE-STATE` |
 | forms | `FE-FORM` |
+| ux-review | `FE-UX` (usa su propia plantilla de informe, con los mismos niveles de severidad) |
+| design-system | `FE-DS` |
+| accessibility | `FE-A11Y` |
+| responsive-layout | `FE-RESP` (usa su propia plantilla de informe, con la matriz de viewports) |
 
 ### Reglas del informe
 

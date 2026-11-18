@@ -10,7 +10,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 
 | Dominio | Formato | Estado |
 | :--- | :--- | :--- |
-| **Frontend** | Plugin `plugins/frontend/` | 🟡 Ola 1 completada: `architecture`, `typescript`, `data-fetching`, `state-management`, `forms`. El resto sigue en `domains/01_frontend/` hasta su ola. |
+| **Frontend** | Plugin `plugins/frontend/` | 🟡 Olas 1 y 2 completadas: 9 skills (`ux-review`, `architecture`, `typescript`, `data-fetching`, `state-management`, `forms`, `design-system`, `accessibility`, `responsive-layout`). Solo el director sigue en `domains/01_frontend/`. Pendientes: olas 3 y 4 (skills nuevas y orquestador). |
 | Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
 | Backend | Prompts en `domains/02_backend/` | ⏳ Pendiente |
 | Database | Prompts en `domains/03_database/` | ⏳ Pendiente |
@@ -31,17 +31,21 @@ ai-agentic-audit-kit/
 ├── plugins/                      # ✅ NUEVO FORMATO: un plugin por dominio
 │   └── frontend/
 │       ├── .claude-plugin/plugin.json
-│       ├── standards/            # severidad y formato de informes del dominio
+│       ├── standards/            # severidad, formato de informes y matriz de viewports
 │       └── skills/
+│           ├── ux-review/
 │           ├── architecture/
 │           ├── typescript/
 │           ├── data-fetching/
 │           ├── state-management/
-│           └── forms/
+│           ├── forms/
+│           ├── design-system/
+│           ├── accessibility/
+│           └── responsive-layout/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   ├── 00_fullstack_integrator/
-│   ├── 01_frontend/              # director, crítico UX, design system, a11y, responsive, protocolos
+│   ├── 01_frontend/              # solo el director (orquesta las skills del plugin)
 │   ├── 02_backend/
 │   ├── 03_database/
 │   ├── 04_security/

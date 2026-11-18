@@ -13,15 +13,15 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Un formulario envía datos pero el servidor rechaza con 400 Bad Request o campos vacíos. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
 | El proyecto tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
 | Quieres auditar un módulo de frontend completo y coordinar a los especialistas. | **00_frontend_director** | `domains/01_frontend/00_frontend_director/` |
-| La interfaz es incómoda, fea o no sabes si funciona bien en 10 resoluciones (CERO CÓDIGO). | **01_senior_design_critic** | `domains/01_frontend/ui_ux_experience/01_senior_design_critic/` |
+| La interfaz es incómoda, fea o no sabes si funciona bien en móvil, tablet y laptop (sin código). | **skill `/frontend:ux-review`** | `plugins/frontend/skills/ux-review/` |
 | Estructura caótica de carpetas frontend, dependencias circulares, features acopladas. | **skill `/frontend:architecture`** | `plugins/frontend/skills/architecture/` |
 | Tipos `any`, contratos de API sin tipar o sin validar, tsconfig laxo. | **skill `/frontend:typescript`** | `plugins/frontend/skills/typescript/` |
 | Llamadas directas de axios en vistas, refresh token, caché, datos obsoletos, respuestas fuera de orden. | **skill `/frontend:data-fetching`** | `plugins/frontend/skills/data-fetching/` |
 | La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **skill `/frontend:state-management`** | `plugins/frontend/skills/state-management/` |
 | Formularios complejos, validación Zod, prevención de doble clic y errores 422. | **skill `/frontend:forms`** | `plugins/frontend/skills/forms/` |
-| Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA o layout widescreen roto. | **04_design_system_and_styling** | `domains/01_frontend/engineering/04_design_system_and_styling/` |
-| Trampas de teclado, focus trap/restoration en modales, ratios de contraste WCAG y ARIA. | **05_accessibility_and_wcag** | `domains/01_frontend/engineering/05_accessibility_and_wcag/` |
-| El diseño está aprobado pero se desborda en laptop 1366x768 o mobile (Tailwind/CSS, CERO rediseño). | **06_responsive_layout_specialist** | `domains/01_frontend/engineering/06_responsive_layout_specialist/` |
+| Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA, componentes base duplicados. | **skill `/frontend:design-system`** | `plugins/frontend/skills/design-system/` |
+| Trampas de teclado, focus trap/restoration en modales, contraste WCAG, ARIA, lectores de pantalla. | **skill `/frontend:accessibility`** | `plugins/frontend/skills/accessibility/` |
+| El diseño está aprobado pero se desborda en laptop 1366x768 o móvil (sin rediseñar). | **skill `/frontend:responsive-layout`** | `plugins/frontend/skills/responsive-layout/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -50,7 +50,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
   - Cuando Frontend y Backend han evolucionado por separado y sospechas que hay endpoints desfasados o rotos.
   - Cuando el repositorio es un monorock o código espagueti y necesitas una propuesta visual de reestructuración limpia sin romper producción.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `05_accessibility_and_wcag`).
+  - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `/frontend:accessibility`).
   - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `query_performance_indexer`).
   - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `/frontend:state-management`).
 * **¿Cómo invocarlo y qué insumos darle?**
@@ -62,135 +62,25 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 
 ---
 
-### 🎨 DOMINIO 01: ESCUADRÓN COLABORATIVO FRONTEND
+### 🎨 DOMINIO 01: FRONTEND (plugin `frontend`)
 
-El Dominio Frontend está dividido en **dos subdominios especializados** bajo la dirección de `00_frontend_director`:
-1. **`ui_ux_experience/` (Outside-In / CERO CÓDIGO):** Evaluación visual, ergonomía cognitiva, responsive en 10 resoluciones y críticas de diseño sin inspeccionar código fuente.
-2. **`engineering/` (Inside-Out / Código y Arquitectura):** Calidad técnica, tipado, reactividad, validación de formularios, arquitectura de componentes y cumplimiento WCAG a nivel DOM.
-
----
-
-#### Agente Director: `00_frontend_director` (Frontend Engineering Director)
-
-* **¿Qué hace exactamente?**
-  Es el **Director Rector del dominio**. No audita líneas aisladas; evalúa tu objetivo, selecciona la ruta de auditoría (`ROUTING_PLAYBOOK.md`), activa a los especialistas en el orden exacto (Ruta 0 UX-First, Ruta 1 Crítica Visual pura, Rutas 2-6 de Ingeniería), vigila que los handoffs cumplan calidad y emite el dictamen consolidado del frontend.
-* **¿Cuándo DEBES usarlo?**
-  - Para auditar una pantalla, módulo o feature completa de principio a fin combinando visión de producto/diseño e ingeniería.
-  - Cuando quieras que el equipo de UX e ingenieros colaboren sin tener que coordinarlos manualmente.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** si solo quieres auditar una tarea micro aislada de 2 minutos (invoca al especialista directo).
-* **¿Cómo invocarlo y qué insumos darle?**
-  - **Insumos mínimos:** Ruta del módulo frontend + objetivo de la auditoría.
-  - **Prompt sugerido:**
-    ```text
-    Actúa como 00_frontend_director. Audita el módulo en [ruta/modulo]. Selecciona la ruta de auditoría adecuada, orquesta a tus especialistas (UX + Engineering) usando INTER_AGENT_HANDOFF_MEMO.md y consolida el dictamen final.
-    ```
-
----
-
-### 👁️ Subdominio: `ui_ux_experience/` (Experiencia de Usuario & Crítica Visual)
-
-#### Agente: `01_senior_design_critic` (Senior UI/UX Designer, Design Critic & Responsive Design Specialist)
-
-* **¿Qué hace exactamente?**
-  Audita la **interfaz real que experimenta el usuario** con mentalidad hipercrítica de diseñador senior. **NO toca código ni revisa TypeScript ni sintaxis**. Evalúa jerarquía visual, carga cognitiva, consistencia tipográfica y cromática, microcopia, affordance, fricción interactiva y **comportamiento responsive estricto en 10 resoluciones** (móviles 320px/375px/390px/414px, tablets 768px/1024px, laptops 1280px/1366px, desktop 1440px/1920px). Para cada defecto visual, entrega una propuesta concreta **"Antes vs Después"**.
-* **¿Cuándo DEBES usarlo?**
-  - Quieres saber si una pantalla es cómoda, intuitiva, limpia y visualmente profesional antes de escribir o reescribir código.
-  - Sospechas que una vista está sobrecargada, con tablas que desbordan, tipografía ilegible o botones confusos.
-  - Quieres una auditoría rigurosa de adaptación responsive en los 10 viewports estándar.
-  - Necesitas una guía de rediseño visual para que luego el equipo de ingeniería la implemente.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un hook tiene memory leak o si un store pierde reactividad (usa `/frontend:state-management`).
-  - ❌ **NO lo uses** para revisar contratos de red, axios o tipado TypeScript (usa `/frontend:data-fetching` o `/frontend:typescript`).
-  - ❌ **NO lo uses** para revisar si un modal tiene focus trap en el DOM (usa `05_accessibility_and_wcag`).
-* **🤝 Interacción con Ingeniería:**
-  - Cuando detecta que un problema visual se debe a componentes atómicos inconsistentes, emite una nota en su handoff memo hacia `04_design_system_and_styling`.
-  - Si detecta barreras de contraste severas o botones táctiles menores a 44px, alerta a `05_accessibility_and_wcag`.
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/ui_ux_experience/01_senior_design_critic/ONE_SHOT_PROMPT.md`
-
----
-
-### 🧩 Skills del plugin `frontend` (fundamentos de ingeniería)
-
-Los antiguos agentes `01_arch_and_network`, `02_state_and_reactivity` y `03_forms_and_data_flow` se han convertido en skills de Claude Code dentro de `plugins/frontend/skills/`. Cada skill tiene dos modos (**construir** y **auditar**), notas por stack (Vue, React, Angular) y se invoca con `/frontend:<skill>` o de forma automática cuando la petición encaja con su descripción. El catálogo completo está en [`plugins/frontend/README.md`](../plugins/frontend/README.md).
+Todos los especialistas del frontend son ahora **skills de Claude Code** en `plugins/frontend/skills/`. Cada una tiene dos modos (construir/diseñar y auditar), notas por stack (Vue, React, Angular) cuando aplica, y comparte con las demás la escala de severidad, el formato de informe y la matriz de 13 viewports (`plugins/frontend/standards/`). Se invocan con `/frontend:<skill>` o se activan solas cuando la petición encaja con su descripción. Catálogo completo: [`plugins/frontend/README.md`](../plugins/frontend/README.md).
 
 | Skill | Qué cubre | Sustituye a |
 | :--- | :--- | :--- |
+| `/frontend:ux-review` | Crítica UI/UX sin código: jerarquía, densidad, coherencia visual, responsive percibido, estados, flujos, Antes/Después. También diseña la UX de pantallas nuevas. | `01_senior_design_critic` |
 | `/frontend:architecture` | Estructura por features, límites entre módulos, dependencias circulares, monorepo, ADRs. | parte de `01_arch_and_network` |
 | `/frontend:typescript` | tsconfig estricto, eliminar `any`, contratos de API tipados y validados, uniones discriminadas. | parte de `01_arch_and_network` |
 | `/frontend:data-fetching` | Cliente HTTP, interceptores, refresh token single-flight, cancelación, TanStack Query, tiempo real. | parte de `01_arch_and_network` |
 | `/frontend:state-management` | Dónde vive cada dato, stores, fugas de memoria, reactividad, re-renders, estado en SSR. | `02_state_and_reactivity` |
 | `/frontend:forms` | Schemas, doble envío, idempotencia, errores 422 por campo, wizards, listas dinámicas, archivos. | `03_forms_and_data_flow` |
+| `/frontend:design-system` | Tokens en tres niveles, temas, componentes base, variantes (CVA), matriz de estados, resiliencia de layout. | `04_design_system_and_styling` |
+| `/frontend:accessibility` | WCAG 2.2 AA: teclado, foco, ARIA (patrones APG), lectores de pantalla, contraste, pruebas con axe y manuales. | `05_accessibility_and_wcag` |
+| `/frontend:responsive-layout` | Correcciones de layout sin rediseñar en 13 viewports con jerarquía de 5 niveles. | `06_responsive_layout_specialist` |
+
+**Orquestación:** `00_frontend_director` (formato antiguo, en `domains/01_frontend/00_frontend_director/`) elige una ruta de su [`ROUTING_PLAYBOOK.md`](../domains/01_frontend/00_frontend_director/ROUTING_PLAYBOOK.md), aplica las skills en orden y consolida un dictamen único. Se migrará a la skill `/frontend:audit`.
 
 ---
-
-### 💻 Subdominio: `engineering/` (agentes pendientes de migrar)
-
----
-
-#### Agente: `04_design_system_and_styling` (Lead Design System & UI Architecture Engineer)
-
-* **¿Qué hace exactamente?**
-  Audita la **arquitectura técnica visual y consistencia de componentes en código**: tokens de diseño en CSS/Tailwind, coherencia en Dark/Light mode, variantes polimórficas (CVA), matriz completa de estados (`hover`, `active`, `focus-visible`, `disabled`, `loading`), resiliencia de layout (widescreen, prevención de CLS y desborde de textos largos) y optimización de SVGs/animaciones por GPU.
-* **¿Cuándo DEBES usarlo?**
-  - Para auditar componentes base atómicos (`BaseButton`, `BaseInput`, `BaseModal`, `BaseBadge`, `BaseCard`).
-  - Cuando detectes valores hexadecimales `#...` o medidas arbitrarias hardcodeadas en CSS/style.
-  - Cuando el modo oscuro rompe la legibilidad o deja textos invisibles.
-  - Para verificar que botones e inputs soporten todos los estados interactivos sin deformarse.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para auditar lectores de pantalla o cumplimiento estricto WCAG (usa `05_accessibility_and_wcag`).
-  - ❌ **NO lo uses** para juzgar intuitividad de flujos sin mirar código (usa `01_senior_design_critic`).
-* **🤝 Interacción con Accesibilidad y Crítica Visual:**
-  - Recibe insumos de `01_senior_design_critic` con solicitudes de estandarización visual.
-  - Si auditas un componente compuesto interactivo (Modal, Dropdown, Tabs) y notas que carece de navegación por teclado o roles ARIA, emites una nota en tu handoff memo solicitando la intervención de `05_accessibility_and_wcag`.
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/04_design_system_and_styling/ONE_SHOT_PROMPT.md`
-
----
-
-#### Agente: `05_accessibility_and_wcag` (Principal Web Accessibility Engineer - WCAG 2.1/2.2 AA)
-
-* **¿Qué hace exactamente?**
-  Audita de forma forense la **inclusión digital, lectores de pantalla y conformidad legal WCAG en código/DOM**: navegación 100% por teclado, focus traps y focus restoration al cerrar modales con `Escape`, ratios de contraste (4.5:1 texto, 3:1 UI), árbol ARIA (`aria-expanded`, `aria-live` en regiones activas), formularios con labels y errores asociados (`aria-describedby`), tamaño mínimo táctil en móvil (24x24px / 44x44px) y `@media (prefers-reduced-motion)`.
-* **¿Cuándo DEBES usarlo?**
-  - Antes de liberar un release público para certificar legalmente cumplimiento de accesibilidad.
-  - Para auditar la experiencia con lectores de pantalla (NVDA, JAWS, VoiceOver).
-  - Cuando modales o drawers pierden el foco al cerrarse o no se pueden operar con teclado.
-  - Para verificar que los mensajes de error dinámicos sean anunciados a usuarios con discapacidad visual.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar la modularización de carpetas o cliente Axios.
-  - ❌ **NO lo uses** para depurar lógica de cálculo o mutaciones de stores.
-* **🤝 Interacción con Design System:**
-  - Si detectas que un contraste de color no cumple (ej. 3.2:1) o que un botón táctil mide menos de 44px, emites un memo hacia `04_design_system_and_styling` para que ajuste el token de color o el padding del componente base.
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/05_accessibility_and_wcag/ONE_SHOT_PROMPT.md`
-
----
-
-#### Agente: `06_responsive_layout_specialist` (Senior Responsive Layout & CSS Specialist)
-
-* **¿Qué hace exactamente?**
-  Audita y **corrige directamente en código (Tailwind CSS, Vue 3, CSS moderno)** el comportamiento responsive en **13 viewports obligatorios** (desde 320×568 hasta 1920×1080), con especial énfasis en alturas reducidas como laptops de `1366×768` y `1280×720`.
-  > **🛡️ REGLA FUNDAMENTAL: NO REDISEÑAR.** El diseño visual ya fue aprobado; tiene prohibido cambiar colores, tipografías, jerarquías o componentes por gusto. Aplica una jerarquía estricta de 5 niveles (cajas nativas ➔ variantes Tailwind ➔ fluid clamp ➔ estructura mínima ➔ último recurso).
-* **¿Cuándo DEBES usarlo?**
-  - El diseño visual ya está aprobado por el cliente o producto, pero se desborda en ciertas pantallas.
-  - Aparece scroll horizontal accidental en la ventana completa al achicar el navegador.
-  - Modales o drawers quedan cortados verticalmente en monitores corporativos de 1366×768.
-  - Tablas anchas que rompen el layout general en tablet o móvil.
-  - Formularios que necesitan transicionar limpiamente de 4 a 2 y a 1 columna.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para criticar si la pantalla es bonita o intuitiva sin mirar código (usa `01_senior_design_critic`).
-  - ❌ **NO lo uses** para rediseñar la paleta de colores o crear un nuevo Design System (usa `04_design_system_and_styling`).
-  - ❌ **NO lo uses** para depurar memoria de stores o composables (usa `/frontend:state-management`).
-* **🤝 Interacción con Crítica de Diseño y A11y:**
-  - Recibe insumos de `01_senior_design_critic` cuando este detecta desbordes en móvil, y aplica los fixes en código sin alterar la identidad visual.
-  - Garantiza el criterio WCAG 1.4.10 (Reflow a 320px sin scroll horizontal global) y touch targets mínimos de 44px en coordinación con `05_accessibility_and_wcag`.
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/06_responsive_layout_specialist/ONE_SHOT_PROMPT.md`
-
----
-
 ### ⚙️ DOMINIO 02: BACKEND SPECIALISTS
 
 #### Agente: `api_rest_gateway` (HTTP Routing & Perimetral Security)

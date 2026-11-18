@@ -1,131 +1,107 @@
-# 🧭 Manual de Enrutamiento y Rutas de Auditoría (Frontend Routing Playbook)
+# 🧭 Manual de Enrutamiento del Dominio Frontend
 
-> **Manual Rector del `00_frontend_director` para coordinar el Escuadrón de Frontend:**  
-> Divide el dominio en dos vertientes: **Experiencia y Crítica Visual (CERO CÓDIGO)** vs **Ingeniería e Implementación Técnica (CÓDIGO)**.
+> **Manual del `00_frontend_director` para combinar las skills del plugin `frontend`.**
+> Todos los especialistas son ahora skills (`plugins/frontend/skills/`) que se invocan con `/frontend:<skill>`. Este director se migrará a la skill `frontend:audit` en la ola 4.
 
 ---
 
-## 🗂️ Las Dos Vertientes del Dominio Frontend
+## 🗂️ Las dos vertientes
 
 ```mermaid
 flowchart TD
-    DIR["👑 00_frontend_director<br/>(Director Rector del Dominio)"]
+    DIR["👑 00_frontend_director"]
 
-    subgraph "Vertiente A: UI/UX & Experiencia (CERO CÓDIGO)"
-        UX["👁️ ui_ux_experience/01_senior_design_critic<br/>(Psicología Visual, Fatiga, 10 Viewports, Before vs After)"]
+    subgraph "Experiencia (sin código)"
+        UX["👁️ frontend:ux-review<br/>Crítica UI/UX, 13 viewports, Antes/Después"]
     end
 
-    subgraph "Vertiente B: Engineering & Implementación (CÓDIGO)"
-        E1["🏗️ skills frontend:architecture · typescript · data-fetching"]
-        E2["🧠 skill frontend:state-management"]
-        E3["📝 skill frontend:forms"]
-        E4["🎨 engineering/04_design_system_and_styling"]
-        E5["♿ engineering/05_accessibility_and_wcag"]
-        E6["📱 engineering/06_responsive_layout_specialist<br/>(13 Viewports, CSS/Tailwind, NO Rediseñar)"]
+    subgraph "Ingeniería (código)"
+        ARCH["🏗️ frontend:architecture"]
+        TS["🔷 frontend:typescript"]
+        DATA["🌐 frontend:data-fetching"]
+        STATE["🧠 frontend:state-management"]
+        FORMS["📝 frontend:forms"]
+        DS["🎨 frontend:design-system"]
+        A11Y["♿ frontend:accessibility"]
+        RESP["📱 frontend:responsive-layout<br/>sin rediseñar"]
     end
 
-    DIR -->|Revisión de Producto/UX| UX
-    DIR -->|Revisión de Código/Técnica| E1
-    UX ==>|"Propuestas de Rediseño Before vs After"| E4
-    UX ==>|"Fricción de Pantallas y Tablas en Mobile"| E6
-    UX ==>|"Simplificación de Flujos de Formulario"| E3
-    E4 <-->|"Memo Bimodal"| E5
-    E6 -->|"Ajuste de Cajas y Modales"| E4
-    E6 -->|"Garantía de Reflow 320px"| E5
-
-    style DIR fill:#003366,stroke:#38bdf8,color:#ffffff,stroke-width:2px
-    style UX fill:#7c2d12,stroke:#f97316,color:#ffffff,stroke-width:2px
-    style E1 fill:#1e293b,stroke:#94a3b8,color:#ffffff
-    style E2 fill:#1e293b,stroke:#94a3b8,color:#ffffff
-    style E3 fill:#1e293b,stroke:#94a3b8,color:#ffffff
-    style E4 fill:#1e293b,stroke:#94a3b8,color:#ffffff
-    style E5 fill:#1e293b,stroke:#94a3b8,color:#ffffff
-    style E6 fill:#1e293b,stroke:#38bdf8,color:#ffffff
+    DIR --> UX
+    DIR --> ARCH
+    UX ==>|"recomendaciones visuales"| DS
+    UX ==>|"reestructurar formularios"| FORMS
+    UX -.->|"si el diseño se aprueba tal cual"| RESP
+    DS <-->|"contraste, foco, tamaños"| A11Y
+    RESP -->|"reflow 320 px"| A11Y
+    ARCH --> TS --> DATA --> STATE --> FORMS
 ```
 
----
-
-## 🛣️ Rutas de Ejecución Predefinidas
-
-### Ruta 0: "Auditoría de Producto y Experiencia Integral (UX-First Full Audit)"
-* **Secuencia de Cadena:**
-  ```text
-  1. ui_ux_experience/01_senior_design_critic (Evalúa interfaz en 10 resoluciones, fatiga, jerarquía y Before vs After)
-         ↓ (Handoff de Diseño a Código)
-  2. engineering/06_responsive_layout_specialist (Corrige en código adaptación matemática en 13 viewports sin rediseñar)
-         ↓ (Handoff Memo)
-  3. frontend:architecture + frontend:typescript + frontend:data-fetching (Cimientos de carpetas, tipado y capa de red)
-         ↓ (Handoff Memo)
-  4. frontend:state-management (Stores y reactividad)
-         ↓ (Handoff Memo)
-  5. frontend:forms (Implementación de formularios simplificados)
-         ↓ (Handoff Memo)
-  6. engineering/04_design_system_and_styling (Ajuste de tokens, variantes y componentes base)
-         ↓ (Handoff Memo)
-  7. engineering/05_accessibility_and_wcag (Certificación de lectores de pantalla y teclado)
-  ```
-* **Cuándo activarla:** Para auditorías completas de nuevas funcionalidades donde importa tanto la usabilidad humana como la solidez técnica del software.
+Las skills ya no se pasan memos entre sí: cada una tiene una sección **"Skills relacionadas"** que indica cuándo continuar con otra, y todas comparten severidad, formato de informe y matriz de viewports (`plugins/frontend/standards/`).
 
 ---
 
-### Ruta 1: "Crítica Pura de UI/UX y Mobile (Zero-Code Design Critique)"
-* **Secuencia de Cadena:**
-  ```text
-  ui_ux_experience/01_senior_design_critic (Ejecución Aislada Rápida)
-  ```
-* **Cuándo activarla:**
-  - Cuando el cliente o equipo dice: *"La pantalla se ve anticuada, incómoda o el teléfono muestra todo apretado"*.
-  - Cuando necesitas evaluar las 10 resoluciones de pantalla (320px a 1920px) sin perder tiempo leyendo código TypeScript.
-  - Para obtener el informe *Before vs After* y roadmap P0-P3 de rediseño.
+## 🛣️ Rutas
+
+### Ruta 0 — Auditoría integral (producto + ingeniería)
+```text
+1. frontend:ux-review           → experiencia, jerarquía, responsive percibido, Antes/Después
+2. frontend:architecture        → estructura y dependencias
+3. frontend:typescript          → tipado y contratos
+4. frontend:data-fetching       → capa de red y server state
+5. frontend:state-management    → estado, memoria, reactividad
+6. frontend:forms               → formularios
+7. frontend:design-system       → tokens, componentes base, estados
+8. frontend:accessibility       → WCAG 2.2 AA
+9. frontend:responsive-layout   → correcciones de layout sin rediseño (solo lo aprobado en el paso 1)
+```
+**Cuándo:** auditoría completa de una feature o módulo nuevo antes de un release.
+
+### Ruta 1 — Crítica de UX pura
+```text
+frontend:ux-review
+```
+**Cuándo:** "la pantalla se ve anticuada / incómoda / apretada en el móvil"; se quiere un plan de rediseño priorizado.
+
+### Ruta 2 — Rendimiento y memoria
+```text
+frontend:state-management → frontend:data-fetching → frontend:design-system (animaciones)
+```
+**Cuándo:** pestaña congelada, memoria creciente, re-renders, peticiones duplicadas, animaciones que saturan la GPU. *(La skill `frontend:performance` de la ola 3 cubrirá Core Web Vitals y bundle.)*
+
+### Ruta 3 — Flujo de captura de datos
+```text
+frontend:data-fetching → frontend:forms → frontend:accessibility (formularios)
+```
+**Cuándo:** errores al enviar, validaciones rotas, doble envío, errores del servidor que no se muestran.
+
+### Ruta 4 — Visual e inclusiva
+```text
+frontend:design-system ⇄ frontend:accessibility
+```
+**Cuándo:** auditar tokens, temas, estados interactivos y conformidad WCAG.
+
+### Ruta 5 — Responsive sin rediseño
+```text
+frontend:responsive-layout
+```
+**Cuándo:** el diseño está aprobado y se desborda en `1366 × 768`, tablet o móvil.
+
+### Ruta 6 — Cimientos técnicos
+```text
+frontend:architecture → frontend:typescript → frontend:data-fetching
+```
+**Cuándo:** proyecto nuevo o caótico; carpetas desordenadas, `any`, llamadas HTTP en componentes.
 
 ---
 
-### Ruta 2: "Crisis de Rendimiento y Memoria (Performance Crisis)"
-* **Secuencia de Cadena:**
-  ```text
-  frontend:state-management ➔ engineering/04_design_system_and_styling
-  ```
-* **Cuándo activarla:** Pestaña congelada, memory leaks o animaciones CSS que saturan la GPU.
+## ⚖️ Selección rápida
 
----
-
-### Ruta 3: "Flujo de Formularios y Captura (Data Input Flow)"
-* **Secuencia de Cadena:**
-  ```text
-  frontend:data-fetching ➔ frontend:forms
-  ```
-* **Cuándo activarla:** Errores de envío, validaciones Zod rotas o doble clic accidental.
-
----
-
-### Ruta 4: "Dúo Visual & Inclusivo (Design System + Certificación WCAG)"
-* **Secuencia de Cadena (Bimodal Complementaria):**
-  ```text
-  engineering/04_design_system_and_styling ⇄ engineering/05_accessibility_and_wcag
-  ```
-* **Cuándo activarla:** Auditoría técnica de tokens, estados interactivos y cumplimiento de accesibilidad legal.
-
----
-
-### Ruta 5: "Resiliencia Responsive en Código (Zero-Redesign Layout Fix)"
-* **Secuencia de Cadena:**
-  ```text
-  engineering/06_responsive_layout_specialist (Auditoría + Corrección Quirúrgica de CSS/Tailwind)
-  ```
-* **Cuándo activarla:**
-  - El diseño visual ya fue aprobado y **ESTÁ PROHIBIDO REDISEÑAR**.
-  - Hay desbordamientos de layout, scroll horizontal accidental en la ventana, elementos cortados o modales que se salen de pantalla en laptops de 1366×768 o tablets de 768px.
-  - Se requiere verificar y ajustar en código los **13 viewports obligatorios** aplicando la jerarquía de 5 niveles progresivos (cajas, variantes Tailwind, clamp/fluid).
-
----
-
-## ⚖️ Criterios de Selección Rápida
-
-| Requerimiento del Usuario | Ruta Recomendada | Enfoque Principal |
-| :--- | :---: | :--- |
-| "Audita la experiencia, el diseño y dime si es cómodo en teléfonos" | **Ruta 1** (UI/UX Pure Critique) | 👁️ Cero código, 10 viewports, fatiga visual. |
-| "El diseño está aprobado pero se desborda en laptop 1366x768 o mobile" | **Ruta 5** (Responsive Layout Fix) | 📱 13 viewports, Tailwind/CSS, CERO rediseño. |
-| "Revisa este nuevo módulo de principio a fin (diseño + código)" | **Ruta 0** (UX-First Full Audit) | 🌟 Producto + Ingeniería completa. |
-| "La pestaña se congela o consume 2GB de RAM" | **Ruta 2** (Performance Crisis) | ⚙️ Stores, memory leaks y GPU. |
-| "El formulario no guarda o se envían datos erróneos" | **Ruta 3** (Data Input Flow) | ⚙️ Zod, submit y endpoints. |
-| "Audita tokens, temas y conformidad de accesibilidad WCAG" | **Ruta 4** (Dúo Visual & A11y) | 🎨 Tokens, teclado y lectores de pantalla. |
+| Petición | Ruta |
+| :--- | :---: |
+| "Revisa este módulo de principio a fin" | 0 |
+| "Dime si la experiencia es buena y cómoda en móvil" | 1 |
+| "La pestaña se congela o consume mucha RAM" | 2 |
+| "El formulario no guarda o envía datos erróneos" | 3 |
+| "Audita tokens, temas y accesibilidad" | 4 |
+| "El diseño está aprobado pero se desborda" | 5 |
+| "Ordena la estructura y el tipado del proyecto" | 6 |
