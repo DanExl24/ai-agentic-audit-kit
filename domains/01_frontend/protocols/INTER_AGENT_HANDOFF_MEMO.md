@@ -12,8 +12,8 @@ Todo traspaso debe redactarse bajo la siguiente plantilla estándar:
 ```markdown
 # 📬 MEMO DE TRASPASO INTER-AGENTE
 
-- **De (Agente Emisor):** [ui_ux_experience/01_senior_design_critic | engineering/01_arch_and_network | engineering/02_state_and_reactivity | engineering/03_forms_and_data_flow | engineering/04_design_system_and_styling | engineering/05_accessibility_and_wcag]
-- **Para (Agente Receptor):** [ui_ux_experience/01_senior_design_critic | engineering/01_arch_and_network | engineering/02_state_and_reactivity | engineering/03_forms_and_data_flow | engineering/04_design_system_and_styling | engineering/05_accessibility_and_wcag | 00_frontend_director]
+- **De (Agente Emisor):** [ui_ux_experience/01_senior_design_critic | frontend:architecture | frontend:typescript | frontend:data-fetching | frontend:state-management | frontend:forms | engineering/04_design_system_and_styling | engineering/05_accessibility_and_wcag]
+- **Para (Agente Receptor):** [ui_ux_experience/01_senior_design_critic | frontend:architecture | frontend:typescript | frontend:data-fetching | frontend:state-management | frontend:forms | engineering/04_design_system_and_styling | engineering/05_accessibility_and_wcag | 00_frontend_director]
 - **Módulo / Ruta Auditada:** `ruta/del/modulo`
 - **Fecha y Hora:** YYYY-MM-DD HH:mm
 

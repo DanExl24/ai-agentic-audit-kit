@@ -14,9 +14,11 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | El proyecto tiene carpetas desordenadas, tipos duplicados o no sabes cómo estructurarlo. | **00_fullstack_integrator** | `domains/00_fullstack_integrator/` |
 | Quieres auditar un módulo de frontend completo y coordinar a los especialistas. | **00_frontend_director** | `domains/01_frontend/00_frontend_director/` |
 | La interfaz es incómoda, fea o no sabes si funciona bien en 10 resoluciones (CERO CÓDIGO). | **01_senior_design_critic** | `domains/01_frontend/ui_ux_experience/01_senior_design_critic/` |
-| Estructura caótica de carpetas frontend, llamadas directas de axios en vistas, tipos 'any'. | **01_arch_and_network** | `domains/01_frontend/engineering/01_arch_and_network/` |
-| La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **02_state_and_reactivity** | `domains/01_frontend/engineering/02_state_and_reactivity/` |
-| Formularios complejos, validación Zod, prevención de doble clic y estados isSubmitting. | **03_forms_and_data_flow** | `domains/01_frontend/engineering/03_forms_and_data_flow/` |
+| Estructura caótica de carpetas frontend, dependencias circulares, features acopladas. | **skill `/frontend:architecture`** | `plugins/frontend/skills/architecture/` |
+| Tipos `any`, contratos de API sin tipar o sin validar, tsconfig laxo. | **skill `/frontend:typescript`** | `plugins/frontend/skills/typescript/` |
+| Llamadas directas de axios en vistas, refresh token, caché, datos obsoletos, respuestas fuera de orden. | **skill `/frontend:data-fetching`** | `plugins/frontend/skills/data-fetching/` |
+| La página se congela, la memoria RAM del navegador no para de subir o hay re-renders infinitos. | **skill `/frontend:state-management`** | `plugins/frontend/skills/state-management/` |
+| Formularios complejos, validación Zod, prevención de doble clic y errores 422. | **skill `/frontend:forms`** | `plugins/frontend/skills/forms/` |
 | Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA o layout widescreen roto. | **04_design_system_and_styling** | `domains/01_frontend/engineering/04_design_system_and_styling/` |
 | Trampas de teclado, focus trap/restoration en modales, ratios de contraste WCAG y ARIA. | **05_accessibility_and_wcag** | `domains/01_frontend/engineering/05_accessibility_and_wcag/` |
 | El diseño está aprobado pero se desborda en laptop 1366x768 o mobile (Tailwind/CSS, CERO rediseño). | **06_responsive_layout_specialist** | `domains/01_frontend/engineering/06_responsive_layout_specialist/` |
@@ -50,7 +52,7 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 * **¿Cuándo NO debes usarlo?**
   - ❌ **NO lo uses** para revisar si un botón tiene mal contraste de color (usa `05_accessibility_and_wcag`).
   - ❌ **NO lo uses** para optimizar una consulta SQL puntual que ya identificaste como lenta (usa `query_performance_indexer`).
-  - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `02_state_and_reactivity`).
+  - ❌ **NO lo uses** para revisar fugas de memoria en hooks de React o composables de Vue (usa `/frontend:state-management`).
 * **¿Cómo invocarlo y qué insumos darle?**
   - **Insumos mínimos:** Ruta de la carpeta Frontend + Ruta de la carpeta Backend.
   - **Prompt sugerido:**
@@ -98,8 +100,8 @@ El Dominio Frontend está dividido en **dos subdominios especializados** bajo la
   - Quieres una auditoría rigurosa de adaptación responsive en los 10 viewports estándar.
   - Necesitas una guía de rediseño visual para que luego el equipo de ingeniería la implemente.
 * **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un hook tiene memory leak o si un store pierde reactividad (usa `02_state_and_reactivity`).
-  - ❌ **NO lo uses** para revisar contratos de red, axios o tipado TypeScript (usa `01_arch_and_network`).
+  - ❌ **NO lo uses** para revisar si un hook tiene memory leak o si un store pierde reactividad (usa `/frontend:state-management`).
+  - ❌ **NO lo uses** para revisar contratos de red, axios o tipado TypeScript (usa `/frontend:data-fetching` o `/frontend:typescript`).
   - ❌ **NO lo uses** para revisar si un modal tiene focus trap en el DOM (usa `05_accessibility_and_wcag`).
 * **🤝 Interacción con Ingeniería:**
   - Cuando detecta que un problema visual se debe a componentes atómicos inconsistentes, emite una nota en su handoff memo hacia `04_design_system_and_styling`.
@@ -109,52 +111,21 @@ El Dominio Frontend está dividido en **dos subdominios especializados** bajo la
 
 ---
 
-### 💻 Subdominio: `engineering/` (Especialistas Técnicos de Código)
+### 🧩 Skills del plugin `frontend` (fundamentos de ingeniería)
 
-#### Agente: `01_arch_and_network` (Frontend Architect & Network Specialist)
+Los antiguos agentes `01_arch_and_network`, `02_state_and_reactivity` y `03_forms_and_data_flow` se han convertido en skills de Claude Code dentro de `plugins/frontend/skills/`. Cada skill tiene dos modos (**construir** y **auditar**), notas por stack (Vue, React, Angular) y se invoca con `/frontend:<skill>` o de forma automática cuando la petición encaja con su descripción. El catálogo completo está en [`plugins/frontend/README.md`](../plugins/frontend/README.md).
 
-* **¿Qué hace exactamente?**
-  Audita los **cimientos de código**: modularización de carpetas, cliente Axios/Fetch centralizado, interceptores de autenticación/refresh token, tipado estricto en TypeScript (cero `any`) y cancelación de peticiones con `AbortController`.
-* **¿Cuándo DEBES usarlo?**
-  - Vistas y componentes haciendo llamadas directas a `axios.get/post`.
-  - Falta de tipado en DTOs o proliferación de tipos `any`.
-  - Peticiones que quedan vivas al cambiar de página consumiendo ancho de banda.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar si un modal es accesible por teclado (usa `05_accessibility_and_wcag`).
-  - ❌ **NO lo uses** para evaluar la estética o distribución de la pantalla (usa `01_senior_design_critic`).
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/01_arch_and_network/ONE_SHOT_PROMPT.md`
+| Skill | Qué cubre | Sustituye a |
+| :--- | :--- | :--- |
+| `/frontend:architecture` | Estructura por features, límites entre módulos, dependencias circulares, monorepo, ADRs. | parte de `01_arch_and_network` |
+| `/frontend:typescript` | tsconfig estricto, eliminar `any`, contratos de API tipados y validados, uniones discriminadas. | parte de `01_arch_and_network` |
+| `/frontend:data-fetching` | Cliente HTTP, interceptores, refresh token single-flight, cancelación, TanStack Query, tiempo real. | parte de `01_arch_and_network` |
+| `/frontend:state-management` | Dónde vive cada dato, stores, fugas de memoria, reactividad, re-renders, estado en SSR. | `02_state_and_reactivity` |
+| `/frontend:forms` | Schemas, doble envío, idempotencia, errores 422 por campo, wizards, listas dinámicas, archivos. | `03_forms_and_data_flow` |
 
 ---
 
-#### Agente: `02_state_and_reactivity` (State & Reactivity Specialist)
-
-* **¿Qué hace exactamente?**
-  Audita el **motor reactivo**: stores de Pinia/Zustand/Redux, fugas de memoria en desmontaje (`removeEventListener`, `clearInterval`, sockets) y pérdida de reactividad o render loops.
-* **¿Cuándo DEBES usarlo?**
-  - Pestaña del navegador pesada o lenta con memoria RAM creciendo sin parar.
-  - Re-renders infinitos o componentes que no actualizan al cambiar variables reactivas.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar la validación de inputs de formularios (usa `03_forms_and_data_flow`).
-  - ❌ **NO lo uses** para evaluar si los textos o colores son bonitos (usa `01_senior_design_critic`).
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/02_state_and_reactivity/ONE_SHOT_PROMPT.md`
-
----
-
-#### Agente: `03_forms_and_data_flow` (Forms & Input Engineering Specialist)
-
-* **¿Qué hace exactamente?**
-  Audita la **captura e interacción de datos**: validaciones declarativas con Zod/VeeValidate, prevención de doble envío (Double Submit con bloqueo de botón), formularios multi-paso (wizards) y mapeo de errores 422 a los campos correspondientes.
-* **¿Cuándo DEBES usarlo?**
-  - Formularios que permiten enviar múltiples veces al hacer clic rápido.
-  - Validación manual con `if/else` desordenada en vez de esquemas declarativos.
-  - Listas dinámicas de campos donde al borrar una fila se corrompe el formulario.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** para revisar colores o contrastes de accesibilidad (usa `04_design_system_and_styling` o `05_accessibility_and_wcag`).
-  - ❌ **NO lo uses** para evaluar la ergonomía visual del formulario (usa `01_senior_design_critic`).
-* **¿Cómo invocarlo?**
-  - `domains/01_frontend/engineering/03_forms_and_data_flow/ONE_SHOT_PROMPT.md`
+### 💻 Subdominio: `engineering/` (agentes pendientes de migrar)
 
 ---
 
@@ -211,7 +182,7 @@ El Dominio Frontend está dividido en **dos subdominios especializados** bajo la
 * **¿Cuándo NO debes usarlo?**
   - ❌ **NO lo uses** para criticar si la pantalla es bonita o intuitiva sin mirar código (usa `01_senior_design_critic`).
   - ❌ **NO lo uses** para rediseñar la paleta de colores o crear un nuevo Design System (usa `04_design_system_and_styling`).
-  - ❌ **NO lo uses** para depurar memoria de stores o composables (usa `02_state_and_reactivity`).
+  - ❌ **NO lo uses** para depurar memoria de stores o composables (usa `/frontend:state-management`).
 * **🤝 Interacción con Crítica de Diseño y A11y:**
   - Recibe insumos de `01_senior_design_critic` cuando este detecta desbordes en móvil, y aplica los fixes en código sin alterar la identidad visual.
   - Garantiza el criterio WCAG 1.4.10 (Reflow a 320px sin scroll horizontal global) y touch targets mínimos de 44px en coordinación con `05_accessibility_and_wcag`.

@@ -1,0 +1,19 @@
+{
+  "name": "sdlc-skills",
+  "owner": {
+    "name": "DanExl24"
+  },
+  "metadata": {
+    "description": "Skills por dominio para todo el ciclo de vida del software: diseñar, construir, auditar y operar.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "frontend",
+      "source": "./plugins/frontend",
+      "description": "Skills de frontend (Vue, React, Angular): arquitectura, TypeScript, data fetching, estado y formularios. Cada skill construye y audita.",
+      "version": "0.1.0",
+      "category": "development"
+    }
+  ]
+}

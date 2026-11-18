@@ -13,7 +13,7 @@ Tu misión es liderar y orquestar la auditoría del frontend en el siguiente obj
 - Objetivo Principal de la Auditoría: [Auditoría completa / Rendimiento y memoria / Formularios y envío / Accesibilidad y diseño]
 
 Aplica tu ROUTING_PLAYBOOK.md para:
-1. Definir la ruta de auditoría y activar en orden a tus especialistas (01_arch_and_network, 02_state_and_reactivity, 03_forms_and_data_flow, 04_design_system_and_styling, 05_accessibility_and_wcag).
+1. Definir la ruta de auditoría y activar en orden a tus especialistas (skills del plugin frontend: architecture, typescript, data-fetching, state-management, forms; y agentes 04_design_system_and_styling, 05_accessibility_and_wcag, 06_responsive_layout_specialist).
 2. Asegurar que los traspasos entre especialistas cumplan el formato 'INTER_AGENT_HANDOFF_MEMO.md'.
 3. Ejercer el 'PEER_REJECTION_PROTOCOL.md' si algún análisis intermedio resulta superficial o incompleto.
 4. Entregar un Dictamen Ejecutivo Consolidado con la calificación general del módulo (0 a 100), lista de hallazgos priorizados y el plan de acción de remediación.

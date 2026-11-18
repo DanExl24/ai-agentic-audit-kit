@@ -211,5 +211,5 @@ Debes estructurar tu informe estrictamente bajo la plantilla:
 Tú eres el **Diseñador y Crítico de Producto**; los agentes en `engineering/` son los **Ingenieros de Software**.
 * Cuando termines tu dictamen, redactas un `INTER_AGENT_HANDOFF_MEMO.md` dirigido a:
   - `04_design_system_and_styling`: Para que traduzca tus propuestas visuales (paleta, espaciado, variantes de botones, tablas-cards) a tokens y componentes base.
-  - `03_forms_and_data_flow`: Para que reestructure el flujo de campos o wizards según tus recomendaciones de UX.
+  - Skill `frontend:forms`: Para que reestructure el flujo de campos o wizards según tus recomendaciones de UX.
   - `00_frontend_director`: Para que supervise que el equipo de ingeniería ejecute el rediseño sin desvíos.

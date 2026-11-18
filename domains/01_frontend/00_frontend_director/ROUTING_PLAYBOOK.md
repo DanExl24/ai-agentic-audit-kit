@@ -16,9 +16,9 @@ flowchart TD
     end
 
     subgraph "Vertiente B: Engineering & Implementación (CÓDIGO)"
-        E1["🏗️ engineering/01_arch_and_network"]
-        E2["🧠 engineering/02_state_and_reactivity"]
-        E3["📝 engineering/03_forms_and_data_flow"]
+        E1["🏗️ skills frontend:architecture · typescript · data-fetching"]
+        E2["🧠 skill frontend:state-management"]
+        E3["📝 skill frontend:forms"]
         E4["🎨 engineering/04_design_system_and_styling"]
         E5["♿ engineering/05_accessibility_and_wcag"]
         E6["📱 engineering/06_responsive_layout_specialist<br/>(13 Viewports, CSS/Tailwind, NO Rediseñar)"]
@@ -54,11 +54,11 @@ flowchart TD
          ↓ (Handoff de Diseño a Código)
   2. engineering/06_responsive_layout_specialist (Corrige en código adaptación matemática en 13 viewports sin rediseñar)
          ↓ (Handoff Memo)
-  3. engineering/01_arch_and_network (Cimientos de carpetas y cliente de red)
+  3. frontend:architecture + frontend:typescript + frontend:data-fetching (Cimientos de carpetas, tipado y capa de red)
          ↓ (Handoff Memo)
-  4. engineering/02_state_and_reactivity (Stores y reactividad)
+  4. frontend:state-management (Stores y reactividad)
          ↓ (Handoff Memo)
-  5. engineering/03_forms_and_data_flow (Implementación de formularios simplificados)
+  5. frontend:forms (Implementación de formularios simplificados)
          ↓ (Handoff Memo)
   6. engineering/04_design_system_and_styling (Ajuste de tokens, variantes y componentes base)
          ↓ (Handoff Memo)
@@ -83,7 +83,7 @@ flowchart TD
 ### Ruta 2: "Crisis de Rendimiento y Memoria (Performance Crisis)"
 * **Secuencia de Cadena:**
   ```text
-  engineering/02_state_and_reactivity ➔ engineering/04_design_system_and_styling
+  frontend:state-management ➔ engineering/04_design_system_and_styling
   ```
 * **Cuándo activarla:** Pestaña congelada, memory leaks o animaciones CSS que saturan la GPU.
 
@@ -92,7 +92,7 @@ flowchart TD
 ### Ruta 3: "Flujo de Formularios y Captura (Data Input Flow)"
 * **Secuencia de Cadena:**
   ```text
-  engineering/01_arch_and_network ➔ engineering/03_forms_and_data_flow
+  frontend:data-fetching ➔ frontend:forms
   ```
 * **Cuándo activarla:** Errores de envío, validaciones Zod rotas o doble clic accidental.
 
