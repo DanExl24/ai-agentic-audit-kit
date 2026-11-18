@@ -67,3 +67,5 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 - `accessibility`: verificación de etiquetas, errores asociados y anuncios con lector de pantalla.
 - `design-system`: estados visuales de inputs (focus, error, disabled) en los componentes base.
 - `ux-review`: orden, agrupación y longitud del formulario desde la experiencia del usuario.
+- `testing`: tests de validación, envío, errores del servidor y doble envío.
+- `security`: subida de archivos y por qué la validación del cliente no protege.

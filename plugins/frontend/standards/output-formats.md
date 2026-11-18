@@ -65,6 +65,11 @@ Problemas detectados que pertenecen a otra skill, con la skill sugerida.
 | design-system | `FE-DS` |
 | accessibility | `FE-A11Y` |
 | responsive-layout | `FE-RESP` (usa su propia plantilla de informe, con la matriz de viewports) |
+| performance | `FE-PERF` (incluye métricas medidas y entorno de medición) |
+| rendering-and-seo | `FE-SEO` |
+| routing | `FE-ROUTE` |
+| security | `FE-SEC` |
+| testing | `FE-TEST` |
 
 ### Reglas del informe
 

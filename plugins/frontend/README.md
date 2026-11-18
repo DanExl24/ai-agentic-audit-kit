@@ -36,11 +36,11 @@ Claude también las activa solo cuando la petición encaja con la descripción d
 | `design-system` | ✅ | Tokens en tres niveles, temas claro/oscuro, componentes base, variantes (CVA), matriz de estados, resiliencia de layout |
 | `accessibility` | ✅ | WCAG 2.2 AA: teclado y foco, ARIA (patrones APG), lectores de pantalla, contraste, pruebas automáticas y manuales |
 | `responsive-layout` | ✅ | Correcciones de layout sin rediseñar en 13 viewports, jerarquía de intervención de 5 niveles |
-| `performance` | 🔜 ola 3 | Core Web Vitals, bundle, imágenes, fuentes |
-| `rendering-and-seo` | 🔜 ola 3 | CSR/SSR/SSG, hidratación, metadatos |
-| `routing` | 🔜 ola 3 | Guards, lazy routes, estado en la URL |
-| `security` | 🔜 ola 3 | XSS, tokens, CSP, dependencias |
-| `testing` | 🔜 ola 3 | Tests de componentes, MSW, regresión visual |
+| `performance` | ✅ | Core Web Vitals con datos de campo y laboratorio, bundle y code splitting, imágenes, fuentes, terceros, presupuestos en CI |
+| `rendering-and-seo` | ✅ | CSR/SSR/SSG/ISR y Server Components, hidratación, aislamiento en SSR, SEO técnico (metadatos, canonical, sitemap, JSON-LD, 404 reales) |
+| `routing` | ✅ | Rutas tipadas, lazy loading, guards y sus límites, retorno seguro tras login, estado en la URL validado, errores, foco y scroll |
+| `security` | ✅ | XSS y sanitización, sesión y tokens, CSRF, secretos en el bundle, CSP, open redirects, postMessage, dependencias |
+| `testing` | ✅ | Testing Library, MSW, formularios, stores, guards, estabilidad y regresión visual (E2E en el dominio QA) |
 | `observability` | 🔜 ola 4 | Error boundaries, Sentry, RUM |
 | `i18n` / `tooling` | 🔜 ola 4 | Traducciones; Vite, entorno, lint |
 | `audit` | 🔜 ola 4 | Orquestador: diagnostica, elige skills y consolida (migración de `00_frontend_director`) |

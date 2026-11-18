@@ -24,6 +24,11 @@ flowchart TD
         DS["🎨 frontend:design-system"]
         A11Y["♿ frontend:accessibility"]
         RESP["📱 frontend:responsive-layout<br/>sin rediseñar"]
+        ROUTE["🧭 frontend:routing"]
+        PERF["⚡ frontend:performance"]
+        SEO["🔎 frontend:rendering-and-seo"]
+        SEC["🛡️ frontend:security"]
+        TEST["🧪 frontend:testing"]
     end
 
     DIR --> UX
@@ -34,6 +39,10 @@ flowchart TD
     DS <-->|"contraste, foco, tamaños"| A11Y
     RESP -->|"reflow 320 px"| A11Y
     ARCH --> TS --> DATA --> STATE --> FORMS
+    ARCH --> ROUTE
+    SEO --> PERF
+    DATA --> SEC
+    FORMS --> TEST
 ```
 
 Las skills ya no se pasan memos entre sí: cada una tiene una sección **"Skills relacionadas"** que indica cuándo continuar con otra, y todas comparten severidad, formato de informe y matriz de viewports (`plugins/frontend/standards/`).
@@ -47,13 +56,18 @@ Las skills ya no se pasan memos entre sí: cada una tiene una sección **"Skills
 1. frontend:ux-review           → experiencia, jerarquía, responsive percibido, Antes/Después
 2. frontend:architecture        → estructura y dependencias
 3. frontend:typescript          → tipado y contratos
-4. frontend:data-fetching       → capa de red y server state
-5. frontend:state-management    → estado, memoria, reactividad
-6. frontend:forms               → formularios
-7. frontend:design-system       → tokens, componentes base, estados
-8. frontend:accessibility       → WCAG 2.2 AA
-9. frontend:responsive-layout   → correcciones de layout sin rediseño (solo lo aprobado en el paso 1)
+4. frontend:routing             → rutas, guards, estado en la URL
+5. frontend:data-fetching       → capa de red y server state
+6. frontend:state-management    → estado, memoria, reactividad
+7. frontend:forms               → formularios
+8. frontend:design-system       → tokens, componentes base, estados
+9. frontend:accessibility       → WCAG 2.2 AA
+10. frontend:security           → XSS, sesión, secretos, dependencias
+11. frontend:performance        → Core Web Vitals y bundle
+12. frontend:testing            → qué comportamiento queda sin proteger
+13. frontend:responsive-layout  → correcciones de layout sin rediseño (solo lo aprobado en el paso 1)
 ```
+Añade `frontend:rendering-and-seo` si hay páginas públicas indexables.
 **Cuándo:** auditoría completa de una feature o módulo nuevo antes de un release.
 
 ### Ruta 1 — Crítica de UX pura
@@ -64,9 +78,9 @@ frontend:ux-review
 
 ### Ruta 2 — Rendimiento y memoria
 ```text
-frontend:state-management → frontend:data-fetching → frontend:design-system (animaciones)
+frontend:performance → frontend:state-management → frontend:data-fetching
 ```
-**Cuándo:** pestaña congelada, memoria creciente, re-renders, peticiones duplicadas, animaciones que saturan la GPU. *(La skill `frontend:performance` de la ola 3 cubrirá Core Web Vitals y bundle.)*
+**Cuándo:** carga lenta, clics que responden tarde, contenido que salta, pestaña congelada, memoria creciente, re-renders, peticiones duplicadas. `performance` mide primero y señala si la causa es de estado o de red.
 
 ### Ruta 3 — Flujo de captura de datos
 ```text
@@ -92,6 +106,18 @@ frontend:architecture → frontend:typescript → frontend:data-fetching
 ```
 **Cuándo:** proyecto nuevo o caótico; carpetas desordenadas, `any`, llamadas HTTP en componentes.
 
+### Ruta 7 — Seguridad del cliente
+```text
+frontend:security → frontend:routing (open redirects, guards) → frontend:data-fetching (sesión)
+```
+**Cuándo:** contenido HTML de usuarios, cambios en autenticación, scripts de terceros, alerta de dependencias. Los hallazgos de autorización se escalan al dominio security/backend.
+
+### Ruta 8 — Control previo a un release
+```text
+frontend:testing → frontend:performance → frontend:accessibility → frontend:security → frontend:rendering-and-seo (si hay páginas públicas)
+```
+**Cuándo:** antes de publicar una versión o una landing; se busca un sí/no por bloque con los riesgos que quedan abiertos.
+
 ---
 
 ## ⚖️ Selección rápida
@@ -105,3 +131,7 @@ frontend:architecture → frontend:typescript → frontend:data-fetching
 | "Audita tokens, temas y accesibilidad" | 4 |
 | "El diseño está aprobado pero se desborda" | 5 |
 | "Ordena la estructura y el tipado del proyecto" | 6 |
+| "Revisa la seguridad del frontend" | 7 |
+| "¿Está listo para publicar?" | 8 |
+| "No aparecemos en Google / las vistas previas salen vacías" | `frontend:rendering-and-seo` |
+| "Los tests se rompen con cada cambio" | `frontend:testing` |

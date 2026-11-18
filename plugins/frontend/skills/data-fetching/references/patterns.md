@@ -110,7 +110,7 @@ http.interceptors.response.use(undefined, async (error) => {
 
 ## Tokens y sesión
 
-Hasta que exista la skill `security`:
+Resumen (el detalle, incluidos CSRF y logout, está en la skill `security`):
 - **Preferible:** sesión en cookie `httpOnly; Secure; SameSite=Lax|Strict` emitida por el backend (el JS no puede leerla, así que un XSS no la roba). Requiere protección CSRF en el backend si `SameSite` no basta.
 - **Si hay Bearer token:** access token **en memoria** (variable de módulo/store, no persistido) con vida corta; refresh token en cookie httpOnly. Evita `localStorage` para tokens: cualquier script inyectado puede leerlos.
 - Nunca pongas tokens en la URL ni en logs.

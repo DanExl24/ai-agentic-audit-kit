@@ -65,3 +65,5 @@ La mayoría de los problemas de estado no vienen de elegir mal la librería, sin
 - `forms`: estado de formularios y borradores.
 - `typescript`: uniones discriminadas para modelar estados.
 - `architecture`: stores por feature vs globales.
+- `routing`: cómo llevar a la URL los filtros, la paginación y las pestañas, con validación.
+- `rendering-and-seo`: estado por petición e hidratación en SSR.

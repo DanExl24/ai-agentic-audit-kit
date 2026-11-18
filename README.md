@@ -10,7 +10,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 
 | Dominio | Formato | Estado |
 | :--- | :--- | :--- |
-| **Frontend** | Plugin `plugins/frontend/` | 🟡 Olas 1 y 2 completadas: 9 skills (`ux-review`, `architecture`, `typescript`, `data-fetching`, `state-management`, `forms`, `design-system`, `accessibility`, `responsive-layout`). Solo el director sigue en `domains/01_frontend/`. Pendientes: olas 3 y 4 (skills nuevas y orquestador). |
+| **Frontend** | Plugin `plugins/frontend/` | 🟡 Olas 1–3 completadas: 14 skills (`ux-review`, `architecture`, `typescript`, `data-fetching`, `state-management`, `forms`, `design-system`, `accessibility`, `responsive-layout`, `performance`, `rendering-and-seo`, `routing`, `security`, `testing`). Solo el director sigue en `domains/01_frontend/`. Pendiente: ola 4 (`observability`, `i18n`/`tooling` y orquestador `audit`). |
 | Fullstack integrator | Prompts en `domains/00_fullstack_integrator/` | ⏳ Pendiente |
 | Backend | Prompts en `domains/02_backend/` | ⏳ Pendiente |
 | Database | Prompts en `domains/03_database/` | ⏳ Pendiente |
@@ -41,7 +41,12 @@ ai-agentic-audit-kit/
 │           ├── forms/
 │           ├── design-system/
 │           ├── accessibility/
-│           └── responsive-layout/
+│           ├── responsive-layout/
+│           ├── performance/
+│           ├── rendering-and-seo/
+│           ├── routing/
+│           ├── security/
+│           └── testing/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   ├── 00_fullstack_integrator/

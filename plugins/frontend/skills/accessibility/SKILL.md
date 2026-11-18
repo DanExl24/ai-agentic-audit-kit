@@ -72,3 +72,5 @@ Esta skill detecta y cita la violación; si la causa raíz es un token (contrast
 - `forms`: estructura de formularios; esta skill verifica etiquetas, errores y anuncios.
 - `responsive-layout`: reflow a 320 px sin scroll horizontal (WCAG 1.4.10).
 - `ux-review`: barreras de usabilidad que no son estrictamente WCAG.
+- `testing`: axe en tests de componentes y consultas por rol.
+- `routing`: título, foco y anuncio en cada cambio de ruta.

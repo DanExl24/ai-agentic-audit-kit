@@ -66,3 +66,5 @@ El design system es el contrato visual del producto escrito en código: **tokens
 - `ux-review`: origen de las recomendaciones de paleta, escala y variantes.
 - `responsive-layout`: adaptación de layouts concretos sin cambiar el diseño.
 - `architecture`: ubicación de `shared/ui`.
+- `performance`: CLS en componentes, animaciones y peso de iconos y fuentes.
+- `testing`: historias de Storybook por variante y estado, y regresión visual.

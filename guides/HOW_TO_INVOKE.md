@@ -22,6 +22,11 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Colores hardcodeados, quiebres de Dark/Light mode, variantes CVA, componentes base duplicados. | **skill `/frontend:design-system`** | `plugins/frontend/skills/design-system/` |
 | Trampas de teclado, focus trap/restoration en modales, contraste WCAG, ARIA, lectores de pantalla. | **skill `/frontend:accessibility`** | `plugins/frontend/skills/accessibility/` |
 | El diseño está aprobado pero se desborda en laptop 1366x768 o móvil (sin rediseñar). | **skill `/frontend:responsive-layout`** | `plugins/frontend/skills/responsive-layout/` |
+| La app carga lento, los clics responden tarde, el contenido salta o el bundle no para de crecer. | **skill `/frontend:performance`** | `plugins/frontend/skills/performance/` |
+| ¿SPA, SSR o SSG? Errores de hidratación, páginas que no indexan o vistas previas vacías al compartir. | **skill `/frontend:rendering-and-seo`** | `plugins/frontend/skills/rendering-and-seo/` |
+| Se ve contenido protegido antes de redirigir, filtros que se pierden al recargar, botón atrás que falla. | **skill `/frontend:routing`** | `plugins/frontend/skills/routing/` |
+| HTML de usuarios renderizado, tokens en localStorage, secretos en el bundle, scripts de terceros. | **skill `/frontend:security`** | `plugins/frontend/skills/security/` |
+| Tests de componentes frágiles, lentos o intermitentes; qué probar y cómo en el frontend. | **skill `/frontend:testing`** | `plugins/frontend/skills/testing/` |
 | Peticiones quedan colgadas sin responder (timeout) o no hay validación de tipos en el body. | **api_rest_gateway** | `domains/02_backend/api_rest_gateway/` |
 | Controladores gigantes de 800 líneas, cálculos de saldo sin transacciones ACID. | **domain_business_logic** | `domains/02_backend/domain_business_logic/` |
 | Una consulta tarda 2 segundos, sospechas de consultas N+1 en bucles o faltan índices. | **query_performance_indexer** | `domains/03_database/query_performance_indexer/` |
@@ -77,6 +82,11 @@ Todos los especialistas del frontend son ahora **skills de Claude Code** en `plu
 | `/frontend:design-system` | Tokens en tres niveles, temas, componentes base, variantes (CVA), matriz de estados, resiliencia de layout. | `04_design_system_and_styling` |
 | `/frontend:accessibility` | WCAG 2.2 AA: teclado, foco, ARIA (patrones APG), lectores de pantalla, contraste, pruebas con axe y manuales. | `05_accessibility_and_wcag` |
 | `/frontend:responsive-layout` | Correcciones de layout sin rediseñar en 13 viewports con jerarquía de 5 niveles. | `06_responsive_layout_specialist` |
+| `/frontend:performance` | Core Web Vitals (LCP, INP, CLS), bundle y code splitting, imágenes, fuentes, terceros, presupuestos en CI. | nueva |
+| `/frontend:rendering-and-seo` | CSR/SSR/SSG/ISR, hidratación, aislamiento en SSR, metadatos, canonical, sitemap, datos estructurados, 404 reales. | nueva |
+| `/frontend:routing` | Rutas tipadas, lazy loading, guards (y sus límites), retorno seguro tras login, estado en la URL validado, 404/403. | nueva |
+| `/frontend:security` | XSS y sanitización, sesión y tokens, CSRF, secretos en el bundle, CSP, postMessage, dependencias. | nueva |
+| `/frontend:testing` | Testing Library, MSW, tests de formularios, stores y guards, estabilidad, regresión visual. E2E queda en QA. | nueva |
 
 **Orquestación:** `00_frontend_director` (formato antiguo, en `domains/01_frontend/00_frontend_director/`) elige una ruta de su [`ROUTING_PLAYBOOK.md`](../domains/01_frontend/00_frontend_director/ROUTING_PLAYBOOK.md), aplica las skills en orden y consolida un dictamen único. Se migrará a la skill `/frontend:audit`.
 

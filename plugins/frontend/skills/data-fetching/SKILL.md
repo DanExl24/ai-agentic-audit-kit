@@ -14,7 +14,7 @@ Todo lo que pasa entre "el componente necesita datos" y "el backend responde": c
 - Síntomas: datos obsoletos tras guardar, peticiones duplicadas, logout inesperado al caducar el token, spinners infinitos, resultados de una búsqueda anterior que pisan a la actual, peticiones que siguen vivas al cambiar de página.
 - Integrar WebSockets o Server-Sent Events.
 
-**No es para:** estado de UI o de cliente → `state-management` · schemas y envío de formularios → `forms` (esta skill cubre la mutación HTTP que el formulario dispara) · tipos de los contratos → `typescript` · dónde almacenar tokens de forma segura → `security` (pendiente; mientras tanto, ver [patterns.md § Tokens](references/patterns.md#tokens-y-sesión)).
+**No es para:** estado de UI o de cliente → `state-management` · schemas y envío de formularios → `forms` (esta skill cubre la mutación HTTP que el formulario dispara) · tipos de los contratos → `typescript` · dónde almacenar tokens de forma segura, CSRF y logout completo → `security`.
 
 ## Paso 0: contexto (ambos modos)
 
@@ -67,3 +67,6 @@ Todo lo que pasa entre "el componente necesita datos" y "el backend responde": c
 - `forms`: envío, doble submit y mapeo de errores 422 a campos.
 - `typescript`: tipos generados desde OpenAPI y validación de respuestas.
 - `architecture`: ubicación de `shared/api` y `features/*/api`.
+- `security`: almacenamiento de tokens, CSRF, logout y datos sensibles en peticiones.
+- `routing`: carga de datos por ruta (loaders, resolvers, prefetch al navegar).
+- `testing`: simular la red con MSW para probar interceptores, errores y estados.

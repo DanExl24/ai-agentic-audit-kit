@@ -69,3 +69,5 @@ Cuando el usuario pide revisar o diagnosticar la estructura existente.
 - `typescript`: alias de rutas, tipos compartidos entre features y con el backend.
 - `data-fetching`: dónde viven los servicios de API dentro de cada feature.
 - `state-management`: qué stores son de una feature y cuáles son globales.
+- `routing`: rutas por feature, lazy loading y layouts.
+- `rendering-and-seo`: decidir entre SPA y meta-framework (Next, Nuxt, Angular SSR) según el tipo de páginas.
