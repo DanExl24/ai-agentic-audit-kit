@@ -16,7 +16,7 @@ Severidad orientativa; ajústala con [severity.md](../../../standards/severity.m
 ## 2. Envelope
 
 - [ ] Formato de respuesta único (recurso directo o envelope único) en toda la API. *(MEDIUM)*
-- [ ] Las colecciones tienen la misma forma de paginación y el cliente la usa (no pide "todo"). *(MEDIUM; HIGH si la lista se trunca sin avisar)*
+- [ ] Las colecciones tienen la misma forma de paginación y el cliente la usa (no pide "todo"). *(MEDIUM; un límite intencionado de "últimos N" con el resto accesible es LOW–MEDIUM; HIGH solo si el usuario pierde acceso a datos que necesita)*
 
 ## 3. Tipos y coerción
 
@@ -39,7 +39,7 @@ Severidad orientativa; ajústala con [severity.md](../../../standards/severity.m
 - [ ] Cookies con `HttpOnly`, `Secure` y `SameSite` adecuados; el cliente envía credenciales. *(HIGH)*
 - [ ] CORS con orígenes explícitos; nunca reflejar cualquier `Origin` con credenciales. *(HIGH)*
 - [ ] Un único refresh en vuelo; la petición original se reintenta una vez. *(MEDIUM)*
-- [ ] La estrategia de sesión funciona en la topología real de cada entorno: sin contenido mixto (página HTTPS → API HTTP), cookies de primera parte o `SameSite=None; Secure` con API HTTPS, sin IPs fijas en `.env` o en el bundler ([patterns.md § Topología](patterns.md#topología-de-entornos)). *(HIGH si el login no funciona en algún entorno)*
+- [ ] La estrategia de sesión funciona en la topología real de cada entorno: sin contenido mixto (página HTTPS → API HTTP), cookies de primera parte o `SameSite=None; Secure` con API HTTPS, sin IPs fijas en `.env` o en el bundler ([patterns.md § Topología](patterns.md#topología-de-entornos)). *(HIGH si el login no funciona en staging o producción; MEDIUM si solo falla en desarrollo)*
 
 ## Lógica entre capas
 

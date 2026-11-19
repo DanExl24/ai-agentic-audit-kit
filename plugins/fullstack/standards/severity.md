@@ -16,4 +16,13 @@ Misma escala que los plugins `frontend` y `backend`, aplicada a problemas que **
 2. **Evidencia en las dos capas:** un hallazgo de contrato cita el archivo del servidor **y** el del cliente.
 3. **Todo CRITICAL está verificado** y el informe dice cómo.
 4. **No infles;** ante la duda, el nivel menor.
-5. **Calibración:** se aplican las tablas de casos frontera de `frontend` y `backend` (`standards/severity.md` de cada plugin) a la parte de cada capa.
+5. **Calibración:** se aplican las tablas de casos frontera de `frontend` y `backend` (`standards/severity.md` de cada plugin) a la parte de cada capa, y estas entre capas:
+
+## Calibración en casos frontera
+
+| Situación | Severidad | Sube a CRITICAL si… |
+| :--- | :--- | :--- |
+| Fallo que solo ocurre en desarrollo (proxy, puertos, certificados locales) con producción sana | MEDIUM: bloquea al equipo, no a los usuarios | — · sube a HIGH si también afecta a staging o al despliegue real |
+| Colección con límite fijo sin paginación | LOW–MEDIUM si es un límite intencionado de "últimos N" (buzón, recientes) y lo demás sigue accesible | — · sube a HIGH si el usuario pierde acceso a datos que necesita (no hay otra forma de llegar a ellos) |
+| Tipos del cable duplicados a mano que hoy coinciden | INFO (MEDIUM si ya divergen y causan fallos) | — |
+| Contrato incompatible con clientes en circulación (apps móviles, pestañas abiertas) | HIGH | rompe pagos, acceso o escritura de datos para esos clientes |

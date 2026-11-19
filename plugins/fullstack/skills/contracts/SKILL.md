@@ -66,6 +66,8 @@ Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alc
 | Estrategia de sesión incoherente (token en `localStorage`, cookies sin `HttpOnly`/`Secure`/`SameSite`, CORS reflejado) | `backend:authentication` · `frontend:security` | Configuración de sesión de ambas capas |
 | Un cambio incompatible afecta a clientes en circulación | `backend:api-design` | Endpoint, cambio y clientes afectados (versionado y deprecación) |
 | Tipos del cable duplicados a mano por todo el repositorio | `topology` | Ubicaciones de las copias |
+| El servidor rechaza peticiones legítimas por su comprobación de `Origin`/`Host`, CORS o cabeceras en algún entorno | `backend:http-layer` | Middleware o función de comprobación y el entorno afectado |
+| La configuración del proxy o del bundler (`changeOrigin`, puertos, HTTPS local, URLs fijas) rompe el mismo origen | `frontend:tooling` | Archivo de configuración y entorno afectado |
 
 ## Referencias
 

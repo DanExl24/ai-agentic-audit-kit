@@ -38,3 +38,5 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 | Registros duplicados o inválidos **sin impacto económico ni legal** (doble envío o validación saltada en un formulario de asistencia, actividad o registro interno) | HIGH | crea cobros, pedidos, reservas de stock, cambios de permisos o tiene consecuencias legales |
 | Fallo en una pantalla interna poco usada | Un nivel menos que el mismo fallo en un flujo principal | — |
 | Vulnerabilidad de una dependencia | Según su explotabilidad en el uso real, no solo la severidad del aviso | es explotable en el navegador con datos de usuarios |
+| Fallo que solo ocurre en desarrollo (proxy, puertos, certificados locales) con producción sana | MEDIUM: bloquea al equipo, no a los usuarios | — · sube a HIGH si también afecta a staging o al despliegue real |
+| Colección con límite fijo sin paginación | LOW–MEDIUM si es un límite intencionado de "últimos N" (buzón, recientes) y lo demás sigue accesible | — · sube a HIGH si el usuario pierde acceso a datos que necesita (no hay otra forma de llegar a ellos) |

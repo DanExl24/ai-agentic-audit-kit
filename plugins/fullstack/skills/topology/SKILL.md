@@ -14,7 +14,7 @@ Cuando frontend y backend conviven en un mismo repositorio, la estructura decide
 - Antes de pasar a monorepo con paquetes, o de extraer un módulo a servicio aparte.
 - Builds o CI lentos porque todo depende de todo.
 
-**No es para:** capas, módulos y estado dentro del frontend → `frontend:architecture` · módulos, capas y puertos dentro del backend → `backend:architecture` · el contenido del contrato entre capas → `contracts`.
+**No es para:** capas, módulos y estado dentro del frontend → `frontend:architecture` · módulos, capas y puertos dentro del backend → `backend:architecture` · el contenido del contrato entre capas → `contracts` · cómo se sirven frontend y API en cada entorno (esquema, host, puerto, proxy de desarrollo, cookies, `Origin`/`Host`) → `contracts` § Topología de entornos; esta skill trata la estructura del repositorio, no la de los entornos.
 
 ## Paso 0: contexto (ambos modos)
 
