@@ -13,9 +13,9 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
-| QA & Testing | Prompts en `domains/05_qa_testing_engineering/` | ⏳ Pendiente |
+| **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` (en migración desde `domains/05_qa_testing_engineering/`) | 🚧 Ola 1 de 4: `test-strategy`, `test-design` y `exploratory-testing`. Pendientes: `e2e`, `quality-gates`, `load-testing`, `dast`, `defect-analysis` y `audit`. |
 
-Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md).
+Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md).
 
 ---
 
@@ -71,15 +71,22 @@ ai-agentic-audit-kit/
 │   │       ├── tooling/
 │   │       ├── data-privacy/
 │   │       └── audit/                # orquestador
-│   └── fullstack/                # requiere frontend y backend
+│   ├── fullstack/                # requiere frontend y backend
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── standards/
+│   │   └── skills/
+│   │       ├── contracts/
+│   │       ├── topology/
+│   │       ├── flow-diagnosis/
+│   │       ├── feature/              # orquestador de construcción
+│   │       └── audit/                # orquestador conjunto
+│   └── qa/                       # calidad en todo el SDLC (en migración)
 │       ├── .claude-plugin/plugin.json
 │       ├── standards/
 │       └── skills/
-│           ├── contracts/
-│           ├── topology/
-│           ├── flow-diagnosis/
-│           ├── feature/              # orquestador de construcción
-│           └── audit/                # orquestador conjunto
+│           ├── test-strategy/
+│           ├── test-design/
+│           └── exploratory-testing/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   └── 05_qa_testing_engineering/
@@ -102,6 +109,7 @@ Desde Claude Code:
 /plugin install frontend@sdlc-skills
 /plugin install backend@sdlc-skills
 /plugin install fullstack@sdlc-skills
+/plugin install qa@sdlc-skills
 ```
 
 Instala solo los plugins de los dominios que use cada proyecto (cada plugin añade sus descripciones al contexto de la sesión).

@@ -1,0 +1,10 @@
+{
+  "name": "qa",
+  "version": "0.1.0",
+  "description": "Skills de calidad a lo largo del SDLC que construyen y auditan: estrategia y plan de pruebas basado en riesgo, técnicas de diseño de casos y pruebas exploratorias. Complementa a frontend:testing y backend:testing.",
+  "author": {
+    "name": "DanExl24"
+  },
+  "license": "MIT",
+  "keywords": ["qa", "testing", "test-strategy", "test-design", "exploratory-testing", "quality"]
+}

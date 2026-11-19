@@ -28,6 +28,13 @@
       "description": "Skills que cruzan frontend y backend: contratos API ↔ cliente, topología, diagnóstico de flujos, orquestador para construir funcionalidades (feature) y auditoría conjunta, con handoffs entre skills y contexto compartido. Requiere los plugins frontend y backend.",
       "version": "0.3.1",
       "category": "development"
+    },
+    {
+      "name": "qa",
+      "source": "./plugins/qa",
+      "description": "Skills de calidad a lo largo del SDLC: estrategia y plan de pruebas basado en riesgo, técnicas de diseño de casos y pruebas exploratorias (en migración: E2E, puertas de calidad, carga, DAST, análisis de defectos y auditoría). Complementa a frontend:testing y backend:testing.",
+      "version": "0.1.0",
+      "category": "development"
     }
   ]
 }
