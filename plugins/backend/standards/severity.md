@@ -29,5 +29,6 @@ Toda skill del plugin clasifica sus hallazgos con esta escala. Se juzga el **imp
 | Vulnerabilidad de una dependencia | Según su explotabilidad en el uso real del proyecto, no solo la severidad del aviso | es explotable de forma remota en una ruta expuesta |
 | Endpoint sin autenticación | HIGH si expone datos no sensibles o de solo lectura | expone datos personales o permite escrituras |
 | Error 500 que filtra detalles internos | HIGH | incluye secretos o credenciales |
+| Endpoint accesible solo desde una red privada de confianza (localhost, VPN, tailnet de un solo propietario) | Un nivel menos que el mismo defecto en un endpoint público (p. ej. falta de validación con esquema: MEDIUM) | — · no baja si permite acciones destructivas, ejecución remota o acceso a datos de otras personas de esa red |
 | Fallo que solo ocurre en desarrollo (proxy, puertos, certificados locales) con producción sana | MEDIUM: bloquea al equipo, no a los usuarios | — · sube a HIGH si también afecta a staging o al despliegue real |
 | Colección con límite fijo sin paginación | LOW–MEDIUM si es un límite intencionado de "últimos N" (buzón, recientes) y lo demás sigue accesible | — · sube a HIGH si el usuario pierde acceso a datos que necesita (no hay otra forma de llegar a ellos) |

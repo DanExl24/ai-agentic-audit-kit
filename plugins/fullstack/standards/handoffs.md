@@ -35,11 +35,11 @@ Un disparador es **concreto y comprobable** en el código o en el objetivo ("un 
    - En modo **Construir**, aplica su `patterns.md` a la pieza concreta.
 4. **Coste a la vista.**
    - Un handoff dentro de la tarea en curso se ejecuta declarándolo en una línea ("paso a `backend:authorization` para la consulta X").
-   - Una cadena de más de dos skills, o un handoff hacia un orquestador (`audit`, `feature`), **se propone y espera confirmación**.
+   - **Más de dos skills añadidas a la tarea** (cuentan tanto las cadenas en profundidad como varios handoffs en paralelo desde la misma skill), o un handoff hacia un orquestador (`audit`, `feature`), **se proponen con su coste y esperan confirmación**, salvo que el usuario haya pedido expresamente seguir los handoffs.
    - Si la ejecución no es interactiva, los handoffs que requieren confirmación se registran como pendientes.
 5. **Plugin ausente.** Si la skill destino es de un plugin no instalado (o su archivo no existe), se avisa, se registra como pendiente con el disparador y la evidencia, y se continúa.
 6. **Dentro de un orquestador** (`audit`, `feature`), los handoffs no se disparan por separado: el orquestador ya planifica qué skills se aplican. Los disparadores hacia skills que no están en el plan se recogen como "escalado sugerido" en su informe o como pasos opcionales del plan.
-7. **Traza.** Toda entrega termina con los handoffs hechos y los pendientes, y se registran en el [contexto compartido](context.md) si existe.
+7. **Traza.** Toda entrega termina con los handoffs hechos y los pendientes, y se registran en el [contexto compartido](context.md) si existe. Actualizar `.sdlc/context.md` no es modificar código: se hace también en auditorías de solo lectura, salvo que el usuario prohíba escribir archivos; en ese caso la entrega dice "contexto no actualizado" y por qué.
 
 ## Cómo invocar la skill destino
 
