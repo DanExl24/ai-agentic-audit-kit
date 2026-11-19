@@ -69,7 +69,7 @@ Más workers que conexiones disponibles solo traslada la espera al pool. Con muc
 - **Tipos:** carga (tráfico esperado), estrés (hasta romper: dónde y cómo falla), pico (subida brusca), resistencia/soak (horas: fugas de memoria y conexiones).
 - **Entorno** con datos de volumen parecido a producción (una tabla de 1.000 filas no revela un índice ausente).
 - **Umbrales** en el script (p95, tasa de error) para que la prueba pase o falle de forma automática.
-- Herramientas: k6, Gatling, Locust, JMeter (detalle de escenarios: dominio QA).
+- Herramientas: k6, Gatling, Locust, JMeter (diseño y ejecución de la prueba: `qa:load-testing`).
 - Pruebas ligeras de regresión de rendimiento en CI para endpoints críticos.
 
 ## Presupuestos y capacidad

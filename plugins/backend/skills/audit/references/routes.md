@@ -116,5 +116,5 @@ data-privacy → authorization → observability (logs y trazas) → integration
 | Un flujo que falla sin saber en qué capa | plugin `fullstack` → `flow-diagnosis` |
 | Estructura de un repositorio con frontend y backend, monorepo | plugin `fullstack` → `topology` |
 | Auditar la aplicación completa (frontend + backend) | plugin `fullstack` → `audit` |
-| Pruebas de carga completas, DAST contra el entorno en ejecución, suites E2E, análisis de causa raíz de incidentes | `domains/05_qa_testing_engineering/` (pendiente de migrar) |
+| Pruebas de carga completas, DAST contra el entorno en ejecución, suites E2E, análisis de defectos escapados, madurez de pruebas | plugin `qa` (`qa:audit` o la skill concreta: `load-testing`, `dast`, `e2e`, `defect-analysis`) |
 | Infraestructura, despliegue, redes, Kubernetes | futuro dominio DevOps |

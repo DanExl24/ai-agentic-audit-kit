@@ -2,18 +2,18 @@
 
 > **Repositorio de skills por dominio para todo el ciclo de vida del software: diseñar, construir, auditar y operar.**
 
-El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: especialistas verticales + integrador fullstack). Ahora se está migrando a **skills de Claude Code** empaquetadas como **un plugin por dominio** dentro de un marketplace. Cada skill sirve tanto para construir como para auditar, y es agnóstica de framework, con notas específicas por stack.
+El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: especialistas verticales + integrador fullstack). Ahora son **skills de Claude Code** empaquetadas como **un plugin por dominio** dentro de un marketplace. Cada skill sirve tanto para construir como para auditar, y es agnóstica de framework, con notas específicas por stack o por herramienta. Todos los dominios del formato antiguo están migrados; los nuevos (SRE, DevOps…) se añadirán como plugins.
 
 ---
 
-## 🧭 Estado de la migración
+## 🧭 Estado
 
 | Dominio | Formato | Estado |
 | :--- | :--- | :--- |
-| **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
-| **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
-| **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
-| **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` (en migración desde `domains/05_qa_testing_engineering/`) | 🚧 Ola 3 de 4: `test-strategy`, `test-design`, `exploratory-testing`, `e2e`, `quality-gates`, `load-testing` y `dast`. Pendientes: `defect-analysis` y `audit`. |
+| **Frontend** | Plugin `plugins/frontend/` | ✅ 18 skills (17 especialistas + el orquestador `audit`). Probado sobre proyectos reales. |
+| **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ 18 skills (17 especialistas + el orquestador `audit`). Probado sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
+| **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
+| **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` | ✅ 9 skills: `test-strategy`, `test-design`, `exploratory-testing`, `e2e`, `quality-gates`, `load-testing`, `dast`, `defect-analysis` (con Ishikawa, Pareto y matriz Kaizen) y el orquestador `audit` (madurez de QA 0–100 por pilares). Sustituye a `05_qa_testing_engineering`. |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md).
 
@@ -80,7 +80,7 @@ ai-agentic-audit-kit/
 │   │       ├── flow-diagnosis/
 │   │       ├── feature/              # orquestador de construcción
 │   │       └── audit/                # orquestador conjunto
-│   └── qa/                       # calidad en todo el SDLC (en migración)
+│   └── qa/                       # calidad en todo el SDLC
 │       ├── .claude-plugin/plugin.json
 │       ├── standards/
 │       └── skills/
@@ -90,14 +90,11 @@ ai-agentic-audit-kit/
 │           ├── e2e/
 │           ├── quality-gates/
 │           ├── load-testing/
-│           └── dast/
+│           ├── dast/
+│           ├── defect-analysis/
+│           └── audit/                # orquestador con madurez por pilares
 │
-├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
-│   └── 05_qa_testing_engineering/
-│
-├── protocols/                    # protocolo de interoperabilidad del formato antiguo
-├── templates/                    # plantillas de informes del formato antiguo
-└── guides/                       # guía de invocación y matriz de severidad
+└── guides/                       # guía de invocación: qué skill usar según el síntoma
 ```
 
 ---
@@ -123,17 +120,16 @@ Después:
 ```text
 /frontend:forms audita los formularios de src/features/checkout
 /backend:data-access revisa las condiciones de carrera en src/modules/inventory
+/qa:audit ¿está listo el release 2.0?
 ```
 
 Las skills también se activan automáticamente cuando la petición encaja con su descripción.
 
-### Prompts (formato antiguo, dominios pendientes)
+### Con otras herramientas (Gemini, Cursor…)
 
-1. Entra a la carpeta del agente (ej. `domains/05_qa_testing_engineering/03_performance_load_audit/`).
-2. Abre `ONE_SHOT_PROMPT.md`, copia el prompt y reemplaza la ruta del archivo o módulo.
-3. El agente devuelve un informe de hallazgos con severidad y corrección.
+Copia `plugins/<dominio>/` dentro del proyecto (p. ej. en `.sdlc-skills/`, excluido de git) con un `INDEX.md` que mapee `<plugin>:<skill>` a su `SKILL.md`, y pide: «Lee .sdlc-skills/INDEX.md y aplica qa:test-strategy en modo Auditar». Las skills son Markdown: cualquier agente que lea archivos puede seguirlas.
 
-Guía detallada de cada agente y skill: [`guides/HOW_TO_INVOKE.md`](guides/HOW_TO_INVOKE.md).
+Guía detallada de cada skill: [`guides/HOW_TO_INVOKE.md`](guides/HOW_TO_INVOKE.md).
 
 ---
 

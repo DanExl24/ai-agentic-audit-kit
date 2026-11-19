@@ -1,6 +1,6 @@
 ---
 name: testing
-description: "Escribe y audita los tests del backend: qué probar en cada nivel (unitario de reglas de dominio, integración con base de datos real mediante Testcontainers, tests de API en proceso, contract testing con Pact u OpenAPI), aislamiento entre tests, factorías de datos, simulación de HTTP externo sin red real, control del tiempo, tests de autorización entre tenants, idempotencia, concurrencia, migraciones y webhooks, jobs asíncronos, tests intermitentes, cobertura útil y mutation testing. Úsala al añadir tests a servicios, endpoints o repositorios, o ante suites lentas, frágiles o que no detectan regresiones. No para pruebas de carga, DAST ni E2E completos (dominio QA)."
+description: "Escribe y audita los tests del backend: qué probar en cada nivel (unitario de reglas de dominio, integración con base de datos real mediante Testcontainers, tests de API en proceso, contract testing con Pact u OpenAPI), aislamiento entre tests, factorías de datos, simulación de HTTP externo sin red real, control del tiempo, tests de autorización entre tenants, idempotencia, concurrencia, migraciones y webhooks, jobs asíncronos, tests intermitentes, cobertura útil y mutation testing. Úsala al añadir tests a servicios, endpoints o repositorios, o ante suites lentas, frágiles o que no detectan regresiones. No para pruebas de carga, DAST ni E2E completos (plugin qa)."
 ---
 
 # Testing del backend
@@ -14,7 +14,7 @@ Los tests de backend que más valor dan **ejercitan el código con sus dependenc
 - Suites lentas, intermitentes o que pasan mientras producción falla.
 - Proteger reglas críticas: dinero, permisos, concurrencia, idempotencia, migraciones.
 
-**No es para:** pruebas de carga, DAST y suites E2E entre sistemas → dominio QA (`domains/05_qa_testing_engineering/`) · tests del frontend → `frontend:testing`.
+**No es para:** pruebas de carga, DAST y suites E2E entre sistemas → `qa:load-testing`, `qa:dast`, `qa:e2e` · tests del frontend → `frontend:testing`.
 
 ## Paso 0: contexto (ambos modos)
 

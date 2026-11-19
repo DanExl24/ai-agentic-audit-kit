@@ -29,3 +29,6 @@ Misma escala que el resto del kit. En QA se juzga **el riesgo de que un defecto 
 | Estrategia o plan de pruebas no escrito | MEDIUM en equipos pequeños con buena cobertura y en proyectos sin versiones publicadas o de una sola persona; HIGH si hay releases (regla 6) sin criterios de salida | — |
 | Fallo que solo ocurre en el entorno de pruebas (datos, entorno, herramientas) con producción sana | MEDIUM | — · sube a HIGH si impide verificar un release |
 | Bug sin pasos para reproducir | LOW–MEDIUM según su gravedad | — |
+| Corrección de un defecto sin test de no regresión | MEDIUM; HIGH en flujos principales o si el defecto ya volvió una vez | — |
+| Defecto grave escapado sin análisis de causa raíz | MEDIUM; HIGH si es CRITICAL o recurrente | — |
+| Práctica ausente que no aplica al contexto (carga en una app de un usuario, DAST sin exposición) | No es hallazgo: se declara "no aplica" con el motivo | — |

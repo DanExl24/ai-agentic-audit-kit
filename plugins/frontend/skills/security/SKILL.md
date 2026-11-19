@@ -1,6 +1,6 @@
 ---
 name: security
-description: Construye y audita la seguridad del lado del cliente en aplicaciones frontend (Vue, React, Angular). Cubre XSS y sinks peligrosos (v-html, dangerouslySetInnerHTML, bypassSecurityTrust, innerHTML, URLs javascript:), sanitización con DOMPurify y Trusted Types, almacenamiento de tokens y sesión, CSRF con cookies, secretos expuestos en el bundle y variables de entorno públicas, compatibilidad con CSP y cabeceras de seguridad, open redirects, postMessage, iframes, datos sensibles en URLs, logs y analítica, autorización solo cosmética en la UI y cadena de suministro de dependencias. Úsala al manejar HTML o enlaces de usuarios, autenticación en el cliente, scripts de terceros o antes de un release. No la uses para la seguridad del backend o la API (dominio security/backend) ni para pruebas DAST en runtime (dominio QA).
+description: Construye y audita la seguridad del lado del cliente en aplicaciones frontend (Vue, React, Angular). Cubre XSS y sinks peligrosos (v-html, dangerouslySetInnerHTML, bypassSecurityTrust, innerHTML, URLs javascript:), sanitización con DOMPurify y Trusted Types, almacenamiento de tokens y sesión, CSRF con cookies, secretos expuestos en el bundle y variables de entorno públicas, compatibilidad con CSP y cabeceras de seguridad, open redirects, postMessage, iframes, datos sensibles en URLs, logs y analítica, autorización solo cosmética en la UI y cadena de suministro de dependencias. Úsala al manejar HTML o enlaces de usuarios, autenticación en el cliente, scripts de terceros o antes de un release. No la uses para la seguridad del backend o la API (dominio security/backend) ni para pruebas DAST en runtime (qa:dast).
 ---
 
 # Seguridad en el frontend
@@ -15,7 +15,7 @@ El código del frontend se ejecuta en la máquina del usuario, que puede leerlo,
 - Preparar un release, una auditoría de seguridad o un pentest.
 - Revisar dependencias tras una alerta de vulnerabilidad.
 
-**No es para:** autenticación, autorización e inyecciones en la API → plugin `backend` (`authentication`, `authorization`, `api-security`) · pruebas dinámicas contra la app en ejecución (cabeceras, fuerza bruta) → dominio QA (`domains/05_qa_testing_engineering/04_dast_security_zap_audit`) · la lógica del refresh token → `data-fetching` (esta skill decide dónde vive el token).
+**No es para:** autenticación, autorización e inyecciones en la API → plugin `backend` (`authentication`, `authorization`, `api-security`) · pruebas dinámicas contra la app en ejecución (cabeceras, fuerza bruta) → `qa:dast` · la lógica del refresh token → `data-fetching` (esta skill decide dónde vive el token).
 
 ## Paso 0: contexto (ambos modos)
 

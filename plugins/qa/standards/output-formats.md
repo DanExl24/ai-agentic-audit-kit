@@ -53,6 +53,9 @@
 | quality-gates | `QA-GATE` |
 | load-testing | `QA-LOAD` |
 | dast | `QA-DAST` |
+| defect-analysis | `QA-DEFECT` |
+
+`audit` no tiene código propio: conserva el de la skill que detectó cada hallazgo (el de la causa raíz si se deduplicó).
 
 La numeración es siempre secuencial (`QA-STRAT-001`); no se inventan sufijos descriptivos.
 

@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Escribe y audita tests de frontend (Vue, React, Angular) con Vitest/Jest, Testing Library, MSW, Storybook y Playwright. Cubre qué probar en cada nivel (lógica, componentes, integración, regresión visual), consultas por rol accesible, user-event, mock de red con MSW en lugar de mockear el cliente HTTP, tests de formularios, stores, hooks/composables y guards, tests asíncronos sin esperas fijas, causas de tests intermitentes, datos de prueba y cobertura útil. Úsala al añadir tests a componentes o features, al revisar una suite frágil o lenta, o al definir la estrategia de testing del frontend. No la uses para suites E2E completas, contratos y carga (dominio QA) ni para pruebas de accesibilidad en detalle (accessibility).
+description: Escribe y audita tests de frontend (Vue, React, Angular) con Vitest/Jest, Testing Library, MSW, Storybook y Playwright. Cubre qué probar en cada nivel (lógica, componentes, integración, regresión visual), consultas por rol accesible, user-event, mock de red con MSW en lugar de mockear el cliente HTTP, tests de formularios, stores, hooks/composables y guards, tests asíncronos sin esperas fijas, causas de tests intermitentes, datos de prueba y cobertura útil. Úsala al añadir tests a componentes o features, al revisar una suite frágil o lenta, o al definir la estrategia de testing del frontend. No la uses para suites E2E completas y carga (plugin qa) ni para pruebas de accesibilidad en detalle (accessibility).
 ---
 
 # Testing de frontend
@@ -14,7 +14,7 @@ Un buen test de frontend **prueba lo que hace el usuario y lo que ve**, no cómo
 - Suites frágiles que se rompen con cada refactor, tests intermitentes, tests lentos.
 - Montar MSW, Storybook con tests o regresión visual.
 
-**No es para:** suites E2E de flujos completos, contratos con el backend, pruebas de carga o DAST → dominio QA (`domains/05_qa_testing_engineering/`) · auditoría de accesibilidad → `accessibility` (esta skill integra axe en los tests).
+**No es para:** suites E2E de flujos completos, contratos con el backend, pruebas de carga o DAST → `qa:e2e`, `qa:load-testing`, `qa:dast` · auditoría de accesibilidad → `accessibility` (esta skill integra axe en los tests).
 
 ## Paso 0: contexto (ambos modos)
 

@@ -8,7 +8,7 @@
 | **Integración** | Repositorios, consultas, transacciones, constraints, migraciones, adaptadores (contra proveedor simulado) | BD real (Testcontainers), Redis/broker reales si se usan | Segundos |
 | **API / componente** | El servicio por HTTP en proceso: validación, códigos, errores, autenticación, autorización, serialización, idempotencia | BD real; externos simulados en la frontera HTTP | Segundos |
 | **Contrato** | Que la API cumple su especificación o lo que esperan sus consumidores | Especificación OpenAPI o contratos Pact | Segundos |
-| **E2E** | Flujos entre varios sistemas desplegados | Entorno completo | Minutos (dominio QA) |
+| **E2E** | Flujos entre varios sistemas desplegados | Entorno completo | Minutos (`qa:e2e`) |
 
 Proporción orientativa: muchos unitarios de reglas, una base sólida de integración y API (donde se detectan la mayoría de bugs reales de backend), pocos E2E.
 

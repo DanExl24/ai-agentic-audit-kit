@@ -31,7 +31,7 @@ Además: inyecciones, subida de archivos, deserialización, secretos y dependenc
 - Alertas de dependencias vulnerables o secretos filtrados.
 - Abuso: scraping, creación masiva de cuentas, gasto en SMS/email, compras automatizadas de stock limitado.
 
-**No es para:** login, tokens y sesiones → `authentication` · permisos y aislamiento de tenants → `authorization` · validación de forma y mass assignment → `http-layer` · pruebas dinámicas con herramientas DAST contra la app en ejecución → dominio QA (`domains/05_qa_testing_engineering/04_dast_security_zap_audit`).
+**No es para:** login, tokens y sesiones → `authentication` · permisos y aislamiento de tenants → `authorization` · validación de forma y mass assignment → `http-layer` · pruebas dinámicas con herramientas DAST contra la app en ejecución → `qa:dast`.
 
 ## Paso 0: contexto (ambos modos)
 

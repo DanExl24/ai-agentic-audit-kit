@@ -133,6 +133,4 @@ Cuando la causa raíz no está en el frontend, reúne la evidencia (archivo, pet
 | Login, sesiones, tokens y su verificación en el servidor | plugin `backend` → `authentication` |
 | Autorización (IDOR), roles, aislamiento entre tenants | plugin `backend` → `authorization` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el servidor | plugin `backend` → `api-security` |
-| E2E, contratos, carga, DAST, análisis de causa raíz de incidentes | `domains/05_qa_testing_engineering/` |
-
-(Los dominios que aparecen como `domains/…` siguen en formato de prompts mientras no se migren a plugins.)
+| E2E, carga, DAST, análisis de defectos escapados, madurez de pruebas | plugin `qa` (`qa:audit` o la skill concreta) |

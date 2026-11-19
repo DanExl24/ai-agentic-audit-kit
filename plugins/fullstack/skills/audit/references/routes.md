@@ -63,5 +63,5 @@ Cada ruta conjunta fija la ruta de `frontend:audit`, la de `backend:audit` y las
 
 | Problema | Evidencia | Dominio recomendado |
 | :--- | :--- | :--- |
-| Pruebas de carga, DAST, pentest, E2E a gran escala | Riesgo sin poder verificarse con lectura de código | QA (`domains/05_qa_testing_engineering/`, pendiente de migrar) |
+| Pruebas de carga, DAST, pentest, E2E a gran escala | Riesgo sin poder verificarse con lectura de código | plugin `qa` (`qa:audit`, `load-testing`, `dast`, `e2e`) |
 | Infraestructura, despliegue, redes, CDN | Fallos que dependen del entorno, no del código | DevOps (pendiente) |

@@ -14,7 +14,7 @@ Esta skill no audita código por sí misma: **decide qué skills del plugin `bac
 - Síntoma difuso (incidentes recurrentes, lentitud general, "algo falla con los pagos").
 - Obtener una línea base con puntuación para comparar en el tiempo.
 
-**No es para:** un área concreta y conocida → invoca la skill directamente (`/backend:data-access`, `/backend:authorization`…) · frontend → `frontend:audit` · cargas, DAST y E2E → dominio QA (ver [routes.md § Escalado](references/routes.md#escalado-a-otros-dominios)).
+**No es para:** un área concreta y conocida → invoca la skill directamente (`/backend:data-access`, `/backend:authorization`…) · frontend → `frontend:audit` · cargas, DAST, E2E y madurez de pruebas → plugin `qa` (ver [routes.md § Escalado](references/routes.md#escalado-a-otros-dominios)).
 
 ## Paso 0: triage
 

@@ -10,7 +10,7 @@ Los ejemplos usan Vitest + Testing Library + MSW; los equivalentes por framework
 | Unitario | Lógica pura: formateadores, cálculos, schemas, reducers, utilidades | Vitest/Jest | Muchos, muy rápidos |
 | Componente / integración | Un componente o una feature con sus hijos reales, red simulada | Testing Library + MSW (jsdom/happy-dom o modo navegador) | **El grueso** del valor en frontend |
 | Visual | Apariencia de componentes y páginas en estados clave | Storybook + Chromatic, o Playwright `toHaveScreenshot` | Componentes base y pantallas críticas |
-| E2E | Flujos críticos completos contra la app real | Playwright/Cypress | Pocos (dominio QA) |
+| E2E | Flujos críticos completos contra la app real | Playwright/Cypress | Pocos (`qa:e2e`) |
 
 ## Anatomía de un test de componente
 

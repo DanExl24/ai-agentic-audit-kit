@@ -51,12 +51,15 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Login, sesiones, JWT, reset de contraseña, MFA o API keys. | **skill `/backend:authentication`** | `plugins/backend/skills/authentication/` |
 | ¿Un usuario puede ver o modificar datos ajenos (IDOR)? Roles, permisos, aislamiento entre tenants. | **skill `/backend:authorization`** | `plugins/backend/skills/authorization/` |
 | Inyecciones, SSRF, uploads, rate limiting, secretos en el repo, configuración insegura, dependencias vulnerables. | **skill `/backend:api-security`** | `plugins/backend/skills/api-security/` |
-| Quieres certificar la madurez de pruebas global, coordinar el escuadrón de QA o hacer un post-mortem tras una caída. | **00_qa_director** | `domains/05_qa_testing_engineering/00_qa_director/` |
-| Código difícil de testear, dependencias no inyectadas o tests sin aserciones reales. | **01_testability_and_unit_audit** | `domains/05_qa_testing_engineering/01_testability_and_unit_audit/` |
-| Tests E2E rotos o intermitentes (flaky), selectores CSS frágiles o falta de validación DTO Zod. | **02_contract_and_e2e_audit** | `domains/05_qa_testing_engineering/02_contract_and_e2e_audit/` |
-| Quieres simular concurrencia masiva con k6, detectar cuellos de botella y verificar SLAs p95/p99. | **03_performance_load_audit** | `domains/05_qa_testing_engineering/03_performance_load_audit/` |
-| Auditar la seguridad en runtime: cabeceras CSP/HSTS, ataques de fuerza bruta en login y errores 500. | **04_dast_security_zap_audit** | `domains/05_qa_testing_engineering/04_dast_security_zap_audit/` |
-| Analizar por qué siguen reapareciendo bugs (Ishikawa 5 ramas), aislar el 20% crítico (Pareto) o crear plan Kaizen. | **05_root_cause_kaizen_audit** | `domains/05_qa_testing_engineering/05_root_cause_kaizen_audit/` |
+| Quieres saber cómo está la calidad y las pruebas del proyecto, si un release está listo o no sabes qué skill de QA aplicar. | **skill `/qa:audit`** | `plugins/qa/skills/audit/` |
+| No sabes qué probar ni cuánto: mapa de riesgos, definición de terminado, criterios de salida de un release. | **skill `/qa:test-strategy`** | `plugins/qa/skills/test-strategy/` |
+| Necesitas casos que encuentren defectos: valores límite, tablas de decisión, estados, combinaciones, Gherkin. | **skill `/qa:test-design`** | `plugins/qa/skills/test-design/` |
+| Los tests pasan pero los usuarios encuentran fallos; quieres explorar antes de un release. | **skill `/qa:exploratory-testing`** | `plugins/qa/skills/exploratory-testing/` |
+| Tests E2E rotos o intermitentes, selectores frágiles, esperas fijas, o crear la suite de recorridos críticos. | **skill `/qa:e2e`** | `plugins/qa/skills/e2e/` |
+| Pipeline lento, fallos ignorados, reintentos hasta que pasa, qué bloquea el merge y qué no. | **skill `/qa:quality-gates`** | `plugins/qa/skills/quality-gates/` |
+| ¿Aguanta el tráfico esperado? Pruebas de carga con k6, Locust o Gatling y umbrales desde los SLO. | **skill `/qa:load-testing`** | `plugins/qa/skills/load-testing/` |
+| Seguridad en ejecución: cabeceras, cookies y errores reales con OWASP ZAP contra un entorno propio. | **skill `/qa:dast`** | `plugins/qa/skills/dast/` |
+| Bugs que vuelven o se escapan a producción: hotspots, Ishikawa, Pareto 80/20 y matriz de acciones Kaizen. | **skill `/qa:defect-analysis`** | `plugins/qa/skills/defect-analysis/` |
 
 ---
 
@@ -99,7 +102,7 @@ Todos los especialistas del frontend son ahora **skills de Claude Code** en `plu
 | `/frontend:rendering-and-seo` | CSR/SSR/SSG/ISR, hidratación, aislamiento en SSR, metadatos, canonical, sitemap, datos estructurados, 404 reales. | nueva |
 | `/frontend:routing` | Rutas tipadas, lazy loading, guards (y sus límites), retorno seguro tras login, estado en la URL validado, 404/403. | nueva |
 | `/frontend:security` | XSS y sanitización, sesión y tokens, CSRF, secretos en el bundle, CSP, postMessage, dependencias. | nueva |
-| `/frontend:testing` | Testing Library, MSW, tests de formularios, stores y guards, estabilidad, regresión visual. E2E queda en QA. | nueva |
+| `/frontend:testing` | Testing Library, MSW, tests de formularios, stores y guards, estabilidad, regresión visual. E2E en `/qa:e2e`. | nueva |
 | `/frontend:observability` | Capas de manejo de errores, UX de error, Sentry (source maps, releases, sin datos personales), RUM, trazas con el backend, desfase de versión. | nueva |
 | `/frontend:i18n` | Claves y ICU, sin concatenar, formatos con `Intl`, zonas horarias, detección de idioma, URLs por idioma, RTL, flujo de traducción. | nueva |
 | `/frontend:tooling` | Node y lockfile fijados, scripts estándar, entorno validado, ESLint/Prettier/Biome, hooks, CI, source maps, despliegue estático. | nueva |
@@ -140,71 +143,23 @@ El antiguo agente `04_security/owasp_threat_hunter` se ha repartido en tres skil
 | `/backend:api-security` | Inyecciones (SQL, NoSQL, comandos, rutas, plantillas), consumo de recursos y rate limiting, flujos de negocio, SSRF, uploads, deserialización, secretos, configuración de producción, inventario, dependencias. |
 
 ---
-### 🧪 DOMINIO 05: QA, TESTABILITY & QUALITY ENGINEERING
+### 🧪 DOMINIO 05: QA (plugin `qa`)
 
-El dominio de Calidad de Software, Arquitectura de Pruebas y Resiliencia está liderado por **`00_qa_director`**, quien coordina a 5 especialistas verticales distribuidos en niveles de código (Shift-Left), runtime operativo (Shift-Right) y mejora continua:
+Las skills de calidad a lo largo del SDLC están en `plugins/qa/skills/`: decidir qué probar según el riesgo, diseñar casos, explorar, las pruebas contra el sistema en marcha (E2E, carga, seguridad dinámica) y el proceso (puertas de calidad, análisis de defectos). Las que dependen de una herramienta tienen notas por herramienta (`playwright.md`, `k6.md`, `zap.md`…), no por lenguaje. Comparten escala, formatos, handoffs y contexto en `plugins/qa/standards/` (códigos `QA-*`). Catálogo: [`plugins/qa/README.md`](../plugins/qa/README.md).
 
-#### 👑 Agente: `00_qa_director` (Head of Quality Engineering & SDET Director)
-* **¿Qué hace exactamente?**
-  Es el **director y estratega supremo de calidad**. Evalúa la madurez de pruebas del repositorio, realiza el triage de problemas complejos, selecciona y activa las rutas canónicas del `ROUTING_PLAYBOOK.md` (Post-Mortem, Pre-Release Gate, Anti-Flakiness CI/CD o Resiliencia Operativa), y consolida el veredicto cuantificado emitiendo `templates/QA_MATURITY_SCORECARD_TEMPLATE.md` (0 a 100 puntos).
-* **¿Cuándo DEBES usarlo?**
-  - Cuando no sabes qué tipo de prueba o especialista necesitas para resolver un problema de calidad.
-  - Antes de un pase mayor a producción para certificar el estado de las suites, contratos y rendimiento.
-  - Tras caídas graves o regresiones repetidas para coordinar el análisis forense y el plan de blindaje.
-* **¿Cuándo NO debes usarlo?**
-  - ❌ **NO lo uses** si ya sabes exactamente qué archivo necesitas refactorizar para inyección de dependencias (usa `01_testability_and_unit_audit`).
-  - ❌ **NO lo uses** si solo buscas escribir un script k6 para un endpoint puntual (usa `03_performance_load_audit`).
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/00_qa_director. Audita la madurez de pruebas y calidad en [ruta/proyecto]. Aplica tu ROUTING_PLAYBOOK.md, activa la ruta necesaria y emite el scorecard bajo templates/QA_MATURITY_SCORECARD_TEMPLATE.md.
-  ```
+| Skill | Qué cubre | Sustituye a |
+| :--- | :--- | :--- |
+| `/qa:test-strategy` | Mapa de riesgos (impacto × probabilidad × detección), forma de la cobertura, automatizar / explorar / vigilar, definición de terminado, criterios de salida, plan de release. | nueva |
+| `/qa:test-design` | Particiones, valores límite, tablas de decisión, transiciones de estado, pairwise, negativos, property-based testing, Gherkin. | BVA de `02_contract_and_e2e_audit` |
+| `/qa:exploratory-testing` | Charters, heurísticas, notas de sesión, reportes de bug reproducibles; ejecutable por un agente con navegador. | nueva |
+| `/qa:e2e` | Recorridos críticos, fixtures, localizadores por rol, datos propios por test, instancia desechable, intermitencia, smoke tras desplegar (Playwright, Cypress). | `02_contract_and_e2e_audit` |
+| `/qa:quality-gates` | Etapas del pipeline, presupuestos de tiempo, tests afectados, sharding, cuarentena con caducidad, cobertura del diff, checks obligatorios (GitHub Actions, GitLab CI). | parte de CI del `00_qa_director` |
+| `/qa:load-testing` | Tipos de prueba, modelo de carga, escenarios realistas, umbrales desde los SLO, entorno autorizado, interpretación, smoke en CI (k6, Locust, Gatling). | `03_performance_load_audit` |
+| `/qa:dast` | Autorización y alcance, baseline / completo / API, escaneo autenticado, reglas y supresiones justificadas, criba (OWASP ZAP). | `04_dast_security_zap_audit` |
+| `/qa:defect-analysis` | Defectos escapados y regresiones: clasificación, hotspots, 5 porqués, Ishikawa en Mermaid (5 ramas), Pareto 80/20, matriz Kaizen (Quick Win, Táctico, Estratégico con dificultad, plazo, impacto y KPI), criterios de cierre. | `05_root_cause_kaizen_audit` |
+| `/qa:audit` | Orquestador: triage, 6 rutas, aplicabilidad por contexto, madurez de QA 0–100 por 5 pilares con nivel (Reactivo, Básico, Gestionado, Continuo), remediación por lotes. | `00_qa_director` |
 
----
-
-#### 1. `01_testability_and_unit_audit` (Testability & Unit Specialist)
-* **¿Qué hace exactamente?** Audita la testabilidad del código: acoplamiento rígido, instanciaciones directas con `new`, dependencias no inyectadas, funciones impuras y tests unitarios sin aserciones reales (*assertion-free* o tautológicos).
-* **¿Cuándo DEBES usarlo?** Al crear o refactorizar servicios de lógica de negocio, o cuando las métricas de cobertura parecen altas pero hay bugs frecuentes.
-* **Insumos mínimos:** Archivo de servicio o controlador + suite de tests unitarios asociada.
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/01_testability_and_unit_audit. Audita [ruta/src/services/billing.service.ts] y sus pruebas unitarias. Diagnostica acoplamiento a infraestructura y emite el código refactorizado con DI y suite determinista bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-  ```
-
-#### 2. `02_contract_and_e2e_audit` (Contract & E2E Specialist)
-* **¿Qué hace exactamente?** Audita suites Playwright/Cypress y contratos API: detecta selectores frágiles (XPath, clases CSS), esperas fijas (`sleep`), ausencia de validación DTO en runtime (Zod) y omisión del análisis de valores límite (BVA).
-* **¿Cuándo DEBES usarlo?** Cuando las suites de CI fallan aleatoriamente (*flaky tests*) o cuando el frontend asume campos del backend sin validación.
-* **Insumos mínimos:** Archivo de prueba E2E (`.spec.ts`) o cliente API frontend (`client.ts`).
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/02_contract_and_e2e_audit. Audita [ruta/e2e/checkout.spec.ts]. Erradica esperas fijas, reemplaza selectores por getByRole y añade validación de contrato bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-  ```
-
-#### 3. `03_performance_load_audit` (Performance & Load Specialist)
-* **¿Qué hace exactamente?** Audita la resiliencia de endpoints ante estrés concurrente, agotamiento de pools de BD, bloqueos del Event Loop y ausencia de SLAs p95/p99. Genera scripts de prueba k6 ejecutables con escenarios escalonados.
-* **¿Cuándo DEBES usarlo?** En endpoints transaccionales críticos (pagos, búsquedas complejas, checkout) antes de campañas de alto tráfico.
-* **Insumos mínimos:** Controlador o servicio backend + SLA deseado (ej. 300 VUs, p95 < 400ms).
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/03_performance_load_audit. Audita [ruta/backend/src/controllers/payment.controller.ts]. Genera un script de prueba de carga k6 completo y analiza cuellos de botella bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-  ```
-
-#### 4. `04_dast_security_zap_audit` (DAST & OWASP ZAP Specialist)
-* **¿Qué hace exactamente?** Audita la seguridad dinámica en tiempo de ejecución: cabeceras de respuesta HTTP (CSP, HSTS, X-Frame-Options), protección contra fuerza bruta (rate-limiting) en login, cookies de sesión y fuga de trazas en errores 500.
-* **¿Cuándo DEBES usarlo?** Al auditar una instancia local o de staging en ejecución, o revisar middlewares de seguridad y servidor web.
-* **Insumos mínimos:** URL del servicio o archivo de servidor/middlewares (`server.ts`, `middleware.ts`).
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/04_dast_security_zap_audit. Audita las cabeceras y control de abuso en [URL_O_ARCHIVO]. Entrega PoC con cURL y configuración de bastionado bajo templates/ATOMIC_FINDING_TEMPLATE.md.
-  ```
-
-#### 5. `05_root_cause_kaizen_audit` (Root Cause & Kaizen Specialist)
-* **¿Qué hace exactamente?** Realiza análisis forense de causa raíz sobre historiales de incidentes o commits de fix. Construye el Diagrama de Ishikawa en 5 ramas, aplica el filtro de Pareto 80/20 y diseña la matriz Kaizen con Quick Wins inmediatos y reformas estructurales.
-* **¿Cuándo DEBES usarlo?** Ante incidentes graves en producción, regresiones recurrentes o para post-mortems de ingeniería.
-* **Insumos mínimos:** Historial de git log de correcciones, descripción de un incidente o módulo con bugs repetitivos.
-* **Prompt sugerido:**
-  ```text
-  Actúa como 05_qa_testing_engineering/05_root_cause_kaizen_audit. Analiza el historial de fallos en [CONTEXTO_INCIDENTE]. Elabora el Diagrama de Ishikawa, la tabla de Pareto 80/20 y la matriz Kaizen bajo templates/KAIZEN_ACTION_TEMPLATE.md.
-  ```
+* **¿Cuándo NO usarlas?** Para escribir los tests de una capa → `/frontend:testing` o `/backend:testing`; para corregir el código que el escaneo o la prueba señalan → la skill de la capa (`/backend:api-security`, `/backend:performance`…); para incidentes de operación (caídas, guardias, SLO) → futuro dominio SRE.
 
 ---
 
@@ -218,4 +173,4 @@ Si una skill de capa detecta que la causa raíz está en la otra capa, o que la 
 
 Para una revisión completa de punta a punta, `/fullstack:audit` hace todo esto en una sola pasada.
 
-Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en `standards/handoffs.md` y `standards/context.md` de cada plugin (idénticos en los tres; p. ej. [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md)). Cada skill de los tres plugins tiene una sección `Handoffs` con sus disparadores concretos.
+Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en `standards/handoffs.md` y `standards/context.md` de cada plugin (idénticos en los cuatro plugins; p. ej. [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md)). Cada skill de los cuatro plugins tiene una sección `Handoffs` con sus disparadores concretos.

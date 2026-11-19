@@ -60,7 +60,8 @@ Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alc
 | Riesgos de usabilidad o combinaciones nuevas que no compensa automatizar | `exploratory-testing` | Áreas y objetivos de sesión |
 | Huecos de tests unitarios o de componentes en el frontend | `frontend:testing` | Módulos y riesgos |
 | Huecos de tests de integración, contrato o concurrencia en el backend | `backend:testing` | Módulos y riesgos |
-| Riesgo de rendimiento o capacidad sin ninguna prueba | `backend:performance` | Endpoints críticos y volumen esperado |
+| Riesgo de rendimiento o capacidad sin ninguna prueba | `load-testing` | Endpoints críticos y volumen esperado |
+| El historial muestra regresiones repetidas o correcciones concentradas en un módulo | `defect-analysis` | Commits o issues y módulos afectados |
 | Riesgos que cruzan capas (contrato, sesión) sin control | `fullstack:contracts` | Endpoints y consumidores |
 
 ## Referencias

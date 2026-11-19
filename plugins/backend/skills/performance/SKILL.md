@@ -14,7 +14,7 @@ La regla de oro: **medir antes de optimizar**. En la mayoría de backends, la la
 - Antes de una campaña o pico de tráfico; planificación de capacidad.
 - Definir presupuestos de rendimiento o pruebas de carga para endpoints críticos.
 
-**No es para:** la corrección de consultas e índices en sí → `data-access`, `schema-and-migrations` (esta skill las detecta y delega) · caché → `caching` · pruebas de carga como disciplina de QA (scripts k6 completos, escenarios de estrés) → `domains/05_qa_testing_engineering/03_performance_load_audit` (pendiente de migrar) · rendimiento del navegador → `frontend:performance`.
+**No es para:** la corrección de consultas e índices en sí → `data-access`, `schema-and-migrations` (esta skill las detecta y delega) · caché → `caching` · pruebas de carga como disciplina de QA (scripts k6 completos, escenarios de estrés) → `qa:load-testing` · rendimiento del navegador → `frontend:performance`.
 
 ## Paso 0: contexto (ambos modos)
 
