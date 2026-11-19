@@ -20,6 +20,7 @@ La URL es la interfaz más estable de la aplicación: se comparte, se guarda en 
 
 1. Detecta el router (Vue Router, Nuxt file-based, React Router en modo declarativo/data/framework, TanStack Router, Next.js App Router, Angular Router) y su versión. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Localiza la definición de rutas, los guards/middleware, cómo se resuelve la sesión al arrancar y cómo se cargan los datos de cada página.
+3. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -48,6 +49,17 @@ La URL es la interfaz más estable de la aplicación: se comparte, se guarda en 
 5. **Cada ruta carga solo su código y sus datos**, en paralelo y sin cascadas.
 6. **Rutas con nombre o helpers tipados**, no strings de URL repetidas por el código.
 7. **La navegación se anuncia:** título, foco y scroll coherentes en cada cambio de ruta.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Un guard de ruta es la única protección de datos o acciones | `backend:authorization` | Rutas, endpoints que sirven sus datos y roles |
+| Redirecciones construidas con parámetros sin validar (open redirect) | `security` | Parámetro y destino |
+| Rutas sin carga diferida que inflan el bundle inicial | `performance` | Rutas y tamaños |
+| Cambios de ruta sin gestión del foco ni del título | `accessibility` | Layout y rutas |
 
 ## Referencias
 

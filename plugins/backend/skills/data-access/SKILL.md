@@ -21,6 +21,7 @@ El acceso a datos es donde un backend correcto en local se rompe en producción:
 1. Detecta base de datos y versión, ORM o query builder, driver y configuración del pool. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Si es posible, activa el log de consultas (o usa la herramienta del ORM) y observa cuántas consultas hace un endpoint típico.
 3. Identifica operaciones con riesgo de concurrencia: todo lo que lee un valor y luego lo modifica (stock, saldo, plazas, contadores, estados).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -49,6 +50,18 @@ El acceso a datos es donde un backend correcto en local se rompe en producción:
 5. **La base de datos es la última defensa:** constraints únicos y checks impiden lo que el código no evitó.
 6. **Las transacciones son cortas:** sin llamadas HTTP, colas ni esperas del usuario dentro.
 7. **Siempre parametrizado:** nunca SQL construido concatenando valores.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Una consulta usa un ID de la petición sin filtrar por tenant o propietario | `authorization` | Consulta, endpoint y modelo de tenancy |
+| Consultas frecuentes sin un índice que las soporte | `schema-and-migrations` | Consulta y plan (`EXPLAIN`) |
+| Endpoints calientes con N+1 o consultas lentas medidas | `performance` | Endpoint, consultas y tiempos |
+| Lecturas repetidas de datos que cambian poco | `caching` | Consulta y frecuencia de cambio |
+| SQL construido concatenando entrada del usuario | `api-security` | Consulta y origen del dato |
 
 ## Referencias
 

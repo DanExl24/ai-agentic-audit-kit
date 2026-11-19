@@ -22,6 +22,7 @@ El código del frontend se ejecuta en la máquina del usuario, que puede leerlo,
 1. Detecta framework, meta-framework y cómo autentica el backend (cookie httpOnly, Bearer, OAuth/OIDC con proveedor). Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Localiza: dónde se renderiza contenido de usuarios, dónde se guardan tokens, variables de entorno públicas, scripts de terceros, configuración de cabeceras (servidor, CDN, `vercel.json`, `netlify.toml`, nginx).
 3. Revisa el estado de las dependencias (`npm audit`/`pnpm audit`, Dependabot/Renovate).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -52,6 +53,18 @@ El código del frontend se ejecuta en la máquina del usuario, que puede leerlo,
 5. **Las credenciales no viven donde un script inyectado pueda leerlas.**
 6. **Mínimos terceros, mínimos privilegios:** cada script externo puede leer toda la página.
 7. **Los datos sensibles no salen de donde deben:** ni a la URL, ni a logs, ni a herramientas de analítica o errores sin filtrar.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Token en `localStorage` o estrategia de sesión incoherente con el servidor | `fullstack:contracts` | Configuración de sesión de ambas capas (cookies, CORS, refresh) |
+| Permisos aplicados solo ocultando elementos de la UI | `backend:authorization` | Acciones, endpoints y roles |
+| HTML o markdown de usuarios que el servidor guarda o devuelve sin sanear | `backend:http-layer` | Campos y endpoints |
+| Cabeceras de seguridad (CSP, HSTS, frame-ancestors) ausentes en las respuestas | `backend:http-layer` | Servidor o hosting que sirve la app |
+| Secretos en el bundle, en `.env` versionado o dependencias vulnerables | `tooling` | Archivos, variables y paquetes |
 
 ## Referencias
 

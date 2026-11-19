@@ -23,6 +23,7 @@ El design system es el contrato visual del producto escrito en código: **tokens
 2. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 3. Localiza dónde viven hoy los tokens (config de Tailwind, `:root` con variables, archivo de tema) y los componentes base (`shared/ui`, `components/base`…).
 4. Si existe Storybook o una página de catálogo, úsala como inventario.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -51,6 +52,17 @@ El design system es el contrato visual del producto escrito en código: **tokens
 5. **Todos los estados diseñados.** Un botón sin `focus-visible` o un input sin estado de error no están terminados.
 6. **API predecible:** variantes y tamaños con nombres consistentes en todos los componentes (`variant`, `size`; `primary | secondary | ghost | destructive`; `sm | md | lg`).
 7. **Rendimiento visual:** animaciones con `transform` y `opacity`; iconos de un sistema único, no SVG gigantes duplicados.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Tokens o estados (hover, disabled, focus) con contraste insuficiente | `accessibility` | Tokens y componentes |
+| Componentes base con anchos o alturas fijas que se rompen en móvil | `responsive-layout` | Componentes y viewports |
+| Componentes equivalentes duplicados en varias features | `architecture` | Ubicaciones de las copias |
+| Temas claro/oscuro o variantes sin cobertura de tests visuales | `testing` | Componentes y variantes |
 
 ## Referencias
 

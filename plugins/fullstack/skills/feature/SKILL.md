@@ -85,6 +85,17 @@ Los disparadores de handoff que aparezcan durante un paso se tratan según [hand
 5. **Coste y riesgos a la vista:** el usuario aprueba el plan y los cambios con riesgo operativo.
 6. **Lo no hecho se dice:** cada pendiente queda en la entrega y en el contexto.
 
+## Handoffs
+
+Como orquestador, el plan ya es la cadena de skills ([handoffs.md](../../standards/handoffs.md) regla 6). Fuera del plan:
+
+| Disparador (observable) | Destino | Alcance y contexto |
+| :--- | :--- | :--- |
+| Un paso falla entre capas y no está claro dónde (datos que se pierden, 4xx inesperados) | `flow-diagnosis` | Flujo, paso del plan y evidencia |
+| La funcionalidad exige reorganizar módulos o crear un paquete compartido | `topology` | Módulos afectados; se añade como paso opcional con su coste |
+| Durante la construcción aparecen hallazgos graves fuera del alcance (p. ej. contraseñas en texto plano) | Hallazgo abierto en la entrega y en `.sdlc/context.md` | Código del plugin y evidencia; no se corrige sin aprobación |
+| El usuario pide revisar todo lo construido en profundidad | `audit` | Se propone con su coste |
+
 ## Referencias
 
 | Archivo | Cuándo cargarlo |

@@ -22,6 +22,7 @@ El contrato de una API es una promesa: los clientes (frontend, apps móviles, in
 1. Detecta framework y si existe una especificación OpenAPI (generada desde el código o escrita a mano). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Identifica los consumidores (frontend propio, móviles con versiones antiguas en circulación, terceros) y las convenciones ya establecidas en la API.
 3. Si la API ya existe, respeta sus convenciones salvo que sean dañinas; la consistencia vale más que la perfección.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -51,6 +52,18 @@ El contrato de una API es una promesa: los clientes (frontend, apps móviles, in
 5. **Las operaciones con efectos se pueden reintentar sin duplicar** (idempotencia).
 6. **Nunca romper a los clientes existentes:** ampliar sí, cambiar o quitar con versión y deprecación.
 7. **El contrato está escrito** (OpenAPI) y verificado contra la implementación.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Un cambio incompatible afecta al frontend o a clientes en circulación | `fullstack:contracts` | Endpoint, cambio y consumidores (orden de despliegue) |
+| El contrato diseñado no se valida ni serializa así en el código | `http-layer` | Endpoints, DTOs y error handler |
+| Paginación por cursor o bloqueo optimista (`ETag`) a implementar | `data-access` | Consultas y columnas de versión |
+| Operaciones largas que no caben en una petición | `async-messaging` | Operación y recurso de estado |
+| Colecciones o cargas sin límites de tamaño ni rate limiting | `api-security` | Endpoints y límites |
 
 ## Referencias
 

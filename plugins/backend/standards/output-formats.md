@@ -84,3 +84,7 @@ El anexo de referencias o skills aplicadas dice **exactamente** qué se leyó en
 - Una comprobación ("checklist aplicado: 0 hallazgos", "contracts sin desajustes") solo se afirma si se cargó su `checklist.md` o se construyó su tabla de cruce; si no, se escribe **"no aplicado"** y el motivo.
 - "Inferido" o "por conocimiento general" no cuenta como aplicado: va como ❌ con esa nota.
 - Lo que se dejó de cargar por coste aparece como ❌ (coste), no se omite.
+
+## Handoffs en la entrega
+
+Toda entrega (modo Construir o Auditar) termina con el bloque de handoffs hechos y pendientes de [handoffs.md](handoffs.md#bloque-de-traza-en-la-entrega). Si existe `.sdlc/context.md` ([context.md](context.md)), los pendientes se registran allí.

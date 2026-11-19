@@ -21,6 +21,7 @@ Autorizar es responder **"¿puede esta identidad hacer esta acción sobre este r
 1. Detecta framework y mecanismo actual (guards, decoradores, permission classes, `@PreAuthorize`, librerías como CASL, Casbin, django-guardian, OPA/Cedar, OpenFGA). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Entiende el modelo: ¿hay tenants?, ¿roles globales o por organización?, ¿recursos compartibles entre usuarios?, ¿propiedad de recursos?
 3. Haz el inventario de endpoints (rutas registradas) y anota cuáles reciben identificadores.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Autorizar es responder **"¿puede esta identidad hacer esta acción sobre este r
 5. **Mejor acotar la consulta que filtrar después:** lo que no se carga no se puede filtrar mal.
 6. **Ocultar en la interfaz no es autorizar.**
 7. **Probar los permisos como se prueban las reglas de negocio:** con una matriz de casos y casos negativos.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Listados o exportaciones que no filtran por tenant o propietario en la consulta | `data-access` | Consultas y endpoints |
+| Claves de caché sin tenant o usuario | `caching` | Claves y datos cacheados |
+| Mensajes o trabajos en cola sin tenant ni contexto de permisos | `async-messaging` | Productores y consumidores |
+| Campos sensibles devueltos a roles que no deberían verlos | `http-layer` | DTOs de salida por rol |
+| Matriz de permisos sin tests | `testing` | Roles, recursos y acciones |
 
 ## Referencias
 

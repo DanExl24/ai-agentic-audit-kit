@@ -21,6 +21,7 @@ La regla de oro: **medir antes de optimizar**. En la mayoría de backends, la la
 1. Detecta runtime y versión, servidor (Uvicorn/Gunicorn, Node cluster, Tomcat/Netty), modelo de concurrencia, despliegue (réplicas, CPU y memoria por contenedor). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Reúne datos: métricas de latencia por endpoint, trazas de las peticiones lentas, uso de CPU/memoria, métricas del pool y de la base de datos.
 3. Define el objetivo: qué endpoint, qué percentil, qué carga (p. ej. "`GET /search` p95 < 300 ms a 200 rps").
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir / Optimizar
 
@@ -49,6 +50,18 @@ La regla de oro: **medir antes de optimizar**. En la mayoría de backends, la la
 5. **Dimensiona de forma coherente:** workers × pool de conexiones ≤ capacidad de la base de datos.
 6. **Lo grande se transmite en streaming o se procesa en background.**
 7. **Una mejora sin prueba de carga ni presupuesto se pierde** en el siguiente cambio.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| N+1, consultas sin límite o sin índice en la ruta lenta | `data-access` | Consultas y tiempos |
+| Datos caros recalculados en cada petición | `caching` | Cálculo y frecuencia de cambio |
+| Trabajo pesado (informes, envíos, procesado de archivos) dentro de la petición | `async-messaging` | Endpoint y trabajo a mover |
+| No hay trazas ni métricas para localizar el cuello de botella | `observability` | Servicio y rutas |
+| El tiempo se va en el cliente, no en el servidor | `frontend:performance` | Pantalla y mediciones |
 
 ## Referencias
 

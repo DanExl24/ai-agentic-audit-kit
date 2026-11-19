@@ -22,6 +22,7 @@ Dónde y cuándo se genera el HTML determina qué ve un buscador, qué tan rápi
 1. Detecta framework y meta-framework, modo de render actual y dónde se despliega (CDN estática, Node, edge, serverless). Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Clasifica las páginas: públicas indexables (landing, catálogo, blog, fichas), públicas no indexables (búsqueda interna, carrito) y privadas (panel tras login).
 3. Para auditorías de SEO, consigue la URL pública y revisa el HTML que devuelve el servidor (`curl -s <url>`), no solo el DOM tras ejecutar JS.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -48,6 +49,18 @@ Dónde y cuándo se genera el HTML determina qué ve un buscador, qué tan rápi
 5. **En SSR, cada petición está aislada:** nada de estado de usuario en módulos compartidos ni en cachés públicas.
 6. **Cada URL indexable es única, estable y devuelve el código HTTP correcto.**
 7. **Los metadatos describen la página concreta**, no el sitio en general.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Páginas SSR lentas porque los datos del servidor tardan o no se cachean | `backend:caching` | Endpoints y frecuencia de cambio de los datos |
+| Rutas sin metadatos, canónicas o con URLs inestables | `routing` | Rutas afectadas |
+| Datos sensibles serializados en el HTML o en el estado de hidratación | `security` | Páginas y campos expuestos |
+| Core Web Vitals degradadas en páginas indexables | `performance` | Páginas y métricas |
+| Versiones por idioma sin `hreflang` o URLs por idioma | `i18n` | Rutas e idiomas |
 
 ## Referencias
 

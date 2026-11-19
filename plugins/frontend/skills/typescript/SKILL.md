@@ -22,6 +22,7 @@ El objetivo no es "que compile", sino que **el compilador detecte los errores an
 1. Lee `tsconfig*.json` (y los `extends`) y anota el nivel de estrictez real.
 2. Detecta el stack en `package.json` y carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 3. Mide la situación: número de `any` explícitos, `@ts-ignore`/`@ts-expect-error`, `as unknown as`, y si el type-check corre en CI (`tsc --noEmit`, `vue-tsc`, `ng build`).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -52,6 +53,17 @@ El objetivo no es "que compile", sino que **el compilador detecte los errores an
 5. **Haz irrepresentables los estados imposibles** (uniones discriminadas, tipos literales, `never` en el `default` del `switch`).
 6. **Deja que TypeScript infiera** lo local; anota explícitamente las fronteras (parámetros públicos, retornos de funciones exportadas, props).
 7. **Cada `as`, `!` o `@ts-expect-error` necesita una razón.** Si no puedes justificarlo en un comentario, es un bug latente.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Tipos de respuestas de la API escritos a mano que divergen del servidor | `fullstack:contracts` | Endpoints y tipos (archivo del cliente y del servidor) |
+| Datos externos (API, `localStorage`, mensajes) usados sin parsear en la frontera | `data-fetching` | Puntos de entrada de datos |
+| `tsconfig` o reglas de lint laxas que no se comprueban en CI | `tooling` | Configuración y pipeline |
+| Tipos de formularios desalineados con su esquema de validación | `forms` | Formulario y esquema |
 
 ## Referencias
 

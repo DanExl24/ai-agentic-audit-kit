@@ -21,6 +21,7 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 2. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 3. Mira cómo devuelve el backend los errores de validación (formato del 400/422) para mapearlos a campos.
 4. Si existe, reutiliza el schema del backend (monorepo, paquete compartido, OpenAPI) en lugar de duplicarlo.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Un formulario bien hecho no deja enviar datos inválidos, no envía dos veces, e
 5. **No perder lo que el usuario escribió:** ni por un error del servidor, ni por navegar sin querer, ni por un re-render.
 6. **Usa la plataforma:** `<form>`, `<label>`, `type="email"`, `autocomplete`, `inputmode`. Los gestores de contraseñas y el autocompletado del navegador deben funcionar.
 7. **Claves estables en listas dinámicas**, nunca el índice.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| El formulario valida reglas que el servidor no valida | `backend:http-layer` | Endpoint y reglas que faltan en el servidor |
+| Errores por campo del servidor con un formato que el formulario no sabe mapear | `fullstack:contracts` | Endpoint y formato de error |
+| Envío duplicable en operaciones con efectos (pagos, pedidos, reservas) | `backend:api-design` | Endpoint (idempotencia) y botón de envío |
+| Campos sin etiqueta, errores no anunciados o foco perdido tras validar | `accessibility` | Formulario y campos |
+| Fechas, números o importes con formato fijo de un solo idioma | `i18n` | Campos y formatos |
 
 ## Referencias
 

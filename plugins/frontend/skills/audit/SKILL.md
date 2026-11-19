@@ -22,6 +22,7 @@ Esta skill no audita líneas de código por sí misma: **decide qué skills apli
 2. **Objetivo:** auditoría completa, una preocupación concreta, o control previo a un release.
 3. **Contexto:** stack (lee `package.json`), tipo de app (pública indexable, panel privado, mixta), usuarios (uso intensivo, ocasional, móvil), requisitos (legales de accesibilidad, rendimiento, multi-idioma).
 4. **Ruta:** elige una de [routes.md](references/routes.md) y **explica en una línea por qué**. Si el objetivo no encaja con ninguna, compón una secuencia de skills y justifícala.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 Si el alcance es muy grande (toda una app con decenas de features), propón empezar por los flujos críticos y amplía después.
 
@@ -72,6 +73,16 @@ Cuando el usuario pide aplicar las correcciones tras la auditoría:
 6. **Lo que no es del frontend se escala**, con la evidencia reunida.
 7. **Declara los límites:** qué no se pudo verificar (sin navegador, sin datos de campo, sin acceso al backend).
 8. **Coste a la vista:** el usuario conoce y acepta el alcance y el coste aproximado antes de una auditoría extensa.
+
+## Handoffs
+
+Como orquestador, no dispara handoffs por separado ([handoffs.md](../../standards/handoffs.md) regla 6): las skills se planifican en el Paso 1 y los disparadores de las skills aplicadas se consolidan como escalado sugerido. Además:
+
+| Disparador (observable) | Destino | Alcance y contexto |
+| :--- | :--- | :--- |
+| La causa raíz de un hallazgo está en el servidor | `Escalado sugerido en el dictamen (`backend:<skill>`)` | Hallazgo y evidencia |
+| Un riesgo necesita las dos capas para existir (p. ej. token en `localStorage` + API sin cookies) | `fullstack:contracts` o `fullstack:audit` | Se propone con su coste, no se ejecuta sin confirmación |
+| La remediación pedida reconstruye una funcionalidad entera | `fullstack:feature` | Hallazgos del lote y criterios de aceptación; se propone con su coste |
 
 ## Referencias
 

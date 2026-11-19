@@ -19,6 +19,7 @@ La capa HTTP es la frontera del servicio: **todo lo que entra se valida y todo l
 
 1. Detecta lenguaje, framework y versión (`package.json`, `pyproject.toml`/`requirements.txt`, `pom.xml`/`build.gradle`). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md); para otros stacks aplica [patterns.md](references/patterns.md).
 2. Localiza el arranque del servidor, el registro de middlewares, el error handler y cómo se definen rutas y validaciones.
+3. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -46,6 +47,19 @@ La capa HTTP es la frontera del servicio: **todo lo que entra se valida y todo l
 5. **Ninguna petición puede colgarse:** errores asíncronos propagados y timeouts en todas las capas.
 6. **Límites en todo lo que crece:** tamaño de body, elementos por página, longitud de strings, tamaño de arrays.
 7. **El servidor se apaga limpio:** sin cortar peticiones en vuelo en cada despliegue.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Errores de validación o por campo que el cliente no sabe mostrar | `fullstack:contracts` | Endpoint, formato de error y consumidor |
+| Reglas de negocio implementadas en el controlador | `domain-logic` | Controlador y reglas |
+| Consultas a la base de datos escritas en el controlador | `data-access` | Controlador y consultas |
+| Rutas sin autenticación o sin autorización en la cadena de middlewares | `authorization` | Rutas, roles y recursos |
+| La comprobación de `Origin`/`Host` o CORS rechaza peticiones legítimas en algún entorno | `fullstack:contracts` | Middleware y entorno (topología de entornos) |
+| El error handler registra sin correlación o con datos sensibles | `observability` | Error handler y campos registrados |
 
 ## Referencias
 

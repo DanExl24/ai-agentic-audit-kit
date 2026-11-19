@@ -21,6 +21,7 @@ Un buen test de frontend **prueba lo que hace el usuario y lo que ve**, no cómo
 1. Detecta el runner (Vitest, Jest, Karma/Jasmine, runner del Angular CLI), Testing Library, MSW, Storybook, Playwright/Cypress y la configuración (`vitest.config`, `setupTests`, entorno `jsdom`/`happy-dom`/navegador). Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Ejecuta la suite si es posible y anota: cuántos tests, cuánto tardan, cuáles fallan o son intermitentes.
 3. Mira cómo se resuelven hoy las dependencias en tests (mocks del cliente HTTP, stores reales o mockeados, router).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -49,6 +50,17 @@ Un buen test de frontend **prueba lo que hace el usuario y lo que ve**, no cómo
 5. **Cada test es independiente** y deja el entorno como lo encontró.
 6. **Un test que nunca puede fallar no sirve:** cada test tiene aserciones sobre el resultado, y se ha visto fallar al romper el código.
 7. **La cobertura es un indicador, no un objetivo:** importa qué comportamiento está protegido, no el porcentaje.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Lógica imposible de probar sin montar componentes completos | `architecture` | Componentes y lógica acoplada |
+| Mocks de la API escritos a mano que divergen del servidor | `fullstack:contracts` | Endpoints y mocks |
+| Flujos críticos sin ningún test que cruce cliente y servidor | `fullstack:flow-diagnosis` | Flujos (modo Auditar) |
+| Tests que no se ejecutan en CI o se saltan | `tooling` | Pipeline y scripts |
 
 ## Referencias
 

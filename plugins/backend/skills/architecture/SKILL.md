@@ -22,6 +22,7 @@ La arquitectura de un backend decide **cuánto cuesta el próximo cambio**. La m
 1. Detecta lenguaje, framework y forma de despliegue (un proceso, varios servicios, funciones). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Mapea los módulos o carpetas actuales, quién importa a quién y qué tablas toca cada parte.
 3. Pregunta por el contexto que decide la arquitectura: tamaño del equipo, número de equipos, requisitos de escalado o despliegue independiente, criticidad.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ La arquitectura de un backend decide **cuánto cuesta el próximo cambio**. La m
 5. **Las reglas de dependencia se comprueban con herramientas,** no con disciplina.
 6. **Se evoluciona por pasos** (strangler fig), nunca con una reescritura de golpe.
 7. **Las decisiones se documentan** con su contexto y sus alternativas.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Repositorio con frontend y backend cuya estructura mezcla capas | `fullstack:topology` | Estructura y grafo de dependencias |
+| Módulos que se comunican por eventos o colas | `async-messaging` | Eventos y garantías necesarias |
+| Dependencias externas usadas sin puerto ni adaptador | `integrations` | Proveedores y puntos de uso |
+| Reglas de capas o módulos que no se verifican en CI | `tooling` | Reglas y herramienta (ArchUnit, import-linter, dependency-cruiser) |
+| Un módulo expone su API a otros servicios o clientes | `api-design` | Contrato del módulo |
 
 ## Referencias
 

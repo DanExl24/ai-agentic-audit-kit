@@ -21,6 +21,7 @@ Sacar trabajo de la petición (emails, PDFs, importaciones, sincronizaciones) y 
 1. Detecta la infraestructura de mensajería (Redis, RabbitMQ, SQS/SNS, Kafka, Pub/Sub, tabla en la base de datos) y la librería (BullMQ, pg-boss, Celery, Dramatiq, RQ, arq, Spring Kafka/AMQP, Spring Modulith). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Inventaria productores, colas/tópicos y consumidores; para cada mensaje: qué lo provoca, quién lo procesa y qué pasa si se procesa dos veces o nunca.
 3. Si no hay infraestructura y el volumen es moderado, considera una cola sobre la base de datos existente antes que añadir un broker.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -51,6 +52,18 @@ Sacar trabajo de la petición (emails, PDFs, importaciones, sincronizaciones) y 
 5. **Los mensajes son contratos:** versionados, evolucionan de forma compatible.
 6. **Un job programado se ejecuta una vez por disparo,** no una vez por instancia.
 7. **Las colas se observan:** profundidad, antigüedad del mensaje más viejo, tasa de fallos y DLQ.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Consumidores que llaman a terceros sin timeout ni idempotencia hacia el proveedor | `integrations` | Consumidor y proveedor |
+| Mensajes con datos personales o sensibles en claro | `data-privacy` | Esquema del mensaje |
+| Colas sin métricas de retraso, reintentos ni DLQ vigilada | `observability` | Colas y alertas |
+| Consumidores sin tests de duplicados, orden o fallos parciales | `testing` | Consumidores |
+| Mensajes sin tenant ni contexto de permisos | `authorization` | Productores y consumidores |
 
 ## Referencias
 

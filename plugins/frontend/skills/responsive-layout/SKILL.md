@@ -49,6 +49,7 @@ Saltar directamente al nivel 5 está prohibido. Cada cambio del informe indica e
 1. Detecta la tecnología de estilos (Tailwind v3/v4, CSS Modules, Sass, CSS-in-JS) y sus breakpoints reales (pueden estar personalizados). Carga [tailwind.md](references/tailwind.md) si aplica, y siempre [patterns.md](references/patterns.md).
 2. Localiza el shell de la app (layout, header, sidebar) además de la vista concreta: muchos desbordes nacen ahí.
 3. Consigue ver la interfaz en los viewports de [viewports.md](../../standards/viewports.md): herramienta de navegador de la sesión, script de Playwright o capturas del usuario. Si no es posible, trabaja sobre el código y marca la matriz como "inferida, no verificada".
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -80,6 +81,17 @@ Por defecto se aplican las correcciones en el código; si el usuario solo quiere
 5. **El nivel más bajo que resuelva el problema.**
 6. **No extrapolar:** cada viewport se verifica; también las transiciones entre ellos.
 7. **Lo que no se toca se documenta**, con el motivo.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Componentes base que imponen anchos fijos o no admiten variantes compactas | `design-system` | Componentes y tokens de espaciado |
+| Imágenes sin dimensiones o `srcset` que mueven el layout o retrasan el LCP | `performance` | Imágenes y páginas |
+| Objetivos táctiles pequeños o foco perdido al reorganizar en móvil | `accessibility` | Componentes y viewports |
+| Textos traducidos más largos que rompen el layout | `i18n` | Cadenas y componentes |
 
 ## Referencias
 

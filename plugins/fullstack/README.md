@@ -36,7 +36,7 @@ Skills para lo que **cruza frontend y backend**: el contrato entre la API y su c
 
 ## Skills que trabajan juntas
 
-- **Handoffs** ([standards/handoffs.md](standards/handoffs.md)): cada skill declara disparadores concretos que activan otra skill sobre un alcance acotado, con profundidad máxima de 2, sin reinvocar skills ya aplicadas, aviso de coste en cadenas largas y registro de pendientes si falta un plugin.
+- **Handoffs** ([standards/handoffs.md](standards/handoffs.md), idéntico en `frontend` y `backend`): cada skill de los tres plugins declara disparadores concretos que activan otra skill sobre un alcance acotado, con profundidad máxima de 2, sin reinvocar skills ya aplicadas, aviso de coste en cadenas largas y registro de pendientes si falta un plugin.
 - **Contexto compartido** ([standards/context.md](standards/context.md)): `.sdlc/context.md` en la raíz del proyecto guarda stack, convenciones, decisiones, objetivo en curso, hallazgos abiertos y handoffs pendientes, para que la siguiente skill (o sesión) no empiece de cero.
 
 ## Estructura de una skill

@@ -22,6 +22,7 @@ Cualquier persona tiene que poder completar las tareas de la aplicación: con te
 2. Comprueba qué herramientas hay: plugin de lint de accesibilidad, axe en tests, Storybook con addon a11y.
 3. Si la app se puede ejecutar y hay herramienta de navegador, úsala: la accesibilidad se verifica en el DOM renderizado, no solo leyendo plantillas.
 4. Pregunta el nivel objetivo si no es evidente (por defecto **WCAG 2.2 AA**) y si hay un marco legal concreto.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -56,6 +57,18 @@ Cualquier persona tiene que poder completar las tareas de la aplicación: con te
 ## Coordinación con `design-system`
 
 Esta skill detecta y cita la violación; si la causa raíz es un token (contraste de color) o un componente base (tamaño, foco visible), la corrección se hace en `design-system` para que se arregle en todas partes, no en la vista.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Contraste insuficiente que nace de los tokens del tema | `design-system` | Tokens y pares de color |
+| Errores de formulario no asociados al campo ni anunciados | `forms` | Formulario y campos |
+| Cambios de ruta sin mover el foco ni actualizar el título | `routing` | Rutas y layout |
+| Interacciones que solo funcionan con hover o puntero fino | `responsive-layout` | Componentes y viewports táctiles |
+| Ausencia de comprobaciones automáticas de accesibilidad en los tests | `testing` | Pantallas críticas |
 
 ## Referencias
 

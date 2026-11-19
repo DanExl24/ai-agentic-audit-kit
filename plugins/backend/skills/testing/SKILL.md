@@ -21,6 +21,7 @@ Los tests de backend que más valor dan **ejercitan el código con sus dependenc
 1. Detecta runner y herramientas (Vitest/Jest, pytest, JUnit 5; Testcontainers; supertest/TestClient/MockMvc; WireMock/nock/respx; Pact). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Ejecuta la suite y anota: número de tests por nivel, duración, fallos intermitentes, qué se simula.
 3. Identifica el comportamiento crítico sin cubrir (pagos, permisos, transiciones de estado, migraciones).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Los tests de backend que más valor dan **ejercitan el código con sus dependenc
 5. **Lo crítico se prueba de forma explícita y negativa:** "el usuario del tenant B no puede ver la factura del A".
 6. **Un test debe poder fallar:** aserciones sobre el resultado y efectos, no solo "no lanza excepción".
 7. **La cobertura orienta; la mutación y los casos críticos dicen si los tests protegen.**
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Lógica imposible de probar sin levantar todo el servicio | `architecture` | Módulos acoplados |
+| El contrato con el frontend no tiene tests | `fullstack:contracts` | Endpoints y consumidores |
+| Flujos críticos sin ningún test que cruce cliente y servidor | `fullstack:flow-diagnosis` | Flujos (modo Auditar) |
+| Migraciones sin tests | `schema-and-migrations` | Migraciones |
+| Tests que no corren en CI o lo hacen sin base de datos real | `tooling` | Pipeline |
 
 ## Referencias
 

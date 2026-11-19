@@ -22,6 +22,7 @@ Los datos personales son un pasivo además de un activo: cada copia en un log, u
 1. Detecta dónde se almacenan datos: bases de datos, almacenamiento de objetos, cachés, índices de búsqueda, colas, logs, trazas, herramientas de analítica y de errores, proveedores (email, CRM, pagos, soporte). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Pregunta qué normativas aplican (países de los usuarios y de la empresa), si hay datos de categorías especiales (salud, biometría, menores) y si existe un registro de actividades de tratamiento.
 3. Identifica qué funcionalidades existen para borrado y exportación.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Los datos personales son un pasivo además de un activo: cada copia en un log, u
 5. **Borrar es borrar en todas partes,** incluidos índices, cachés, almacenamiento y terceros; el borrado lógico no es supresión.
 6. **Lo más sensible se cifra por campo** con claves gestionadas fuera de la aplicación; los datos de tarjeta no se almacenan.
 7. **Los accesos a datos sensibles quedan auditados.**
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Datos personales en logs, trazas o métricas | `observability` | Campos y destinos |
+| Retención o borrado que exige cambios de esquema | `schema-and-migrations` | Tablas y columnas |
+| Datos personales enviados a terceros | `integrations` | Proveedor y campos |
+| Respuestas que exponen más datos personales de los necesarios | `http-layer` | DTOs de salida |
+| Datos personales guardados en el cliente (`localStorage`, caché) | `frontend:security` | Claves y datos |
 
 ## Referencias
 

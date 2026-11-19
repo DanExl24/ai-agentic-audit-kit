@@ -32,6 +32,7 @@ Métricas de apoyo: TTFB (respuesta del servidor), FCP (primer contenido), TBT (
 1. Detecta framework, bundler (Vite, webpack, Next/Turbopack, Angular CLI/esbuild) y estrategia de render. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Averigua qué hay medido: ¿RUM (`web-vitals`, Sentry, Datadog, Vercel Analytics)?, ¿CrUX?, ¿Lighthouse CI?, ¿presupuestos de bundle?
 3. Identifica las páginas que importan (entrada principal, landing, checkout) y el dispositivo objetivo (casi siempre: móvil de gama media con red 4G lenta).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir / Optimizar
 
@@ -61,6 +62,18 @@ Métricas de apoyo: TTFB (respuesta del servidor), FCP (primer contenido), TBT (
 5. **El hilo principal es compartido:** ninguna tarea debería pasar de ~50 ms.
 6. **Reserva el espacio** de todo lo que llega tarde.
 7. **Un presupuesto en CI evita regresiones** mejor que cualquier auditoría puntual.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Pantalla lenta cuyo tiempo se va en la respuesta del servidor (TTFB o API lenta) | `backend:performance` | Endpoint, tiempos medidos y traza si existe |
+| Cascadas de peticiones o datos sin caché en el cliente | `data-fetching` | Pantalla y peticiones |
+| Re-renders masivos por estado global mal particionado | `state-management` | Stores y componentes suscritos |
+| Bundle inicial inflado por rutas sin carga diferida o dependencias pesadas | `routing` | Rutas y chunks |
+| Hidratación costosa o contenido que bloquea el render en SSR | `rendering-and-seo` | Páginas y componentes |
 
 ## Referencias
 

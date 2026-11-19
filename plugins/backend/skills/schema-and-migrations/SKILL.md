@@ -21,6 +21,7 @@ El esquema es el contrato más duradero de un backend: el código cambia cada se
 1. Detecta motor y versión (PostgreSQL, MySQL/MariaDB, SQL Server, SQLite), herramienta de migraciones y dónde viven las migraciones. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Averigua el tamaño de las tablas afectadas y el tráfico (una migración inocua en 1.000 filas puede bloquear minutos en 50 millones).
 3. Pregunta cómo se ejecutan las migraciones en el despliegue (paso del pipeline, al arrancar la app, manual) y si hay varias versiones del código conviviendo durante el despliegue.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -47,6 +48,17 @@ El esquema es el contrato más duradero de un backend: el código cambia cada se
 5. **Expand, migrate, contract:** el esquema siempre es compatible con la versión del código que está corriendo.
 6. **Ninguna migración bloquea una tabla grande** más que unos instantes.
 7. **Los backfills son por lotes y reanudables.**
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Columnas con datos personales o sensibles sin cifrado ni política de retención | `data-privacy` | Tablas y columnas |
+| Una migración cambia campos que expone la API | `api-design` | Campos y endpoints afectados (y clientes) |
+| Migraciones sin probar sobre una copia con datos realistas | `testing` | Migración y tablas |
+| Migraciones que no se ejecutan de forma automática en CI o despliegue | `tooling` | Pipeline y herramienta de migraciones |
 
 ## Referencias
 

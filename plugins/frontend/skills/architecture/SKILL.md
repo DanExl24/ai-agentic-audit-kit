@@ -22,6 +22,7 @@ Define y protege la forma del código: dónde vive cada cosa, quién puede impor
 1. Lee `package.json` para detectar framework, versión, meta-framework (Next, Nuxt, Angular CLI, Vite) y herramientas (Nx, Turborepo, pnpm workspaces).
 2. Carga la referencia del stack: [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md). Para otros stacks (Svelte, Solid…) aplica los principios de [patterns.md](references/patterns.md).
 3. Recorre el árbol de `src/` (dos o tres niveles) y localiza las convenciones existentes antes de proponer otras.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -55,6 +56,18 @@ Cuando el usuario pide revisar o diagnosticar la estructura existente.
 5. **Las reglas se automatizan.** Lint de límites en CI, no en la memoria del equipo.
 6. **La estructura sigue al tamaño.** No montes FSD, monorepo ni micro-frontends para una app de 15 pantallas.
 7. **Las vistas o páginas componen; no contienen lógica de negocio ni llamadas HTTP directas.**
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Reglas de negocio con impacto (precios, permisos, estados) calculadas en componentes | `backend:domain-logic` | Componente, regla y endpoint que debería aplicarla |
+| Datos del servidor guardados y sincronizados a mano en un store global | `state-management` | Store y datos duplicados |
+| Imports entre el código del frontend y el del backend en el mismo repositorio | `fullstack:topology` | Imports y grafo de dependencias |
+| Límites entre features que no se verifican con lint o CI | `tooling` | Reglas de dependencias deseadas |
+| Tipos `any` o contratos laxos en las APIs públicas de los módulos | `typescript` | Módulos y exports afectados |
 
 ## Referencias
 

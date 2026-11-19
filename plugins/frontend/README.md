@@ -5,6 +5,7 @@ Skills para diseñar, construir y auditar aplicaciones frontend en **Vue, React 
 - Tiene dos modos: **Construir** (crear o refactorizar) y **Auditar** (revisar código existente y emitir un informe con severidades).
 - Detecta el stack del proyecto y carga solo las notas del framework correspondiente.
 - Comparte la escala de severidad, el formato de informe y la matriz de viewports de [`standards/`](standards/).
+- **Trabaja con las demás skills:** cada una declara en su sección `Handoffs` disparadores concretos que activan otra skill (de este plugin, de `backend` o de `fullstack`) sobre un alcance acotado, según [`standards/handoffs.md`](standards/handoffs.md), y lee el contexto compartido `.sdlc/context.md` si existe ([`standards/context.md`](standards/context.md)).
 - `ux-review` y `responsive-layout` no llevan notas por framework (evalúan la interfaz y el CSS); las demás incluyen `vue.md`, `react.md` y `angular.md`.
 
 ## Uso

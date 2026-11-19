@@ -21,6 +21,7 @@ Cada servicio externo es una dependencia que **va a fallar**: lento, caído, con
 1. Detecta el cliente HTTP y las librerías de resiliencia del proyecto, y los SDKs de proveedores en uso. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Inventaria las integraciones: proveedor, operaciones, si son idempotentes, límites documentados del proveedor, si hay webhooks y en qué dirección.
 3. Lee la documentación del proveedor sobre idempotencia, rate limits, reintentos y firma de webhooks: cada uno tiene sus reglas.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -49,6 +50,18 @@ Cada servicio externo es una dependencia que **va a fallar**: lento, caído, con
 5. **El dominio no conoce al proveedor:** adaptador y errores propios.
 6. **Un webhook sin firma verificada no existe.** Y se procesa una sola vez aunque llegue varias.
 7. **Se respetan los límites del proveedor** antes de que el proveedor los imponga.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Webhooks entrantes sin verificación de firma ni protección de repetición | `api-security` | Endpoint del webhook |
+| Webhooks procesados de forma síncrona en la petición | `async-messaging` | Endpoint y procesamiento |
+| Respuestas de terceros que se piden una y otra vez | `caching` | Llamadas y vigencia de los datos |
+| Llamadas externas sin trazas, métricas ni alertas | `observability` | Adaptadores |
+| Datos personales enviados a proveedores | `data-privacy` | Campos y proveedor |
 
 ## Referencias
 

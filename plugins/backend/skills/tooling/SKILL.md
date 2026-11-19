@@ -21,6 +21,7 @@ Un buen tooling hace que **cualquiera pueda clonar el servicio, levantarlo con s
 
 1. Lee los manifiestos (`package.json`, `pyproject.toml`, `pom.xml`/`build.gradle`), lockfiles, versión del runtime, configuración de lint/formato/tipos, `Dockerfile`, `docker-compose.yml` y el pipeline. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Si es posible, prueba una instalación limpia siguiendo el README y mide los pasos del CI.
+3. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -49,6 +50,18 @@ Un buen tooling hace que **cualquiera pueda clonar el servicio, levantarlo con s
 5. **Levantar el entorno local es un comando.**
 6. **El CI es la fuente de verdad** y falla rápido; incluye integración con servicios reales.
 7. **Un artefacto, varios entornos:** se construye una vez y se promueve.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Secretos en el repositorio, en `.env` versionado o en el historial | `api-security` | Archivos y variables |
+| Migraciones fuera del pipeline de despliegue | `schema-and-migrations` | Herramienta y pipeline |
+| Tests de integración sin base de datos real en CI | `testing` | Pipeline y servicios |
+| Configuración del frontend (bundler, proxy) en el mismo repositorio | `frontend:tooling` | Archivos de configuración |
+| Despliegue sin health checks ni logs estructurados | `observability` | Imagen y orquestador |
 
 ## Referencias
 

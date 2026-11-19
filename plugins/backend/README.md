@@ -5,6 +5,7 @@ Skills para diseñar, construir y auditar backends en **Node.js/TypeScript (Expr
 - Tiene dos modos: **Construir** (crear o refactorizar) y **Auditar** (revisar código existente y emitir un informe con severidades).
 - Tiene una base agnóstica de lenguaje y notas por stack (`node.md`, `python.md`, `java.md`) que solo se cargan cuando aplican.
 - Comparte la escala de severidad y el formato de informe de [`standards/`](standards/) (códigos `BE-*`).
+- **Trabaja con las demás skills:** cada una declara en su sección `Handoffs` disparadores concretos que activan otra skill (de este plugin, de `frontend` o de `fullstack`) sobre un alcance acotado, según [`standards/handoffs.md`](standards/handoffs.md), y lee el contexto compartido `.sdlc/context.md` si existe ([`standards/context.md`](standards/context.md)).
 
 Incluye el acceso a datos, el esquema de base de datos y la seguridad de servidor: lo que un desarrollador de backend toca dentro de su servicio. Las tres skills de seguridad se reparten el OWASP API Security Top 10 (2023).
 

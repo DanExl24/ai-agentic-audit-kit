@@ -21,6 +21,7 @@ Internacionalizar es preparar el código para que **cualquier texto, formato y d
 1. Detecta la librería de i18n (si existe), los idiomas soportados, dónde viven las traducciones y cómo se elige el idioma. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Pregunta qué idiomas y regiones hay que soportar ahora y en el futuro previsible (incluido RTL), y si el contenido del backend también se localiza.
 3. Mide el punto de partida: cantidad de textos hardcodeados en plantillas.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,17 @@ Internacionalizar es preparar el código para que **cualquier texto, formato y d
 5. **Guardar en formato neutro, mostrar en el del usuario:** UTC, ISO 8601, decimales canónicos, códigos de moneda ISO.
 6. **El layout no asume una dirección ni una longitud de texto.**
 7. **Cada idioma se carga cuando se necesita.**
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Fechas, importes o números que el cliente reinterpreta a partir del cable | `fullstack:contracts` | Campos y formatos del contrato |
+| Textos traducidos que desbordan o rompen el layout | `responsive-layout` | Cadenas y componentes |
+| Rutas por idioma sin `hreflang` ni canónicas | `rendering-and-seo` | Rutas e idiomas |
+| Mensajes de error del servidor en un idioma fijo y sin código estable | `backend:api-design` | Formato de error |
 
 ## Referencias
 

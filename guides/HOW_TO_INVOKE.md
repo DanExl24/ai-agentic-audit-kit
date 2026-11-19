@@ -218,4 +218,4 @@ Si una skill de capa detecta que la causa raíz está en la otra capa, o que la 
 
 Para una revisión completa de punta a punta, `/fullstack:audit` hace todo esto en una sola pasada.
 
-Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md) y [`context.md`](../plugins/fullstack/standards/context.md).
+Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en `standards/handoffs.md` y `standards/context.md` de cada plugin (idénticos en los tres; p. ej. [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md)). Cada skill de los tres plugins tiene una sección `Handoffs` con sus disparadores concretos.

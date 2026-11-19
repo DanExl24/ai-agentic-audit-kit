@@ -22,6 +22,7 @@ En producción, el frontend se ejecuta en miles de navegadores que el equipo no 
 1. Detecta framework y herramientas existentes: Sentry, Datadog RUM, New Relic, LogRocket, Bugsnag, OpenTelemetry, analítica (GA4, PostHog, Amplitude), gestor de consentimiento. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Revisa cómo se construye y despliega: ¿se generan source maps?, ¿hay versión/release identificable?, ¿hay varios entornos?
 3. Averigua si el backend propaga trazas (cabecera `traceparent`) y qué normativa de privacidad aplica (RGPD u otras).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -52,6 +53,17 @@ En producción, el frontend se ejecuta en miles de navegadores que el equipo no 
 5. **Mínimos datos personales:** IDs en lugar de emails, inputs enmascarados, consentimiento cuando aplica.
 6. **Frontend y backend se correlacionan** con un identificador de traza compartido.
 7. **Los errores esperados no son incidentes:** un 422 de validación se muestra al usuario, no se envía como excepción.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Errores del cliente sin ID de correlación con los logs del servidor | `backend:observability` | Cliente HTTP y cabecera de correlación |
+| `catch` vacíos o errores de peticiones que no se registran | `data-fetching` | Servicios y llamadas afectadas |
+| Datos personales en logs, eventos de analítica o grabaciones de sesión | `backend:data-privacy` | Eventos y campos |
+| Métricas reales de usuarios (Web Vitals) degradadas | `performance` | Páginas y métricas |
 
 ## Referencias
 

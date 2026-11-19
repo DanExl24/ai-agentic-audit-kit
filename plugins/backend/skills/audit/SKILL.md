@@ -22,6 +22,7 @@ Esta skill no audita código por sí misma: **decide qué skills del plugin `bac
 2. **Objetivo:** auditoría completa, preocupación concreta, preparación para producción o pre-release.
 3. **Contexto:** stack (manifiestos), tipo de sistema (API pública, interna, multi-tenant, financiero, datos sensibles), escala y requisitos (cumplimiento, SLOs).
 4. **Ruta:** elige una de [routes.md](references/routes.md) y **explica en una línea por qué**; si no encaja ninguna, compón una secuencia y justifícala.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 Si el alcance es enorme, empieza por los flujos críticos (autenticación, pagos, escritura de datos principales) y amplía después.
 
@@ -70,6 +71,16 @@ Una auditoría orquestada carga varias skills (cada una con su checklist y su no
 6. **La puntuación orienta;** se compara solo con auditorías hechas con la misma rúbrica.
 7. **Declara los límites:** qué no se pudo verificar (sin entorno, sin métricas, sin acceso a producción).
 8. **Coste a la vista:** el usuario conoce y acepta el alcance y el coste aproximado antes de una auditoría extensa.
+
+## Handoffs
+
+Como orquestador, no dispara handoffs por separado ([handoffs.md](../../standards/handoffs.md) regla 6): las skills se planifican en el Paso 1 y los disparadores de las skills aplicadas se consolidan como escalado sugerido. Además:
+
+| Disparador (observable) | Destino | Alcance y contexto |
+| :--- | :--- | :--- |
+| La causa raíz de un hallazgo está en el cliente | `Escalado sugerido en el dictamen (`frontend:<skill>`)` | Hallazgo y evidencia |
+| Un riesgo necesita las dos capas para existir (p. ej. sesión incoherente, validación solo en el cliente) | `fullstack:contracts` o `fullstack:audit` | Se propone con su coste, no se ejecuta sin confirmación |
+| La remediación pedida reconstruye una funcionalidad entera | `fullstack:feature` | Hallazgos del lote y criterios de aceptación; se propone con su coste |
 
 ## Referencias
 

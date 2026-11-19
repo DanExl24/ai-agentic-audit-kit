@@ -38,6 +38,7 @@ Además: inyecciones, subida de archivos, deserialización, secretos y dependenc
 1. Detecta lenguaje, framework, base de datos (SQL/NoSQL), almacenamiento de archivos, gestor de secretos y despliegue (contenedores, cloud). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Localiza los puntos de entrada de riesgo: URLs aceptadas, uploads, ejecución de procesos, consultas dinámicas, plantillas, deserialización, webhooks, endpoints costosos.
 3. Revisa cómo llegan los secretos a la aplicación y el estado de las dependencias.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -66,6 +67,18 @@ Además: inyecciones, subida de archivos, deserialización, secretos y dependenc
 5. **Los secretos no viven en el código, las imágenes ni los logs,** y se pueden rotar.
 6. **Producción no expone herramientas de desarrollo:** debug, consolas, actuators, documentación interna.
 7. **Las dependencias son código propio:** se auditan, se actualizan y se minimizan.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Secretos en el repositorio, en CI o en imágenes | `tooling` | Archivos, variables e historial |
+| Peticiones salientes a URLs que controla el usuario (SSRF) o subidas a terceros | `integrations` | Adaptador y validación de destino |
+| Datos personales expuestos en respuestas o errores | `data-privacy` | Endpoints y campos |
+| Abuso de flujos de negocio (cupones, reservas, invitaciones) | `domain-logic` | Flujo y límites de negocio |
+| HTML de usuarios que el cliente renderiza sin sanear | `frontend:security` | Campos y vistas que los pintan |
 
 ## Referencias
 

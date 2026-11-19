@@ -21,6 +21,7 @@ Autenticar es responder **"¿quién eres?"** de forma que no se pueda suplantar,
 1. Detecta framework y librerías de autenticación (Passport, Auth.js, better-auth, Django auth, allauth, SimpleJWT, Authlib, Spring Security…) y si hay un proveedor de identidad externo. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Identifica los clientes: SPA del mismo dominio, apps móviles, terceros, otros servicios. El mecanismo correcto depende de ellos.
 3. Localiza: emisión y verificación de credenciales, almacenamiento de contraseñas, flujos de reset y verificación, configuración de cookies o tokens.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Autenticar es responder **"¿quién eres?"** de forma que no se pueda suplantar,
 5. **Los tokens se verifican por completo:** firma con algoritmo fijado, emisor, audiencia y expiración.
 6. **Los secretos de un solo uso se guardan como hash** (tokens de reset, refresh tokens, API keys, códigos de recuperación).
 7. **Las acciones sensibles piden una autenticación reciente** (cambiar email, contraseña, MFA, datos de pago).
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| La estrategia de sesión afecta al cliente (cookies, CORS, refresh, CSRF) | `fullstack:contracts` | Configuración de sesión de ambas capas y entornos |
+| Login, registro o recuperación sin rate limiting | `api-security` | Endpoints y límites |
+| Rutas que comprueban la identidad pero no los permisos | `authorization` | Rutas y recursos |
+| Eventos de seguridad (login fallido, reset, MFA) sin registrar | `observability` | Eventos y campos |
+| Contraseñas, tokens o códigos que acaban en logs | `data-privacy` | Logs y campos |
 
 ## Referencias
 

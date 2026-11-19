@@ -22,6 +22,7 @@ Observar un servicio es poder responder, durante un incidente y sin desplegar c�
 1. Detecta logger, librería de métricas, trazas (OpenTelemetry, APM de proveedor), tracking de errores y plataforma (Kubernetes, ECS, serverless). Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Averigua a dónde van las señales (Grafana/Loki/Tempo/Prometheus, Datadog, New Relic, Elastic, CloudWatch) y qué alertas existen.
 3. Identifica los recorridos críticos de usuario (login, checkout, pagos) para definir SLOs.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,17 @@ Observar un servicio es poder responder, durante un incidente y sin desplegar c�
 5. **Se alerta por síntomas que sufre el usuario,** no por cada causa posible; cada alerta tiene un runbook y alguien que la atiende.
 6. **La versión desplegada está en cada señal** para correlacionar incidentes con despliegues.
 7. **Observabilidad desde el primer despliegue,** no después del primer incidente.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Datos personales, tokens o secretos en logs o trazas | `data-privacy` | Campos y destinos |
+| Sin correlación entre los errores del cliente y los logs del servidor | `frontend:observability` | Cabecera de correlación y cliente HTTP |
+| Alertas de latencia sin forma de localizar la causa | `performance` | Endpoints y trazas disponibles |
+| Dependencias externas sin métricas de error ni de latencia | `integrations` | Adaptadores |
 
 ## Referencias
 

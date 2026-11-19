@@ -22,6 +22,7 @@ Las reglas de negocio son lo que hace valioso al sistema y lo más caro de rompe
 1. Detecta lenguaje, framework y ORM. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Identifica las operaciones de negocio importantes del alcance (las que mueven dinero, stock o estados) y dónde vive hoy su lógica.
 3. Pregunta por las reglas que no estén claras en el código: el dominio no se inventa.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ Las reglas de negocio son lo que hace valioso al sistema y lo más caro de rompe
 5. **Dinero con decimales exactos y moneda;** tiempo con un reloj inyectable.
 6. **Los efectos externos ocurren después de confirmar los datos.**
 7. **Proporcionalidad:** un CRUD sin reglas no necesita agregados ni eventos; un dominio financiero sí.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Invariantes que dependen de concurrencia (saldo, stock, cupos) | `data-access` | Operación, tablas y estrategia de bloqueo |
+| Efectos (emails, eventos, llamadas) ejecutados dentro de la transacción | `async-messaging` | Caso de uso y efectos |
+| Reglas de negocio que el cliente calcula y el servidor acepta | `fullstack:contracts` | Endpoint, campo y regla |
+| Llamadas a proveedores externos desde el dominio sin puerto | `integrations` | Caso de uso y proveedor |
+| Transiciones de estado sin tests de casos inválidos | `testing` | Máquina de estados |
 
 ## Referencias
 

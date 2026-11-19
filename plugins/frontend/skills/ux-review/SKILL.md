@@ -24,6 +24,7 @@ La crítica tiene que basarse en lo que el usuario ve. En orden de preferencia:
 2. **Capturas o grabaciones** aportadas por el usuario.
 3. **Diseños** (Figma u otra herramienta) si se van a evaluar antes de implementar.
 4. **Solo código** como último recurso: infiere la interfaz desde las plantillas y **dilo explícitamente en el informe** ("evaluación inferida, no verificada visualmente").
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 Pregunta también por el **objetivo** de la pantalla (qué tarea debe completar el usuario) y el **tipo de usuario** (uso diario intensivo vs. ocasional). Sin objetivo no se puede juzgar la jerarquía.
 
@@ -60,6 +61,19 @@ Cuando el usuario pide definir la experiencia de algo nuevo o rediseñar desde c
 ## Relación con `responsive-layout`
 
 Esta skill **puede** proponer cambios de patrón (convertir una tabla en tarjetas en móvil, mover el menú a un drawer). `responsive-layout` **no rediseña**: solo adapta lo aprobado. Si una propuesta de esta skill se aprueba, se implementa como cambio de diseño (con `design-system` y el código de la feature), no como "arreglo responsive".
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Contraste insuficiente, foco invisible o controles sin nombre accesible | `accessibility` | Pantalla, componentes y estados afectados |
+| Desbordes, solapes o layouts rotos en algún viewport de la matriz | `responsive-layout` | Pantalla y viewports de `viewports.md` donde falla |
+| Colores, espaciados o variantes de componentes inconsistentes entre pantallas | `design-system` | Tokens y componentes implicados |
+| Formularios con errores poco claros, sin estados de envío o con doble envío posible | `forms` | Formulario y flujo |
+| Estados de carga, vacío o error ausentes por cómo se piden los datos | `data-fetching` | Pantalla y peticiones que la alimentan |
+| Textos fijos en el código o que no caben al cambiar de idioma | `i18n` | Pantallas y cadenas afectadas |
 
 ## Referencias
 

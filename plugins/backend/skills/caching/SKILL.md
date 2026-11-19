@@ -21,6 +21,7 @@ La caché es la herramienta de rendimiento más potente y la que más bugs sutil
 1. Detecta la infraestructura (Redis, Memcached, caché del framework, CDN) y las librerías. Carga [node.md](references/node.md), [python.md](references/python.md) o [java.md](references/java.md).
 2. Mide antes de cachear: frecuencia de lectura, coste de la consulta, frecuencia de cambio de los datos y tolerancia a datos desfasados.
 3. Inventaria lo que ya se cachea: claves, TTL, quién invalida y cuándo.
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -49,6 +50,18 @@ La caché es la herramienta de rendimiento más potente y la que más bugs sutil
 5. **Las claves calientes se protegen contra el stampede.**
 6. **Si la caché cae, el servicio sigue** (más lento, protegido), no falla.
 7. **No se cachean decisiones de seguridad ni datos que exigen consistencia estricta** (saldos, stock en el momento de vender, permisos con TTL largo).
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Claves de caché sin tenant o usuario para datos privados | `authorization` | Claves y datos |
+| Invalidación ejecutada antes de confirmar la transacción | `data-access` | Operación de escritura y orden |
+| La caché oculta consultas lentas que deberían arreglarse en origen | `performance` | Consultas y tiempos sin caché |
+| Cabeceras HTTP de caché públicas en respuestas con datos privados | `http-layer` | Endpoints y cabeceras |
+| El cliente cachea con criterios que no casan con la vigencia del servidor | `frontend:data-fetching` | Queries y tiempos de vigencia |
 
 ## Referencias
 

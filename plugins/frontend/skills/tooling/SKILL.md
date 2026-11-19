@@ -21,6 +21,7 @@ El tooling es lo que hace que **cualquier persona pueda clonar el repo, arrancar
 
 1. Lee `package.json` (scripts, `engines`, `packageManager`), lockfile, `.nvmrc`/`.node-version`, configuración del bundler, ESLint, Prettier/Biome, `tsconfig`, hooks de git, y el pipeline (`.github/workflows`, `.gitlab-ci.yml`…). Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Si es posible, mide: tiempo de instalación, de arranque en desarrollo, de build y de cada paso del CI.
+3. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,18 @@ El tooling es lo que hace que **cualquier persona pueda clonar el repo, arrancar
 5. **Fallar pronto:** variables de entorno inválidas rompen el arranque, no una pantalla en producción.
 6. **Mismos scripts en todos los proyectos:** nadie debería tener que leer el `package.json` para saber cómo arrancar.
 7. **Un build, varios entornos** cuando sea posible: la configuración por entorno no debería requerir recompilar.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Secretos en `.env` versionado, en el bundle o en el historial | `security` | Archivos y variables |
+| Reglas de tipos o lint desactivadas para "que compile" | `typescript` | Configuración y excepciones |
+| Tests que no corren en CI o lo hacen sin bloquear | `testing` | Pipeline |
+| Proxy de desarrollo, HTTPS local o URLs fijas que rompen el mismo origen con la API | `fullstack:contracts` | Configuración del bundler y entorno afectado |
+| Pipeline, imagen o configuración del backend en el mismo repositorio | `backend:tooling` | Archivos de CI y Docker |
 
 ## Referencias
 

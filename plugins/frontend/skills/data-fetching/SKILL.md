@@ -22,6 +22,7 @@ Todo lo que pasa entre "el componente necesita datos" y "el backend responde": c
 2. Carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 3. Localiza dónde se crea el cliente, los interceptores y dónde se hacen las llamadas (¿en componentes, en servicios, en stores?).
 4. Averigua cómo autentica el backend (cookie httpOnly, Bearer + refresh token) y el formato de sus errores.
+5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -52,6 +53,19 @@ Todo lo que pasa entre "el componente necesita datos" y "el backend responde": c
 5. **Solo se reintenta lo que es seguro reintentar:** errores de red y 5xx en operaciones idempotentes. Nunca un 4xx, nunca un POST no idempotente sin clave de idempotencia.
 6. **Después de una mutación, la caché se invalida o se actualiza.** El usuario nunca debe ver datos viejos justo después de guardar.
 7. **Los datos externos se validan en la frontera** (ver skill `typescript`).
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| El cliente lee campos con un nombre o formato que la API no devuelve | `fullstack:contracts` | Endpoint y consumidor (archivo y líneas) |
+| Token de sesión en `localStorage` o refresh que se dispara varias veces en paralelo | `security` | Cliente HTTP y almacenamiento de la sesión |
+| Datos del servidor copiados a un store global además de la caché de queries | `state-management` | Store y queries duplicadas |
+| Mutaciones con efectos (pagos, pedidos) que pueden duplicarse al reintentar | `backend:api-design` | Endpoint y política de reintentos (idempotencia) |
+| Cascadas de peticiones o respuestas sobredimensionadas en pantallas principales | `performance` | Pantalla y peticiones |
+| Errores 4xx/422 que la pantalla no muestra o muestra como genéricos | `forms` | Formulario o vista y formato de error |
 
 ## Referencias
 

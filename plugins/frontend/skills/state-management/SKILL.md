@@ -21,6 +21,7 @@ La mayoría de los problemas de estado no vienen de elegir mal la librería, sin
 1. Detecta en `package.json` el framework y la librería de estado; carga [vue.md](references/vue.md), [react.md](references/react.md) o [angular.md](references/angular.md).
 2. Lista los stores existentes y qué contiene cada uno.
 3. Comprueba si hay una librería de server state; si no la hay, gran parte del estado global probablemente sea caché de API (→ `data-fetching`).
+4. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
 
@@ -50,6 +51,17 @@ La mayoría de los problemas de estado no vienen de elegir mal la librería, sin
 5. **Las mutaciones tienen nombre e intención** y pasan por acciones; nadie modifica el store desde cualquier componente.
 6. **Todo lo que se suscribe, se desuscribe.** Si un componente o store crea un recurso, también lo libera.
 7. **No sincronices estado con efectos** (`watch`/`useEffect`/`effect` que copian un valor en otro). Casi siempre es un derivado mal modelado.
+
+## Handoffs
+
+Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
+
+| Disparador (observable) | Skill | Alcance y contexto que se pasa |
+| :--- | :--- | :--- |
+| Suscripciones, listeners o temporizadores que no se limpian al desmontar | `performance` | Componentes o stores con fugas |
+| Estado del servidor cacheado a mano en el store | `data-fetching` | Store y endpoints |
+| Filtros, paginación o pestañas que se pierden al recargar o compartir | `routing` | Vista y estado que debería ir en la URL |
+| Datos sensibles persistidos en el store o en `localStorage` | `security` | Claves y datos persistidos |
 
 ## Referencias
 
