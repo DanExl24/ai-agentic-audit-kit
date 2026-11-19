@@ -42,6 +42,8 @@
 | exploratory-testing | `QA-EXPL` |
 | e2e | `QA-E2E` |
 | quality-gates | `QA-GATE` |
+| load-testing | `QA-LOAD` |
+| dast | `QA-DAST` |
 
 La numeración es siempre secuencial (`QA-STRAT-001`); no se inventan sufijos descriptivos.
 

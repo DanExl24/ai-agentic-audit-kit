@@ -20,6 +20,8 @@ Skills de **calidad a lo largo del SDLC**: lo que no es escribir los tests de un
 /qa:exploratory-testing explora el checkout en staging antes del release
 /qa:e2e crea la suite E2E del login y el checkout con Playwright
 /qa:quality-gates revisa por qué el pipeline de PR tarda 35 minutos
+/qa:load-testing prueba de carga del checkout en staging antes de la campaña
+/qa:dast añade un baseline de ZAP contra el preview de cada PR
 ```
 
 ## Catálogo
@@ -31,8 +33,8 @@ Skills de **calidad a lo largo del SDLC**: lo que no es escribir los tests de un
 | `exploratory-testing` | ✅ | Charters, heurísticas, notas de sesión, reportes de bug reproducibles, severidad frente a prioridad; ejecutable por un agente con navegador |
 | `e2e` | ✅ | Qué merece E2E, fixtures y page objects ligeros, localizadores por rol, datos propios por test, sesión reutilizada, red, entornos, intermitencia, smoke tras desplegar, visual y axe (notas `playwright.md`, `cypress.md`) |
 | `quality-gates` | ✅ | Etapas (PR, merge, nocturno, release, tras desplegar), presupuestos de tiempo, tests afectados, sharding, cuarentena con caducidad, cobertura del diff y mutación, informes, entornos efímeros, protección de ramas (notas `github-actions.md`, `gitlab-ci.md`) |
-| `load-testing` | ⏳ Ola 3 | Pruebas de carga con k6, Locust o Gatling |
-| `dast` | ⏳ Ola 3 | Seguridad dinámica con OWASP ZAP |
+| `load-testing` | ✅ | Tipos de prueba, modelo abierto o cerrado, escenarios con mezcla real y datos parametrizados, umbrales desde los SLO, entorno autorizado, observación e interpretación, smoke en CI (notas `k6.md`, `locust.md`, `gatling.md`) |
+| `dast` | ✅ | Autorización y alcance escritos, baseline / completo / API, escaneo autenticado, reglas y supresiones justificadas, CI, criba y verificación, relación con SAST/SCA (nota `zap.md`) |
 | `defect-analysis` | ⏳ Ola 4 | Defectos escapados y regresiones: hotspots, Ishikawa, Pareto y matriz Kaizen |
 | `audit` | ⏳ Ola 4 | Orquestador con madurez de QA 0–100 |
 
