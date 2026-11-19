@@ -40,6 +40,8 @@
 | test-strategy | `QA-STRAT` |
 | test-design | `QA-DESIGN` |
 | exploratory-testing | `QA-EXPL` |
+| e2e | `QA-E2E` |
+| quality-gates | `QA-GATE` |
 
 La numeración es siempre secuencial (`QA-STRAT-001`); no se inventan sufijos descriptivos.
 

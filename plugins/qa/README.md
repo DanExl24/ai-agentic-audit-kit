@@ -18,6 +18,8 @@ Skills de **calidad a lo largo del SDLC**: lo que no es escribir los tests de un
 /qa:test-strategy prepara el plan de pruebas del release 2.0
 /qa:test-design casos para la regla de descuentos de src/billing/discounts.ts
 /qa:exploratory-testing explora el checkout en staging antes del release
+/qa:e2e crea la suite E2E del login y el checkout con Playwright
+/qa:quality-gates revisa por qué el pipeline de PR tarda 35 minutos
 ```
 
 ## Catálogo
@@ -27,8 +29,8 @@ Skills de **calidad a lo largo del SDLC**: lo que no es escribir los tests de un
 | `test-strategy` | ✅ | Mapa de riesgos (impacto × probabilidad × detección), forma de la cobertura, automatizar / explorar / vigilar, definición de terminado, criterios de salida, trazabilidad y plan de release |
 | `test-design` | ✅ | Particiones, valores límite, tablas de decisión, transiciones de estado, pairwise, negativos, property-based testing y Gherkin |
 | `exploratory-testing` | ✅ | Charters, heurísticas, notas de sesión, reportes de bug reproducibles, severidad frente a prioridad; ejecutable por un agente con navegador |
-| `e2e` | ⏳ Ola 2 | Arquitectura de suites E2E con Playwright o Cypress |
-| `quality-gates` | ⏳ Ola 2 | Qué corre en cada etapa de CI, tests intermitentes, informes, umbrales |
+| `e2e` | ✅ | Qué merece E2E, fixtures y page objects ligeros, localizadores por rol, datos propios por test, sesión reutilizada, red, entornos, intermitencia, smoke tras desplegar, visual y axe (notas `playwright.md`, `cypress.md`) |
+| `quality-gates` | ✅ | Etapas (PR, merge, nocturno, release, tras desplegar), presupuestos de tiempo, tests afectados, sharding, cuarentena con caducidad, cobertura del diff y mutación, informes, entornos efímeros, protección de ramas (notas `github-actions.md`, `gitlab-ci.md`) |
 | `load-testing` | ⏳ Ola 3 | Pruebas de carga con k6, Locust o Gatling |
 | `dast` | ⏳ Ola 3 | Seguridad dinámica con OWASP ZAP |
 | `defect-analysis` | ⏳ Ola 4 | Defectos escapados y regresiones: hotspots, Ishikawa, Pareto y matriz Kaizen |

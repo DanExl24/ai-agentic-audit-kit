@@ -13,7 +13,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | **Frontend** | Plugin `plugins/frontend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. |
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ Migrado: 18 skills (17 especialistas + el orquestador `audit`). Pendiente de validar sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ Migrado: 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
-| **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` (en migración desde `domains/05_qa_testing_engineering/`) | 🚧 Ola 1 de 4: `test-strategy`, `test-design` y `exploratory-testing`. Pendientes: `e2e`, `quality-gates`, `load-testing`, `dast`, `defect-analysis` y `audit`. |
+| **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` (en migración desde `domains/05_qa_testing_engineering/`) | 🚧 Ola 2 de 4: `test-strategy`, `test-design`, `exploratory-testing`, `e2e` y `quality-gates`. Pendientes: `load-testing`, `dast`, `defect-analysis` y `audit`. |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md).
 
@@ -86,7 +86,9 @@ ai-agentic-audit-kit/
 │       └── skills/
 │           ├── test-strategy/
 │           ├── test-design/
-│           └── exploratory-testing/
+│           ├── exploratory-testing/
+│           ├── e2e/
+│           └── quality-gates/
 │
 ├── domains/                      # ⏳ FORMATO ANTIGUO: prompts pendientes de migrar
 │   └── 05_qa_testing_engineering/

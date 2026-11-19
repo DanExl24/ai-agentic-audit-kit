@@ -32,8 +32,8 @@
     {
       "name": "qa",
       "source": "./plugins/qa",
-      "description": "Skills de calidad a lo largo del SDLC: estrategia y plan de pruebas basado en riesgo, técnicas de diseño de casos y pruebas exploratorias (en migración: E2E, puertas de calidad, carga, DAST, análisis de defectos y auditoría). Complementa a frontend:testing y backend:testing.",
-      "version": "0.1.0",
+      "description": "Skills de calidad a lo largo del SDLC: estrategia y plan de pruebas, diseño de casos, pruebas exploratorias, suites E2E y puertas de calidad en CI (en migración: carga, DAST, análisis de defectos y auditoría). Complementa a frontend:testing y backend:testing.",
+      "version": "0.2.0",
       "category": "development"
     }
   ]

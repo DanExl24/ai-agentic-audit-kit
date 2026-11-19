@@ -15,7 +15,7 @@ Probar todo es imposible y probar lo que es fácil es inútil. Una estrategia de
 - Definir criterios de terminado o de salida de un release.
 - Auditar si la cobertura real corresponde al riesgo del producto.
 
-**No es para:** escribir tests unitarios, de componentes o de integración → `frontend:testing`, `backend:testing` · elegir los casos concretos de una funcionalidad → `test-design` · suites E2E y CI → `qa:e2e`, `qa:quality-gates` (si están instaladas; si no, se registran como pendientes).
+**No es para:** escribir tests unitarios, de componentes o de integración → `frontend:testing`, `backend:testing` · elegir los casos concretos de una funcionalidad → `test-design` · suites E2E → `e2e` · qué corre en cada etapa de CI → `quality-gates`.
 
 ## Paso 0: contexto (ambos modos)
 
