@@ -114,4 +114,6 @@ La puntuación sirve para priorizar y comparar en el tiempo con la misma rúbric
 | <skill> | ✅ / ❌ | ✅ / ❌ | ✅ <archivo> / ❌ / n.a. | ✅ / — |
 
 <Si algo no se cargó, explica por qué (coste, no aplica al stack). Esta tabla permite saber qué partes del kit se usaron realmente.>
+
+**Leyenda (veracidad):** ✅ leído completo en esta sesión · ◐ leído en parte (indica las líneas, p. ej. `L1-60`) · ❌ no leído (explica el motivo) · n.a. no existe para esa skill o ese stack. Un ✅ que no corresponde a una lectura real invalida el informe: ante la duda, ◐ o ❌.
 ```

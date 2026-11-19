@@ -53,7 +53,7 @@ El coste lo marca sobre todo **la huella del cambio** (archivos que se leen y se
 
 Para cada paso del plan, en orden:
 
-1. **Carga la skill del paso** en modo Construir: con herramienta de skills, `<plugin>:<skill>`; si no, lee su `SKILL.md`, `references/patterns.md` y la nota de stack. Pásale el alcance, el contrato acordado y las decisiones previas.
+1. **Carga la skill del paso** en modo Construir: con herramienta de skills, `<plugin>:<skill>`; si no, lee su `SKILL.md`, `references/patterns.md` y la nota de stack **completos, no fragmentos** (en modo mínima puede omitirse `patterns.md`, y se declara). Pásale el alcance, el contrato acordado y las decisiones previas.
 2. **Construye** siguiendo la skill y las convenciones del proyecto.
 3. **Verifica** antes de pasar al siguiente: type-check, lint y tests de lo tocado; en los pasos de contrato, regeneración de tipos.
 4. **Registra** el avance en `.sdlc/context.md` (crea el archivo al empezar este paso si no existe y dilo).
@@ -67,13 +67,13 @@ Los disparadores de handoff que aparezcan durante un paso se tratan según [hand
 
 ## Paso 4: verificación y entrega
 
-1. **Verificación cruzada:** aplica el modo rápido de los checklists de las skills usadas (solo puntos CRITICAL/HIGH) sobre lo construido, y `fullstack:contracts` sobre los endpoints nuevos (servidor ↔ cliente).
+1. **Verificación cruzada:** carga el `checklist.md` de cada skill usada y aplica sus puntos CRITICAL/HIGH sobre lo construido; aplica `fullstack:contracts` (su checklist y la tabla de cruce) sobre los endpoints nuevos. Un checklist que no cargaste se declara **"no aplicado"**, nunca "0 hallazgos".
 2. **Entrega** según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir):
    - qué se construyó por capa (archivos);
    - cómo se verificó y qué no se pudo verificar;
    - orden de despliegue si hay migraciones o cambios de contrato;
    - pendientes (pasos omitidos por el modo, handoffs no ejecutados);
-   - anexo «Skills aplicadas» con lo cargado de cada una **y las áreas tocadas sin cargar su skill** (p. ej. router o cliente HTTP modificados sin `frontend:routing` ni `frontend:data-fetching`), con el motivo.
+   - anexo «Skills aplicadas» con lo cargado de cada una **y las áreas tocadas sin cargar su skill** (p. ej. router o cliente HTTP modificados sin `frontend:routing` ni `frontend:data-fetching`), con el motivo. Sigue la [regla de veracidad](../../standards/output-formats.md#veracidad-de-lo-cargado-todas-las-entregas): ✅ solo para lo leído completo en esta sesión.
 3. Actualiza `.sdlc/context.md`: objetivo completado, decisiones tomadas, pendientes.
 
 ## Principios

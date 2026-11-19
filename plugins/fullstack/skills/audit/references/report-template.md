@@ -103,4 +103,6 @@ conjunta = (frontend · 1 + backend · 1 + entre capas · 1) / 3
 | backend | <skill> | | | ✅ <archivo> / ❌ | |
 
 <Si algo no se cargó, explica por qué (coste, plugin ausente, no aplica).>
+
+**Leyenda (veracidad):** ✅ leído completo en esta sesión · ◐ leído en parte (indica las líneas, p. ej. `L1-60`) · ❌ no leído (explica el motivo) · n.a. no existe para esa skill o ese stack. Un ✅ que no corresponde a una lectura real invalida el informe: ante la duda, ◐ o ❌.
 ```

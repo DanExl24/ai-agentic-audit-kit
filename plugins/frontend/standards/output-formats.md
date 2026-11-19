@@ -81,3 +81,12 @@ Problemas detectados que pertenecen a otra skill, con la skill sugerida.
 - La corrección es código aplicable, no una descripción.
 - Agrupa defectos repetidos: un hallazgo con la lista de ubicaciones, no diez hallazgos iguales.
 - Si el usuario lo pide, después del informe aplica las correcciones (pasa a modo Construir).
+
+## Veracidad de lo cargado (todas las entregas)
+
+El anexo de referencias o skills aplicadas dice **exactamente** qué se leyó en esta sesión:
+
+- ✅ solo para archivos **leídos completos**; ◐ con las líneas para lecturas parciales; ❌ con el motivo para lo no leído; n.a. si no existe.
+- Una comprobación ("checklist aplicado: 0 hallazgos", "contracts sin desajustes") solo se afirma si se cargó su `checklist.md` o se construyó su tabla de cruce; si no, se escribe **"no aplicado"** y el motivo.
+- "Inferido" o "por conocimiento general" no cuenta como aplicado: va como ❌ con esa nota.
+- Lo que se dejó de cargar por coste aparece como ❌ (coste), no se omite.

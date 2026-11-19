@@ -54,6 +54,8 @@
 - <paso omitido por el modo / handoff no ejecutado / decisión abierta>
 
 ## Anexo: skills aplicadas
+**Leyenda (veracidad):** ✅ leído completo en esta sesión · ◐ leído en parte (indica las líneas, p. ej. `L1-60`) · ❌ no leído (explica el motivo) · n.a. no existe para esa skill o ese stack. Un ✅ que no corresponde a una lectura real invalida el informe: ante la duda, ◐ o ❌.
+
 | Skill | SKILL.md | patterns.md | Nota de stack | Checklist (verificación) |
 | :--- | :-: | :-: | :-: | :-: |
 | backend:api-design | ✅ | ✅ | ✅ node.md | ✅ rápido |
