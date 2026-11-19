@@ -16,6 +16,8 @@ Misma escala que el resto del kit. En QA se juzga **el riesgo de que un defecto 
 2. **Evidencia:** archivo de tests, caso ausente concreto, ejecución o reporte. "Faltan tests" sin decir cuáles no es un hallazgo.
 3. **Todo CRITICAL está verificado** y el informe dice cómo.
 4. **No infles;** ante la duda, el nivel menor.
+5. **Lo que no se puede inspeccionar no es un hallazgo:** configuración remota (protección de ramas, secretos del CI, historial de ejecuciones) que no está en el repositorio va en **"Por verificar"** con la comprobación concreta que debe hacer el usuario, sin severidad. No se mezcla con un hallazgo verificado.
+6. **Release** es una versión publicada (etiqueta, despliegue a usuarios, entrega a un cliente). Sin versiones publicadas, los criterios de "release" se juzgan como Definición de Terminado de cada cambio.
 
 ## Calibración en casos frontera
 
@@ -24,6 +26,6 @@ Misma escala que el resto del kit. En QA se juzga **el riesgo de que un defecto 
 | Área sin ningún test | HIGH en flujos principales; MEDIUM en secundarios | mueve dinero, permisos o datos personales y tampoco hay otros controles |
 | Test intermitente conocido | MEDIUM; HIGH si está en un flujo crítico o el equipo ya lo ignora o reintenta hasta que pasa | — |
 | Solo camino feliz | MEDIUM; HIGH en validaciones de dinero, permisos o datos de entrada externos | — |
-| Estrategia o plan de pruebas no escrito | MEDIUM en equipos pequeños con buena cobertura; HIGH si hay releases sin criterios de salida | — |
+| Estrategia o plan de pruebas no escrito | MEDIUM en equipos pequeños con buena cobertura y en proyectos sin versiones publicadas o de una sola persona; HIGH si hay releases (regla 6) sin criterios de salida | — |
 | Fallo que solo ocurre en el entorno de pruebas (datos, entorno, herramientas) con producción sana | MEDIUM | — · sube a HIGH si impide verificar un release |
 | Bug sin pasos para reproducir | LOW–MEDIUM según su gravedad | — |

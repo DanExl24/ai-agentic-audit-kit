@@ -15,7 +15,7 @@ Los tests solo protegen si **corren en el momento adecuado y su fallo bloquea**.
 - Definir umbrales de cobertura o mutación que no se puedan engañar.
 - Auditar qué protege de verdad la rama principal.
 
-**No es para:** configurar lint, type-check, build o la imagen del contenedor → `frontend:tooling`, `backend:tooling` · escribir o arreglar los tests en sí → `frontend:testing`, `backend:testing`, `e2e` · decidir qué riesgos cubrir → `test-strategy`.
+**No es para:** configurar lint, type-check, build o la imagen del contenedor → `frontend:tooling`, `backend:tooling` (si el script ya existe y solo falta que corra en el pipeline, añadir ese paso **sí es de esta skill**, sin handoff) · escribir o arreglar los tests en sí → `frontend:testing`, `backend:testing`, `e2e` · decidir qué riesgos cubrir → `test-strategy`.
 
 ## Paso 0: contexto (ambos modos)
 
@@ -62,7 +62,7 @@ Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alc
 | Tests E2E lentos, intermitentes o mal estructurados | `e2e` | Suite, tiempos y tests intermitentes |
 | Tests intermitentes de frontend por esperas, red o estado compartido | `frontend:testing` | Tests y causa sospechada |
 | Tests intermitentes de backend por base de datos compartida, tiempo o concurrencia | `backend:testing` | Tests y causa sospechada |
-| El pipeline carece de lint, type-check, build reproducible o escaneo de dependencias | `frontend:tooling` · `backend:tooling` | Archivos de pipeline |
+| Falta **configurar la herramienta** de lint, type-check, build o escaneo de dependencias (no hay script, configuración o reglas) | `frontend:tooling` · `backend:tooling` | Archivos de pipeline y manifiestos |
 | Secretos en el pipeline, en logs o en artefactos | `backend:api-security` | Variables, pasos y artefactos |
 | No está claro qué suites son imprescindibles en cada etapa | `test-strategy` | Mapa de riesgos y suites existentes |
 

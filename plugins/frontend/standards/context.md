@@ -6,7 +6,10 @@ Un archivo en la raíz del proyecto donde las skills dejan lo que la siguiente n
 
 - **Si existe**, toda skill lo lee en su Paso 0 y respeta sus convenciones y decisiones (o explica por qué las cambia).
 - **Se crea** al empezar una tarea encadenada (`feature`, `audit`, una cadena de handoffs) o si el usuario lo pide; nunca en una consulta puntual. Al crearlo, dilo en una línea.
-- **Se actualiza** al terminar la tarea, no en cada paso intermedio (salvo en `feature`, que marca el avance del plan). También en auditorías de solo lectura ("no corrijas nada" se refiere al código): solo se omite si el usuario prohíbe escribir archivos, y entonces la entrega lo dice.
+- **Se actualiza** al terminar la tarea, no en cada paso intermedio (salvo en `feature`, que marca el avance del plan):
+  - **Modo Construir:** siempre, con lo creado o cambiado (skill aplicada, decisiones, handoffs pendientes).
+  - **Auditorías de solo lectura** ("no corrijas nada" se refiere al código): también se actualiza.
+  - **"Solo informe", "no toques nada" o cualquier prohibición de escribir archivos:** no se escribe; la entrega incluye un bloque **"Contexto propuesto"** con las líneas que se añadirían, para que el usuario las copie o pida aplicarlas.
 
 ## Reglas
 

@@ -4,9 +4,16 @@
 
 1. **Plan breve** si el entregable es grande (plan de pruebas, suite nueva): qué se crea y por qué.
 2. **Entregable** en el repositorio siguiendo las convenciones del proyecto: documento de estrategia o plan (`docs/testing/…` o donde el proyecto guarde su documentación), casos de prueba, tests o configuración.
-3. **Verificación:** ejecuta lo que se pueda (tests, linters de Gherkin, la propia sesión exploratoria). Lo que no se pudo verificar, se dice.
-4. **Resumen:** qué cambió, decisiones y pendientes.
-5. **Handoffs** hechos y pendientes ([handoffs.md](handoffs.md#bloque-de-traza-en-la-entrega)).
+3. **Verificación:** ejecuta lo que se pueda (tests, linters de Gherkin, la propia sesión exploratoria). La verificación debe **cubrir los archivos nuevos**: si el typecheck o el linter no los incluye (p. ej. `e2e/` fuera del `include` del tsconfig), inclúyelos o di que no se comprobaron; "typecheck sin errores" no vale si no los miró. Lo que no se pudo verificar, se dice.
+4. **Resumen:** qué cambió, decisiones y pendientes, incluidas las instalaciones (ver abajo).
+5. **Contexto:** actualiza `.sdlc/context.md` si existe ([context.md](context.md)).
+6. **Handoffs** hechos y pendientes ([handoffs.md](handoffs.md#bloque-de-traza-en-la-entrega)).
+
+### Instalaciones y datos reales
+
+- **Dependencias del proyecto** (`devDependencies`, navegadores de Playwright en la caché del proyecto): se pueden añadir si la petición implica la herramienta; se declaran en el resumen.
+- **Instalaciones a nivel de sistema** (winget, choco, brew, apt, `npm -g`, `pip` global): **pregunta antes**, con la alternativa sin instalar si existe (Docker, `npx`, binario portable en una carpeta del proyecto ignorada por git).
+- **Escrituras contra datos reales:** las pruebas que crean, modifican o borran datos se ejecutan contra una **instancia desechable** (modo demo, base en memoria, datos de prueba). Si el proyecto tiene una, úsala aunque el usuario autorice su entorno. Contra la instancia con datos reales, solo lecturas, salvo autorización expresa para escribir; entonces los datos de prueba llevan un marcador reconocible y se comprueba que la limpieza no dejó restos.
 
 ## Modo Auditar
 
@@ -29,6 +36,8 @@
 - **Corrección:** <casos, tests, cambio de proceso; concreto y aplicable>
 
 ## Lo que está bien
+## Por verificar
+<configuración remota o datos no accesibles: qué comprobar y dónde; sin severidad>
 ## Fuera de alcance / otras skills
 ## Handoffs
 - Hechos: <skill> (<alcance>) → <códigos>

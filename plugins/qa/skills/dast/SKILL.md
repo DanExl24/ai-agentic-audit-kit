@@ -22,7 +22,7 @@ Leer el código dice cómo **debería** comportarse la aplicación; un escaneo d
 2. **Entorno:** el escaneo **activo** envía ataques reales (inyecciones, formularios con datos basura) y puede **modificar o borrar datos y saturar el servicio**: solo en un entorno aislado (local, preview, staging) con datos de prueba y copia de seguridad. En producción, como mucho el escaneo **pasivo** y con autorización explícita.
 3. **Aviso:** el equipo de operaciones o seguridad sabe cuándo se escanea (para que no lo confundan con un ataque) y qué IP lo hace.
 4. **Cuentas de prueba** por rol para el escaneo autenticado, nunca cuentas reales.
-5. **Herramienta:** OWASP ZAP; carga [zap.md](references/zap.md). Si el proyecto usa otra (Burp, Nuclei), aplica [patterns.md](references/patterns.md) con ella.
+5. **Herramienta:** OWASP ZAP; carga [zap.md](references/zap.md). Sin Docker ni ZAP instalados, pregunta antes de instalar nada en el sistema ([output-formats.md § Instalaciones](../../standards/output-formats.md#instalaciones-y-datos-reales)). Si el proyecto usa otra (Burp, Nuclei), aplica [patterns.md](references/patterns.md) con ella.
 6. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir

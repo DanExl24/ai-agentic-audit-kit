@@ -19,10 +19,10 @@ Una prueba de carga responde a una pregunta concreta: **¿aguanta el sistema el 
 
 ## Paso 0: contexto y autorización (ambos modos)
 
-1. **Autorización y entorno:** una prueba de carga puede tumbar un servicio, disparar alertas, generar costes y bloquear IPs. Confirma **contra qué entorno** se ejecuta, que es del usuario o tiene permiso escrito, que no comparte infraestructura crítica sin aviso y quién debe saberlo. **Nunca contra producción ni contra servicios de terceros sin autorización explícita**; los terceros (pagos, email) se simulan.
+1. **Autorización y entorno:** una prueba de carga puede tumbar un servicio, disparar alertas, generar costes y bloquear IPs. Confirma **contra qué entorno** se ejecuta, que es del usuario o tiene permiso escrito, que no comparte infraestructura crítica sin aviso y quién debe saberlo. **Nunca contra producción ni contra servicios de terceros sin autorización explícita**; los terceros (pagos, email) se simulan. Los escenarios que **escriben** van contra una instancia desechable (modo demo, base en memoria, datos de prueba) si el proyecto la tiene, aunque el usuario autorice su entorno; contra datos reales, solo lecturas salvo autorización expresa para escribir. Ver [output-formats.md § Instalaciones y datos reales](../../standards/output-formats.md#instalaciones-y-datos-reales).
 2. **Pregunta y objetivos:** qué se quiere saber y los SLO o expectativas (p. ej. p95 < 300 ms y < 1 % de errores con 200 peticiones/s).
 3. **Tráfico real o esperado:** endpoints más usados, mezcla de operaciones, picos, tamaño de los datos (de métricas, logs o estimación de negocio).
-4. **Herramienta:** k6, Locust o Gatling según el equipo y el stack; carga [k6.md](references/k6.md), [locust.md](references/locust.md) o [gatling.md](references/gatling.md). Si no hay ninguna, recomienda k6.
+4. **Herramienta:** k6, Locust o Gatling según el equipo y el stack; carga [k6.md](references/k6.md), [locust.md](references/locust.md) o [gatling.md](references/gatling.md). Si no hay ninguna, recomienda k6. Instalarla a nivel de sistema (winget, brew, apt) se pregunta antes; ofrece la alternativa (Docker `grafana/k6`, binario portable).
 5. **Observabilidad disponible** durante la prueba: métricas del servidor, base de datos, trazas.
 6. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 

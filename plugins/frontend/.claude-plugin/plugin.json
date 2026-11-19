@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "18 skills de frontend (Vue, React, Angular) que construyen y auditan: UX, arquitectura, TypeScript, routing, datos, estado, formularios, design system, accesibilidad, responsive, rendimiento, SSR y SEO, seguridad, testing, observabilidad, i18n, tooling y un orquestador de auditorías.",
   "author": {
     "name": "DanExl24"

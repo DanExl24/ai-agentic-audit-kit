@@ -21,7 +21,7 @@ Un test E2E recorre la aplicación como un usuario, con frontend, backend y base
 
 1. **Herramienta y configuración:** Playwright o Cypress (versión), configuración, carpeta de tests, cómo se arranca la app para los tests. Carga [playwright.md](references/playwright.md) o [cypress.md](references/cypress.md). Si no hay ninguna, recomienda Playwright salvo que el equipo ya use Cypress.
 2. **Recorridos críticos:** de `test-strategy` si existe; si no, los del dinero, el acceso y los datos principales.
-3. **Entornos y datos:** contra qué se ejecuta (local, preview, staging), cómo se crean y limpian los datos, usuarios de prueba.
+3. **Entornos y datos:** contra qué se ejecuta (local, preview, staging), cómo se crean y limpian los datos, usuarios de prueba. Los tests que escriben van contra una **instancia desechable** (modo demo, base en memoria); si la app de pruebas comparte puerto con la instancia real, `reuseExistingServer` puede reutilizar la real y escribir en sus datos: dale un **puerto propio**. Ver [output-formats.md § Instalaciones y datos reales](../../standards/output-formats.md#instalaciones-y-datos-reales).
 4. **Estado actual** (Auditar): número de tests, duración, tasa de fallos e intermitentes en los últimos runs de CI.
 5. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
@@ -35,7 +35,8 @@ Un test E2E recorre la aplicación como un usuario, con frontend, backend y base
 6. **Red:** backend real; se simulan solo terceros (pagos, email) o fallos difíciles de provocar.
 7. **Diagnóstico:** traza, captura y vídeo en los fallos; informe en CI.
 8. **Smoke tras desplegar:** subconjunto etiquetado, de solo lectura o con cuentas de prueba. Ver [patterns.md § Smoke](references/patterns.md#smoke-tras-desplegar).
-9. Ejecuta la suite varias veces (repetición) antes de darla por estable y entrega según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir).
+9. **Tipos:** los archivos de tests y la configuración entran en un tsconfig (o en el linter) que corra el proyecto; Playwright transpila sin comprobar tipos.
+10. Ejecuta la suite varias veces (repetición) antes de darla por estable y entrega según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir).
 
 ## Modo Auditar
 

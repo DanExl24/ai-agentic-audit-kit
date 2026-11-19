@@ -34,6 +34,8 @@ export default defineConfig({
 });
 ```
 
+`reuseExistingServer` reutiliza **cualquier** servidor que responda en esa URL. Si la app de pruebas (modo demo, datos de prueba) usa el mismo puerto que la instancia con datos reales, los tests acabarán escribiendo en la real cuando esté encendida. Arranca la de pruebas en un puerto propio (`env: { PORT: '7601' }` y la `url`/`baseURL` correspondientes).
+
 Añade `playwright/.auth/` al `.gitignore`: contiene sesiones.
 
 ## Autenticación reutilizada
