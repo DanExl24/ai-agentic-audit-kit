@@ -8,7 +8,7 @@
 nota del área = max(0, 100 − 25·CRITICAL − 10·HIGH − 4·MEDIUM − 1·LOW)
 ```
 
-- INFO no resta. Un hallazgo agrupado cuenta **una vez**; uno deduplicado resta en el área de su **causa raíz**.
+- INFO no resta. Un hallazgo agrupado cuenta **una vez**; uno deduplicado resta **solo** en el área de su **causa raíz** (las demás áreas que lo vieron aparecen en "Áreas", sin restar). Dos hallazgos con la misma corrección son el mismo hallazgo.
 - **Ausencia de la capacidad central:** si el área aplica pero no existe (cero tests en `frontend:testing` o `backend:testing` con esa capa presente; sin E2E en una aplicación con interfaz y flujos críticos; sin CI en `quality-gates`; sin ningún criterio de terminado ni de salida en `test-strategy`; sin test de no regresión en ninguna corrección en `defect-analysis`), la nota del área **no supera 40**.
 - **No aplica** (declarado en el triage): el área no se puntúa ni cuenta en su pilar.
 

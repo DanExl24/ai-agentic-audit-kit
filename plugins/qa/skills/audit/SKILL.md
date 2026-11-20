@@ -47,7 +47,7 @@ Cada skill cargada son del orden de 3.000–4.500 tokens (SKILL.md, checklist y 
 5. **Consolida** con [report-template.md](references/report-template.md):
    - **Deduplica:** el mismo hueco visto por varias skills es un hallazgo, en el área de su causa raíz. Asignaciones fijas:
      - "El frontend (o una capa) no se verifica en CI" → `quality-gates` (no en `test-strategy`).
-     - "Correcciones de defectos sin test de no regresión" → `defect-analysis` (el proceso); `test-design` solo aporta los casos en la corrección.
+     - "Correcciones de defectos sin test de no regresión" → **un único hallazgo** en `defect-analysis` (el proceso); los casos concretos que faltan (`test-design`) van en su **Corrección**, no en otro hallazgo. Incorrecto: `QA-DEFECT-001` "0 de 4 correcciones con test" + `QA-DESIGN-001` "4 defectos sin casos de no regresión". Correcto: solo `QA-DEFECT-001`, con los 4 casos en la corrección y `test-design` en "Áreas".
      - "Capa sin tests" → `frontend:testing` o `backend:testing` si se evaluaron; si no, `test-strategy`.
    - **Métricas con fundamento:** un hallazgo basado en una métrica (tasa de escape, de regresión, cobertura) exige que la métrica se pueda calcular con las fuentes disponibles; si no, no hay hallazgo, solo el límite declarado.
    - Ordena por severidad y, a igual severidad, por esfuerzo.

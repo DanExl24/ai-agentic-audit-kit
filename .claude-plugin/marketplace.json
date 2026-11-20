@@ -33,7 +33,7 @@
       "name": "qa",
       "source": "./plugins/qa",
       "description": "Skills de calidad a lo largo del SDLC: estrategia y plan de pruebas, diseño de casos, pruebas exploratorias, suites E2E, puertas de calidad en CI, pruebas de carga, seguridad dinámica, análisis de defectos escapados (Ishikawa, Pareto, Kaizen) y auditoría de madurez de QA. Complementa a frontend:testing y backend:testing.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "category": "development"
     }
   ]

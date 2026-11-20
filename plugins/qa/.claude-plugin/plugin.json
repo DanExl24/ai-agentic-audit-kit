@@ -1,6 +1,6 @@
 {
   "name": "qa",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Skills de calidad a lo largo del SDLC que construyen y auditan: estrategia y plan de pruebas basado en riesgo, diseño de casos, pruebas exploratorias, suites E2E (Playwright, Cypress), puertas de calidad en CI, pruebas de carga (k6, Locust, Gatling) seguridad dinámica (OWASP ZAP), análisis de defectos escapados con Ishikawa, Pareto y matriz Kaizen, y auditoría de madurez de QA. Complementa a frontend:testing y backend:testing.",
   "author": {
     "name": "DanExl24"
