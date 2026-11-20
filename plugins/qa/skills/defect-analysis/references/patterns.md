@@ -5,6 +5,7 @@
 - Cada defecto del análisis tiene **identificador y fuente**: issue (`#123`), commit (`a1b2c3d`), reporte o post-mortem.
 - Las frecuencias del Pareto se **cuentan** sobre esa lista, no se estiman. Si una categoría se asignó por inferencia (solo por el mensaje del commit, sin leer el cambio), se marca como inferida.
 - Un commit con "fix" en el mensaje es un **candidato**: se confirma leyendo el diff (puede ser una errata, un refactor o una corrección de tests).
+- **Defecto** es un comportamiento incorrecto que alguien observó o pudo observar. La limpieza de código muerto, los refactors y el formato no son defectos aunque vayan en un commit de corrección: se mencionan como observación, fuera del Pareto y de las métricas.
 - Con pocos defectos (menos de ~20), el Pareto es **orientativo**: se presenta igual, con esa advertencia, y las conclusiones se formulan con prudencia.
 - Lo que no se pudo consultar (gestor de issues sin acceso, historial reescrito) se declara como límite.
 
@@ -17,7 +18,9 @@
 | **Fase de detección** | Desarrollo · revisión de código · CI · pruebas manuales · staging · producción (usuario, monitorización) |
 | **Por qué escapó** | Sin test para ese caso · test existente pero incorrecto o débil · caso no considerado (límite, negativo, combinación) · entorno de pruebas distinto de producción · control de CI ausente o saltado · revisión omitida o superficial · requisito ambiguo o cambiado · dependencia externa cambió |
 | **Severidad** | Escala del kit ([severity.md](../../../standards/severity.md)) por el impacto que tuvo |
-| **Regresión** | Sí (el comportamiento funcionaba o ya se había corregido) / No |
+| **Regresión** | Sí (el comportamiento funcionaba o ya se había corregido) / No / Sin determinar |
+
+**Regresión, comprobada en git:** solo es "Sí" si hay evidencia de que ese comportamiento funcionó en ese entorno (un commit anterior donde existía y funcionaba, un test que pasaba, una corrección previa). Si la funcionalidad o la configuración nació con el fallo (p. ej. un archivo creado con el error y corregido después), es **No**: defecto de origen. Si no se puede determinar, "Sin determinar", y no cuenta en la tasa de regresión. Comandos útiles: `git log --follow -- <archivo>` (desde cuándo existe) y `git log -S "<símbolo>"` (cuándo apareció o desapareció).
 
 El **motivo de escape** es la dimensión más útil para actuar: dice qué control del proceso falló.
 
@@ -144,6 +147,8 @@ Un defecto o una causa se cierra cuando se cumplen los tres:
 | Correcciones por hotspot | Correcciones en el módulo / periodo | Efecto de las acciones estructurales |
 
 Se comparan entre periodos con la misma definición; un único valor aislado dice poco.
+
+**Solo se calcula lo que las fuentes permiten medir.** La tasa de escape necesita también los defectos detectados **antes** de escapar (issues con fase de detección, comentarios de revisión, fallos de CI corregidos en el PR). Si la única fuente son los commits de corrección en la rama principal, todos los defectos encontrados "escaparon" por construcción: la tasa sale **n.a.** con ese motivo, no 100 %. Lo mismo con la reapertura sin gestor de issues.
 
 ## Anti-patrones
 

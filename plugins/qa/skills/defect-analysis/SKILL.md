@@ -28,7 +28,7 @@ Corregir un bug arregla **ese** bug; analizarlo evita **la familia entera**. Est
 
 1. **Recopila** los defectos con su evidencia (issue, commit de la corrección, fecha). Para un lote desde git, usa [patterns.md § Hotspots](references/patterns.md#hotspots-y-regresiones-en-el-historial) y confirma leyendo el commit que cada uno es de verdad una corrección.
 2. **Clasifica** cada defecto: tipo, fase en que se introdujo, fase en que se detectó y **por qué escapó**. Ver [patterns.md § Clasificación](references/patterns.md#clasificación-de-defectos).
-3. **Hotspots y regresiones:** archivos o módulos con más correcciones y defectos que volvieron.
+3. **Hotspots y regresiones:** archivos o módulos con más correcciones y defectos que volvieron. Una regresión se **comprueba en git** (el comportamiento funcionó antes); lo que nació con el fallo es un defecto de origen. Ver [patterns.md § Clasificación](references/patterns.md#clasificación-de-defectos).
 4. **Causa raíz:** 5 porqués por defecto relevante y **diagrama de Ishikawa en Mermaid** con las 5 ramas. Ver [patterns.md § Causa raíz](references/patterns.md#causa-raíz-5-porqués) e [§ Ishikawa](references/patterns.md#diagrama-de-ishikawa).
 5. **Pareto 80/20** de las causas (o de los motivos de escape) con sus frecuencias reales. Con menos de ~20 defectos, el Pareto es orientativo y se dice. Ver [patterns.md § Pareto](references/patterns.md#pareto-8020).
 6. **Matriz de acciones Kaizen:** contramedidas contra las causas del grupo vital, clasificadas en Quick Win, Táctico o Estratégico, con dificultad, plazo, impacto y KPI. Ver [patterns.md § Matriz](references/patterns.md#matriz-de-acciones-kaizen).
@@ -45,7 +45,7 @@ Corregir un bug arregla **ese** bug; analizarlo evita **la familia entera**. Est
 
 ## Principios
 
-1. **Datos con fuente:** cada defecto, frecuencia y porcentaje se puede rastrear a un issue o commit. Un Pareto inventado es peor que ninguno.
+1. **Datos con fuente:** cada defecto, frecuencia y porcentaje se puede rastrear a un issue o commit. Un Pareto inventado es peor que ninguno, y una métrica que las fuentes no pueden medir sale "n.a.", no con un valor.
 2. **Sin culpables:** "la persona se equivocó" no es una causa raíz; la pregunta es por qué el proceso lo permitió y no lo detectó.
 3. **La causa del escape importa tanto como la del defecto:** por qué se introdujo y por qué nadie lo vio antes de producción.
 4. **Pocas acciones, medibles:** atacar el grupo vital del Pareto, con KPI y plazo; "tener más cuidado" no es una acción.

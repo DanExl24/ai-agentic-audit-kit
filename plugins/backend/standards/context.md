@@ -8,8 +8,9 @@ Un archivo en la raíz del proyecto donde las skills dejan lo que la siguiente n
 - **Se crea** al empezar una tarea encadenada (`feature`, `audit`, una cadena de handoffs) o si el usuario lo pide; nunca en una consulta puntual. Al crearlo, dilo en una línea.
 - **Se actualiza** al terminar la tarea, no en cada paso intermedio (salvo en `feature`, que marca el avance del plan):
   - **Modo Construir:** siempre, con lo creado o cambiado (skill aplicada, decisiones, handoffs pendientes).
-  - **Auditorías de solo lectura** ("no corrijas nada" se refiere al código): también se actualiza.
-  - **"Solo informe", "no toques nada" o cualquier prohibición de escribir archivos:** no se escribe; la entrega incluye un bloque **"Contexto propuesto"** con las líneas que se añadirían, para que el usuario las copie o pida aplicarlas.
+  - **Auditorías de solo lectura:** también se actualiza. "No toques el código", "no corrijas nada" o "no cambies nada del proyecto" se refieren al código y la configuración, **no al contexto**: escribirlo no los incumple.
+  - **Solo lo impide una prohibición explícita de escribir archivos** ("solo informe", "no escribas ningún archivo", "no toques nada, ni el contexto"). Ante la duda, escríbelo y dilo en una línea.
+  - **Siempre que no se escriba,** por el motivo que sea, la entrega incluye un bloque **"Contexto propuesto"** con las líneas que se añadirían, para que el usuario las copie o pida aplicarlas. Una entrega sin contexto escrito y sin ese bloque está incompleta.
 
 ## Reglas
 

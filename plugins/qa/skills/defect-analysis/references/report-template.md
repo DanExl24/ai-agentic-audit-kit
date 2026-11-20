@@ -16,9 +16,9 @@
 
 | ID | Fuente | Descripción breve | Tipo | Introducción | Detección | Por qué escapó | Severidad | Regresión |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
-| D-01 | #123 · `a1b2c3d` | | | | | | | Sí / No |
+| D-01 | #123 · `a1b2c3d` | | | | | | | Sí / No / Sin determinar |
 
-<Las categorías asignadas por inferencia, sin leer el cambio, se marcan con (inferido).>
+<Las categorías asignadas por inferencia, sin leer el cambio, se marcan con (inferido). Regresión "Sí" solo con evidencia en git de que funcionó antes. Limpiezas y refactors van como observación, no como defectos.>
 
 ## 3. Hotspots y regresiones
 
@@ -69,7 +69,7 @@ flowchart LR
 | D-01 | `ruta/test` (falla con el código antiguo: sí/no) | desde YYYY-MM-DD | <dónde> | Abierto / Cerrado |
 
 ## 8. Métricas del periodo
-<tasa de escape, regresión, reapertura; comparadas con el periodo anterior si existe>
+<tasa de escape, regresión, reapertura; comparadas con el periodo anterior si existe. "n.a." con el motivo si las fuentes no permiten calcularla (p. ej. tasa de escape solo con commits de corrección en la rama principal)>
 
 ## 9. Seguimiento
 <fecha de revisión de las acciones y de los KPI>

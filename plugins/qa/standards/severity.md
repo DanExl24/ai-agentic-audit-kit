@@ -31,4 +31,5 @@ Misma escala que el resto del kit. En QA se juzga **el riesgo de que un defecto 
 | Bug sin pasos para reproducir | LOW–MEDIUM según su gravedad | — |
 | Corrección de un defecto sin test de no regresión | MEDIUM; HIGH en flujos principales o si el defecto ya volvió una vez | — |
 | Defecto grave escapado sin análisis de causa raíz | MEDIUM; HIGH si es CRITICAL o recurrente | — |
+| Defecto que solo afecta al entorno de desarrollo (proxy local, scripts de dev) con producción sana | MEDIUM | — · sube a HIGH si bloquea a todo el equipo sin alternativa |
 | Práctica ausente que no aplica al contexto (carga en una app de un usuario, DAST sin exposición) | No es hallazgo: se declara "no aplica" con el motivo | — |

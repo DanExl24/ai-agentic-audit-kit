@@ -45,10 +45,14 @@ Cada skill cargada son del orden de 3.000–4.500 tokens (SKILL.md, checklist y 
 3. **Aplica cada checklist** sobre ese inventario.
 4. **Control de calidad:** hallazgos sin evidencia, severidad o corrección se rehacen o se descartan; lo no inspeccionable va a "Por verificar".
 5. **Consolida** con [report-template.md](references/report-template.md):
-   - **Deduplica:** el mismo hueco visto por varias skills es un hallazgo, en el área de su causa raíz (p. ej. "el frontend no se verifica en CI" en `test-strategy` y en `quality-gates` → un hallazgo en `quality-gates`).
+   - **Deduplica:** el mismo hueco visto por varias skills es un hallazgo, en el área de su causa raíz. Asignaciones fijas:
+     - "El frontend (o una capa) no se verifica en CI" → `quality-gates` (no en `test-strategy`).
+     - "Correcciones de defectos sin test de no regresión" → `defect-analysis` (el proceso); `test-design` solo aporta los casos en la corrección.
+     - "Capa sin tests" → `frontend:testing` o `backend:testing` si se evaluaron; si no, `test-strategy`.
+   - **Métricas con fundamento:** un hallazgo basado en una métrica (tasa de escape, de regresión, cobertura) exige que la métrica se pueda calcular con las fuentes disponibles; si no, no hay hallazgo, solo el límite declarado.
    - Ordena por severidad y, a igual severidad, por esfuerzo.
-   - Puntúa con la [rúbrica de madurez](references/report-template.md#rúbrica-de-madurez).
-6. **Entrega** en el chat y, si es largo o se pide, en `audit-qa-<fecha>.md`. Actualiza el contexto según [context.md](../../standards/context.md).
+   - Puntúa con la [rúbrica de madurez](references/report-template.md#rúbrica-de-madurez) y aplica los [requisitos por nivel](references/report-template.md#requisitos-mínimos-por-nivel): marca los pilares parciales y, si los hay, presenta global y nivel como provisionales.
+6. **Entrega** en el chat y, si es largo o se pide, en `audit-qa-<fecha>.md`. **Actualiza `.sdlc/context.md`** según [context.md](../../standards/context.md): "no toques el código" no impide escribirlo; si el usuario prohibió escribir archivos, incluye el bloque "Contexto propuesto".
 
 ## Modo Remediar
 
