@@ -1,0 +1,22 @@
+{
+  "name": "product",
+  "version": "0.1.0",
+  "description": "Skills de producto y requisitos, lo que se hace antes de construir, que construyen y auditan: descubrimiento (problema, usuarios, propuesta de valor, Lean Canvas, supuestos de riesgo, MVP y métricas), levantamiento de requisitos con interesados y sobre sistemas existentes, y modelo del dominio (glosario, entidades, estados y reglas de negocio). Con IDs estables y enlaces para la trazabilidad. En construcción: historias de usuario, priorización, especificación (SRS) y trazabilidad.",
+  "author": {
+    "name": "DanExl24"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product",
+    "requirements",
+    "discovery",
+    "lean-canvas",
+    "mvp",
+    "elicitation",
+    "stakeholders",
+    "domain-model",
+    "glossary",
+    "business-rules",
+    "traceability"
+  ]
+}

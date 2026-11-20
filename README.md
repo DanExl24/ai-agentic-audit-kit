@@ -14,8 +14,9 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ 18 skills (17 especialistas + el orquestador `audit`). Probado sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
 | **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` | ✅ 9 skills: `test-strategy`, `test-design`, `exploratory-testing`, `e2e`, `quality-gates`, `load-testing`, `dast`, `defect-analysis` (con Ishikawa, Pareto y matriz Kaizen) y el orquestador `audit` (madurez de QA 0–100 por pilares). Sustituye a `05_qa_testing_engineering`. |
+| **Producto y requisitos** (antes de construir) | Plugin `plugins/product/` | 🚧 Ola 1 de 4: `discovery`, `elicitation` y `domain-modeling`, con IDs estables y enlaces para la trazabilidad. Pendientes: `user-stories`, `prioritization`, `specification`, `traceability`, `inception` y `audit`. |
 
-Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md).
+Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md) · [`plugins/product/README.md`](plugins/product/README.md).
 
 ---
 
@@ -80,19 +81,26 @@ ai-agentic-audit-kit/
 │   │       ├── flow-diagnosis/
 │   │       ├── feature/              # orquestador de construcción
 │   │       └── audit/                # orquestador conjunto
-│   └── qa/                       # calidad en todo el SDLC
+│   ├── qa/                       # calidad en todo el SDLC
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── standards/
+│   │   └── skills/
+│   │       ├── test-strategy/
+│   │       ├── test-design/
+│   │       ├── exploratory-testing/
+│   │       ├── e2e/
+│   │       ├── quality-gates/
+│   │       ├── load-testing/
+│   │       ├── dast/
+│   │       ├── defect-analysis/
+│   │       └── audit/                # orquestador con madurez por pilares
+│   └── product/                  # producto y requisitos, antes de construir (en construcción)
 │       ├── .claude-plugin/plugin.json
-│       ├── standards/
+│       ├── standards/            # incluye ids-and-links.md: IDs estables y enlaces
 │       └── skills/
-│           ├── test-strategy/
-│           ├── test-design/
-│           ├── exploratory-testing/
-│           ├── e2e/
-│           ├── quality-gates/
-│           ├── load-testing/
-│           ├── dast/
-│           ├── defect-analysis/
-│           └── audit/                # orquestador con madurez por pilares
+│           ├── discovery/
+│           ├── elicitation/
+│           └── domain-modeling/
 │
 └── guides/                       # guía de invocación: qué skill usar según el síntoma
 ```
@@ -111,6 +119,7 @@ Desde Claude Code:
 /plugin install backend@sdlc-skills
 /plugin install fullstack@sdlc-skills
 /plugin install qa@sdlc-skills
+/plugin install product@sdlc-skills
 ```
 
 Instala solo los plugins de los dominios que use cada proyecto (cada plugin añade sus descripciones al contexto de la sesión).
@@ -121,6 +130,7 @@ Después:
 /frontend:forms audita los formularios de src/features/checkout
 /backend:data-access revisa las condiciones de carrera en src/modules/inventory
 /qa:audit ¿está listo el release 2.0?
+/product:discovery tengo una idea: una app para gestionar nóminas en despachos pequeños
 ```
 
 Las skills también se activan automáticamente cuando la petición encaja con su descripción.

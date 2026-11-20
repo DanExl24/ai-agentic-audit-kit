@@ -12,28 +12,35 @@
       "name": "frontend",
       "source": "./plugins/frontend",
       "description": "18 skills de frontend (Vue, React, Angular) que construyen y auditan: UX, arquitectura, TypeScript, routing, datos, estado, formularios, design system, accesibilidad, responsive, rendimiento, SSR y SEO, seguridad, testing, observabilidad, i18n, tooling y un orquestador de auditorías.",
-      "version": "0.5.3",
+      "version": "0.5.4",
       "category": "development"
     },
     {
       "name": "backend",
       "source": "./plugins/backend",
       "description": "Skills de backend (Node/TypeScript, Python, Java/Spring) que construyen y auditan: arquitectura, diseño de API, capa HTTP, dominio, acceso a datos y concurrencia, esquema y migraciones, autenticación, autorización, seguridad de API, mensajería, integraciones, caché, observabilidad, rendimiento, testing, tooling, privacidad y un orquestador de auditorías.",
-      "version": "0.5.3",
+      "version": "0.5.4",
       "category": "development"
     },
     {
       "name": "fullstack",
       "source": "./plugins/fullstack",
       "description": "Skills que cruzan frontend y backend: contratos API ↔ cliente, topología, diagnóstico de flujos, orquestador para construir funcionalidades (feature) y auditoría conjunta, con handoffs entre skills y contexto compartido. Requiere los plugins frontend y backend.",
-      "version": "0.3.3",
+      "version": "0.3.4",
       "category": "development"
     },
     {
       "name": "qa",
       "source": "./plugins/qa",
       "description": "Skills de calidad a lo largo del SDLC: estrategia y plan de pruebas, diseño de casos, pruebas exploratorias, suites E2E, puertas de calidad en CI, pruebas de carga, seguridad dinámica, análisis de defectos escapados (Ishikawa, Pareto, Kaizen) y auditoría de madurez de QA. Complementa a frontend:testing y backend:testing.",
-      "version": "0.4.2",
+      "version": "0.4.3",
+      "category": "development"
+    },
+    {
+      "name": "product",
+      "source": "./plugins/product",
+      "description": "Skills de producto y requisitos, antes de construir: descubrimiento (problema, usuarios, Lean Canvas, supuestos, MVP y métricas), levantamiento de requisitos y modelo del dominio con reglas de negocio, con IDs estables para la trazabilidad (en construcción: historias, priorización, SRS y trazabilidad).",
+      "version": "0.1.0",
       "category": "development"
     }
   ]

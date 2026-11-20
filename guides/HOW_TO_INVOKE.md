@@ -60,6 +60,9 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | ¿Aguanta el tráfico esperado? Pruebas de carga con k6, Locust o Gatling y umbrales desde los SLO. | **skill `/qa:load-testing`** | `plugins/qa/skills/load-testing/` |
 | Seguridad en ejecución: cabeceras, cookies y errores reales con OWASP ZAP contra un entorno propio. | **skill `/qa:dast`** | `plugins/qa/skills/dast/` |
 | Bugs que vuelven o se escapan a producción: hotspots, Ishikawa, Pareto 80/20 y matriz de acciones Kaizen. | **skill `/qa:defect-analysis`** | `plugins/qa/skills/defect-analysis/` |
+| Tienes una idea y quieres saber qué problema resuelve, para quién, qué se está suponiendo y cuál es el MVP. | **skill `/product:discovery`** | `plugins/product/skills/discovery/` |
+| Requisitos vagos o contradictorios; hay que entrevistar a usuarios o documentar lo que hace un sistema existente. | **skill `/product:elicitation`** | `plugins/product/skills/elicitation/` |
+| Palabras con dos significados, reglas de negocio dispersas o sin cifras, falta un glosario o un modelo del dominio. | **skill `/product:domain-modeling`** | `plugins/product/skills/domain-modeling/` |
 
 ---
 
@@ -163,6 +166,20 @@ Las skills de calidad a lo largo del SDLC están en `plugins/qa/skills/`: decidi
 
 ---
 
+### 💡 DOMINIO 06: PRODUCTO Y REQUISITOS (plugin `product`, en construcción)
+
+Lo que se hace antes de construir: validar la idea, levantar requisitos, fijar el lenguaje y las reglas del negocio y, en las próximas olas, historias con criterios de aceptación, priorización, especificación (SRS o PRD) y trazabilidad hasta el código y los tests. Todas las skills usan IDs estables y enlaces comunes (`plugins/product/standards/ids-and-links.md`: `OBJ`, `SUP`, `INT`, `PRE`, `DEC`, `RN`, `HU`, `CA`, `RF`, `RNF`) y no inventan datos de negocio. Códigos `PR-*`. Catálogo: [`plugins/product/README.md`](../plugins/product/README.md).
+
+| Skill | Qué cubre |
+| :--- | :--- |
+| `/product:discovery` | Problema y evidencia, segmentos y trabajos por hacer, propuesta de valor, Lean Canvas (o versión interna), supuestos de mayor riesgo con experimento, MVP, objetivos y métricas. |
+| `/product:elicitation` | Interesados, técnicas, guion de entrevista, entrevista al usuario en el chat por bloques, análisis del sistema existente, registros de preguntas, supuestos y decisiones. |
+| `/product:domain-modeling` | Glosario, modelo conceptual, estados, eventos y módulos, reglas de negocio atómicas con ejemplos, motivo, origen y enlaces al código. |
+
+* **¿Cuándo NO usarlas?** Para el esquema de base de datos → `/backend:schema-and-migrations`; para implementar reglas → `/backend:domain-logic`; para el diseño visual de pantallas → `/frontend:ux-review`.
+
+---
+
 ## 🔁 3. Escalado entre capas
 
 Si una skill de capa detecta que la causa raíz está en la otra capa, o que la corrección necesita las dos:
@@ -173,4 +190,4 @@ Si una skill de capa detecta que la causa raíz está en la otra capa, o que la 
 
 Para una revisión completa de punta a punta, `/fullstack:audit` hace todo esto en una sola pasada.
 
-Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en `standards/handoffs.md` y `standards/context.md` de cada plugin (idénticos en los cuatro plugins; p. ej. [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md)). Cada skill de los cuatro plugins tiene una sección `Handoffs` con sus disparadores concretos.
+Las reglas de encadenamiento (profundidad máxima de 2, sin reinvocar, aviso de coste, plan B si falta un plugin) y el contexto compartido `.sdlc/context.md` están en `standards/handoffs.md` y `standards/context.md` de cada plugin (idénticos en los cinco plugins; p. ej. [`plugins/fullstack/standards/handoffs.md`](../plugins/fullstack/standards/handoffs.md)). Cada skill de los cinco plugins tiene una sección `Handoffs` con sus disparadores concretos.

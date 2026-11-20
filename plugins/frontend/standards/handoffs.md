@@ -39,7 +39,7 @@ Un disparador es **concreto y comprobable** en el código o en el objetivo ("un 
    - Si la ejecución no es interactiva, los handoffs que requieren confirmación se registran como pendientes.
 5. **Plugin ausente.** Si la skill destino es de un plugin no instalado (o su archivo no existe), se avisa, se registra como pendiente con el disparador y la evidencia, y se continúa.
 6. **Dentro de un orquestador** (`audit`, `feature`), los handoffs no se disparan por separado: el orquestador ya planifica qué skills se aplican. Los disparadores hacia skills que no están en el plan se recogen como "escalado sugerido" en su informe o como pasos opcionales del plan.
-7. **Traza.** Toda entrega termina con los handoffs hechos y los pendientes, y se registran en el [contexto compartido](context.md) si existe. Actualizar `.sdlc/context.md` no es modificar código: se hace también en auditorías de solo lectura, salvo que el usuario prohíba escribir archivos; en ese caso la entrega dice "contexto no actualizado" y por qué.
+7. **Traza.** Toda entrega termina con los handoffs hechos y los pendientes, y se registran en el [contexto compartido](context.md) si existe. Actualizar `.sdlc/context.md` no es modificar código: se hace también en auditorías de solo lectura, salvo que el usuario prohíba escribir archivos; en ese caso la entrega incluye el bloque "Contexto propuesto" ([context.md](context.md)).
 
 ## Cómo invocar la skill destino
 
