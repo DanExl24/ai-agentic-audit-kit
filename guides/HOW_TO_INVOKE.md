@@ -65,6 +65,10 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Palabras con dos significados, reglas de negocio dispersas o sin cifras, falta un glosario o un modelo del dominio. | **skill `/product:domain-modeling`** | `plugins/product/skills/domain-modeling/` |
 | Hay reglas o requisitos acordados y necesitas historias con criterios verificables. | **skill `/product:user-stories`** | `plugins/product/skills/user-stories/` |
 | Necesitas decidir qué historias entran en el MVP y en qué orden entregarlas. | **skill `/product:prioritization`** | `plugins/product/skills/prioritization/` |
+| Necesitas formalizar un PRD o una SRS con requisitos comprobables. | **skill `/product:specification`** | `plugins/product/skills/specification/` |
+| Necesitas comprobar qué historias, código y pruebas respaldan a cada requisito o analizar el impacto de un cambio. | **skill `/product:traceability`** | `plugins/product/skills/traceability/` |
+| Quieres coordinar el trabajo de Producto hasta un backlog o especificación con un estado explícito de preparación. | **skill `/product:inception`** | `plugins/product/skills/inception/` |
+| Quieres auditar varias áreas de los requisitos y obtener un veredicto con puntuación y cobertura. | **skill `/product:audit`** | `plugins/product/skills/audit/` |
 
 ---
 
@@ -170,7 +174,7 @@ Las skills de calidad a lo largo del SDLC están en `plugins/qa/skills/`: decidi
 
 ### 💡 DOMINIO 06: PRODUCTO Y REQUISITOS (plugin `product`, en construcción)
 
-Las skills cubren descubrimiento, levantamiento, modelado de reglas, historias con criterios de aceptación y priorización. La especificación y la trazabilidad transversal se añadirán en olas posteriores. Todas las skills usan [IDs y enlaces estables](../plugins/product/standards/ids-and-links.md) y registran las dudas de negocio. Catálogo en [Producto](../plugins/product/README.md).
+Las skills cubren descubrimiento, levantamiento, modelado de reglas, historias, priorización, especificación y trazabilidad. Todas usan [IDs y enlaces estables](../plugins/product/standards/ids-and-links.md) y registran las dudas de negocio. Catálogo en [Producto](../plugins/product/README.md).
 
 | Skill | Qué cubre |
 | :--- | :--- |
@@ -179,6 +183,10 @@ Las skills cubren descubrimiento, levantamiento, modelado de reglas, historias c
 | `/product:domain-modeling` | Glosario, modelo conceptual, estados, eventos y módulos, reglas de negocio atómicas con ejemplos, motivo, origen y enlaces al código. |
 | `/product:user-stories` | Épicas, mapas e historias divididas por valor, criterios de aceptación, casos de uso y Definition of Ready. |
 | `/product:prioritization` | Método y evidencia de priorización, dependencias, corte del MVP y plan de entregas. |
+| `/product:specification` | PRD o SRS, requisitos verificables, métricas, restricciones e interfaces, con fuentes y estados. |
+| `/product:traceability` | Matriz de vínculos verificados y previstos, brechas de cobertura y análisis de impacto. |
+| `/product:inception` | Ruta desde la idea o documentación existente hasta el backlog o especificación, con condiciones de relevo. |
+| `/product:audit` | Selección de áreas aplicables, hallazgos consolidados, puntuación con cobertura y plan de remediación. |
 
 * **¿Cuándo NO usarlas?** Para el esquema de base de datos → `/backend:schema-and-migrations`; para implementar reglas → `/backend:domain-logic`; para el diseño visual de pantallas → `/frontend:ux-review`.
 

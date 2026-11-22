@@ -56,6 +56,9 @@ Las skills de producto trabajan con información que **solo el usuario o sus int
 | domain-modeling | `PR-DOMAIN` |
 | user-stories | `PR-STORIES` |
 | prioritization | `PR-PRIOR` |
+| specification | `PR-SPEC` |
+| traceability | `PR-TRACE` |
+| audit (hallazgos transversales) | `PR-AUDIT` |
 
 La numeración es siempre secuencial (`PR-DOMAIN-001`); no se inventan sufijos descriptivos.
 

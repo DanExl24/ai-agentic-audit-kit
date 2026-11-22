@@ -39,8 +39,8 @@
     {
       "name": "product",
       "source": "./plugins/product",
-      "description": "Cinco skills de producto y requisitos: descubrimiento, levantamiento, modelo del dominio, historias de usuario con criterios de aceptación y priorización del MVP y de las entregas. Comparten IDs estables y enlaces para la trazabilidad.",
-      "version": "0.2.3",
+      "description": "Nueve skills de producto y requisitos, con orquestadores para preparar un backlog o especificación y auditar la calidad de los requisitos.",
+      "version": "0.4.0",
       "category": "development"
     }
   ]

@@ -1,6 +1,6 @@
 # Plugin `product`
 
-Skills de **producto y requisitos** para validar ideas, levantar requisitos, modelar reglas de negocio, redactar historias con criterios de aceptación y priorizar entregas. Las próximas olas añadirán especificación formal, trazabilidad y orquestación del flujo.
+Skills de **producto y requisitos** para validar ideas, levantar requisitos, modelar reglas de negocio, redactar historias, priorizar entregas, formalizar especificaciones y comprobar la trazabilidad. Dos orquestadores coordinan la preparación del trabajo y la auditoría de requisitos.
 
 - Modos **Construir** y **Auditar**, como el resto del kit. El modo Auditar sirve también para revisar la documentación funcional de un proyecto existente.
 - Sin notas por stack: las plantillas son por formato (brief y Lean Canvas, guion de entrevista, reglas de negocio…). Todo se entrega en Markdown dentro del repositorio, con diagramas Mermaid.
@@ -23,12 +23,18 @@ Skills de **producto y requisitos** para validar ideas, levantar requisitos, mod
 /product:domain-modeling audita docs/modules/*/reglas_negocio.md
 /product:user-stories convierte las reglas acordadas del buzón en historias con criterios verificables
 /product:prioritization propone el corte del MVP a partir del backlog del buzón
+/product:specification redacta una SRS de la caducidad de notas a partir de reglas, historias y decisiones
+/product:traceability verifica la cobertura de las reglas del buzón en historias, código y pruebas
+/product:inception prepara un incremento de caducidad a partir de los documentos existentes del buzón
+/product:audit evalúa si los requisitos de caducidad están listos para desarrollo
 ```
 
 ## Estado de las olas
 
 - **Ola 1 cerrada.** Probada en VELTRIX con Gemini 4 Hydrogen Medium. Incluyó descubrimiento en Construir, levantamiento en Construir y modelado en Auditar y Construir. Se verificaron escritura del contexto, preguntas abiertas, reglas en borrador, unicidad de IDs y métricas sin línea base. La revisión de anclas de `0.1.4` se verificó en el brief generado.
 - **Ola 2 cerrada.** Se probó en VELTRIX con Gemini 4 Hydrogen Medium usando las reglas de caducidad de la ola 1. Se verificaron las historias y sus criterios, el registro de la propuesta y del contexto, y el bloqueo del relevo a desarrollo cuando el corte contradice reglas acordadas. La prueba cubrió el modo Construir de ambas skills.
+- **Ola 3 cerrada.** Se probaron `specification` y `traceability` en modo Construir con Gemini 4 Hydrogen Medium en VELTRIX. Se verificaron la separación entre requisitos y técnicas de implementación, la cobertura respaldada por evidencia, el análisis de impacto y la consistencia del contexto en la repetición.
+- **Ola 4 implementada y pendiente de prueba con el agente.** `inception` coordina las etapas necesarias y evalúa la preparación del incremento. `audit` consolida hallazgos y puntúa únicamente lo aplicable, con cobertura explícita.
 
 ## Catálogo
 
@@ -39,10 +45,10 @@ Skills de **producto y requisitos** para validar ideas, levantar requisitos, mod
 | `domain-modeling` | ✅ | Glosario, modelo conceptual, ciclo de vida y estados, eventos y módulos, catálogo de reglas de negocio atómicas con ejemplos, motivo, origen y enlaces |
 | `user-stories` | Ola 2 · probada en Construir | Épicas, story mapping, historias INVEST, división vertical, criterios de aceptación, casos de uso, Definition of Ready |
 | `prioritization` | Ola 2 · probada en Construir | MoSCoW, RICE, Kano, coste del retraso, corte del MVP y plan de entregas |
-| `specification` | ⏳ Ola 3 | SRS (IEEE 29148) o PRD, requisitos no funcionales medibles (ISO 25010), restricciones e interfaces |
-| `traceability` | ⏳ Ola 3 | Matriz RN ↔ HU ↔ CA ↔ código ↔ tests ↔ commits, huecos, enlaces rotos y análisis de impacto |
-| `inception` | ⏳ Ola 4 | Orquestador de construcción: de la idea a un backlog o SRS listo para `fullstack:feature` |
-| `audit` | ⏳ Ola 4 | Orquestador de auditoría de la calidad de los requisitos, con puntuación |
+| `specification` | Ola 3 · probada en Construir | PRD o SRS, requisitos funcionales y no funcionales verificables, restricciones e interfaces |
+| `traceability` | Ola 3 · probada en Construir | Matriz de requisitos y reglas a historias, criterios, código, pruebas y commits, con brechas y análisis de impacto |
+| `inception` | Ola 4 · implementada | Orquestador que prepara un backlog o especificación y verifica si el incremento puede pasar a `fullstack:feature` |
+| `audit` | Ola 4 · implementada | Orquestador que audita calidad de requisitos con puntuación, cobertura y remediación |
 
 ## Estructura de una skill
 
