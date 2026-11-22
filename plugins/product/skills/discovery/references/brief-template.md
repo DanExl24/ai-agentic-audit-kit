@@ -48,22 +48,30 @@
 
 ## 6. Alcance del MVP
 - **Pregunta que responde:** valida `SUP-…`
-- **Dentro:** <recorrido mínimo completo>
+- **Dentro:** <recorrido mínimo completo, con decisión de origen o estado de propuesta para cada punto>
 - **Fuera (con motivo):**
   - <capacidad> — <motivo>
 - **Criterio de salida:** <seguir | cambiar de rumbo | parar, según el resultado>
 
 ## 7. Objetivos y métricas
 
-| ID | Objetivo | Métrica | Actual | Meta | Plazo |
+| ID | Objetivo | Métrica | Línea base (fuente o plan de medición) | Meta (propuesta o acordada) | Plazo |
 | :--- | :--- | :--- | :-: | :-: | :--- |
-| `OBJ-001` | | | | | |
+| `OBJ-001` | <resultado que se quiere lograr> | <qué se mide> | <valor medido y fuente, o pendiente de medir y cómo> | <valor y estado> | <plazo> |
 
 Métrica de control: <…>
 
 ## 8. Preguntas abiertas y decisiones
-- `PRE-…` <pregunta> — a quién — para cuándo
-- `DEC-…` <decisión> — motivo — fecha
+
+### PRE-001
+<pregunta>
+- Estado: abierta | respondida parcialmente | respondida
+- Responsable y plazo: <…>
+- Respuesta o pendiente: <…> · Decisión relacionada: <enlace si existe>
+
+### DEC-001
+<decisión>
+- Motivo y fecha: <…>
 
 ## Anexo: veracidad
 <qué es confirmado, inferido o supuesto; documentos y conversaciones usados>

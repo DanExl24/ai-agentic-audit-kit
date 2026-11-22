@@ -14,7 +14,7 @@ El kit nació como un conjunto de prompts de auditoría (patrón *Hub & Spoke*: 
 | **Backend** (incluye database y security de servidor) | Plugin `plugins/backend/` | ✅ 18 skills (17 especialistas + el orquestador `audit`). Probado sobre proyectos reales. Absorbe los antiguos `02_backend`, `03_database` y `04_security` (la parte de cliente está en `frontend:security`). |
 | **Fullstack** (entre capas) | Plugin `plugins/fullstack/` | ✅ 5 skills (`contracts`, `topology`, `flow-diagnosis`, el orquestador de construcción `feature` y el orquestador `audit`, que combina las auditorías de frontend y backend), más el estándar de handoffs y el contexto compartido `.sdlc/context.md`. Requiere los plugins `frontend` y `backend`. |
 | **QA** (calidad en todo el SDLC) | Plugin `plugins/qa/` | ✅ 9 skills: `test-strategy`, `test-design`, `exploratory-testing`, `e2e`, `quality-gates`, `load-testing`, `dast`, `defect-analysis` (con Ishikawa, Pareto y matriz Kaizen) y el orquestador `audit` (madurez de QA 0–100 por pilares). Sustituye a `05_qa_testing_engineering`. |
-| **Producto y requisitos** (antes de construir) | Plugin `plugins/product/` | 🚧 Ola 1 de 4: `discovery`, `elicitation` y `domain-modeling`, con IDs estables y enlaces para la trazabilidad. Pendientes: `user-stories`, `prioritization`, `specification`, `traceability`, `inception` y `audit`. |
+| **Producto y requisitos** (antes de construir) | Plugin `plugins/product/` | Olas 1 y 2 cerradas. Incluye `discovery`, `elicitation`, `domain-modeling`, `user-stories` y `prioritization`. Olas 3 y 4 pendientes. |
 
 Catálogos: [`plugins/frontend/README.md`](plugins/frontend/README.md) · [`plugins/backend/README.md`](plugins/backend/README.md) · [`plugins/fullstack/README.md`](plugins/fullstack/README.md) · [`plugins/qa/README.md`](plugins/qa/README.md) · [`plugins/product/README.md`](plugins/product/README.md).
 
@@ -100,7 +100,9 @@ ai-agentic-audit-kit/
 │       └── skills/
 │           ├── discovery/
 │           ├── elicitation/
-│           └── domain-modeling/
+│           ├── domain-modeling/
+│           ├── user-stories/
+│           └── prioritization/
 │
 └── guides/                       # guía de invocación: qué skill usar según el síntoma
 ```

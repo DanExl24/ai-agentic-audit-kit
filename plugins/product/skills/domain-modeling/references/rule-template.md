@@ -2,6 +2,8 @@
 
 Si el proyecto ya tiene un formato de reglas (p. ej. secciones "Descripción", "Motivo", "Archivos donde se implementa"), **se respeta** y se añaden solo los campos que falten (estado, origen, ejemplos).
 
+Cada regla describe un resultado verificable y lleva al menos un ejemplo. Si hay un umbral, ilustra la frontera. Cita la fuente que confirma el resultado completo para marcarlo como `acordado`. Documenta por separado como `borrador` el efecto que dependa de un `SUP` o `PRE` pendiente. Reserva códigos HTTP y detalles de persistencia para el contrato o las referencias de implementación.
+
 ## Regla de negocio
 
 ```markdown

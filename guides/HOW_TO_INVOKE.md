@@ -63,6 +63,8 @@ Este manual sirve como brújula para cualquier desarrollador o líder técnico q
 | Tienes una idea y quieres saber qué problema resuelve, para quién, qué se está suponiendo y cuál es el MVP. | **skill `/product:discovery`** | `plugins/product/skills/discovery/` |
 | Requisitos vagos o contradictorios; hay que entrevistar a usuarios o documentar lo que hace un sistema existente. | **skill `/product:elicitation`** | `plugins/product/skills/elicitation/` |
 | Palabras con dos significados, reglas de negocio dispersas o sin cifras, falta un glosario o un modelo del dominio. | **skill `/product:domain-modeling`** | `plugins/product/skills/domain-modeling/` |
+| Hay reglas o requisitos acordados y necesitas historias con criterios verificables. | **skill `/product:user-stories`** | `plugins/product/skills/user-stories/` |
+| Necesitas decidir qué historias entran en el MVP y en qué orden entregarlas. | **skill `/product:prioritization`** | `plugins/product/skills/prioritization/` |
 
 ---
 
@@ -168,13 +170,15 @@ Las skills de calidad a lo largo del SDLC están en `plugins/qa/skills/`: decidi
 
 ### 💡 DOMINIO 06: PRODUCTO Y REQUISITOS (plugin `product`, en construcción)
 
-Lo que se hace antes de construir: validar la idea, levantar requisitos, fijar el lenguaje y las reglas del negocio y, en las próximas olas, historias con criterios de aceptación, priorización, especificación (SRS o PRD) y trazabilidad hasta el código y los tests. Todas las skills usan IDs estables y enlaces comunes (`plugins/product/standards/ids-and-links.md`: `OBJ`, `SUP`, `INT`, `PRE`, `DEC`, `RN`, `HU`, `CA`, `RF`, `RNF`) y no inventan datos de negocio. Códigos `PR-*`. Catálogo: [`plugins/product/README.md`](../plugins/product/README.md).
+Las skills cubren descubrimiento, levantamiento, modelado de reglas, historias con criterios de aceptación y priorización. La especificación y la trazabilidad transversal se añadirán en olas posteriores. Todas las skills usan [IDs y enlaces estables](../plugins/product/standards/ids-and-links.md) y registran las dudas de negocio. Catálogo en [Producto](../plugins/product/README.md).
 
 | Skill | Qué cubre |
 | :--- | :--- |
 | `/product:discovery` | Problema y evidencia, segmentos y trabajos por hacer, propuesta de valor, Lean Canvas (o versión interna), supuestos de mayor riesgo con experimento, MVP, objetivos y métricas. |
 | `/product:elicitation` | Interesados, técnicas, guion de entrevista, entrevista al usuario en el chat por bloques, análisis del sistema existente, registros de preguntas, supuestos y decisiones. |
 | `/product:domain-modeling` | Glosario, modelo conceptual, estados, eventos y módulos, reglas de negocio atómicas con ejemplos, motivo, origen y enlaces al código. |
+| `/product:user-stories` | Épicas, mapas e historias divididas por valor, criterios de aceptación, casos de uso y Definition of Ready. |
+| `/product:prioritization` | Método y evidencia de priorización, dependencias, corte del MVP y plan de entregas. |
 
 * **¿Cuándo NO usarlas?** Para el esquema de base de datos → `/backend:schema-and-migrations`; para implementar reglas → `/backend:domain-logic`; para el diseño visual de pantallas → `/frontend:ux-review`.
 

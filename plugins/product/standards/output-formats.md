@@ -7,12 +7,14 @@ Las skills de producto trabajan con información que **solo el usuario o sus int
 - **No inventes** cifras, segmentos, competidores, precios ni reglas. Si faltan, pregunta (pocas preguntas, las que bloquean) o regístralas como supuesto `SUP-…` con estado "pendiente de validar" y como pregunta `PRE-…`.
 - Lo deducido del código o de documentos existentes se marca **"inferido"** con su fuente hasta que alguien lo confirme.
 - Distingue en la entrega lo **confirmado** (lo dijo el usuario o un documento), lo **inferido** y lo **supuesto**.
+- Al reutilizar el contexto o una auditoría, conserva la distinción entre comportamiento implementado, decisión acordada y discrepancia abierta. Para describir el comportamiento actual, cita la evidencia que lo respalda. Una decisión de cambiarlo describe el comportamiento esperado.
+- Para marcar una regla como `acordado`, cita una decisión, respuesta o documento vigente que respalde el enunciado completo, incluidas sus condiciones, excepciones y efectos. Si una parte depende de un `SUP` o `PRE` abierto, sepárala como borrador y enlaza el pendiente. Aplica el mismo estado en diagramas y eventos.
 
 ## Modo Construir
 
 1. **Plan breve** si el entregable es grande (brief completo, modelo de dominio de varios módulos): qué se crea, dónde y qué preguntas bloquean.
 2. **Entregable** en el repositorio, en la estructura del proyecto o en la de [ids-and-links.md § Ubicación](ids-and-links.md#ubicación-por-defecto), con IDs y enlaces según ese estándar.
-3. **Verificación:** IDs únicos y sin huecos de numeración no justificados (búsqueda en `docs/`), enlaces relativos que resuelven, diagramas Mermaid con sintaxis válida, y cada elemento con estado y origen. Lo que no se pudo verificar, se dice.
+3. **Verificación:** comprueba IDs contra el catálogo vigente, enlaces relativos y sus anclas, sintaxis Mermaid cuando haya un validador disponible, y coherencia entre estados y fuentes. Indica qué se verificó y qué quedó pendiente.
 4. **Resumen:** qué se creó o cambió, decisiones (`DEC-…`), supuestos (`SUP-…`) y preguntas abiertas (`PRE-…`) que quedan.
 5. **Contexto:** actualiza `.sdlc/context.md` si existe ([context.md](context.md)), incluida la convención de IDs si es nueva.
 6. **Handoffs** hechos y pendientes ([handoffs.md](handoffs.md#bloque-de-traza-en-la-entrega)).
@@ -52,10 +54,14 @@ Las skills de producto trabajan con información que **solo el usuario o sus int
 | discovery | `PR-DISC` |
 | elicitation | `PR-ELIC` |
 | domain-modeling | `PR-DOMAIN` |
+| user-stories | `PR-STORIES` |
+| prioritization | `PR-PRIOR` |
 
 La numeración es siempre secuencial (`PR-DOMAIN-001`); no se inventan sufijos descriptivos.
 
 ## Veracidad de lo cargado (todas las entregas)
+
+Abre los estándares que el flujo del modo aplicado indique antes de usarlos. Si ya los leíste en la misma conversación y siguen vigentes, reutilízalos e indica en qué etapa los leíste. Distingue entre lectura del checklist y cobertura de sus comprobaciones.
 
 El anexo de referencias o skills aplicadas dice **exactamente** qué se leyó en esta sesión:
 

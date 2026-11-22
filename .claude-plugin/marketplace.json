@@ -39,8 +39,8 @@
     {
       "name": "product",
       "source": "./plugins/product",
-      "description": "Skills de producto y requisitos, antes de construir: descubrimiento (problema, usuarios, Lean Canvas, supuestos, MVP y métricas), levantamiento de requisitos y modelo del dominio con reglas de negocio, con IDs estables para la trazabilidad (en construcción: historias, priorización, SRS y trazabilidad).",
-      "version": "0.1.0",
+      "description": "Cinco skills de producto y requisitos: descubrimiento, levantamiento, modelo del dominio, historias de usuario con criterios de aceptación y priorización del MVP y de las entregas. Comparten IDs estables y enlaces para la trazabilidad.",
+      "version": "0.2.3",
       "category": "development"
     }
   ]

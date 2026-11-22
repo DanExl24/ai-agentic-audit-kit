@@ -33,6 +33,7 @@ Un disparador es **concreto y comprobable** en el código o en el objetivo ("un 
 3. **Alcance acotado.** Un handoff no es una auditoría ni un desarrollo completo de la otra skill: se aplica solo a lo que activó el disparador.
    - En modo **Auditar**, la skill destino aplica los puntos de su `checklist.md` que tocan ese alcance y emite hallazgos con su propio código (`BE-*`, `FE-*`, `FS-*`).
    - En modo **Construir**, aplica su `patterns.md` a la pieza concreta.
+   - Si el destino va a implementar un comportamiento, enumera los IDs acordados que entran en el alcance. Usa un rango solo si todos sus elementos están acordados. Registra aparte qué borradores siguen pendientes y qué `PRE` o `SUP` los bloquea. Puedes compartirlos como contexto para análisis o aclaración.
 4. **Coste a la vista.**
    - Un handoff dentro de la tarea en curso se ejecuta declarándolo en una línea ("paso a `backend:authorization` para la consulta X").
    - **Más de dos skills añadidas a la tarea** (cuentan tanto las cadenas en profundidad como varios handoffs en paralelo desde la misma skill), o un handoff hacia un orquestador (`audit`, `feature`), **se proponen con su coste y esperan confirmación**, salvo que el usuario haya pedido expresamente seguir los handoffs.

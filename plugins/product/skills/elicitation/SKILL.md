@@ -31,11 +31,12 @@ Los requisitos no se "recogen" como si estuvieran escritos en algún sitio: se *
 2. **Técnicas** según el objetivo y el acceso. Ver [patterns.md § Técnicas](references/patterns.md#elección-de-técnicas).
 3. **Guion** por sesión, con preguntas sobre hechos pasados y concretos. Ver [interview-guide.md](references/interview-guide.md).
 4. **Ejecuta:**
-   - **Entrevista en el chat:** bloques de 3–5 preguntas, resumen de lo entendido y confirmación antes de seguir. Ver [patterns.md § Entrevistar en el chat](references/patterns.md#entrevistar-al-usuario-en-el-chat).
+   - **Entrevista en el chat:** envía un bloque de 3–5 preguntas y termina el turno allí. Cuando llegue un mensaje nuevo del usuario, comprueba qué preguntas respondió. Resume las respuestas y distingue las interpretaciones y propuestas. Termina el turno pidiendo confirmación antes de enviar el siguiente bloque o cerrar la entrevista. Ver [patterns.md § Entrevistar en el chat](references/patterns.md#entrevistar-al-usuario-en-el-chat).
    - **Sistema existente:** requisitos inferidos del código y la documentación, marcados como "inferido" y convertidos en preguntas de confirmación. Ver [patterns.md § Sistema existente](references/patterns.md#análisis-del-sistema-existente).
-5. **Registra** tras cada sesión: notas con citas, requisitos candidatos, preguntas (`PRE`), supuestos (`SUP`) validados o refutados y decisiones (`DEC`). Ver [patterns.md § Registros](references/patterns.md#registros).
+5. **Registra** tras cada sesión: notas con citas, requisitos candidatos, preguntas (`PRE`), supuestos (`SUP`) y decisiones (`DEC`). Si falta una respuesta o solo resuelve parte de la pregunta, registra lo que se decidió y deja como `PRE` la parte pendiente que afecte al alcance. Para una política automática, aclara qué pasa con los elementos existentes y qué ocurre al activar, cambiar o desactivar la política. Ver [patterns.md § Registros](references/patterns.md#registros).
 6. **Conflictos** entre interesados: se registran las posiciones y quién decide; no se resuelven en silencio. Ver [patterns.md § Conflictos](references/patterns.md#conflictos-entre-interesados).
 7. Entrega en `docs/product/elicitation/` (o donde el proyecto guarde su documentación) según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir), con los requisitos candidatos listos para `domain-modeling` y `user-stories`.
+8. **Antes de cerrar**, verifica que cada requisito confirmado apunta a la respuesta real o a la aprobación explícita de una propuesta, y que las preguntas relevantes sin respuesta siguen abiertas. Al registrar y verificar el contexto, usa el estándar enlazado en esta skill.
 
 ## Modo Auditar
 
@@ -44,6 +45,7 @@ Los requisitos no se "recogen" como si estuvieran escritos en algún sitio: se *
 3. Busca requisitos contradictorios entre documentos o con el código.
 4. Recorre [checklist.md](references/checklist.md).
 5. Clasifica con [severity.md](../../standards/severity.md) y entrega según [output-formats.md § Auditar](../../standards/output-formats.md#modo-auditar) con código `PR-ELIC`.
+6. Antes de entregar, registra la auditoría en el contexto según [context.md](../../standards/context.md), también si el usuario pidió «no toques el código».
 
 ## Principios
 
@@ -71,6 +73,7 @@ Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alc
 
 | Archivo | Cuándo cargarlo |
 | :--- | :--- |
+| [ids-and-links.md](../../standards/ids-and-links.md), [output-formats.md](../../standards/output-formats.md), [context.md](../../standards/context.md), [handoffs.md](../../standards/handoffs.md) | Ambos modos. Reutiliza la lectura si sigue vigente en esta conversación. |
 | [patterns.md](references/patterns.md) | Siempre: interesados, técnicas, entrevista en el chat, sistema existente, registros y conflictos. |
 | [interview-guide.md](references/interview-guide.md) | Modo Construir: guion de entrevista y plantillas de notas y registros. |
 | [checklist.md](references/checklist.md) | Modo Auditar. |

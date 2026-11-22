@@ -30,7 +30,7 @@ Cada malentendido entre negocio y desarrollo suele empezar en una palabra: "clie
 2. **Modelo conceptual** en Mermaid: entidades, atributos que importan al negocio y relaciones con cardinalidad. Ver [patterns.md § Modelo conceptual](references/patterns.md#modelo-conceptual).
 3. **Ciclo de vida** de las entidades con estados: estados, transiciones, quién las provoca y qué las impide. Ver [patterns.md § Ciclo de vida](references/patterns.md#ciclo-de-vida-y-estados).
 4. **Eventos del dominio** y **módulos o contextos** si el producto tiene varias áreas. Ver [patterns.md § Eventos y módulos](references/patterns.md#eventos-y-módulos).
-5. **Reglas de negocio** (`RN`): atómicas, verificables, con tipo, motivo, origen, ejemplos y excepciones. Ver [patterns.md § Reglas](references/patterns.md#reglas-de-negocio) y [rule-template.md](references/rule-template.md).
+5. **Reglas de negocio** (`RN`): atómicas, verificables, con tipo, motivo, origen, ejemplos y excepciones. Contrasta cada condición y efecto con las decisiones y preguntas abiertas. Mantén como borrador lo que dependa de un supuesto, incluso en diagramas y eventos. Para cada cambio de política, distingue activación inicial, cambios posteriores, desactivación y reactivación cuando apliquen. Comprueba qué pasa con los datos de cada etapa y con las excepciones elegidas por el usuario. Para un borrado, confirma el alcance sobre las copias conocidas. Registra las dudas como pendientes. Ver [patterns.md § Reglas](references/patterns.md#reglas-de-negocio) y [rule-template.md](references/rule-template.md).
 6. **Enlaces:** cada regla a sus entidades, historias (cuando existan) y, si está implementada, al código (archivo y símbolo).
 7. Entrega en `docs/product/domain/` (o la estructura del proyecto) según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir).
 
@@ -41,6 +41,7 @@ Cada malentendido entre negocio y desarrollo suele empezar en una palabra: "clie
 3. Revisa la calidad de cada regla (atómica, verificable, con motivo y origen) y contrástala con su implementación si existe.
 4. Recorre [checklist.md](references/checklist.md).
 5. Clasifica con [severity.md](../../standards/severity.md) y entrega según [output-formats.md § Auditar](../../standards/output-formats.md#modo-auditar) con código `PR-DOMAIN`.
+6. Antes de entregar, guarda y verifica los hallazgos abiertos y el registro de la auditoría en el contexto según [context.md](../../standards/context.md), también si el usuario pidió «no toques el código». Si otra área queda fuera del alcance, indica qué comprobación quedó pendiente.
 
 ## Principios
 
@@ -55,6 +56,10 @@ Cada malentendido entre negocio y desarrollo suele empezar en una palabra: "clie
 
 Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alcance acotado, sin reinvocar skills ya aplicadas y registro de pendientes.
 
+Registra las correcciones propias de modelado como hallazgos abiertos. Si una corrección necesita un ID nuevo, asígnalo al aplicarla tras revisar la numeración vigente.
+
+Antes de entregar un handoff de implementación, contrasta sus IDs con el estado del catálogo. Registra los borradores y el `PRE` o `SUP` que bloquea cada uno fuera del alcance ejecutable, tanto en la entrega como en el contexto compartido.
+
 | Disparador (observable) | Skill | Alcance y contexto que se pasa |
 | :--- | :--- | :--- |
 | Reglas acordadas que el código no implementa o implementa distinto | `backend:domain-logic` | `RN`, código actual (archivo y símbolo) y discrepancia |
@@ -68,6 +73,7 @@ Según [handoffs.md](../../standards/handoffs.md): profundidad máxima de 2, alc
 
 | Archivo | Cuándo cargarlo |
 | :--- | :--- |
+| [ids-and-links.md](../../standards/ids-and-links.md), [output-formats.md](../../standards/output-formats.md), [context.md](../../standards/context.md), [handoffs.md](../../standards/handoffs.md) | Ambos modos. Reutiliza la lectura si sigue vigente en esta conversación. |
 | [patterns.md](references/patterns.md) | Siempre: glosario, modelo, ciclo de vida, eventos, módulos y reglas. |
 | [rule-template.md](references/rule-template.md) | Al escribir o reescribir reglas de negocio y el glosario. |
 | [checklist.md](references/checklist.md) | Modo Auditar. |

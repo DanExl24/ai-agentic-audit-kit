@@ -56,10 +56,10 @@ quadrantChart
 Cuando el interesado es el propio usuario de la conversación:
 
 1. Explica el objetivo en una línea y cuántos bloques habrá (2–4).
-2. **Bloques de 3–5 preguntas** agrupadas por tema; nunca una lista de 20.
-3. Tras cada bloque, **resume lo entendido** en viñetas, marca lo que interpretaste y pide confirmación o corrección.
-4. Lo que el usuario no sabe se registra como `PRE` (con a quién preguntarlo) o `SUP`; no se insiste.
-5. Al final, lista de requisitos candidatos y preguntas abiertas para que el usuario la valide.
+2. **Bloques de 3–5 preguntas** agrupadas por tema. Termina el turno después de las preguntas y espera un mensaje del usuario antes de resumir sus respuestas, incluso en el último bloque.
+3. Revisa cada pregunta contra lo que el usuario respondió. Resume los hechos, distingue las interpretaciones y propuestas, y termina el turno pidiendo confirmación o corrección. Envía el siguiente bloque cuando la recibas.
+4. Si una pregunta relevante se omitió, quedó parcialmente respondida o el usuario no sabe la respuesta, déjala como `PRE` abierta con responsable. Repregunta en el chat si la duda bloquea el objetivo. Si también propones un supuesto, identifícalo como `SUP`.
+5. En el último resumen, presenta los requisitos candidatos y pendientes. Espera la confirmación antes de cerrar la sesión. Un «sí» a un resumen que identifica propuestas concretas puede confirmarlas. Cita ese mensaje y la propuesta que aprobó. Usa el número de bloque y pregunta como fuente de una respuesta directa solo cuando esa respuesta figure en la conversación. Mantén abiertas las preguntas que el resumen no resolvió.
 
 ## Análisis del sistema existente
 

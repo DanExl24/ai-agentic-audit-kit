@@ -4,7 +4,7 @@ Todo lo que el plugin `product` produce se puede **citar y enlazar**: reglas, hi
 
 ## Si el proyecto ya tiene convención, manda la suya
 
-Antes de crear IDs, busca los existentes (`grep -rE "\b(RN|HU|CU|RF|RNF)-" docs/`). Si el proyecto ya numera de otra forma (`BR-12`, `US-4`, `RN-BUZ-001`), **se adopta su convención** y se declara en el contexto; no se mezclan dos esquemas.
+Antes de crear IDs, identifica las ubicaciones y convenciones que usa el proyecto. Si ya numera de otra forma (`BR-12`, `US-4`, `RN-BUZ-001`), **se adopta su convención** y se declara en el contexto; no se mezclan dos esquemas.
 
 ## Convención por defecto
 
@@ -36,7 +36,7 @@ Los términos del glosario y las entidades del modelo se citan **por su nombre**
 ## Reglas
 
 1. **Estables:** un ID nunca se reutiliza ni se renumera. Si un elemento se elimina o se sustituye, se marca como obsoleto (`Estado: obsoleto · sustituido por RN-BUZ-007 · 2026-11-20`) y conserva su número.
-2. **Únicos en el proyecto:** antes de asignar uno, busca el último usado de ese tipo y módulo.
+2. **Únicos en el proyecto:** busca los prefijos que vas a asignar en toda la documentación de Producto, de forma recursiva. Incluye briefs, catálogos, notas de sesión y otras ubicaciones que use el proyecto. Por ejemplo, para un brief: `rg -n "\b(OBJ|SUP|PRE|DEC)-" docs/`. Si una búsqueda falla, repítela con una alternativa antes de elegir IDs. Distingue definiciones (incluidas las de tablas y listas) de menciones al mismo elemento. Asigna el siguiente número disponible después del mayor de su tipo y módulo. Al terminar, vuelve a buscar los IDs nuevos y verifica que cada uno tenga una sola definición.
 3. **Un elemento, un encabezado:** cada elemento de catálogo es un encabezado con **solo su ID** (`### RN-BUZ-001`) y el título en la primera línea debajo. Así el ancla es estable (`#rn-buz-001`) aunque cambie el título.
 4. **Estado y origen** en cada elemento: `borrador` · `acordado` · `implementado` · `obsoleto`, y de dónde sale (entrevista `INT-002` del 2026-11-20, documento, código existente, decisión `DEC-004`). Lo deducido del código se marca **"inferido del código"** hasta que alguien lo confirme.
 
@@ -70,7 +70,7 @@ docs/product/
 │   ├── glosario.md
 │   ├── modelo.md            # diagrama y entidades
 │   └── reglas.md            # RN (o reglas por módulo)
-├── backlog/                 # EP, HU, CA, CU (ola de user-stories)
+├── backlog/                 # EP, HU, CA, CU y priorizacion.md
 ├── especificacion/          # RF, RNF, SRS o PRD
 └── trazabilidad.md
 ```

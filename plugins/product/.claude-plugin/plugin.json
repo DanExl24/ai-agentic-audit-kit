@@ -1,7 +1,7 @@
 {
   "name": "product",
-  "version": "0.1.0",
-  "description": "Skills de producto y requisitos, lo que se hace antes de construir, que construyen y auditan: descubrimiento (problema, usuarios, propuesta de valor, Lean Canvas, supuestos de riesgo, MVP y métricas), levantamiento de requisitos con interesados y sobre sistemas existentes, y modelo del dominio (glosario, entidades, estados y reglas de negocio). Con IDs estables y enlaces para la trazabilidad. En construcción: historias de usuario, priorización, especificación (SRS) y trazabilidad.",
+  "version": "0.2.3",
+  "description": "Cinco skills de producto y requisitos en modos Construir y Auditar: descubrimiento, levantamiento, modelo del dominio, historias de usuario y criterios de aceptación, y priorización del MVP y de las entregas. Comparten IDs estables y enlaces para la trazabilidad.",
   "author": {
     "name": "DanExl24"
   },

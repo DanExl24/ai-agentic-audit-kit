@@ -99,7 +99,7 @@ Experimentos de menos a más caros: entrevistas de problema · prototipo en pape
 
 - **Métrica principal** (la que mejor refleja el valor entregado) y una **métrica de control** que no debe empeorar (p. ej. errores por nómina).
 - **De vanidad, no:** visitas, descargas o registros sin uso no cambian decisiones.
-- Sin línea base, se mide primero; el objetivo se fija después o se marca como supuesto.
+- Si hay línea base medida, registra su fuente y periodo. Si falta, escribe `pendiente de medir` y describe cómo medirla con el flujo actual. Una limitación del sistema o una impresión del usuario puede orientar la medición. Un cero requiere evidencia igual que cualquier otro valor. Etiqueta una meta fijada antes de medir como propuesta y conserva ese estado hasta que se acuerde.
 
 ## Anti-patrones
 

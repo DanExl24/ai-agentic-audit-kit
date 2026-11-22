@@ -1,6 +1,6 @@
 # Plugin `product`
 
-Skills de **producto y requisitos**: lo que se hace antes de crear software y lo que mantiene alineado lo que se construye con lo que se necesita. Validar la idea, levantar requisitos con quien tiene el problema, fijar el lenguaje y las reglas del negocio y, en las próximas olas, escribir historias con criterios de aceptación, priorizar, especificar (SRS o PRD) y trazar cada requisito hasta el código y los tests.
+Skills de **producto y requisitos** para validar ideas, levantar requisitos, modelar reglas de negocio, redactar historias con criterios de aceptación y priorizar entregas. Las próximas olas añadirán especificación formal, trazabilidad y orquestación del flujo.
 
 - Modos **Construir** y **Auditar**, como el resto del kit. El modo Auditar sirve también para revisar la documentación funcional de un proyecto existente.
 - Sin notas por stack: las plantillas son por formato (brief y Lean Canvas, guion de entrevista, reglas de negocio…). Todo se entrega en Markdown dentro del repositorio, con diagramas Mermaid.
@@ -21,7 +21,14 @@ Skills de **producto y requisitos**: lo que se hace antes de crear software y lo
 /product:elicitation documenta los requisitos del sistema actual a partir del código de src/billing
 /product:domain-modeling glosario, modelo y reglas de negocio del módulo de pedidos
 /product:domain-modeling audita docs/modules/*/reglas_negocio.md
+/product:user-stories convierte las reglas acordadas del buzón en historias con criterios verificables
+/product:prioritization propone el corte del MVP a partir del backlog del buzón
 ```
+
+## Estado de las olas
+
+- **Ola 1 cerrada.** Probada en VELTRIX con Gemini 4 Hydrogen Medium. Incluyó descubrimiento en Construir, levantamiento en Construir y modelado en Auditar y Construir. Se verificaron escritura del contexto, preguntas abiertas, reglas en borrador, unicidad de IDs y métricas sin línea base. La revisión de anclas de `0.1.4` se verificó en el brief generado.
+- **Ola 2 cerrada.** Se probó en VELTRIX con Gemini 4 Hydrogen Medium usando las reglas de caducidad de la ola 1. Se verificaron las historias y sus criterios, el registro de la propuesta y del contexto, y el bloqueo del relevo a desarrollo cuando el corte contradice reglas acordadas. La prueba cubrió el modo Construir de ambas skills.
 
 ## Catálogo
 
@@ -30,8 +37,8 @@ Skills de **producto y requisitos**: lo que se hace antes de crear software y lo
 | `discovery` | ✅ | Problema y evidencia, segmentos y trabajos por hacer, propuesta de valor, Lean Canvas (o versión interna), supuestos de mayor riesgo con experimento, alcance del MVP, objetivos y métricas |
 | `elicitation` | ✅ | Mapa de interesados, técnicas, guion de entrevista, entrevista al usuario en el chat por bloques, análisis del sistema existente, registros de preguntas, supuestos y decisiones, conflictos |
 | `domain-modeling` | ✅ | Glosario, modelo conceptual, ciclo de vida y estados, eventos y módulos, catálogo de reglas de negocio atómicas con ejemplos, motivo, origen y enlaces |
-| `user-stories` | ⏳ Ola 2 | Épicas, story mapping, historias INVEST, división vertical, criterios de aceptación, casos de uso, Definition of Ready |
-| `prioritization` | ⏳ Ola 2 | MoSCoW, RICE, Kano, coste del retraso, corte del MVP y plan de releases |
+| `user-stories` | Ola 2 · probada en Construir | Épicas, story mapping, historias INVEST, división vertical, criterios de aceptación, casos de uso, Definition of Ready |
+| `prioritization` | Ola 2 · probada en Construir | MoSCoW, RICE, Kano, coste del retraso, corte del MVP y plan de entregas |
 | `specification` | ⏳ Ola 3 | SRS (IEEE 29148) o PRD, requisitos no funcionales medibles (ISO 25010), restricciones e interfaces |
 | `traceability` | ⏳ Ola 3 | Matriz RN ↔ HU ↔ CA ↔ código ↔ tests ↔ commits, huecos, enlaces rotos y análisis de impacto |
 | `inception` | ⏳ Ola 4 | Orquestador de construcción: de la idea a un backlog o SRS listo para `fullstack:feature` |

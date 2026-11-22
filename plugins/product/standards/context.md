@@ -8,9 +8,9 @@ Un archivo en la raíz del proyecto donde las skills dejan lo que la siguiente n
 - **Se crea** al empezar una tarea encadenada (`feature`, `audit`, una cadena de handoffs) o si el usuario lo pide; nunca en una consulta puntual. Al crearlo, dilo en una línea.
 - **Se actualiza** al terminar la tarea, no en cada paso intermedio (salvo en `feature`, que marca el avance del plan):
   - **Modo Construir:** siempre, con lo creado o cambiado (skill aplicada, decisiones, handoffs pendientes).
-  - **Auditorías de solo lectura:** también se actualiza. "No toques el código", "no corrijas nada" o "no cambies nada del proyecto" se refieren al código y la configuración, **no al contexto**: escribirlo no los incumple.
-  - **Solo lo impide una prohibición explícita de escribir archivos** ("solo informe", "no escribas ningún archivo", "no toques nada, ni el contexto"). Ante la duda, escríbelo y dilo en una línea.
-  - **Siempre que no se escriba,** por el motivo que sea, la entrega incluye un bloque **"Contexto propuesto"** con las líneas que se añadirían, para que el usuario las copie o pida aplicarlas. Una entrega sin contexto escrito y sin ese bloque está incompleta.
+  - **«No toques el código»** permite escribir el contexto existente y los entregables documentales del encargo, tanto en Construir como en Auditar. Deja intactos el código, la configuración y, en Auditar, los documentos auditados. Conserva las entradas de contexto ajenas a la tarea.
+  - **Propuestas:** registra la ejecución, el entregable, su estado de propuesta y los handoffs pendientes. La aprobación hace falta para registrar la decisión como acordada.
+  - **Verifica la escritura** leyendo las secciones actualizadas o revisando el diff. Indica en la entrega la ruta y qué quedó guardado. Si el usuario pide solo un informe, prohíbe escribir archivos o modificar el proyecto, o la escritura no es posible, indica el motivo y entrega un bloque **«Contexto propuesto»** con las entradas concretas.
 
 ## Reglas
 

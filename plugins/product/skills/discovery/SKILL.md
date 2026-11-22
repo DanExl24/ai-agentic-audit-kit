@@ -22,7 +22,7 @@ Antes de decidir **cómo** construir hay que saber **qué problema se resuelve, 
 2. **Tipo de producto:** comercial (B2C, B2B), herramienta interna o proyecto personal. Cambia qué partes del canvas aplican (ver [patterns.md § Lean Canvas](references/patterns.md#lean-canvas)).
 3. **Quién decide** y quién usará el producto; si el autor es el único usuario, se declara.
 4. **Lo que el usuario sabe y lo que no:** los datos de negocio no se inventan ([output-formats.md § Datos de negocio](../../standards/output-formats.md#datos-de-negocio-preguntar-no-inventar)). Haz como mucho 3–5 preguntas que bloqueen; el resto se registra como `SUP` o `PRE`.
-5. **IDs:** convención del proyecto o la de [ids-and-links.md](../../standards/ids-and-links.md).
+5. **IDs:** antes de asignar `OBJ`, `SUP`, `PRE` o `DEC`, busca sus definiciones en la documentación del proyecto, incluidas las notas de sesión, según [ids-and-links.md](../../standards/ids-and-links.md).
 6. Si existe `.sdlc/context.md`, léelo y respeta sus convenciones y decisiones ([context.md](../../standards/context.md)).
 
 ## Modo Construir
@@ -32,9 +32,10 @@ Antes de decidir **cómo** construir hay que saber **qué problema se resuelve, 
 3. **Propuesta de valor:** qué cambia para el usuario y en qué se diferencia de su alternativa actual. Ver [patterns.md § Propuesta de valor](references/patterns.md#propuesta-de-valor).
 4. **Lean Canvas** (o la versión interna). Ver [patterns.md § Lean Canvas](references/patterns.md#lean-canvas).
 5. **Supuestos de mayor riesgo** (`SUP`): clasificados por importancia y evidencia, con un experimento y su criterio de éxito definido antes. Ver [patterns.md § Supuestos](references/patterns.md#supuestos-de-mayor-riesgo).
-6. **Alcance del MVP:** lo mínimo que valida el supuesto más arriesgado; lista explícita de dentro y fuera. Ver [patterns.md § MVP](references/patterns.md#alcance-del-mvp).
-7. **Objetivos y métricas** (`OBJ`): métrica, valor actual, objetivo y plazo, con una métrica de control. Ver [patterns.md § Métricas](references/patterns.md#objetivos-y-métricas).
+6. **Alcance del MVP:** lo mínimo que valida el supuesto más arriesgado. Lista qué entra y qué queda fuera, con su decisión de origen o estado de propuesta. Si al resolver una pregunta se amplía el MVP, presenta el nuevo alcance para confirmación. El brief sigue en `borrador` hasta que quien decide confirme el alcance completo. Ver [patterns.md § MVP](references/patterns.md#alcance-del-mvp).
+7. **Objetivos y métricas** (`OBJ`): registra la fuente de cada línea base medida. Si falta, escribe `pendiente de medir` e indica cómo obtenerla. Identifica metas y umbrales como propuestos o acordados. Incluye plazo y métrica de control. Ver [patterns.md § Métricas](references/patterns.md#objetivos-y-métricas).
 8. Entrega el brief con [brief-template.md](references/brief-template.md) en `docs/product/brief.md` (o donde el proyecto lo guarde) según [output-formats.md § Construir](../../standards/output-formats.md#modo-construir).
+9. **Antes de entregar o actualizar el brief**, verifica que cada encabezado de un supuesto, pregunta o decisión contiene solo su ID. Pon el estado y las referencias debajo. Comprueba que los enlaces al elemento siguen resolviendo al ancla del ID.
 
 ## Modo Auditar
 
@@ -43,6 +44,7 @@ Antes de decidir **cómo** construir hay que saber **qué problema se resuelve, 
 3. Contrasta el brief con el producto actual: ¿sigue describiendo lo que se construye?
 4. Recorre [checklist.md](references/checklist.md).
 5. Clasifica con [severity.md](../../standards/severity.md) y entrega según [output-formats.md § Auditar](../../standards/output-formats.md#modo-auditar) con código `PR-DISC`.
+6. Antes de entregar, registra la auditoría en el contexto según [context.md](../../standards/context.md), también si el usuario pidió «no toques el código».
 
 ## Principios
 
