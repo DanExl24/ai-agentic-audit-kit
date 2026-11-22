@@ -1,6 +1,6 @@
 {
   "name": "product",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Nueve skills de producto y requisitos: descubrimiento, levantamiento, modelo del dominio, historias de usuario, priorización, especificación y trazabilidad, con orquestadores de preparación y auditoría.",
   "author": {
     "name": "DanExl24"

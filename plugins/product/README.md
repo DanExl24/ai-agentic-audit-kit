@@ -34,7 +34,7 @@ Skills de **producto y requisitos** para validar ideas, levantar requisitos, mod
 - **Ola 1 cerrada.** Probada en VELTRIX con Gemini 4 Hydrogen Medium. Incluyó descubrimiento en Construir, levantamiento en Construir y modelado en Auditar y Construir. Se verificaron escritura del contexto, preguntas abiertas, reglas en borrador, unicidad de IDs y métricas sin línea base. La revisión de anclas de `0.1.4` se verificó en el brief generado.
 - **Ola 2 cerrada.** Se probó en VELTRIX con Gemini 4 Hydrogen Medium usando las reglas de caducidad de la ola 1. Se verificaron las historias y sus criterios, el registro de la propuesta y del contexto, y el bloqueo del relevo a desarrollo cuando el corte contradice reglas acordadas. La prueba cubrió el modo Construir de ambas skills.
 - **Ola 3 cerrada.** Se probaron `specification` y `traceability` en modo Construir con Gemini 4 Hydrogen Medium en VELTRIX. Se verificaron la separación entre requisitos y técnicas de implementación, la cobertura respaldada por evidencia, el análisis de impacto y la consistencia del contexto en la repetición.
-- **Ola 4 implementada y pendiente de prueba con el agente.** `inception` coordina las etapas necesarias y evalúa la preparación del incremento. `audit` consolida hallazgos y puntúa únicamente lo aplicable, con cobertura explícita.
+- **Ola 4 cerrada.** Se probaron `inception` en Construir y `audit` en Auditar con Gemini 4 Hydrogen Medium en VELTRIX. `inception` reutilizó los artefactos existentes y registró el bloqueo del relevo a desarrollo. Con `0.4.1`, la repetición de `audit` obtuvo 93/100 (26 de 28 puntos, con los 14 criterios aplicables evaluados), justificó los dos puntos descontados y mantuvo bloqueado el incremento. Los hallazgos quedaron registrados en el contexto del proyecto y los documentos auditados se conservaron intactos.
 
 ## Catálogo
 
@@ -47,8 +47,8 @@ Skills de **producto y requisitos** para validar ideas, levantar requisitos, mod
 | `prioritization` | Ola 2 · probada en Construir | MoSCoW, RICE, Kano, coste del retraso, corte del MVP y plan de entregas |
 | `specification` | Ola 3 · probada en Construir | PRD o SRS, requisitos funcionales y no funcionales verificables, restricciones e interfaces |
 | `traceability` | Ola 3 · probada en Construir | Matriz de requisitos y reglas a historias, criterios, código, pruebas y commits, con brechas y análisis de impacto |
-| `inception` | Ola 4 · implementada | Orquestador que prepara un backlog o especificación y verifica si el incremento puede pasar a `fullstack:feature` |
-| `audit` | Ola 4 · implementada | Orquestador que audita calidad de requisitos con puntuación, cobertura y remediación |
+| `inception` | Ola 4 · probada en Construir | Orquestador que prepara un backlog o especificación y verifica si el incremento puede pasar a `fullstack:feature` |
+| `audit` | Ola 4 · probada en Auditar | Orquestador que audita calidad de requisitos con puntuación, cobertura y remediación |
 
 ## Estructura de una skill
 

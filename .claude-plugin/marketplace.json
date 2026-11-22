@@ -40,7 +40,7 @@
       "name": "product",
       "source": "./plugins/product",
       "description": "Nueve skills de producto y requisitos, con orquestadores para preparar un backlog o especificación y auditar la calidad de los requisitos.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "category": "development"
     }
   ]
